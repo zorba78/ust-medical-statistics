@@ -11,7 +11,7 @@
 
 
 
-<title>Home</title>
+<title>UST: Medical Statistics Lecture Note</title>
 
 <script src="site_libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
@@ -32,6 +32,8 @@
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
 
 <link rel="icon" href="https://github.com/workflowr/workflowr-assets/raw/master/img/reproducible.png">
 <!-- Add a small amount of space between sections. -->
@@ -247,18 +249,94 @@ $(document).ready(function () {
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.html">ust-medical-statistics</a>
+      <a class="navbar-brand" href="index.html">ust-statistics</a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="index.html">Home</a>
+  <a href="index.html">
+    <span class="fas fa-home"></span>
+     
+    Home
+  </a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    <span class="fas fa-calendar"></span>
+     
+    Week 1
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="01-introduction.html">
+        <span class="fas fa-play-circle"></span>
+         
+        Introduction
+      </a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    <span class="fas fa-calendar"></span>
+     
+    Week 2
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="02-terminologies.html">
+        <span class="fas fa-play-circle"></span>
+         
+        Basic Terminologies
+      </a>
+    </li>
+    <li>
+      <a href="03-summary-data.html">
+        <span class="fas fa-play-circle"></span>
+         
+        Summary of Data
+      </a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    <span class="fas fa-calendar"></span>
+     
+    Week 3
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="04-probability.html">
+        <span class="fas fa-play-circle"></span>
+         
+        Probability
+      </a>
+    </li>
+    <li>
+      <a href="05-expectation.html">
+        <span class="fas fa-play-circle"></span>
+         
+        Expectation
+      </a>
+    </li>
+    <li>
+      <a href="05-prob-distribution.html">
+        <span class="fas fa-play-circle"></span>
+         
+        Probability Distribution
+      </a>
+    </li>
+  </ul>
 </li>
 <li>
   <a href="about.html">About</a>
-</li>
-<li>
-  <a href="license.html">License</a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -272,14 +350,14 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">Home</h1>
+<h1 class="title toc-ignore">UST: Medical Statistics Lecture Note</h1>
 
 </div>
 
 
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
-<span class="glyphicon glyphicon-list" aria-hidden="true"></span> workflowr <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
+<span class="glyphicon glyphicon-list" aria-hidden="true"></span> workflowr <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span>
 </button>
 </p>
 <div id="workflowr-report" class="collapse">
@@ -288,7 +366,7 @@ $(document).ready(function () {
 <a data-toggle="tab" href="#summary">Summary</a>
 </li>
 <li>
-<a data-toggle="tab" href="#checks"> Checks <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> </a>
+<a data-toggle="tab" href="#checks"> Checks <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> </a>
 </li>
 <li>
 <a data-toggle="tab" href="#versions">Past versions</a>
@@ -300,7 +378,7 @@ $(document).ready(function () {
 <strong>Last updated:</strong> 2021-03-02
 </p>
 <p>
-<strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 2 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
+<strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 1 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 1
 </p>
 <p>
 <strong>Knit directory:</strong> <code>ust-medical-statistics/</code> <span class="glyphicon glyphicon-question-sign" aria-hidden="true" title="This is the local directory in which the code in this file was executed."> </span>
@@ -316,28 +394,28 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguncommittedchanges"> <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> <strong>R Markdown file:</strong> uncommitted changes </a>
 </p>
 </div>
-<div id="strongRMarkdownfilestronguptodate" class="panel-collapse collapse">
+<div id="strongRMarkdownfilestronguncommittedchanges" class="panel-collapse collapse">
 <div class="panel-body">
-<p>Great! Since the R Markdown file has been committed to the Git repository, you know the exact version of the code that produced these results.</p>
+<p>The R Markdown file has unstaged changes. To know which version of the R Markdown file created these results, you’ll want to first commit it to the Git repo. If you’re still working on the analysis, you can ignore this warning. When you’re finished, you can run <code>wflow_publish</code> to commit the R Markdown file and build the HTML.</p>
 </div>
 </div>
 </div>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrong6cd97ea"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> 6cd97ea </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomzorba78ustmedicalstatisticstree70862b576042bbfb93228943d9dbdd11bf8df339targetblank70862b5a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/zorba78/ust-medical-statistics/tree/70862b576042bbfb93228943d9dbdd11bf8df339" target="_blank">70862b5</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrong6cd97ea" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomzorba78ustmedicalstatisticstree70862b576042bbfb93228943d9dbdd11bf8df339targetblank70862b5a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version 6cd97ea. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/zorba78/ust-medical-statistics/tree/70862b576042bbfb93228943d9dbdd11bf8df339" target="_blank">70862b5</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -345,6 +423,14 @@ Note that you need to be careful to ensure that all relevant files for the analy
 <pre><code>
 Ignored files:
     Ignored:    .Rproj.user/
+
+Untracked files:
+    Untracked:  render-slide.R
+    Untracked:  slides/
+
+Unstaged changes:
+    Modified:   analysis/_site.yml
+    Modified:   analysis/index.Rmd
 
 </code></pre>
 <p>
@@ -385,10 +471,27 @@ Message
 <tbody>
 <tr>
 <td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/zorba78/ust-medical-statistics/7415babbc41f86adf11ac783ce66aa950e595d1b/docs/index.html" target="_blank">7415bab</a>
+</td>
+<td>
+zorba78
+</td>
+<td>
+2021-03-02
+</td>
+<td>
+Build site.
+</td>
+</tr>
+<tr>
+<td>
 Rmd
 </td>
 <td>
-6cd97ea
+<a href="https://github.com/zorba78/ust-medical-statistics/blob/6cd97ea38dbc182c5525cb56a6604edc4bb65ade/analysis/index.Rmd" target="_blank">6cd97ea</a>
 </td>
 <td>
 zorba78
@@ -405,7 +508,7 @@ test
 Rmd
 </td>
 <td>
-c87edff
+<a href="https://github.com/zorba78/ust-medical-statistics/blob/c87edff0fee170c5345d163a4ff5cdb9f20e5b8b/analysis/index.Rmd" target="_blank">c87edff</a>
 </td>
 <td>
 zorba78
@@ -424,8 +527,33 @@ Start workflowr project.
 </div>
 </div>
 </div>
-<p>Welcome to my research website.</p>
-<p>Test</p>
+<div id="course-overview" class="section level2">
+<h2><strong>Course Overview</strong></h2>
+<blockquote>
+<p>This course provides an introduction to important topics in statistical concepts and reasoning essential to quantitative medical research. This course is lectured by a total of four faculty:</p>
+<ul>
+<li>Week 1 to 5: <strong>Dr. Boncho Ku</strong></li>
+<li>Week 6 to 9: <strong>Dr. Mimi Ko</strong></li>
+<li>Week 10 to 12: <strong>Dr. Myeong Soo Lee</strong></li>
+<li>Week 13 to 14: <strong>Dr. Junhwan Lee</strong></li>
+</ul>
+</blockquote>
+</div>
+<div id="course-level" class="section level2">
+<h2><strong>Course Level</strong></h2>
+</div>
+<div id="prerequisites" class="section level2">
+<h2><strong>Prerequisites</strong></h2>
+</div>
+<div id="weekly-topics" class="section level2">
+<h2><strong>Weekly Topics</strong></h2>
+</div>
+<div id="materials" class="section level2">
+<h2><strong>Materials</strong></h2>
+</div>
+<div id="note" class="section level2">
+<h2><strong>Note</strong></h2>
+</div>
 
 
 <!-- Adjust MathJax settings so that all math formulae are shown using

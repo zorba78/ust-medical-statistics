@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Medical Statistics</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Boncho Ku, Ph.D. in Statistics" />
+    <script src="libs/header-attrs-2.7/header-attrs.js"></script>
+    <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link href="libs/remark-css-0.0.1/metropolis.css" rel="stylesheet" />
+    <link href="libs/remark-css-0.0.1/metropolis-fonts.css" rel="stylesheet" />
+    <script src="libs/kePrint-0.0.1/kePrint.js"></script>
+    <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../assets/css/footer.css" type="text/css" />
+    <link rel="stylesheet" href="../assets/css/metropolis-ak.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: middle, left, title-slide
+
+# Medical Statistics
+## Introduction
+### <strong>Boncho Ku, Ph.D. in Statistics</strong>
+### <br/> Korea Institute of Oriental Medicine
+### <br> 2021/03/04
+
+---
+
+
+
+
+
+
+
+
+# 👋 Hello
+
+### me: **Boncho Ku**
+
+- **Statistician**, _Korea Institute of Oriental Medicine_
+    + github: **@zorba78**
+    + email: **secondmoon@kiom.re.kr**
+
+- **Team**: Clinical Research Coordinating Team    
+
+
+### Current Works in KIOM
+
+.pull-left[
+#### **Data Science**
+- Statistical learning model
+- Text mining
+- Data linkage/statistical matching
+- Data management
+]
+
+
+.pull-right[
+#### **Biostatistics**
+- Experiment &amp; study design: RCT and observational study 
+- Sample size calculation
+- Statistical consulting and lecturing
+]
+
+
+### Slides: **zorba78.github.io/ust-statistics**
+
+
+
+---
+class: inverse, center, middle
+
+# Objective &amp; Motivation
+
+
+---
+
+#  Overview 
+
+## &lt;svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" style="height:1em;fill:currentColor;position:relative;display:inline-block;top:.1em;"&gt;  [ comment ]  &lt;path d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 110c23.196 0 42 18.804 42 42s-18.804 42-42 42-42-18.804-42-42 18.804-42 42-42zm56 254c0 6.627-5.373 12-12 12h-88c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h12v-64h-12c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h64c6.627 0 12 5.373 12 12v100h12c6.627 0 12 5.373 12 12v24z"&gt;&lt;/path&gt;&lt;/svg&gt; Famous quotes about statistics
+
+.left[
+.left-column[
+&lt;img src="assets/imgs/Benjamin-Disraeli.jpg" align="left" /&gt;
+]
+
+.right-column[
+&gt; _There are three types of lies: lies, damn lies, and **STATISTICS**_.
+&gt;
+&gt; Benjamin Disraelli
+
+]]
+
+
+.left[
+.left-column[
+&lt;br/&gt;
+&lt;img src="assets/imgs/mark-twain.jpg" align="left" /&gt;
+]
+
+.right-column[
+&gt; _Fact are stubborn things, but **STATISTICS** are pliable_.
+&gt;
+&gt; Mark Twain
+
+]]
+
+
+.left[&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;**and so on...**]
+
+
+.left[### Numerous quotes about statistics negatively express the statistics themselves]
+
+`\(\rightarrow\)` **Mostly hard to refute** 😂
+
+
+---
+class: inverse, center, middle
+
+# Are you sure? 🤭
+
+
+---
+
+# Many people are
+
+#### Saying Statistics as 
+
+--
+.center[&lt;img src="assets/imgs/stat-meme-04.jfif" width="17.8%"/&gt; &lt;img src="assets/imgs/stat-meme-01.jfif" width="20%"/&gt; 
+&lt;img src="assets/imgs/stat-meme-02.jfif" width="16.4%"/&gt; &lt;img src="assets/imgs/stat-meme-03.jfif" width="16.2%"/&gt;]
+
+--
+.center[#### However, statistics itself always provides useful information and allows us to maintain objective perspective based on DATA!!]
+
+
+--
+.center[&lt;img src="assets/imgs/data-instincts.jpg" width="35%"/&gt;]
+
+
+
+
+---
+class: inverse, center, middle
+
+# What is Statistics? 📍
+---
+
+# Definition
+
+### So then, **what is STATISTICS?**
+
+--
+&gt; #### Statistics is concerned with scientific methods for **collecting**, **organizing**, **summarizing**, **presenting** and **analyzing** DATA
+
+
+--
+### **Why STATISTICS?**
+
+--
+&gt; #### To draw **valid conclusions** and **making reasonable decisions** based on analyzing **DATA**
+
+
+--
+.center[&lt;img src="assets/imgs/StatisticsWords_Meg.jpg" width="22%" /&gt; &lt;img src="assets/imgs/wordcloud-biostatics.png" width="50%" /&gt;]
+.center[Each wordcloud was cited from [Trident University International](http://blog.trident.edu/-temporary-slug-8756cc7e-1d1b-458e-94e2-3ff603f80c9e) and
+[Augusta University](http://www.augusta.edu/mcg/dphs/biostats/research/index.php)]
+
+---
+class: inverse, center, middle
+
+# Statistics in Medical Research
+
+
+---
+# In the field of Medicine
+
+### Medical Statistics (a.k.a Biostatistics)
+
+&gt; **Applications of STATISTICS** to medicine and the health sciences including epidemiology, public health, forensic medicine, and clinical research
+
+
+--
+### Is it Necessary?
+
+--
+
+.center[&lt;img src="assets/imgs/medical-stat-diagram-01.png" width="60%"&gt;]
+
+
+
+
+
+
+---
+class: inverse, center, middle
+
+# Course Description
+
+---
+
+
+# 📆 Lecture Schedule
+
+&lt;table class=" lightable-paper table table-hover" style='font-family: "Arial Narrow", arial, helvetica, sans-serif; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;'&gt;
+&lt;caption&gt;Course Schedule (Week 1 ~ Week 9)&lt;/caption&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; Week &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Description &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Lecturer &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Week 1 (2021.03.04) &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Introduction &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Dr. Boncho Ku &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Week 2 (2021.03.11) &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Terminologies and descriptive statistics &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Dr. Boncho Ku &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Week 3 (2021.03.18) &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Probability, expectation, and Important probability distributions &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Dr. Boncho Ku &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Week 4 (2021.03.25) &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Random variables, sampling distribution and central limit theorem &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Dr. Boncho Ku &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Week 5 (2021.04.01) &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Estimation and hypothesis testing &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Dr. Boncho Ku &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Week 6 (2021.04.08) &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Analysis of continuous data (part 1) &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Dr. Mimi Ko &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Week 7 (2021.04.15) &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Analysis of continuous data (part 2) &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Dr. Mimi Ko &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Week 8 (2021.04.22) &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Analysis of categorical data &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Dr. Mimi Ko &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Week 9 (2021.04.29) &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; More applications (sample size calculation, regression analysis) &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Dr. Mimi Ko &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+
+
+
+
+
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

@@ -1,14 +1,40 @@
-name: "ust-medical-statistics"
+name: "ust-statistics"
 output_dir: ../docs
 navbar:
-  title: "ust-medical-statistics"
+  title: "ust-statistics"
   left:
   - text: Home
+    icon: fa-home
     href: index.html
+  - text: Week 1
+    icon: fa-calendar
+    menu:
+      - text: "Introduction"
+        href: 01-introduction.html
+        icon: fa-play-circle
+  - text: Week 2
+    icon: fa-calendar
+    menu:
+      - text: "Basic Terminologies"
+        href: 02-terminologies.html
+        icon: fa-play-circle
+      - text: "Summary of Data"
+        href: 03-summary-data.html
+        icon: fa-play-circle
+  - text: Week 3
+    icon: fa-calendar
+    menu:
+      - text: "Probability"
+        href: 04-probability.html
+        icon: fa-play-circle
+      - text: "Expectation"
+        href: 05-expectation.html
+        icon: fa-play-circle
+      - text: "Probability Distribution"
+        href: 05-prob-distribution.html
+        icon: fa-play-circle
   - text: About
     href: about.html
-  - text: License
-    href: license.html
 output:
   workflowr::wflow_html:
     toc: yes

@@ -1,0 +1,255 @@
+---
+title: "Medical Statistics"
+subtitle: "Introduction"
+author: "<strong>Boncho Ku, Ph.D. in Statistics</strong>"
+institute: "<br/> Korea Institute of Oriental Medicine"
+date: "<br> 2021/03/04 "
+output:
+  xaringan::moon_reader:
+    css: [default, metropolis, metropolis-fonts, ../assets/css/footer.css, ../assets/css/metropolis-ak.css]
+    lib_dir: "../docs/libs"
+    nature:
+      highlightStyle: github
+      titleSlideClass: [middle, left]
+      highlightLines: true
+      countIncrementalSlides: false
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup-knitr, include=FALSE}
+# knitr::opts_knit$set(root.dir='..')
+knitr::opts_chunk$set(eval = TRUE, 
+                      echo = FALSE, 
+                      cache = FALSE,
+                      include = TRUE,
+                      collapse = FALSE,
+                      message=FALSE,
+                      warning=FALSE, 
+                      dependson = NULL,
+                      engine = "R", # Chunks will always have R code, unless noted
+                      error = TRUE,
+                      fig.path="Figures/",  # Set the figure options
+                      fig.align = "center", 
+                      #fig.width = 7,
+                      #fig.height = 7, 
+                      fig.keep='all', fig.retina=3)
+
+```
+
+```{r setup-library}
+library(tidyverse)
+library(MASS)
+library(reshape2)
+library(plyr)
+library(tidyverse)
+library(lubridate)
+library(readxl)
+library(tidyselect)
+library(tidystats)
+library(glue)
+library(here)
+library(gt)
+library(gtsummary)
+library(kableExtra)
+
+```
+
+
+
+# `r emo::ji("wave")` Hello
+
+### me: **Boncho Ku**
+
+- **Statistician**, _Korea Institute of Oriental Medicine_
+    + github: **@zorba78**
+    + email: **secondmoon@kiom.re.kr**
+
+- **Team**: Clinical Research Coordinating Team    
+
+
+### Current Works in KIOM
+
+.pull-left[
+#### **Data Science**
+- Statistical learning model
+- Text mining
+- Data linkage/statistical matching
+- Data management
+]
+
+
+.pull-right[
+#### **Biostatistics**
+- Experiment & study design: RCT and observational study 
+- Sample size calculation
+- Statistical consulting and lecturing
+]
+
+
+### Slides: **zorba78.github.io/ust-statistics**
+
+
+
+---
+class: inverse, center, middle
+
+# Objective & Motivation
+
+
+---
+
+#  Overview 
+
+## `r icon::fontawesome("info-circle", style = "solid")` Famous quotes about statistics
+
+.left[
+.left-column[
+<img src="assets/imgs/Benjamin-Disraeli.jpg" align="left" />
+]
+
+.right-column[
+> _There are three types of lies: lies, damn lies, and **STATISTICS**_.
+>
+> Benjamin Disraelli
+
+]]
+
+
+.left[
+.left-column[
+<br/>
+<img src="assets/imgs/mark-twain.jpg" align="left" />
+]
+
+.right-column[
+> _Fact are stubborn things, but **STATISTICS** are pliable_.
+>
+> Mark Twain
+
+]]
+
+
+.left[<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>**and so on...**]
+
+
+.left[### Numerous quotes about statistics negatively express the statistics themselves]
+
+$\rightarrow$ **Mostly hard to refute** `r emo::ji("tear")`
+
+
+---
+class: inverse, center, middle
+
+# Are you sure? `r emo::ji("surprise")`
+
+
+---
+
+# Many people are
+
+#### Saying Statistics as 
+
+--
+.center[<img src="assets/imgs/stat-meme-04.jfif" width="17.8%"/> <img src="assets/imgs/stat-meme-01.jfif" width="20%"/> 
+<img src="assets/imgs/stat-meme-02.jfif" width="16.4%"/> <img src="assets/imgs/stat-meme-03.jfif" width="16.2%"/>]
+
+--
+.center[#### However, statistics itself always provides useful information and allows us to maintain objective perspective based on DATA!!]
+
+
+--
+.center[<img src="assets/imgs/data-instincts.jpg" width="35%"/>]
+
+
+
+
+---
+class: inverse, center, middle
+
+# What is Statistics? `r emo::ji("pin")`
+---
+
+# Definition
+
+### So then, **what is STATISTICS?**
+
+--
+> #### Statistics is concerned with scientific methods for **collecting**, **organizing**, **summarizing**, **presenting** and **analyzing** DATA
+
+
+--
+### **Why STATISTICS?**
+
+--
+> #### To draw **valid conclusions** and **making reasonable decisions** based on analyzing **DATA**
+
+
+--
+.center[<img src="assets/imgs/StatisticsWords_Meg.jpg" width="22%" /> <img src="assets/imgs/wordcloud-biostatics.png" width="50%" />]
+.center[Each wordcloud was cited from [Trident University International](http://blog.trident.edu/-temporary-slug-8756cc7e-1d1b-458e-94e2-3ff603f80c9e) and
+[Augusta University](http://www.augusta.edu/mcg/dphs/biostats/research/index.php)]
+
+---
+class: inverse, center, middle
+
+# Statistics in Medical Research
+
+
+---
+# In the field of Medicine
+
+### Medical Statistics (a.k.a Biostatistics)
+
+> **Applications of STATISTICS** to medicine and the health sciences including epidemiology, public health, forensic medicine, and clinical research
+
+
+--
+### Is it Necessary?
+
+--
+
+.center[<img src="assets/imgs/medical-stat-diagram-01.png" width="60%">]
+
+
+
+
+
+
+---
+class: inverse, center, middle
+
+# Course Description
+
+---
+
+
+# `r emo::ji("calendar")` Lecture Schedule
+
+```{r}
+input <- ("Week 1 (2021.03.04): Introduction
+Week 2 (2021.03.11): Terminologies and descriptive statistics 
+Week 3 (2021.03.18): Probability, expectation, and Important probability distributions
+Week 4 (2021.03.25): Random variables, sampling distribution and central limit theorem
+Week 5 (2021.04.01): Estimation and hypothesis testing
+Week 6 (2021.04.08): Analysis of continuous data (part 1)
+Week 7 (2021.04.15): Analysis of continuous data (part 2)
+Week 8 (2021.04.22): Analysis of categorical data
+Week 9 (2021.04.29): More applications (sample size calculation, regression analysis)")
+course_desc <- read.table(textConnection(input), sep = ":", header = FALSE)
+course_desc$V3 <- c(rep("Dr. Boncho Ku", each = 5), rep("Dr. Mimi Ko", each = 4))
+names(course_desc) <- c("Week", "Description", "Lecturer")
+kbl(course_desc, 
+    booktabs = TRUE, 
+    caption = "Course Schedule (Week 1 ~ Week 9)") %>% 
+  kable_paper %>% 
+  kable_styling(bootstrap_options = c("hover"))
+
+```
+
+
+
+
+
+
+

@@ -1,5 +1,5 @@
 ---
-title: "Home"
+title: "UST: Medical Statistics Lecture Note"
 site: workflowr::wflow_site
 output:
   workflowr::wflow_html:
@@ -8,6 +8,32 @@ editor_options:
   chunk_output_type: console
 ---
 
-Welcome to my research website.
 
-Test
+## **Course Overview**
+
+> This course provides an introduction to important topics in statistical concepts and reasoning essential to quantitative medical research. 
+> This course is lectured by a total of four faculty:
+>
+>   - Week 1 to 5: **Dr. Boncho Ku**
+>   - Week 6 to 9: **Dr. Mimi Ko**
+>   - Week 10 to 12: **Dr. Myeong Soo Lee**
+>   - Week 13 to 14: **Dr. Junhwan Lee**
+
+
+## **Course Level**
+
+
+## **Prerequisites**
+
+
+## **Weekly Topics** 
+
+
+## **Materials**
+
+
+## **Note**
+
+
+
+
