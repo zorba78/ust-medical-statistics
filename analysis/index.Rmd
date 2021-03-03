@@ -57,6 +57,17 @@ kbl(course_desc,
 ```
 
 
+<!-- ### Week 1: Introduction  -->
+
+<!-- Introduction to statistics and overview the world of statistics.  -->
+
+<!-- ### Week 2: Terminologies and descriptive statistics  -->
+
+<!-- Important terminologies related to statistics will be introduced. Illustrate the descriptive statistics including mean, variance (standard deviation),  -->
+<!-- median, and inter-quartile range.  -->
+
+
+
 ## **Materials**
 
 1.	Study Design and Statistical Analysis : A Practical Guide for Clinicians.  Mitchell H. Katz. 2006. Cambridge University Press 
