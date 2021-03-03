@@ -89,7 +89,7 @@ library(kableExtra)
 ]
 
 
-### Slides: **zorba78.github.io/ust-statistics**
+### Slides: **https://zorba78.github.io/ust-medical-statistics**
 
 
 ???
@@ -110,7 +110,7 @@ class: inverse, center, middle
 
 #  Overview 
 
-## `r icon::fontawesome("info-circle", style = "solid")` Famous quotes about statistics
+## `r icons::fontawesome("info-circle", style = "solid")` Famous quotes about statistics
 
 .left[
 .left-column[
@@ -224,11 +224,11 @@ class: inverse, center, middle
 ---
 class: inverse, center, middle
 
-# Important Things in Statistics `r icon::fontawesome("exclamation-circle", style = "solid")`
+# Important Things in Statistics `r icons::fontawesome("exclamation-circle", style = "solid")`
 
 ---
 
-# `r icon::fontawesome("table", style = "solid")` Data 
+# `r icons::fontawesome("table", style = "solid")` Data 
 
 ### Characteristics or information collected through observation 
 
@@ -258,14 +258,14 @@ class: inverse, center, middle
 
 ---
 
-# `r icon::fontawesome("border-all", style = "solid")` Summarization, `r icon::fontawesome("chart-pie", style = "solid")` Visualization 
+# `r icons::fontawesome("border-all", style = "solid")` Summarization, `r icons::fontawesome("chart-pie", style = "solid")` Visualization 
 
 ### Data themselves are just a bunch of numbers 
 
 .pull-left[<img src="assets/imgs/data-ex-01.png" width="60%"/>]
 
 .right[
-## `r icon::fontawesome("arrow-right", style = "solid")` So What???
+## `r icons::fontawesome("arrow-right", style = "solid")` So What???
 
 
 #### $\rightarrow$ Extract meaningful information from data?
@@ -292,7 +292,7 @@ class: inverse, center, middle
 
 ---
 
-# `r icon::fontawesome("lightbulb", style = "solid")` Inference 
+# `r icons::fontawesome("lightbulb", style = "solid")` Inference 
 
 ## Two important terminologies in statistics
 
@@ -324,7 +324,7 @@ generalizations about a whole (**the population**), based on a limited mumber of
     
 ### Inferential approach based on SAMPLE
 
-`r icon::fontawesome("arrow-right", style = "solid")` If we have a proper sample that represents the whole population, you can get NEARLY the correct answer
+`r icons::fontawesome("arrow-right", style = "solid")` If we have a proper sample that represents the whole population, you can get NEARLY the correct answer
 
 ### Benefits of Sampling
   
@@ -351,7 +351,7 @@ class: inverse, center, middle
 ---
 
 
-# Parameters `r icon::fontawesome("bible", style = "solid")`
+# Parameters `r icons::fontawesome("bible", style = "solid")`
 
 ### Parameters exist somewhere in the universe 
 
@@ -398,7 +398,7 @@ $$
 
 ---
 
-# Estimation & Hypothesis Testing `r icon::fontawesome("cloud", style = "solid")`
+# Estimation & Hypothesis Testing `r icons::fontawesome("cloud", style = "solid")`
 
 ### Two basic branches of statistical inference
 
