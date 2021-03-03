@@ -1,0 +1,57 @@
+Slide 1
+
+Hello everyone, Nice to meet you. 
+My name is Boncho Ku and I have been in charge of 4-5 weeks of all courses in medical statistics.
+
+Maybe some of you may feel a little confusing because I am not Dr. Lee Myeong Soo, who should be teaching the original course. 
+
+I don't know if you've heard the story, but this course is taught by a total of three faculty members. An overview of the main concepts and theories of statistics will be taught by a man in front of you. 
+
+And the practice of data analysis will be conducted by Dr. Mimi Ko. Finally, Dr. Myung-Soo Lee will probably proceed with the contents related to the clinical trial design.
+
+Of course, he is a master in systematic review and meta analysis, but in fact, Dr. Myung-Soo Lee's major is somewhat different from statistics. 
+
+So Dr. Lee asked me and Dr. Mimi Ko to help with this lecture in medical statistics, 
+so I am standing here.
+
+Me and Dr. Mimi Ko are not yet UST faculty members. 
+And, unfortunately, we haven't yet had experience in providing in-depth lectures on statistics to someone in English. 
+So the two of us may seem very inexperienced. 
+Maybe most of the lecture can rely on scripts. 
+So, we desperately need your understanding now on. 
+Anyway, I will do my best to convey my statistical knowledge as easily as possible.
+
+
+Slide 2
+
+Before entering the world of statistics, let me introduce myself first.
+
+As I already mentioned, my name is Boncho Ku and I'm PhD in Statistics. Currently, I am participating in various projects as a statistician. 
+
+I mainly work as a data scientist in developing statistical learning models, text mining, statistical data linkage to extend the volume of data, and data management. 
+
+In addition, I am responsible for designing clinical studies including RCT.
+
+This slide can be accessed using the URL address noted below anytime.
+
+In addition, if you have any questions about the statistics or during class, 
+please feel free to contact me via this email adress.
+
+Then, let's get to the world of statistics. Are you ready?
+
+
+Slide 3-4
+
+People tend to distrust statistics. 
+Several quotes presented on the slide now speak for this.
+
+It is difficult to refute these quotes. 
+Most of them are true. 
+Why are these quotes regarded as facts from people? 
+In fact, statistics are just numerical explanation of measurable phenomena. 
+In my opinion, the source of these misunderstandings stems from people's desire to take some sort of advantages from statistics rather than statistics themselves. 
+In fact, proper statistics reflect the phenomena we want to know quite accurately.
+
+
+Slide 5-6
+Also, many people say that statistics are difficult. Like the cats on the slide. That's right. Because, even though I have studied statistics for over 20 years, it still feels difficult.
