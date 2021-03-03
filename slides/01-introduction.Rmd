@@ -8,6 +8,7 @@ output:
   xaringan::moon_reader:
     css: [default, metropolis, metropolis-fonts, ../assets/css/footer.css, ../assets/css/metropolis-ak.css]
     lib_dir: "../docs/libs"
+    # lib_dir: "libs"
     nature:
       highlightStyle: github
       titleSlideClass: [middle, left]
@@ -18,6 +19,7 @@ editor_options:
 ---
 
 ```{r setup-knitr, include=FALSE}
+options(htmltools.dir.version = FALSE)
 # knitr::opts_knit$set(root.dir='..')
 knitr::opts_chunk$set(eval = TRUE, 
                       echo = FALSE, 
@@ -212,18 +214,234 @@ class: inverse, center, middle
 .center[<img src="assets/imgs/medical-stat-diagram-01.png" width="60%">]
 
 
+---
+class: inverse, center, middle
+
+# Important Things in Statistics `r icon::fontawesome("exclamation-circle", style = "solid")`
+
+---
+
+# `r icon::fontawesome("table", style = "solid")` Data 
+
+### Characteristics or information collected through observation 
+
+--
+
+> - Observation
+>   - Investigation (or survey)
+>   - Experiment
+> - Usually numeric values (or text that are quantified)
+> - Object of quantitative (statistical) analysis 
+> - Source of knowledge
+
+--
+
+### Technically, Data can be defined as 
+
+--
+
+> - A set of values of **qualitative** or **quantitative** **VARIABLES**
+
+--
+
+#### In Sum, Data are **measured**, **collected**, and **analyzed**
 
 
+.center[<img src="assets/imgs/blood-data-example.png" width="70%"/>]
+
+---
+
+# `r icon::fontawesome("border-all", style = "solid")` Summarization, `r icon::fontawesome("chart-pie", style = "solid")` Visualization 
+
+### Data themselves are just a bunch of numbers 
+
+.pull-left[<img src="assets/imgs/data-ex-01.png" width="60%"/>]
+
+.right[
+## `r icon::fontawesome("arrow-right", style = "solid")` So What???
+
+
+#### $\rightarrow$ Extract meaningful information from data?
+
+
+#### &nbsp;&nbsp; - Table: based on descriptive statistics
+
+#### &nbsp;&nbsp; - Chart (plot): shape or pattern of data
+
+]
+
+<br/>
+
+.center[<img src="assets/imgs/table-ex-01.PNG" width="24.5%"/> <img src="assets/imgs/gap-minder-ex-01.png" width="36%"/> 
+<img src="assets/imgs/covid19-barplot.svg" width="30%"/>]
+
+
+.center[Examples of table and plots: based on descriptive statistics (mean, proportion, ...)]
+
+
+<!-- ??? -->
+
+<!-- _if not asked to lend money_. -->
+
+---
+
+# `r icon::fontawesome("lightbulb", style = "solid")` Inference 
+
+## Two important terminologies in statistics
+
+> - **Population**: the totality of individual observations for the inference
+
+> - **Sample**: a subset of the population or the part of population that we actually examine to gather information $\rightarrow$ expressed as **DATA** 
+
+
+## Two main phase in any statistical analysis 
+
+> - **Exploratory data analysis**: analyzing data to summarize their main characteristics
+
+
+> - **Statistical inference**: a set of procedures used in making appropriate conclusions and 
+generalizations about a whole (**the population**), based on a limited mumber of observation (**the sample**)
+>    - Generalization $\rightarrow$ **the probability distribution**
+
+---
+
+# Why Sample?? `r emo::ji("meh")`
+
+### Measure everything from POPULATION
+
+- You will get exactly correct answer
+- No need to meet a weirdo statistician LIKE ME
+- Possible only if you had a plenty of 
+    - Money (typing "**SHOW ME THE MONEY**" may help your budget)
+    - Time (**TOO SHORT TO COLLECT** all of entire population)
+    
+### Inferential approach based on SAMPLE
+
+`r icon::fontawesome("arrow-right", style = "solid")` If we have a proper sample that represents the whole population, you can get NEARLY the correct answer
+
+### Benefits of Sampling
+  
+> - **Cost**: save the money and time
+> - **Utility**: destroying sampling (e.g. examine the life of bulbs)
+> - **Accessibility**: impossible to examine a whole population
+
+
+
+???
+
+
+_One can undertake exploratory data analysis without progressing to inference. 
+Conversely, in practice any inferential process should always be preceded by 
+an exploration of the data in order to understand the data more fully._
 
 
 ---
 class: inverse, center, middle
 
-# Course Description
+# Parameters and Estimates
+
 
 ---
 
 
+# Parameters `r icon::fontawesome("bible", style = "solid")`
+
+### Parameters exist somewhere in the universe 
+
+> - $\rightarrow$ the **TRUE VALUE** for representing the target population 
+> - $\rightarrow$ **NO ERROR**
+> - Usually notated with Greek letters (e.g. $\mu, \sigma, \theta, \psi$, ...)
+
+
+### From the view of _frequentists_, 
+
+> - Parameters are fixed $\rightarrow$ never changing
+> - Parameters exists but we never know the true value of them
+> - But we can "guess" them from sample
+
+
+### In Sum, parameters are 
+
+> - any measured quantity of a population $\rightarrow$ **describe the population**
+> - usually infered from the **calculated statistics** $\rightarrow$ from the particular sample of **DATA**
+
+
+---
+
+
+# Sample Statistics $\sum$
+
+### Estimating parameters 
+
+> - calculating **SAMPLE STATISTICS** (a.k.a. **estimator of the population parameter**)
+> - **SAMPLE STATISTICS** varied from **different samples of data** $\rightarrow$ inevitably involves **ERROR** $\rightarrow$ **HAVE DISTRIBUTION**
+> - A sample statistic should never to be quoted without some estimate of its variation
+> - **standard error (SE)** of the sample statistic
+
+
+$$
+\mathrm{SE} = \frac{\hat\sigma}{\sqrt{N}}
+$$
+
+
+### How good is our estimate? $\rightarrow$ less error (variation) and how closer to the true parameter
+
+
+### _Measurement is ubiquitous_ $=$ _Errors are ubiquitous_
+
+---
+
+# Estimation & Hypothesis Testing `r icon::fontawesome("cloud", style = "solid")`
+
+### Two basic branches of statistical inference
+
+> - **Estimation**
+> - **Hypothesis test**
+
+#### Both make use of statistics calculated from sample data
+
+#### The choise of which to use depends on the question
+
+> - What is the value of something? $\rightarrow$ estimation
+> 
+>  Versus.
+>
+> - Are two things the same? $\rightarrow$ hypothesis testing
+
+
+The basic principle of estimation & hypothesis are the same for **ALL** types of parameters and statistics 
+but the details may change. 
+
+- test statistics 
+- standard error
+- probability distribution
+
+---
+
+# Scheme of Statistical Inference
+
+<br/><br/>
+
+.center[<img src="assets/imgs/stat-infer-scheme.png" width="90%">]
+
+.center[##### Schematic relationship between population, sample, statistic, and sampling distribution]
+
+---
+class: inverse, center, middle
+
+
+# We Deal All things VERY SHALLOWLY `r emo::ji("wink")`
+
+
+
+---
+
+class: inverse, center, middle
+
+# Course Description
+
+
+---
 # `r emo::ji("calendar")` Lecture Schedule
 
 ```{r}
@@ -247,9 +465,26 @@ kbl(course_desc,
 
 ```
 
+### By Dr. Ku and Dr. Ko. 
 
 
+---
+
+# **Yourselves!!**
+
+## To Enhance Your Statistical Mind
 
 
+- [Introduction to Statistical Methodology](https://bookdown.org/dereksonderegger/570/)
+
+- [1014SCG Statistics - Lecture Notes](https://bookdown.org/mcbroom_j/Book/)
+
+- [StatQuest](https://www.youtube.com/channel/UCtYLUTtgS3k1Fg4y5tAhLbw)
+
+
+---
+class: inverse, center, middle
+
+# Question? 
 
 

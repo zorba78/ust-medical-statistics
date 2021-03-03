@@ -12,27 +12,62 @@ editor_options:
 ## **Course Overview**
 
 > This course provides an introduction to important topics in statistical concepts and reasoning essential to quantitative medical research. 
-> This course is lectured by a total of four faculty:
+> This course is lectured by a total of three faculty:
 >
 >   - Week 1 to 5: **Dr. Boncho Ku**
 >   - Week 6 to 9: **Dr. Mimi Ko**
->   - Week 10 to 12: **Dr. Myeong Soo Lee**
->   - Week 13 to 14: **Dr. Junhwan Lee**
+>   - Week 10 to 14: **Dr. Myeong Soo Lee**
+
 
 
 ## **Course Level**
 
+Introductory to intermediate
+
 
 ## **Prerequisites**
+
+None. However, we expect that students are familiar with basic statistics.
 
 
 ## **Weekly Topics** 
 
 
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+require(tidyverse)
+require(kableExtra)
+
+input <- ("Week 1 (2021.03.04): Introduction
+Week 2 (2021.03.11): Terminologies and descriptive statistics 
+Week 3 (2021.03.18): Probability, expectation, and Important probability distributions
+Week 4 (2021.03.25): Random variables, sampling distribution and central limit theorem
+Week 5 (2021.04.01): Estimation and hypothesis testing
+Week 6 (2021.04.08): Analysis of continuous data (part 1)
+Week 7 (2021.04.15): Analysis of continuous data (part 2)
+Week 8 (2021.04.22): Analysis of categorical data
+Week 9 (2021.04.29): More applications (sample size calculation, regression analysis)")
+course_desc <- read.table(textConnection(input), sep = ":", header = FALSE)
+course_desc$V3 <- c(rep("Dr. Boncho Ku", each = 5), rep("Dr. Mimi Ko", each = 4))
+names(course_desc) <- c("Week", "Description", "Lecturer")
+kbl(course_desc, 
+    booktabs = TRUE, 
+    caption = "Course Schedule (Week 1 ~ Week 9)") %>% 
+  kable_paper %>% 
+  kable_styling(bootstrap_options = c("hover"))
+```
+
+
 ## **Materials**
+
+1.	Study Design and Statistical Analysis : A Practical Guide for Clinicians.  Mitchell H. Katz. 2006. Cambridge University Press 
+2.	Medical Statistics: A Guide to SPSS, Data Analysis and Critical Appraisal. Berlinda Barton and Jennifer Peat. 2nd Edition. 2014. WILEY Blackwell 
+3.	Statistics: Concepts and Controversies. David S. Moore and Willian Notz. 10th Edition. 2020. W.H. Freeman 
+4.	Introduction to Statistical Methodology. Derek L. Sonderegger and Robert Buscaglia. https://bookdown.org/dereksonderegger/570/ 
 
 
 ## **Note**
+
+This page is for Dr. Ku's course material only. 
 
 
 
