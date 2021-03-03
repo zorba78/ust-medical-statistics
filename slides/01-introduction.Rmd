@@ -92,6 +92,13 @@ library(kableExtra)
 ### Slides: **zorba78.github.io/ust-statistics**
 
 
+???
+
+_Hello everyone. I'm Dr. Boncho Ku and I'm gonna give you several lectures related to statistics._
+
+_ I assume that you guys are somewhat confused because Dr. Lee does not come up to the class._ 
+
+_ Instead, someone not shown in the syllabus talks about statistics._ 
 
 ---
 class: inverse, center, middle
