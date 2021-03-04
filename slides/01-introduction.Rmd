@@ -164,7 +164,7 @@ class: inverse, center, middle
 <img src="assets/imgs/stat-meme-02.jfif" width="16.4%"/> <img src="assets/imgs/stat-meme-03.jfif" width="16.2%"/>]
 
 --
-.center[#### However, statistics itself always provides useful information and allows us to maintain objective perspective based on DATA!!]
+.center[#### However, statistics based on adequate **DATA** always provide useful information and allow us to maintain an objective view of a particular phenomenon.]
 
 
 --
@@ -294,13 +294,6 @@ class: inverse, center, middle
 
 # `r icons::fontawesome("lightbulb", style = "solid")` Inference 
 
-## Two important terminologies in statistics
-
-> - **Population**: the totality of individual observations for the inference
-
-> - **Sample**: a subset of the population or the part of population that we actually examine to gather information $\rightarrow$ expressed as **DATA** 
-
-
 ## Two main phase in any statistical analysis 
 
 > - **Exploratory data analysis**: analyzing data to summarize their main characteristics
@@ -309,6 +302,14 @@ class: inverse, center, middle
 > - **Statistical inference**: a set of procedures used in making appropriate conclusions and 
 generalizations about a whole (**the population**), based on a limited mumber of observation (**the sample**)
 >    - Generalization $\rightarrow$ **the probability distribution**
+
+
+## Two important terminologies in statistical inference
+
+> - **Population**: the totality of individual observations for the inference
+
+> - **Sample**: a subset of the population or the part of population that we actually examine to gather information $\rightarrow$ expressed as **DATA** 
+
 
 ---
 

@@ -1,24 +1,28 @@
 Slide 1
 
-Hello everyone, Nice to meet you. 
+Hello everyone, Nice to meet you.
 My name is Boncho Ku and I have been in charge of 4-5 weeks of all courses in medical statistics.
 
-Maybe some of you may feel a little confusing because I am not Dr. Lee Myeong Soo, who should be teaching the original course. 
+Maybe some of you may feel a little confusing because I am not Dr. Lee Myeong Soo, who should be teaching the original course.
 
-I don't know if you've heard the story, but this course is taught by a total of three faculty members. An overview of the main concepts and theories of statistics will be taught by a man in front of you. 
+I don't know if you've heard the story, but this course is taught by a total of three faculty members. An overview of the main concepts and theories of statistics will be taught by a man in front of you.
 
 And the practice of data analysis will be conducted by Dr. Mimi Ko. Finally, Dr. Myung-Soo Lee will probably proceed with the contents related to the clinical trial design.
 
-Of course, he is a master in systematic review and meta analysis, but in fact, Dr. Myung-Soo Lee's major is somewhat different from statistics. 
+Of course, he is a master in systematic review and meta analysis, but in fact, Dr. Myung-Soo Lee's major is somewhat different from statistics.
 
-So Dr. Lee asked me and Dr. Mimi Ko to help with this lecture in medical statistics, 
-so I am standing here.
+So Dr. Lee asked me and Dr. Mimi Ko to help with this lecture in medical statistics, so I am standing here.
 
-Me and Dr. Mimi Ko are not yet UST faculty members. 
-And, unfortunately, we haven't yet had experience in providing in-depth lectures on statistics to someone in English. 
-So the two of us may seem very inexperienced. 
-Maybe most of the lecture can rely on scripts. 
-So, we desperately need your understanding now on. 
+Me and Dr. Mimi Ko are not yet UST faculty members.
+
+And, unfortunately, we haven't yet had experience in providing in-depth lectures on statistics to someone in English.
+
+So the two of us may seem very inexperienced.
+
+Maybe most of the lecture can rely on scripts.
+
+So, we desperately need your understanding now on.
+
 Anyway, I will do my best to convey my statistical knowledge as easily as possible.
 
 
@@ -26,15 +30,15 @@ Slide 2
 
 Before entering the world of statistics, let me introduce myself first.
 
-As I already mentioned, my name is Boncho Ku and I'm PhD in Statistics. Currently, I am participating in various projects as a statistician. 
+As I already mentioned, my name is Boncho Ku and I'm PhD in Statistics. Currently, I am participating in various projects as a statistician.
 
-I mainly work as a data scientist in developing statistical learning models, text mining, statistical data linkage to extend the volume of data, and data management. 
+I mainly work as a data scientist in developing statistical learning models, text mining, statistical data linkage to extend the volume of data, and data management.
 
 In addition, I am responsible for designing clinical studies including RCT.
 
 This slide can be accessed using the URL address noted below anytime.
 
-In addition, if you have any questions about the statistics or during class, 
+In addition, if you have any questions about the statistics or during class,
 please feel free to contact me via this email adress.
 
 Then, let's get to the world of statistics. Are you ready?
@@ -42,16 +46,182 @@ Then, let's get to the world of statistics. Are you ready?
 
 Slide 3-4
 
-People tend to distrust statistics. 
+People tend to distrust statistics.
 Several quotes presented on the slide now speak for this.
 
-It is difficult to refute these quotes. 
-Most of them are true. 
-Why are these quotes regarded as facts from people? 
-In fact, statistics are just numerical explanation of measurable phenomena. 
-In my opinion, the source of these misunderstandings stems from people's desire to take some sort of advantages from statistics rather than statistics themselves. 
+It is difficult to refute these quotes.
+Most of them are true.
+Why are these quotes regarded as facts from people?
+In fact, statistics are just numerical explanation of measurable phenomena.
+In my opinion, the source of these misunderstandings stems from people's desire to take some sort of advantages from statistics rather than statistics themselves.
 In fact, proper statistics reflect the phenomena we want to know quite accurately.
 
 
 Slide 5-6
 Also, many people say that statistics are difficult. Like the cats on the slide. That's right. Because, even though I have studied statistics for over 20 years, it still feels difficult.
+
+However, statistics based on adequate data always provide useful information and allow us to maintain an objective view of a particular phenomenon.
+
+Slide 7-8
+So what does statistics do?
+Statistics is the study of developing scientific methods for collecting, organizing, summarizing, presenting, and analyzing data.
+
+Statistics is used in many other scientific fields because it is the most scientific methodology that can draw valid conclusions and make reasonable decisions based on data analysis.
+
+In particular, as the number of measurable objects has increased exponentially these days, the amount and complexity of data that can be obtained by humans has also increased exponentially.
+
+Statistics is the most sensible way to derive information and knowledge from these complex data.
+
+
+Slide 9-10
+
+Statistics are also essential in the medical field.
+
+Medical statistics (a.k.a biostatistics) is Applications of STATISTICS to medicine and the health sciences including epidemiology, public health, forensic medicine, and clinical research.
+
+Medical statistics are mainly used in the UK and Europe, and in North America, they are mainly used as biostatistics.
+
+Although biostatistics cover a slightly wider range, the two terms will be considered identical in this course.
+
+
+In the fields of medicine and biology, data is obtained through observation and experimentation.
+
+In fact, in all scientific disciplines, the sources of data cannot escape these two categories.
+
+
+In the field of medicine and biology, data is acquired from a variety of objects as shown in the figure.
+
+In order to properly extract information and knowledge from these data, the power of statistics is essential.
+
+In fact, it is an essential discipline in medicine and biology, because statistics are almost the only way to support the discovery of new medical phenomena.
+
+
+Slide 11-12
+
+Again, the definition of statistics is the discipline that provides a methodology for collecting, organizing, summarizing, and analyzing data.
+
+As you can see from the definition, statistics are useless without data. So what is the definition of data?
+
+Data is characteristics or information collected through observation.
+
+As you seen on the previous slide, observation is separated into two parts: survey and experiments.
+
+
+Simple investigations or observational studies place no special restrictions on collecting data.
+
+It literally observes the phenomenon without the intervention of the researcher.
+
+In experimental research, the act of observing the subject is the same, but before observation, the researcher intervenes in setting the experimental conditions
+according to the hypothesis that he has established.
+
+For example, for various items that are investigated during a health screening, the investigator cannot intervene in the subject before the investigation.
+
+It's just simply investigating the condition of the person who participated in the examination.
+
+The randomized trial conducted to verify the effectiveness of a new drug in the medical field is different from the example above.
+
+First, the investigator will randomly divide the subject into two groups, then one group will receive a placebo and the other will receive a test drug.
+
+In this case, there were two major interventions by researchers. First, the researcher decided in which group the target patient would be placed.
+
+The second is that drugs are determined according to the group to which they are assigned.
+
+
+These collection methods are determined by the purpose of the study.
+
+If you are simply interested in the current state, observation will suffice. However,
+
+if the purpose is to observe the changes in the characteristics of the group according to certain factors,
+
+that is, to confirm the causal relationship, experimental research is essential.
+
+
+Technically, data can be defined as the values of qualitative or quantitative variables.
+
+In Sum, Data are measured, collected and analyzed.
+
+The figure describes the process to obtain blood data.
+
+
+Slide 13
+
+This picture illustrate a common datasheet from excel. So what do we do with them?
+
+Data themselves are just a bunch of numbers.
+
+To extract meaningful information from data, data have to be summarized or plotted in a proper way.
+
+The typical methods to summarize data is presenting descriptive statistics such as mean, standard deviation, median, and so on.
+
+Alternatively, you can use charts to characterize your data and identify patterns.
+
+Sometimes a chart can imply more than the information the table gives.
+
+That's why plotting and visualization are very important tools for understanding data in statistics.
+
+
+Slide 14
+
+If the purpose of collecting the data is simply to characterize the phenomenon, descriptive statistics and diagrams will suffice.
+
+In general, an analysis method that identifies its characteristics through a summary of data is called exploratory data analysis.
+
+
+However, to compare the features of interest from the data and draw some conclusions from them, the method outlined above is not enough.
+
+The field of statistics to cover this is statistical inference.
+
+Statistical inference is a set of procedures used in making appropriate conclusions and generalizations about a whole
+based on a limited mumber of observation.
+
+Generalization means extending the inference result from the sample we have now to another sample.
+
+Genenalization can be achieved by using the probability distribution.
+
+There are many probability distributions in the world, and I'm gonna dealing a few important probability distribution through this course.
+
+
+Understanding the concept of populations and samples is the first step towards statistical inference.
+
+Population is the totality of individual observations for the inference.
+
+Sample is a subset of the population or the part of population that we actually examine to gather information
+
+Usually the sample is identical to the data we collect.
+
+
+Slide 15
+
+Perhaps while listening to a description of the population and sample, you might think that it would be better to examine all of them than to get an uncertain sample.
+
+Yes. However, if you really have enough money and time.
+
+
+
+
+
+Slide 20
+
+This diagram is a summary of the most important things for you to understand my class. If possible, keep it in mind.
+
+
+Slide 21
+
+The things I've shown on the slides so far are the things you'll learn during the first month.
+
+But But it won't go too deep. The time given to me is too short for that.
+
+
+Slide 24
+
+Listed here are learning materials to help you learn.
+There is a URL link, so please go in and check it out.
+
+
+
+
+
+
+
+
+
