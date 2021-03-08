@@ -1,0 +1,240 @@
+---
+title: "Medical Statistics"
+subtitle: "Terminologies, Descriptive Statistics"
+author: "<strong>Boncho Ku, Ph.D. in Statistics</strong>"
+institute: "<br/> Korea Institute of Oriental Medicine"
+date: "<br> 2021/03/11 "
+output:
+  xaringan::moon_reader:
+    css: [default, metropolis, metropolis-fonts, ../assets/css/footer.css, ../assets/css/metropolis-ak.css]
+    # lib_dir: "../docs/libs"
+    lib_dir: "libs"
+    nature:
+      highlightStyle: github
+      titleSlideClass: [middle, left]
+      highlightLines: true
+      countIncrementalSlides: false
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup-knitr, include=FALSE}
+options(htmltools.dir.version = FALSE)
+# knitr::opts_knit$set(root.dir='..')
+knitr::opts_chunk$set(eval = TRUE, 
+                      echo = FALSE, 
+                      cache = FALSE,
+                      include = TRUE,
+                      collapse = FALSE,
+                      message=FALSE,
+                      warning=FALSE, 
+                      dependson = NULL,
+                      engine = "R", # Chunks will always have R code, unless noted
+                      error = TRUE,
+                      fig.path="Figures/",  # Set the figure options
+                      fig.align = "center", 
+                      #fig.width = 7,
+                      #fig.height = 7, 
+                      fig.keep='all', fig.retina=3)
+
+```
+
+```{r setup-library}
+library(tidyverse)
+library(MASS)
+library(reshape2)
+library(plyr)
+library(tidyverse)
+library(lubridate)
+library(readxl)
+library(tidyselect)
+library(tidystats)
+library(glue)
+library(here)
+library(gt)
+library(gtsummary)
+library(kableExtra)
+
+```
+
+
+class: inverse, center, middle
+
+# Review for Week 1 `r emo::ji("book")`
+
+---
+
+# Two types of statistical analysis
+
+> - **Exploratory data analysis**: analyzing data to summarize their main characteristics $\rightarrow$ classical term: **descriptive statistics**
+
+
+.center[<img src="assets/imgs/table-ex-01.PNG" width="24.5%"/> <img src="assets/imgs/gap-minder-ex-01.png" width="36%"/> 
+<img src="assets/imgs/covid19-barplot.svg" width="30%"/>]
+
+
+
+> - **Statistical inference**:  a set of procedures used in making appropriate conclusions and 
+generalizations about a whole (**the population**), based on a limited mumber of observation (**the sample**)
+
+
+.center[<img src="assets/imgs/pop-sample.png" width="40%"/>]
+
+
+
+---
+
+# Parameters `r icons::fontawesome("bible", style = "solid")`
+
+
+---
+# Variable
+
+
+
+---
+
+# Types of Variables
+
+
+---
+
+# Random Variable 
+
+
+---
+# Uncertainty, Errpr and Variability
+
+
+
+---
+# Probability Distribution
+
+
+---
+# Sample Statistics 
+
+
+---
+
+
+# Estimation
+
+
+---
+
+# Hypothesis Testing
+
+
+
+---
+
+class: inverse, center, middle
+
+
+# How to Explore (Describe) Data by Number? `r emo::ji("zoom")` `r icons::fontawesome("sort-numeric-down", style = "solid")`
+
+
+---
+
+
+# Measures of Location `r icons::fontawesome("location-arrow", style = "solid")`
+
+## Where is the center? `r icons::fontawesome("align-center", style = "solid")`
+
+
+---
+
+# Measures of Location `r icons::fontawesome("location-arrow", style = "solid")`
+
+## What value exactly split data in half? `r icons::fontawesome("star-half-alt", style = "solid")`
+
+
+---
+
+# Measures of Location `r icons::fontawesome("location-arrow", style = "solid")`
+
+## What values frequently occur in your data? 
+
+
+
+---
+
+# Measures of Spread `r icons::fontawesome("people-arrows", style = "solid")` 
+
+## How far from the smallest to the largest? `r icons::fontawesome("exchange-alt", style = "solid")`
+
+---
+
+# Measures of Spread `r icons::fontawesome("people-arrows", style = "solid")`
+
+## How data spread relatively? 
+
+---
+
+# Measure of Association `r icons::fontawesome("link", style = "solid")` 
+
+## How is the relationship between  two variables? 
+
+
+---
+class: inverse, center, middle
+
+
+# How to Explore (Describe) Data Graphically? `r emo::ji("zoom")` `r icons::fontawesome("photo-video", style = "solid")`
+
+
+---
+# Shape of Data `r icons::fontawesome("shapes", style = "solid")`
+
+## Symmetry
+
+---
+# Shape of Data `r icons::fontawesome("shapes", style = "solid")`
+
+## Unimodal/Multimodel
+
+---
+
+# Shape of Data `r icons::fontawesome("shapes", style = "solid")`
+
+## Skewed 
+
+
+
+
+---
+# Histogram
+
+
+---
+
+
+# Boxplot
+
+---
+
+
+# Scatterplot
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+  
+
+
