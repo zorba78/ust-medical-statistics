@@ -8,6 +8,8 @@
     <link href="libs/remark-css/default.css" rel="stylesheet" />
     <link href="libs/remark-css/metropolis.css" rel="stylesheet" />
     <link href="libs/remark-css/metropolis-fonts.css" rel="stylesheet" />
+    <script src="libs/kePrint/kePrint.js"></script>
+    <link href="libs/lightable/lightable.css" rel="stylesheet" />
     <link rel="stylesheet" href="../assets/css/footer.css" type="text/css" />
     <link rel="stylesheet" href="../assets/css/metropolis-ak.css" type="text/css" />
   </head>
@@ -31,7 +33,7 @@ class: middle, left, title-slide
 
 class: inverse, center, middle
 
-# Review for Week 1 📖
+# Important Terminologies 📖
 
 ---
 
@@ -54,47 +56,235 @@ generalizations about a whole (**the population**), based on a limited mumber of
 
 
 ---
-
 # Parameters &lt;svg viewBox="0 0 448 512" style="height:1em;fill:currentColor;position:relative;display:inline-block;top:.1em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M448 358.4V25.6c0-16-9.6-25.6-25.6-25.6H96C41.6 0 0 41.6 0 96v320c0 54.4 41.6 96 96 96h326.4c12.8 0 25.6-9.6 25.6-25.6v-16c0-6.4-3.2-12.8-9.6-19.2-3.2-16-3.2-60.8 0-73.6 6.4-3.2 9.6-9.6 9.6-19.2zM144 144c0-8.84 7.16-16 16-16h48V80c0-8.84 7.16-16 16-16h32c8.84 0 16 7.16 16 16v48h48c8.84 0 16 7.16 16 16v32c0 8.84-7.16 16-16 16h-48v112c0 8.84-7.16 16-16 16h-32c-8.84 0-16-7.16-16-16V192h-48c-8.84 0-16-7.16-16-16v-32zm236.8 304H96c-19.2 0-32-12.8-32-32s16-32 32-32h284.8v64z"&gt;&lt;/path&gt;&lt;/svg&gt;
+
+### Parameters exist somewhere in the universe 
+
+&gt; - `\(\rightarrow\)` the **TRUE VALUE** for representing the target population 
+&gt; - `\(\rightarrow\)` **NO ERROR**
+&gt; - Usually notated with Greek letters (e.g. `\(\mu, \sigma, \theta, \psi\)`, ...)
+
+
+### From the view of _frequentists_, 
+
+&gt; - Parameters are fixed `\(\rightarrow\)` never changing
+&gt; - Parameters exists but we never know the true value of them
+&gt; - But we can "guess" them from sample
+
+
+### In Sum, parameters are 
+
+&gt; - any measured quantity of a population `\(\rightarrow\)` **describe the population**
+&gt; - usually infered from the **calculated statistics** `\(\rightarrow\)` from the particular sample of **DATA**
 
 
 ---
-# Variable
+# What is in the data? 
+
+### Individuals
+
+&gt; - **The objects described by data: not necessarily to be people**
+&gt; - What individuals the data describe? people, guinea pig, household, text, shop, ...
+&gt; - How many individuals are in the data? `\(\rightarrow\)` the size of sample (data)
 
 
+### Variables
+
+&gt; - **A measurement made on an individual** `\(\rightarrow\)` **a characteristic of an individual**
+&gt; - **Example 1**: A researcher examines people to obtain the prevalence of lung cancer 
+&gt;    - Gender, smoking and alcohol comsumption, height, weight, income, ...
+&gt; - **Example 2**: 100 trees from Gyeryong Mt. `\(\rightarrow\)` species, height, circumference at chest height
 
 ---
 
 # Types of Variables
 
 
+&lt;table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;"&gt;
+&lt;caption&gt;Type of Variables&lt;/caption&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; Type &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Example &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Operation &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr grouplength="2"&gt;&lt;td colspan="3" style="background-color: #666; color: #fff;"&gt;&lt;strong&gt;Qualitative variable&lt;/strong&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;
+   &lt;td style="text-align:left;width: 10em; font-weight: bold;padding-left: 2em;" indentlevel="1"&gt; Norminal &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; sex, marital status, blood type, race, eye colour, religion, ... &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; counting &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;width: 10em; font-weight: bold;padding-left: 2em;" indentlevel="1"&gt; Ordinal &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; grade, education level, preference, severity, ... &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; counting, ranking &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr grouplength="2"&gt;&lt;td colspan="3" style="background-color: #666; color: #fff;"&gt;&lt;strong&gt;Quantitative variable&lt;/strong&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;
+   &lt;td style="text-align:left;width: 10em; font-weight: bold;padding-left: 2em;" indentlevel="1"&gt; Interval &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; temperature, IQ, SAT score, ... &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; counting, ranking, \(+\), \(-\) &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;width: 10em; font-weight: bold;padding-left: 2em;" indentlevel="1"&gt; Ratio &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; distance, length, height, weight, BMI, blood pressure, ... &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; counting, ranking, \(+\), \(-\), \(\times\), \(\div\) &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+
 ---
 
 # Random Variable 
 
+### All variables in the data can be considered as random variables!!
 
----
-# Uncertainty, Errpr and Variability
+&gt; - **a variable whose value may changing depending on chance**
+&gt;    - Example 1: price of a game `\(\rightarrow\)` tossing a coin 
+&gt;    - (head: + ￦1000, tail: - ￦1500)
+&gt; - symbolized by an upper case letter: `\(X\)`, `\(Y\)`, `\(Z\)`, ...
+&gt; - A particular value of a random variable symbolized as a lower case letter: `\(x\)`, `\(y\)`, `\(z\)`, ...
 
 
-
----
-# Probability Distribution
-
-
----
-# Sample Statistics 
+### We don't know what value comes from a variable!!
 
 
 ---
+# Uncertainty, Error and Variability
+
+### **Uncertainty**: lack of knowledge 
+
+&gt; - a sample `\(\rightarrow\)` appropriately represent the population??
+&gt; - partially observable or stochastic (a.k.a probabilatic, statistical)
 
 
-# Estimation
+### **Error**: experimental and natural variability
+
+&gt; - repeating to measure the height for a person `\(\rightarrow\)` always identical?
+&gt; - Exactly reproducible experiment `\(\rightarrow\)` POSSIBLE??
+
+### Error `\(\neq\)` Uncertainty
+
+&gt; - Both exist to some extent in any scientific research
+&gt; - Both are related to **PROBABILITY!!**
+
+???
+
+### Uncertainty refers to epistemic situations involving imperfect or unknown information. It applies to predictions of future events, to physical measurements that are already made, or to the unknown. Uncertainty arises in partially observable and/or stochastic environments, as well as due to ignorance, indolence, or both.[1] It arises in any number of fields, including insurance, philosophy, physics, statistics, economics, finance, psychology, sociology, engineering, metrology, meteorology, ecology, and information science.
+
+
+---
+# Probability &lt;svg viewBox="0 0 640 512" style="height:1em;fill:currentColor;position:relative;display:inline-block;top:.1em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M592 192H473.26c12.69 29.59 7.12 65.2-17 89.32L320 417.58V464c0 26.51 21.49 48 48 48h224c26.51 0 48-21.49 48-48V240c0-26.51-21.49-48-48-48zM480 376c-13.25 0-24-10.75-24-24 0-13.26 10.75-24 24-24s24 10.74 24 24c0 13.25-10.75 24-24 24zm-46.37-186.7L258.7 14.37c-19.16-19.16-50.23-19.16-69.39 0L14.37 189.3c-19.16 19.16-19.16 50.23 0 69.39L189.3 433.63c19.16 19.16 50.23 19.16 69.39 0L433.63 258.7c19.16-19.17 19.16-50.24 0-69.4zM96 248c-13.25 0-24-10.75-24-24 0-13.26 10.75-24 24-24s24 10.74 24 24c0 13.25-10.75 24-24 24zm128 128c-13.25 0-24-10.75-24-24 0-13.26 10.75-24 24-24s24 10.74 24 24c0 13.25-10.75 24-24 24zm0-128c-13.25 0-24-10.75-24-24 0-13.26 10.75-24 24-24s24 10.74 24 24c0 13.25-10.75 24-24 24zm0-128c-13.25 0-24-10.75-24-24 0-13.26 10.75-24 24-24s24 10.74 24 24c0 13.25-10.75 24-24 24zm128 128c-13.25 0-24-10.75-24-24 0-13.26 10.75-24 24-24s24 10.74 24 24c0 13.25-10.75 24-24 24z"&gt;&lt;/path&gt;&lt;/svg&gt; 
+
+### An crucial tool in statistics 
+
+.center[&lt;img src="assets/imgs/coin-dice.png" width="40%"/&gt;]
+
+&gt; - tossing a coin `\(\rightarrow\)`  what chance of showing head? 
+&gt; - rolling a dice 
+&gt;   - what is the chance of getting 3? 
+&gt;   - what is the chance of getting odd numbers in the nex roll? 
+
+
+### **Probability** 
+
+&gt; - a **random process** giving rise to an outcome 
+&gt; - the probability of outcome: **proportion** of times an outcome occur in infinte number of times `\(\rightarrow\)` empricial probability
 
 
 ---
 
-# Hypothesis Testing
+# Probability &lt;svg viewBox="0 0 640 512" style="height:1em;fill:currentColor;position:relative;display:inline-block;top:.1em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M592 192H473.26c12.69 29.59 7.12 65.2-17 89.32L320 417.58V464c0 26.51 21.49 48 48 48h224c26.51 0 48-21.49 48-48V240c0-26.51-21.49-48-48-48zM480 376c-13.25 0-24-10.75-24-24 0-13.26 10.75-24 24-24s24 10.74 24 24c0 13.25-10.75 24-24 24zm-46.37-186.7L258.7 14.37c-19.16-19.16-50.23-19.16-69.39 0L14.37 189.3c-19.16 19.16-19.16 50.23 0 69.39L189.3 433.63c19.16 19.16 50.23 19.16 69.39 0L433.63 258.7c19.16-19.17 19.16-50.24 0-69.4zM96 248c-13.25 0-24-10.75-24-24 0-13.26 10.75-24 24-24s24 10.74 24 24c0 13.25-10.75 24-24 24zm128 128c-13.25 0-24-10.75-24-24 0-13.26 10.75-24 24-24s24 10.74 24 24c0 13.25-10.75 24-24 24zm0-128c-13.25 0-24-10.75-24-24 0-13.26 10.75-24 24-24s24 10.74 24 24c0 13.25-10.75 24-24 24zm0-128c-13.25 0-24-10.75-24-24 0-13.26 10.75-24 24-24s24 10.74 24 24c0 13.25-10.75 24-24 24zm128 128c-13.25 0-24-10.75-24-24 0-13.26 10.75-24 24-24s24 10.74 24 24c0 13.25-10.75 24-24 24z"&gt;&lt;/path&gt;&lt;/svg&gt;: An Example with R
+
+
+
+
+
+
+```r
+coin_flip &lt;- function(faces, ntry = 10) {
+  record &lt;- sample(faces, size = ntry, replace = TRUE)
+  prob1 &lt;- sum(record == faces[1])/ntry
+  prob1
+} # a function to simulate tossing a coin
+x &lt;- numeric(1000) # a space for results
+set.seed(12345) # fix the random sequences
+coin &lt;- c("H", "T")
+# repeat 1000 times
+for (i in 1:1000) x[i] &lt;- coin_flip(coin, i)
+```
+
+.center[&lt;img src="assets/imgs/tossing-coin-prop.svg" width="65%"/&gt;]
+
+---
+
+# Probability Distribution &lt;img src="assets/icons/probability-dist.svg" width="6%"/&gt;
+
+
+&gt; A random variable alway have a specific distribution depending on the structure of the probability
+
+
+#### - Specific structure `\(\rightarrow\)` **probability distribution**
+
+- **확률분포(probability distribution)**: 확률변수 `\(X\)`가 `\(x_{1}, \ldots, x_n\)`의 값을 갖을 수 있을 때, 특정 `\(x_{i}\)` 값을 확률에 대응한 함수
+   - 확률 질량 함수(probability mass function, 이산형), 확률 밀도 함수(probability density function, 연속형)
+   - `\(P(X = x_i ) = P(x_i)\)`로 표현
+   - `\(P(X = x_i ) &gt; 0\)`
+   - `\(\sum_{x=-\infty}^\infty P(x) = 1\)`(이산형), `\(\int_{-\infty}^\infty P(x) dx = 1\)`(연속형)
+
+
+
+---
+# Sample Statistics `\(\sum\)`
+
+### Estimating parameters 
+
+&gt; - calculating **SAMPLE STATISTICS** (a.k.a. **estimator of the population parameter**)
+&gt; - **SAMPLE STATISTICS** varied from **different samples of data** `\(\rightarrow\)` inevitably involves **ERROR** `\(\rightarrow\)` **HAVE DISTRIBUTION**
+&gt; - A sample statistic should never to be quoted without some estimate of its variation
+&gt; - **standard error (SE)** of the sample statistic
+
+
+$$
+\mathrm{SE} = \frac{\hat\sigma}{\sqrt{N}}
+$$
+
+
+### How good is our estimate? `\(\rightarrow\)` less error (variation) and how closer to the true parameter
+
+
+---
+
+
+# Estimation &amp; Hypothesis testing
+
+### Two basic branches of statistical inference
+
+&gt; - **Estimation**
+&gt; - **Hypothesis test**
+
+#### Both make use of statistics calculated from sample data
+
+#### The choise of which to use depends on the question
+
+&gt; - What is the value of something? `\(\rightarrow\)` estimation
+&gt; 
+&gt;  Versus.
+&gt;
+&gt; - Are two things the same? `\(\rightarrow\)` hypothesis testing
+
+
+The basic principle of estimation &amp; hypothesis are the same for **ALL** types of parameters and statistics 
+but the details may change. 
+
+- test statistics 
+- standard error
+- probability distribution
+
+
 
 
 
@@ -206,6 +396,15 @@ class: inverse, center, middle
 
 
 
+&lt;!-- ```{r tossing-coin} --&gt;
+&lt;!-- # svg("slides/assets/imgs/tossing-coin-prop.svg", width = 1209, height = 600) --&gt;
+&lt;!-- plot(x, xlab = "Number of tosses", ylab = "Proportion of Head", --&gt;
+&lt;!--      pch=16, cex = 1.5, col = alpha("black", 0.4), --&gt;
+&lt;!--      main = "Proprotion of heads as number of tosses increases") --&gt;
+&lt;!-- abline(h = 0.5, col = "red", lwd = 3) --&gt;
+&lt;!-- # dev.off() --&gt;
+
+&lt;!-- ``` --&gt;
   
 
 

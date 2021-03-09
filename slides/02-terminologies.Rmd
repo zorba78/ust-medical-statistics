@@ -60,7 +60,7 @@ library(kableExtra)
 
 class: inverse, center, middle
 
-# Review for Week 1 `r emo::ji("book")`
+# Important Terminologies `r emo::ji("book")`
 
 ---
 
@@ -83,47 +83,237 @@ generalizations about a whole (**the population**), based on a limited mumber of
 
 
 ---
-
 # Parameters `r icons::fontawesome("bible", style = "solid")`
+
+### Parameters exist somewhere in the universe 
+
+> - $\rightarrow$ the **TRUE VALUE** for representing the target population 
+> - $\rightarrow$ **NO ERROR**
+> - Usually notated with Greek letters (e.g. $\mu, \sigma, \theta, \psi$, ...)
+
+
+### From the view of _frequentists_, 
+
+> - Parameters are fixed $\rightarrow$ never changing
+> - Parameters exists but we never know the true value of them
+> - But we can "guess" them from sample
+
+
+### In Sum, parameters are 
+
+> - any measured quantity of a population $\rightarrow$ **describe the population**
+> - usually infered from the **calculated statistics** $\rightarrow$ from the particular sample of **DATA**
 
 
 ---
-# Variable
+# What is in the data? 
+
+### Individuals
+
+> - **The objects described by data: not necessarily to be people**
+> - What individuals the data describe? people, guinea pig, household, text, shop, ...
+> - How many individuals are in the data? $\rightarrow$ the size of sample (data)
 
 
+### Variables
+
+> - **A measurement made on an individual** $\rightarrow$ **a characteristic of an individual**
+> - **Example 1**: A researcher examines people to obtain the prevalence of lung cancer 
+>    - Gender, smoking and alcohol comsumption, height, weight, income, ...
+> - **Example 2**: 100 trees from Gyeryong Mt. $\rightarrow$ species, height, circumference at chest height
 
 ---
 
 # Types of Variables
 
 
+```{r}
+require(tidyverse)
+require(kableExtra)
+type <- c("Norminal", 
+          "Ordinal", 
+          "Interval", 
+          "Ratio")
+example <- c("sex, marital status, blood type, race, eye colour, religion, ...", 
+             "grade, education level, preference, severity, ...", 
+             "temperature, IQ, SAT score, ...", 
+             "distance, length, height, weight, BMI, blood pressure, ...")
+operation <- c("counting", 
+               "counting, ranking", 
+               "counting, ranking, \\(+\\), \\(-\\)", 
+               "counting, ranking, \\(+\\), \\(-\\), \\(\\times\\), \\(\\div\\)")
+tab <- data.frame(type, example, operation)
+names(tab) <- c("Type", "Example", "Operation")
+kable(tab, 
+      format = "html", 
+      align = "lll", 
+      escape = "FALSE", 
+      booktabs = TRUE, 
+      caption = "Type of Variables") %>% 
+  kable_styling(full_width = F) %>% 
+  column_spec(1, bold = T, width = "10em") %>% 
+  pack_rows("Qualitative variable", 
+            1, 2, 
+            label_row_css = "background-color: #666; color: #fff;") %>% 
+  pack_rows("Quantitative variable", 
+            3, 4, 
+            label_row_css = "background-color: #666; color: #fff;")
+```
+
+
 ---
 
 # Random Variable 
 
+### All variables in the data can be considered as random variables!!
 
----
-# Uncertainty, Errpr and Variability
+> - **a variable whose value may changing depending on chance**
+>    - Example 1: price of a game $\rightarrow$ tossing a coin 
+>    - (head: + ￦1000, tail: - ￦1500)
+> - symbolized by an upper case letter: $X$, $Y$, $Z$, ...
+> - A particular value of a random variable symbolized as a lower case letter: $x$, $y$, $z$, ...
 
 
-
----
-# Probability Distribution
-
-
----
-# Sample Statistics 
+### We don't know what value comes from a variable!!
 
 
 ---
+# Uncertainty, Error and Variability
+
+### **Uncertainty**: lack of knowledge 
+
+> - a sample $\rightarrow$ appropriately represent the population??
+> - partially observable or stochastic (a.k.a probabilatic, statistical)
 
 
-# Estimation
+### **Error**: experimental and natural variability
+
+> - repeating to measure the height for a person $\rightarrow$ always identical?
+> - Exactly reproducible experiment $\rightarrow$ POSSIBLE??
+
+### Error $\neq$ Uncertainty
+
+> - Both exist to some extent in any scientific research
+> - Both are related to **PROBABILITY!!**
+
+???
+
+## Uncertainty refers to epistemic situations involving imperfect or unknown information. It applies to predictions of future events, to physical measurements that are already made, or to the unknown. Uncertainty arises in partially observable and/or stochastic environments, as well as due to ignorance, indolence, or both.[1] It arises in any number of fields, including insurance, philosophy, physics, statistics, economics, finance, psychology, sociology, engineering, metrology, meteorology, ecology, and information science.
+
+
+---
+# Probability `r icons::fontawesome("dice", style = "solid")` 
+
+### An crucial tool in statistics 
+
+.center[<img src="assets/imgs/coin-dice.png" width="40%"/>]
+
+> - tossing a coin $\rightarrow$  what chance of showing head? 
+> - rolling a dice 
+>   - what is the chance of getting 3? 
+>   - what is the chance of getting odd numbers in the nex roll? 
+
+
+### **Probability** 
+
+> - a **random process** giving rise to an outcome 
+> - the probability of outcome: **proportion** of times an outcome occur in infinte number of times $\rightarrow$ empricial probability
 
 
 ---
 
-# Hypothesis Testing
+# Probability `r icons::fontawesome("dice", style = "solid")`: An Example with R
+
+
+```{r setting, echo=FALSE}
+require(tidyverse)
+require(ggtheme)
+library(scales)
+```
+
+
+```{r, echo=TRUE}
+coin_flip <- function(faces, ntry = 10) {
+  record <- sample(faces, size = ntry, replace = TRUE)
+  prob1 <- sum(record == faces[1])/ntry
+  prob1
+} # a function to simulate tossing a coin
+x <- numeric(1000) # a space for results
+set.seed(12345) # fix the random sequences
+coin <- c("H", "T")
+# repeat 1000 times
+for (i in 1:1000) x[i] <- coin_flip(coin, i)
+
+```
+
+.center[<img src="assets/imgs/tossing-coin-prop.svg" width="65%"/>]
+
+---
+
+# Probability Distribution <img src="assets/icons/probability-dist.svg" width="6%"/>
+
+
+> A random variable alway have a specific distribution depending on the structure of the probability
+
+
+#### - Specific structure $\rightarrow$ **probability distribution**
+
+- **확률분포(probability distribution)**: 확률변수 $X$가 $x_{1}, \ldots, x_n$의 값을 갖을 수 있을 때, 특정 $x_{i}$ 값을 확률에 대응한 함수
+   - 확률 질량 함수(probability mass function, 이산형), 확률 밀도 함수(probability density function, 연속형)
+   - $P(X = x_i ) = P(x_i)$로 표현
+   - $P(X = x_i ) > 0$
+   - $\sum_{x=-\infty}^\infty P(x) = 1$(이산형), $\int_{-\infty}^\infty P(x) dx = 1$(연속형)
+
+
+
+---
+# Sample Statistics $\sum$
+
+### Estimating parameters 
+
+> - calculating **SAMPLE STATISTICS** (a.k.a. **estimator of the population parameter**)
+> - **SAMPLE STATISTICS** varied from **different samples of data** $\rightarrow$ inevitably involves **ERROR** $\rightarrow$ **HAVE DISTRIBUTION**
+> - A sample statistic should never to be quoted without some estimate of its variation
+> - **standard error (SE)** of the sample statistic
+
+
+$$
+\mathrm{SE} = \frac{\hat\sigma}{\sqrt{N}}
+$$
+
+
+### How good is our estimate? $\rightarrow$ less error (variation) and how closer to the true parameter
+
+
+---
+
+
+# Estimation & Hypothesis testing
+
+### Two basic branches of statistical inference
+
+> - **Estimation**
+> - **Hypothesis test**
+
+#### Both make use of statistics calculated from sample data
+
+#### The choise of which to use depends on the question
+
+> - What is the value of something? $\rightarrow$ estimation
+> 
+>  Versus.
+>
+> - Are two things the same? $\rightarrow$ hypothesis testing
+
+
+The basic principle of estimation & hypothesis are the same for **ALL** types of parameters and statistics 
+but the details may change. 
+
+- test statistics 
+- standard error
+- probability distribution
+
+
 
 
 
@@ -235,6 +425,15 @@ class: inverse, center, middle
 
 
 
+<!-- ```{r tossing-coin} -->
+<!-- # svg("slides/assets/imgs/tossing-coin-prop.svg", width = 1209, height = 600) -->
+<!-- plot(x, xlab = "Number of tosses", ylab = "Proportion of Head", -->
+<!--      pch=16, cex = 1.5, col = alpha("black", 0.4), -->
+<!--      main = "Proprotion of heads as number of tosses increases") -->
+<!-- abline(h = 0.5, col = "red", lwd = 3) -->
+<!-- # dev.off() -->
+
+<!-- ``` -->
   
 
 
