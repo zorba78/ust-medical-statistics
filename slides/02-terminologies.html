@@ -145,11 +145,24 @@ generalizations about a whole (**the population**), based on a limited mumber of
 &gt; - **a variable whose value may changing depending on chance**
 &gt;    - Example 1: price of a game `\(\rightarrow\)` tossing a coin 
 &gt;    - (head: + ￦1000, tail: - ￦1500)
-&gt; - symbolized by an upper case letter: `\(X\)`, `\(Y\)`, `\(Z\)`, ...
+&gt; - symbolized by an upper case letter: `\(X\)`, `\(Y\)`, `\(Z\)`, ... 
+&gt;   - `\(X\)`:  generally indicating **population**
+&gt;   - `\(X_1, X_2, X_3, \ldots\)`: indicating **sample**
 &gt; - A particular value of a random variable symbolized as a lower case letter: `\(x\)`, `\(y\)`, `\(z\)`, ...
+&gt;   - `\(x_1, x_2, x_3, \ldots\)`: indicating **observed values**
 
 
 ### We don't know what value comes from a variable!!
+
+
+???
+
+random variable is simply a number whose value is determined by the outcome of a chance process. 
+The amount that the insurance company will pay out in the next year is an example of a random variable: 
+its value depends on a complex chance process—how many homeowners experience a flood, how damaging each flood is, etc.
+
+
+
 
 
 ---
@@ -171,9 +184,16 @@ generalizations about a whole (**the population**), based on a limited mumber of
 &gt; - Both exist to some extent in any scientific research
 &gt; - Both are related to **PROBABILITY!!**
 
+
 ???
 
-### Uncertainty refers to epistemic situations involving imperfect or unknown information. It applies to predictions of future events, to physical measurements that are already made, or to the unknown. Uncertainty arises in partially observable and/or stochastic environments, as well as due to ignorance, indolence, or both.[1] It arises in any number of fields, including insurance, philosophy, physics, statistics, economics, finance, psychology, sociology, engineering, metrology, meteorology, ecology, and information science.
+Uncertainty refers to epistemic situations involving imperfect or unknown information. 
+It applies to predictions of future events, to physical measurements that are already made, 
+or to the unknown. Uncertainty arises in partially observable and/or stochastic environments, 
+as well as due to ignorance, indolence, or both. 
+It arises in any number of fields, including insurance, philosophy, physics, statistics, 
+economics, finance, psychology, sociology, engineering, metrology, meteorology, ecology, 
+and information science.
 
 
 ---
@@ -195,10 +215,18 @@ generalizations about a whole (**the population**), based on a limited mumber of
 &gt; - the probability of outcome: **proportion** of times an outcome occur in infinte number of times `\(\rightarrow\)` empricial probability
 
 
+???
+
+
+If `\(E\)` is an event, then the probability that `\(E\)` occurs is the long-term proportion of times that the event occurs, 
+if we could repeat the random process many, many times.
+
+
 ---
 
-# Probability &lt;svg viewBox="0 0 640 512" style="height:1em;fill:currentColor;position:relative;display:inline-block;top:.1em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M592 192H473.26c12.69 29.59 7.12 65.2-17 89.32L320 417.58V464c0 26.51 21.49 48 48 48h224c26.51 0 48-21.49 48-48V240c0-26.51-21.49-48-48-48zM480 376c-13.25 0-24-10.75-24-24 0-13.26 10.75-24 24-24s24 10.74 24 24c0 13.25-10.75 24-24 24zm-46.37-186.7L258.7 14.37c-19.16-19.16-50.23-19.16-69.39 0L14.37 189.3c-19.16 19.16-19.16 50.23 0 69.39L189.3 433.63c19.16 19.16 50.23 19.16 69.39 0L433.63 258.7c19.16-19.17 19.16-50.24 0-69.4zM96 248c-13.25 0-24-10.75-24-24 0-13.26 10.75-24 24-24s24 10.74 24 24c0 13.25-10.75 24-24 24zm128 128c-13.25 0-24-10.75-24-24 0-13.26 10.75-24 24-24s24 10.74 24 24c0 13.25-10.75 24-24 24zm0-128c-13.25 0-24-10.75-24-24 0-13.26 10.75-24 24-24s24 10.74 24 24c0 13.25-10.75 24-24 24zm0-128c-13.25 0-24-10.75-24-24 0-13.26 10.75-24 24-24s24 10.74 24 24c0 13.25-10.75 24-24 24zm128 128c-13.25 0-24-10.75-24-24 0-13.26 10.75-24 24-24s24 10.74 24 24c0 13.25-10.75 24-24 24z"&gt;&lt;/path&gt;&lt;/svg&gt;: An Example with R
+# Probability &lt;svg viewBox="0 0 640 512" style="height:1em;fill:currentColor;position:relative;display:inline-block;top:.1em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M592 192H473.26c12.69 29.59 7.12 65.2-17 89.32L320 417.58V464c0 26.51 21.49 48 48 48h224c26.51 0 48-21.49 48-48V240c0-26.51-21.49-48-48-48zM480 376c-13.25 0-24-10.75-24-24 0-13.26 10.75-24 24-24s24 10.74 24 24c0 13.25-10.75 24-24 24zm-46.37-186.7L258.7 14.37c-19.16-19.16-50.23-19.16-69.39 0L14.37 189.3c-19.16 19.16-19.16 50.23 0 69.39L189.3 433.63c19.16 19.16 50.23 19.16 69.39 0L433.63 258.7c19.16-19.17 19.16-50.24 0-69.4zM96 248c-13.25 0-24-10.75-24-24 0-13.26 10.75-24 24-24s24 10.74 24 24c0 13.25-10.75 24-24 24zm128 128c-13.25 0-24-10.75-24-24 0-13.26 10.75-24 24-24s24 10.74 24 24c0 13.25-10.75 24-24 24zm0-128c-13.25 0-24-10.75-24-24 0-13.26 10.75-24 24-24s24 10.74 24 24c0 13.25-10.75 24-24 24zm0-128c-13.25 0-24-10.75-24-24 0-13.26 10.75-24 24-24s24 10.74 24 24c0 13.25-10.75 24-24 24zm128 128c-13.25 0-24-10.75-24-24 0-13.26 10.75-24 24-24s24 10.74 24 24c0 13.25-10.75 24-24 24z"&gt;&lt;/path&gt;&lt;/svg&gt;
 
+### &lt;img src="assets/icons/r-project-brands.svg" width="4%"/&gt; Example: Coin toss
 
 
 
@@ -217,24 +245,53 @@ coin &lt;- c("H", "T")
 for (i in 1:1000) x[i] &lt;- coin_flip(coin, i)
 ```
 
-.center[&lt;img src="assets/imgs/tossing-coin-prop.svg" width="65%"/&gt;]
+.center[&lt;img src="assets/imgs/tossing-coin-prop.svg" width="50%"/&gt;]
 
 ---
 
 # Probability Distribution &lt;img src="assets/icons/probability-dist.svg" width="6%"/&gt;
 
 
-&gt; A random variable alway have a specific distribution depending on the structure of the probability
+#### A random variable alway have a specific distribution depending on the structure of the probability
 
 
 #### - Specific structure `\(\rightarrow\)` **probability distribution**
 
-- **확률분포(probability distribution)**: 확률변수 `\(X\)`가 `\(x_{1}, \ldots, x_n\)`의 값을 갖을 수 있을 때, 특정 `\(x_{i}\)` 값을 확률에 대응한 함수
-   - 확률 질량 함수(probability mass function, 이산형), 확률 밀도 함수(probability density function, 연속형)
-   - `\(P(X = x_i ) = P(x_i)\)`로 표현
-   - `\(P(X = x_i ) &gt; 0\)`
-   - `\(\sum_{x=-\infty}^\infty P(x) = 1\)`(이산형), `\(\int_{-\infty}^\infty P(x) dx = 1\)`(연속형)
+&gt; - a mathematical function that gives the probabilities of occurrence of different possible outcomes (a.k.a. random variable) for an experiment
 
+#### Example 
+
+&gt; Let the oucome of a coin toss (experiment) denote `\(X\)`
+&gt; - `\(X = x_1\)` (head) `\(\rightarrow\)` 0.5
+&gt; - `\(X = x_2\)` (tail) `\(\rightarrow\)` 0.5
+
+
+.center[&lt;img src="assets/imgs/distribution-example.svg" width="55%"/&gt;]
+
+
+???
+
+## A probability distribution have a role to Assign a probability to the observed outcome 
+
+---
+# Expectation 
+
+### Suppose Chicago Bulls in the NBA Tournament
+
+&gt; - In long term, how many times Chicago Bulls get into the tournament? 
+&gt; - How many times the head occurs when tossing a coin repeatedly many many times in average?
+&gt; - How much money can you expect when playing roulette at a casino for many many times?
+&gt; - `\(\rightarrow\)` a concept of **Average!!**
+
+
+### Imagine the number of trial (process) becomes `\(\infty\)`
+
+
+### Expected value
+
+&gt; - the number that this average converges to
+&gt; - Often called as **mean** of a random variable `\(X\)`
+&gt; - denoted as `\(\mu_X\)` or `\(E(X)\)`
 
 
 ---
@@ -243,7 +300,7 @@ for (i in 1:1000) x[i] &lt;- coin_flip(coin, i)
 ### Estimating parameters 
 
 &gt; - calculating **SAMPLE STATISTICS** (a.k.a. **estimator of the population parameter**)
-&gt; - **SAMPLE STATISTICS** varied from **different samples of data** `\(\rightarrow\)` inevitably involves **ERROR** `\(\rightarrow\)` **HAVE DISTRIBUTION**
+&gt; - **SAMPLE STATISTICS** varied from **different samples of data** `\(\rightarrow\)` inevitably involves **ERROR** `\(\rightarrow\)` **HAVE PROBABILITY DISTRIBUTION**
 &gt; - A sample statistic should never to be quoted without some estimate of its variation
 &gt; - **standard error (SE)** of the sample statistic
 
@@ -288,100 +345,6 @@ but the details may change.
 
 
 
----
-
-class: inverse, center, middle
-
-
-# How to Explore (Describe) Data by Number? 🔍 &lt;svg viewBox="0 0 448 512" style="height:1em;fill:currentColor;position:relative;display:inline-block;top:.1em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M304 96h16v64h-16a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h96a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16h-16V48a16 16 0 0 0-16-16h-48a16 16 0 0 0-14.29 8.83l-16 32A16 16 0 0 0 304 96zm26.15 162.91a79 79 0 0 0-55 54.17c-14.25 51.05 21.21 97.77 68.85 102.53a84.07 84.07 0 0 1-20.85 12.91c-7.57 3.4-10.8 12.47-8.18 20.34l9.9 20c2.87 8.63 12.53 13.49 20.9 9.91 58-24.76 86.25-61.61 86.25-132V336c-.02-51.21-48.4-91.34-101.85-77.09zM352 356a20 20 0 1 1 20-20 20 20 0 0 1-20 20zm-176-4h-48V48a16 16 0 0 0-16-16H80a16 16 0 0 0-16 16v304H16c-14.19 0-21.36 17.24-11.29 27.31l80 96a16 16 0 0 0 22.62 0l80-96C197.35 369.26 190.22 352 176 352z"&gt;&lt;/path&gt;&lt;/svg&gt;
-
-
----
-
-
-# Measures of Location &lt;svg viewBox="0 0 512 512" style="height:1em;fill:currentColor;position:relative;display:inline-block;top:.1em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M444.52 3.52L28.74 195.42c-47.97 22.39-31.98 92.75 19.19 92.75h175.91v175.91c0 51.17 70.36 67.17 92.75 19.19l191.9-415.78c15.99-38.39-25.59-79.97-63.97-63.97z"&gt;&lt;/path&gt;&lt;/svg&gt;
-
-## Where is the center? &lt;svg viewBox="0 0 448 512" style="height:1em;fill:currentColor;position:relative;display:inline-block;top:.1em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M432 160H16a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16zm0 256H16a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16zM108.1 96h231.81A12.09 12.09 0 0 0 352 83.9V44.09A12.09 12.09 0 0 0 339.91 32H108.1A12.09 12.09 0 0 0 96 44.09V83.9A12.1 12.1 0 0 0 108.1 96zm231.81 256A12.09 12.09 0 0 0 352 339.9v-39.81A12.09 12.09 0 0 0 339.91 288H108.1A12.09 12.09 0 0 0 96 300.09v39.81a12.1 12.1 0 0 0 12.1 12.1z"&gt;&lt;/path&gt;&lt;/svg&gt;
-
-
----
-
-# Measures of Location &lt;svg viewBox="0 0 512 512" style="height:1em;fill:currentColor;position:relative;display:inline-block;top:.1em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M444.52 3.52L28.74 195.42c-47.97 22.39-31.98 92.75 19.19 92.75h175.91v175.91c0 51.17 70.36 67.17 92.75 19.19l191.9-415.78c15.99-38.39-25.59-79.97-63.97-63.97z"&gt;&lt;/path&gt;&lt;/svg&gt;
-
-## What value exactly split data in half? &lt;svg viewBox="0 0 536 512" style="height:1em;fill:currentColor;position:relative;display:inline-block;top:.1em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M508.55 171.51L362.18 150.2 296.77 17.81C290.89 5.98 279.42 0 267.95 0c-11.4 0-22.79 5.9-28.69 17.81l-65.43 132.38-146.38 21.29c-26.25 3.8-36.77 36.09-17.74 54.59l105.89 103-25.06 145.48C86.98 495.33 103.57 512 122.15 512c4.93 0 10-1.17 14.87-3.75l130.95-68.68 130.94 68.7c4.86 2.55 9.92 3.71 14.83 3.71 18.6 0 35.22-16.61 31.66-37.4l-25.03-145.49 105.91-102.98c19.04-18.5 8.52-50.8-17.73-54.6zm-121.74 123.2l-18.12 17.62 4.28 24.88 19.52 113.45-102.13-53.59-22.38-11.74.03-317.19 51.03 103.29 11.18 22.63 25.01 3.64 114.23 16.63-82.65 80.38z"&gt;&lt;/path&gt;&lt;/svg&gt;
-
-
----
-
-# Measures of Location &lt;svg viewBox="0 0 512 512" style="height:1em;fill:currentColor;position:relative;display:inline-block;top:.1em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M444.52 3.52L28.74 195.42c-47.97 22.39-31.98 92.75 19.19 92.75h175.91v175.91c0 51.17 70.36 67.17 92.75 19.19l191.9-415.78c15.99-38.39-25.59-79.97-63.97-63.97z"&gt;&lt;/path&gt;&lt;/svg&gt;
-
-## What values frequently occur in your data? 
-
-
-
----
-
-# Measures of Spread &lt;svg viewBox="0 0 576 512" style="height:1em;fill:currentColor;position:relative;display:inline-block;top:.1em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M96,128A64,64,0,1,0,32,64,64,64,0,0,0,96,128Zm0,176.08a44.11,44.11,0,0,1,13.64-32L181.77,204c1.65-1.55,3.77-2.31,5.61-3.57A63.91,63.91,0,0,0,128,160H64A64,64,0,0,0,0,224v96a32,32,0,0,0,32,32V480a32,32,0,0,0,32,32h64a32,32,0,0,0,32-32V383.61l-50.36-47.53A44.08,44.08,0,0,1,96,304.08ZM480,128a64,64,0,1,0-64-64A64,64,0,0,0,480,128Zm32,32H448a63.91,63.91,0,0,0-59.38,40.42c1.84,1.27,4,2,5.62,3.59l72.12,68.06a44.37,44.37,0,0,1,0,64L416,383.62V480a32,32,0,0,0,32,32h64a32,32,0,0,0,32-32V352a32,32,0,0,0,32-32V224A64,64,0,0,0,512,160ZM444.4,295.34l-72.12-68.06A12,12,0,0,0,352,236v36H224V236a12,12,0,0,0-20.28-8.73L131.6,295.34a12.4,12.4,0,0,0,0,17.47l72.12,68.07A12,12,0,0,0,224,372.14V336H352v36.14a12,12,0,0,0,20.28,8.74l72.12-68.07A12.4,12.4,0,0,0,444.4,295.34Z"&gt;&lt;/path&gt;&lt;/svg&gt; 
-
-## How far from the smallest to the largest? &lt;svg viewBox="0 0 512 512" style="height:1em;fill:currentColor;position:relative;display:inline-block;top:.1em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M0 168v-16c0-13.255 10.745-24 24-24h360V80c0-21.367 25.899-32.042 40.971-16.971l80 80c9.372 9.373 9.372 24.569 0 33.941l-80 80C409.956 271.982 384 261.456 384 240v-48H24c-13.255 0-24-10.745-24-24zm488 152H128v-48c0-21.314-25.862-32.08-40.971-16.971l-80 80c-9.372 9.373-9.372 24.569 0 33.941l80 80C102.057 463.997 128 453.437 128 432v-48h360c13.255 0 24-10.745 24-24v-16c0-13.255-10.745-24-24-24z"&gt;&lt;/path&gt;&lt;/svg&gt;
-
----
-
-# Measures of Spread &lt;svg viewBox="0 0 576 512" style="height:1em;fill:currentColor;position:relative;display:inline-block;top:.1em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M96,128A64,64,0,1,0,32,64,64,64,0,0,0,96,128Zm0,176.08a44.11,44.11,0,0,1,13.64-32L181.77,204c1.65-1.55,3.77-2.31,5.61-3.57A63.91,63.91,0,0,0,128,160H64A64,64,0,0,0,0,224v96a32,32,0,0,0,32,32V480a32,32,0,0,0,32,32h64a32,32,0,0,0,32-32V383.61l-50.36-47.53A44.08,44.08,0,0,1,96,304.08ZM480,128a64,64,0,1,0-64-64A64,64,0,0,0,480,128Zm32,32H448a63.91,63.91,0,0,0-59.38,40.42c1.84,1.27,4,2,5.62,3.59l72.12,68.06a44.37,44.37,0,0,1,0,64L416,383.62V480a32,32,0,0,0,32,32h64a32,32,0,0,0,32-32V352a32,32,0,0,0,32-32V224A64,64,0,0,0,512,160ZM444.4,295.34l-72.12-68.06A12,12,0,0,0,352,236v36H224V236a12,12,0,0,0-20.28-8.73L131.6,295.34a12.4,12.4,0,0,0,0,17.47l72.12,68.07A12,12,0,0,0,224,372.14V336H352v36.14a12,12,0,0,0,20.28,8.74l72.12-68.07A12.4,12.4,0,0,0,444.4,295.34Z"&gt;&lt;/path&gt;&lt;/svg&gt;
-
-## How data spread relatively? 
-
----
-
-# Measure of Association &lt;svg viewBox="0 0 512 512" style="height:1em;fill:currentColor;position:relative;display:inline-block;top:.1em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"&gt;&lt;/path&gt;&lt;/svg&gt; 
-
-## How is the relationship between  two variables? 
-
-
----
-class: inverse, center, middle
-
-
-# How to Explore (Describe) Data Graphically? 🔍 &lt;svg viewBox="0 0 640 512" style="height:1em;fill:currentColor;position:relative;display:inline-block;top:.1em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M608 0H160a32 32 0 0 0-32 32v96h160V64h192v320h128a32 32 0 0 0 32-32V32a32 32 0 0 0-32-32zM232 103a9 9 0 0 1-9 9h-30a9 9 0 0 1-9-9V73a9 9 0 0 1 9-9h30a9 9 0 0 1 9 9zm352 208a9 9 0 0 1-9 9h-30a9 9 0 0 1-9-9v-30a9 9 0 0 1 9-9h30a9 9 0 0 1 9 9zm0-104a9 9 0 0 1-9 9h-30a9 9 0 0 1-9-9v-30a9 9 0 0 1 9-9h30a9 9 0 0 1 9 9zm0-104a9 9 0 0 1-9 9h-30a9 9 0 0 1-9-9V73a9 9 0 0 1 9-9h30a9 9 0 0 1 9 9zm-168 57H32a32 32 0 0 0-32 32v288a32 32 0 0 0 32 32h384a32 32 0 0 0 32-32V192a32 32 0 0 0-32-32zM96 224a32 32 0 1 1-32 32 32 32 0 0 1 32-32zm288 224H64v-32l64-64 32 32 128-128 96 96z"&gt;&lt;/path&gt;&lt;/svg&gt;
-
-
----
-# Shape of Data &lt;svg viewBox="0 0 512 512" style="height:1em;fill:currentColor;position:relative;display:inline-block;top:.1em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M128,256A128,128,0,1,0,256,384,128,128,0,0,0,128,256Zm379-54.86L400.07,18.29a37.26,37.26,0,0,0-64.14,0L229,201.14C214.76,225.52,232.58,256,261.09,256H474.91C503.42,256,521.24,225.52,507,201.14ZM480,288H320a32,32,0,0,0-32,32V480a32,32,0,0,0,32,32H480a32,32,0,0,0,32-32V320A32,32,0,0,0,480,288Z"&gt;&lt;/path&gt;&lt;/svg&gt;
-
-## Symmetry
-
----
-# Shape of Data &lt;svg viewBox="0 0 512 512" style="height:1em;fill:currentColor;position:relative;display:inline-block;top:.1em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M128,256A128,128,0,1,0,256,384,128,128,0,0,0,128,256Zm379-54.86L400.07,18.29a37.26,37.26,0,0,0-64.14,0L229,201.14C214.76,225.52,232.58,256,261.09,256H474.91C503.42,256,521.24,225.52,507,201.14ZM480,288H320a32,32,0,0,0-32,32V480a32,32,0,0,0,32,32H480a32,32,0,0,0,32-32V320A32,32,0,0,0,480,288Z"&gt;&lt;/path&gt;&lt;/svg&gt;
-
-## Unimodal/Multimodel
-
----
-
-# Shape of Data &lt;svg viewBox="0 0 512 512" style="height:1em;fill:currentColor;position:relative;display:inline-block;top:.1em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M128,256A128,128,0,1,0,256,384,128,128,0,0,0,128,256Zm379-54.86L400.07,18.29a37.26,37.26,0,0,0-64.14,0L229,201.14C214.76,225.52,232.58,256,261.09,256H474.91C503.42,256,521.24,225.52,507,201.14ZM480,288H320a32,32,0,0,0-32,32V480a32,32,0,0,0,32,32H480a32,32,0,0,0,32-32V320A32,32,0,0,0,480,288Z"&gt;&lt;/path&gt;&lt;/svg&gt;
-
-## Skewed 
-
-
-
-
----
-# Histogram
-
-
----
-
-
-# Boxplot
-
----
-
-
-# Scatterplot
-
-
-
-
-
 
 
 
@@ -405,8 +368,131 @@ class: inverse, center, middle
 &lt;!-- # dev.off() --&gt;
 
 &lt;!-- ``` --&gt;
-  
 
+
+
+&lt;!-- ```{r distribution-ex, fig.width=15, fig.height=7, out.width="50%"} --&gt;
+&lt;!-- par(mfrow = c(1, 3)) --&gt;
+&lt;!-- dx &lt;- seq(1, 5, by = 1) --&gt;
+&lt;!-- barplot(dbinom(dx, 10, 0.2), border = "gray",  --&gt;
+&lt;!--         main = "Binomial distribution") --&gt;
+&lt;!-- dx &lt;- seq(0, 1, length = 100) --&gt;
+&lt;!-- plot(x = dx, y = dunif(dx), type = "l",  --&gt;
+&lt;!--      xlab = "X", ylab = "Density",  --&gt;
+&lt;!--      main = "Uniform distribution", bty = "n") --&gt;
+&lt;!-- polygon(c(0, dx, 1), c(0, dunif(dx), 0), col = "gray", border = "gray") --&gt;
+
+&lt;!-- dx &lt;- seq(-4, 4, length = 500) --&gt;
+&lt;!-- plot(x = dx, y = dnorm(dx, mean = 0, sd = 1), type = "l",  --&gt;
+&lt;!--      main = "Normal distribution", bty = "n") --&gt;
+&lt;!-- polygon(c(-4, dx, 4), c(0, dnorm(dx), 0), col = "gray", border = "gray") --&gt;
+
+
+&lt;!-- ```   --&gt;
+
+
+
+&lt;!-- ```{r, fig.width=12, fig.height=6, out.width="50%"} --&gt;
+&lt;!-- set.seed(12345) --&gt;
+&lt;!-- x &lt;- rnorm(1000, -1, 1) --&gt;
+&lt;!-- y &lt;- rnorm(600, 3, 1) --&gt;
+&lt;!-- z &lt;- c(x, y) --&gt;
+&lt;!-- par(mfrow = c(1, 2)) --&gt;
+&lt;!-- hist(x, breaks = 20, main = "Unimodal distribution") --&gt;
+&lt;!-- abline(v = mean(x), col = "red", lwd = 2) --&gt;
+&lt;!-- hist(z, breaks = 20, main = "Bimodal distribution") --&gt;
+&lt;!-- abline(v = mean(x), col = "red", lwd = 2) --&gt;
+&lt;!-- abline(v = mean(y), col = "red", lwd = 2) --&gt;
+
+&lt;!-- ``` --&gt;
+
+
+
+&lt;!-- ```{r mode-masking} --&gt;
+&lt;!-- set.seed(12345) --&gt;
+&lt;!-- x &lt;- rnorm(1500, -1, 1) --&gt;
+&lt;!-- y &lt;- rnorm(600, 3, 1) --&gt;
+&lt;!-- z &lt;- rnorm(900, 6, 1) --&gt;
+&lt;!-- z &lt;- c(x, y, z) --&gt;
+&lt;!-- hist(z, breaks = 5) --&gt;
+&lt;!-- par(mfrow = c(1, 3)) --&gt;
+&lt;!-- hist(z, breaks = 300, main = "Bin = 300: Too Many") --&gt;
+&lt;!-- hist(z, breaks = 60, main = "Bin = 60: Appropriate?") --&gt;
+&lt;!-- hist(z, breaks = 10,  main = "Bin = 10: 2 peaks?") --&gt;
+
+&lt;!-- ``` --&gt;
+
+
+
+&lt;!-- ```{r multi-unimodel} --&gt;
+&lt;!-- set.seed(12345) --&gt;
+&lt;!-- x &lt;- rnorm(1500, -1, 1) --&gt;
+&lt;!-- y &lt;- rnorm(900, 2, 2) --&gt;
+&lt;!-- z &lt;- c(x, y) --&gt;
+&lt;!-- par(mfrow = c(1, 3)) --&gt;
+&lt;!-- hist(z, breaks = 600, main = "Bin = 600: Too many?") --&gt;
+&lt;!-- hist(z, breaks = 120, main = "Bin = 120: Bimodal?") --&gt;
+&lt;!-- hist(z, breaks = 12,  main = "Bin = 12: Proper") --&gt;
+
+
+&lt;!-- ``` --&gt;
+
+
+
+
+&lt;!-- ```{r dist-sym, fig.width=10, fig.height=6, out.width="60%", dev='svg'} --&gt;
+
+&lt;!-- # unimodal  --&gt;
+&lt;!-- set.seed(12345) --&gt;
+&lt;!-- x &lt;- rnorm(2000, -1, 1) --&gt;
+&lt;!-- y &lt;- rnorm(2000, 4, 1) --&gt;
+&lt;!-- z &lt;- c(x, y) --&gt;
+
+&lt;!-- par(mfrow = c(1, 2)) --&gt;
+
+&lt;!-- hist(x, main = "Unimodal distribution",  --&gt;
+&lt;!--      cex.main = 2) --&gt;
+&lt;!-- abline(v = mean(x), lwd = 1.5, col = "red") --&gt;
+&lt;!-- hist(z, main = "Bimodal distribution",  --&gt;
+&lt;!--      cex.main = 2) --&gt;
+&lt;!-- abline(v = mean(z), lwd = 1.5, col = "red") --&gt;
+
+
+
+&lt;!-- ``` --&gt;
+
+
+
+
+&lt;!-- ```{r} --&gt;
+&lt;!-- par(mfrow = c(1, 2)) --&gt;
+&lt;!-- # skewed to the left --&gt;
+&lt;!-- set.seed(12345) --&gt;
+&lt;!-- x &lt;- rnorm(500, -3, 6) --&gt;
+&lt;!-- y &lt;- rnorm(1500, 8, 3) --&gt;
+&lt;!-- z &lt;- c(x, y) --&gt;
+&lt;!-- hist(z, breaks = 30, main = "Skewed to the Left",  --&gt;
+&lt;!--      cex.main = 2, yaxt = "n", ylab = "") --&gt;
+&lt;!-- abline(v = mean(z), lwd = 1.5, lty = 1, col = "red") --&gt;
+&lt;!-- abline(v = median(z), lwd = 1.5, lty = 2, col = "blue") --&gt;
+&lt;!-- legend("topright", legend = c("Mean", "Median"),  --&gt;
+&lt;!--        lty = 1:2, col = c("red", "blue"), bty = "n", lwd = 1.5, --&gt;
+&lt;!--        cex = 1.5) --&gt;
+
+
+&lt;!-- # skewed to the right --&gt;
+&lt;!-- set.seed(12345) --&gt;
+&lt;!-- x &lt;- rchisq(1500, 5) --&gt;
+&lt;!-- hist(x, breaks = 30, main = "Skewed to the Right",  --&gt;
+&lt;!--      cex.main = 2, yaxt = "n", ylab = "") --&gt;
+&lt;!-- abline(v = mean(z), lwd = 1.5, lty = 1, col = "red") --&gt;
+&lt;!-- abline(v = median(z), lwd = 1.5, lty = 2, col = "blue") --&gt;
+&lt;!-- legend("topright", legend = c("Mean", "Median"),  --&gt;
+&lt;!--        lty = 1:2, col = c("red", "blue"), bty = "n", lwd = 1.5, --&gt;
+&lt;!--        cex = 1.5) --&gt;
+
+
+&lt;!-- ``` --&gt;
 
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>

@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Medical Statistics</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Boncho Ku, Ph.D. in Statistics" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link href="libs/remark-css/default.css" rel="stylesheet" />
+    <link href="libs/remark-css/metropolis.css" rel="stylesheet" />
+    <link href="libs/remark-css/metropolis-fonts.css" rel="stylesheet" />
+    <script src="libs/kePrint/kePrint.js"></script>
+    <link href="libs/lightable/lightable.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../assets/css/footer.css" type="text/css" />
+    <link rel="stylesheet" href="../assets/css/metropolis-ak.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: middle, left, title-slide
+
+# Medical Statistics
+## Terminologies, Descriptive Statistics
+### <strong>Boncho Ku, Ph.D. in Statistics</strong>
+### <br/> Korea Institute of Oriental Medicine
+### <br> 2021/03/11
+
+---
+
+
+
+
+
+
+
+class: inverse, center, middle
+
+# Important Terminologies 📖
+
+---
+
+# Two types of statistical analysis
+
+&gt; - **Exploratory data analysis**: analyzing data to summarize their main characteristics `\(\rightarrow\)` classical term: **descriptive statistics**
+
+
+.center[&lt;img src="assets/imgs/table-ex-01.PNG" width="24.5%"/&gt; &lt;img src="assets/imgs/gap-minder-ex-01.png" width="36%"/&gt; 
+&lt;img src="assets/imgs/covid19-barplot.svg" width="30%"/&gt;]
+
+
+
+&gt; - **Statistical inference**:  a set of procedures used in making appropriate conclusions and 
+generalizations about a whole (**the population**), based on a limited mumber of observation (**the sample**)
+
+
+.center[&lt;img src="assets/imgs/pop-sample.png" width="40%"/&gt;]
+
+
+
+---
+# Parameters &lt;svg viewBox="0 0 448 512" style="height:1em;fill:currentColor;position:relative;display:inline-block;top:.1em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M448 358.4V25.6c0-16-9.6-25.6-25.6-25.6H96C41.6 0 0 41.6 0 96v320c0 54.4 41.6 96 96 96h326.4c12.8 0 25.6-9.6 25.6-25.6v-16c0-6.4-3.2-12.8-9.6-19.2-3.2-16-3.2-60.8 0-73.6 6.4-3.2 9.6-9.6 9.6-19.2zM144 144c0-8.84 7.16-16 16-16h48V80c0-8.84 7.16-16 16-16h32c8.84 0 16 7.16 16 16v48h48c8.84 0 16 7.16 16 16v32c0 8.84-7.16 16-16 16h-48v112c0 8.84-7.16 16-16 16h-32c-8.84 0-16-7.16-16-16V192h-48c-8.84 0-16-7.16-16-16v-32zm236.8 304H96c-19.2 0-32-12.8-32-32s16-32 32-32h284.8v64z"&gt;&lt;/path&gt;&lt;/svg&gt;
+
+### Parameters exist somewhere in the universe 
+
+&gt; - `\(\rightarrow\)` the **TRUE VALUE** for representing the target population 
+&gt; - `\(\rightarrow\)` **NO ERROR**
+&gt; - Usually notated with Greek letters (e.g. `\(\mu, \sigma, \theta, \psi\)`, ...)
+
+
+### From the view of _frequentists_, 
+
+&gt; - Parameters are fixed `\(\rightarrow\)` never changing
+&gt; - Parameters exists but we never know the true value of them
+&gt; - But we can "guess" them from sample
+
+
+### In Sum, parameters are 
+
+&gt; - any measured quantity of a population `\(\rightarrow\)` **describe the population**
+&gt; - usually infered from the **calculated statistics** `\(\rightarrow\)` from the particular sample of **DATA**
+
+
+---
+# What is in the data? 
+
+### Individuals
+
+&gt; - **The objects described by data: not necessarily to be people**
+&gt; - What individuals the data describe? people, guinea pig, household, text, shop, ...
+&gt; - How many individuals are in the data? `\(\rightarrow\)` the size of sample (data)
+
+
+### Variables
+
+&gt; - **A measurement made on an individual** `\(\rightarrow\)` **a characteristic of an individual**
+&gt; - **Example 1**: A researcher examines people to obtain the prevalence of lung cancer 
+&gt;    - Gender, smoking and alcohol comsumption, height, weight, income, ...
+&gt; - **Example 2**: 100 trees from Gyeryong Mt. `\(\rightarrow\)` species, height, circumference at chest height
+
+---
+
+# Types of Variables
+
+
+&lt;table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;"&gt;
+&lt;caption&gt;Type of Variables&lt;/caption&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; Type &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Example &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Operation &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr grouplength="2"&gt;&lt;td colspan="3" style="background-color: #666; color: #fff;"&gt;&lt;strong&gt;Qualitative variable&lt;/strong&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;
+   &lt;td style="text-align:left;width: 10em; font-weight: bold;padding-left: 2em;" indentlevel="1"&gt; Norminal &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; sex, marital status, blood type, race, eye colour, religion, ... &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; counting &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;width: 10em; font-weight: bold;padding-left: 2em;" indentlevel="1"&gt; Ordinal &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; grade, education level, preference, severity, ... &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; counting, ranking &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr grouplength="2"&gt;&lt;td colspan="3" style="background-color: #666; color: #fff;"&gt;&lt;strong&gt;Quantitative variable&lt;/strong&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;
+   &lt;td style="text-align:left;width: 10em; font-weight: bold;padding-left: 2em;" indentlevel="1"&gt; Interval &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; temperature, IQ, SAT score, ... &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; counting, ranking, \(+\), \(-\) &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;width: 10em; font-weight: bold;padding-left: 2em;" indentlevel="1"&gt; Ratio &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; distance, length, height, weight, BMI, blood pressure, ... &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; counting, ranking, \(+\), \(-\), \(\times\), \(\div\) &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+
+---
+
+# Random Variable 
+
+### All variables in the data can be considered as random variables!!
+
+&gt; - **a variable whose value may changing depending on chance**
+&gt;    - Example 1: price of a game `\(\rightarrow\)` tossing a coin 
+&gt;    - (head: + ￦1000, tail: - ￦1500)
+&gt; - symbolized by an upper case letter: `\(X\)`, `\(Y\)`, `\(Z\)`, ... 
+&gt;   - `\(X\)`:  generally indicating **population**
+&gt;   - `\(X_1, X_2, X_3, \ldots\)`: indicating **sample**
+&gt; - A particular value of a random variable symbolized as a lower case letter: `\(x\)`, `\(y\)`, `\(z\)`, ...
+&gt;   - `\(x_1, x_2, x_3, \ldots\)`: indicating **observed values**
+
+
+### We don't know what value comes from a variable!!
+
+
+???
+
+random variable is simply a number whose value is determined by the outcome of a chance process. 
+The amount that the insurance company will pay out in the next year is an example of a random variable: 
+its value depends on a complex chance process—how many homeowners experience a flood, how damaging each flood is, etc.
+
+
+
+
+
+---
+# Uncertainty, Error and Variability
+
+### **Uncertainty**: lack of knowledge 
+
+&gt; - a sample `\(\rightarrow\)` appropriately represent the population??
+&gt; - partially observable or stochastic (a.k.a probabilatic, statistical)
+
+
+### **Error**: experimental and natural variability
+
+&gt; - repeating to measure the height for a person `\(\rightarrow\)` always identical?
+&gt; - Exactly reproducible experiment `\(\rightarrow\)` POSSIBLE??
+
+### Error `\(\neq\)` Uncertainty
+
+&gt; - Both exist to some extent in any scientific research
+&gt; - Both are related to **PROBABILITY!!**
+
+
+???
+
+Uncertainty refers to epistemic situations involving imperfect or unknown information. 
+It applies to predictions of future events, to physical measurements that are already made, 
+or to the unknown. Uncertainty arises in partially observable and/or stochastic environments, 
+as well as due to ignorance, indolence, or both. 
+It arises in any number of fields, including insurance, philosophy, physics, statistics, 
+economics, finance, psychology, sociology, engineering, metrology, meteorology, ecology, 
+and information science.
+
+
+---
+# Probability &lt;svg viewBox="0 0 640 512" style="height:1em;fill:currentColor;position:relative;display:inline-block;top:.1em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M592 192H473.26c12.69 29.59 7.12 65.2-17 89.32L320 417.58V464c0 26.51 21.49 48 48 48h224c26.51 0 48-21.49 48-48V240c0-26.51-21.49-48-48-48zM480 376c-13.25 0-24-10.75-24-24 0-13.26 10.75-24 24-24s24 10.74 24 24c0 13.25-10.75 24-24 24zm-46.37-186.7L258.7 14.37c-19.16-19.16-50.23-19.16-69.39 0L14.37 189.3c-19.16 19.16-19.16 50.23 0 69.39L189.3 433.63c19.16 19.16 50.23 19.16 69.39 0L433.63 258.7c19.16-19.17 19.16-50.24 0-69.4zM96 248c-13.25 0-24-10.75-24-24 0-13.26 10.75-24 24-24s24 10.74 24 24c0 13.25-10.75 24-24 24zm128 128c-13.25 0-24-10.75-24-24 0-13.26 10.75-24 24-24s24 10.74 24 24c0 13.25-10.75 24-24 24zm0-128c-13.25 0-24-10.75-24-24 0-13.26 10.75-24 24-24s24 10.74 24 24c0 13.25-10.75 24-24 24zm0-128c-13.25 0-24-10.75-24-24 0-13.26 10.75-24 24-24s24 10.74 24 24c0 13.25-10.75 24-24 24zm128 128c-13.25 0-24-10.75-24-24 0-13.26 10.75-24 24-24s24 10.74 24 24c0 13.25-10.75 24-24 24z"&gt;&lt;/path&gt;&lt;/svg&gt; 
+
+### An crucial tool in statistics 
+
+.center[&lt;img src="assets/imgs/coin-dice.png" width="40%"/&gt;]
+
+&gt; - tossing a coin `\(\rightarrow\)`  what chance of showing head? 
+&gt; - rolling a dice 
+&gt;   - what is the chance of getting 3? 
+&gt;   - what is the chance of getting odd numbers in the nex roll? 
+
+
+### **Probability** 
+
+&gt; - a **random process** giving rise to an outcome 
+&gt; - the probability of outcome: **proportion** of times an outcome occur in infinte number of times `\(\rightarrow\)` empricial probability
+
+
+???
+
+
+If `\(E\)` is an event, then the probability that `\(E\)` occurs is the long-term proportion of times that the event occurs, 
+if we could repeat the random process many, many times.
+
+
+---
+
+# Probability &lt;svg viewBox="0 0 640 512" style="height:1em;fill:currentColor;position:relative;display:inline-block;top:.1em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M592 192H473.26c12.69 29.59 7.12 65.2-17 89.32L320 417.58V464c0 26.51 21.49 48 48 48h224c26.51 0 48-21.49 48-48V240c0-26.51-21.49-48-48-48zM480 376c-13.25 0-24-10.75-24-24 0-13.26 10.75-24 24-24s24 10.74 24 24c0 13.25-10.75 24-24 24zm-46.37-186.7L258.7 14.37c-19.16-19.16-50.23-19.16-69.39 0L14.37 189.3c-19.16 19.16-19.16 50.23 0 69.39L189.3 433.63c19.16 19.16 50.23 19.16 69.39 0L433.63 258.7c19.16-19.17 19.16-50.24 0-69.4zM96 248c-13.25 0-24-10.75-24-24 0-13.26 10.75-24 24-24s24 10.74 24 24c0 13.25-10.75 24-24 24zm128 128c-13.25 0-24-10.75-24-24 0-13.26 10.75-24 24-24s24 10.74 24 24c0 13.25-10.75 24-24 24zm0-128c-13.25 0-24-10.75-24-24 0-13.26 10.75-24 24-24s24 10.74 24 24c0 13.25-10.75 24-24 24zm0-128c-13.25 0-24-10.75-24-24 0-13.26 10.75-24 24-24s24 10.74 24 24c0 13.25-10.75 24-24 24zm128 128c-13.25 0-24-10.75-24-24 0-13.26 10.75-24 24-24s24 10.74 24 24c0 13.25-10.75 24-24 24z"&gt;&lt;/path&gt;&lt;/svg&gt;
+
+### &lt;img src="assets/icons/r-project-brands.svg" width="4%"/&gt; Example: Coin toss
+
+
+
+
+
+```r
+coin_flip &lt;- function(faces, ntry = 10) {
+  record &lt;- sample(faces, size = ntry, replace = TRUE)
+  prob1 &lt;- sum(record == faces[1])/ntry
+  prob1
+} # a function to simulate tossing a coin
+x &lt;- numeric(1000) # a space for results
+set.seed(12345) # fix the random sequences
+coin &lt;- c("H", "T")
+# repeat 1000 times
+for (i in 1:1000) x[i] &lt;- coin_flip(coin, i)
+```
+
+.center[&lt;img src="assets/imgs/tossing-coin-prop.svg" width="50%"/&gt;]
+
+---
+
+# Probability Distribution &lt;img src="assets/icons/probability-dist.svg" width="6%"/&gt;
+
+
+#### A random variable alway have a specific distribution depending on the structure of the probability
+
+
+#### - Specific structure `\(\rightarrow\)` **probability distribution**
+
+&gt; - a mathematical function that gives the probabilities of occurrence of different possible outcomes (a.k.a. random variable) for an experiment
+
+#### Example 
+
+&gt; Let the oucome of a coin toss (experiment) denote `\(X\)`
+&gt; - `\(X = x_1\)` (head) `\(\rightarrow\)` 0.5
+&gt; - `\(X = x_2\)` (tail) `\(\rightarrow\)` 0.5
+
+
+.center[&lt;img src="assets/imgs/distribution-example.svg" width="55%"/&gt;]
+
+
+???
+
+## A probability distribution have a role to Assign a probability to the observed outcome 
+
+---
+# Expectation 
+
+### Suppose Chicago Bulls in the NBA Tournament
+
+&gt; - In long term, how many times Chicago Bulls get into the tournament? 
+&gt; - How many times the head occurs when tossing a coin repeatedly many many times in average?
+&gt; - How much money can you expect when playing roulette at a casino for many many times?
+&gt; - `\(\rightarrow\)` a concept of **Average!!**
+
+
+### Imagine the number of trial (process) becomes `\(\infty\)`
+
+
+### Expected value
+
+&gt; - the number that this average converges to
+&gt; - Often called as **mean** of a random variable `\(X\)`
+&gt; - denoted as `\(\mu_X\)` or `\(E(X)\)`
+
+
+---
+# Sample Statistics `\(\sum\)`
+
+### Estimating parameters 
+
+&gt; - calculating **SAMPLE STATISTICS** (a.k.a. **estimator of the population parameter**)
+&gt; - **SAMPLE STATISTICS** varied from **different samples of data** `\(\rightarrow\)` inevitably involves **ERROR** `\(\rightarrow\)` **HAVE PROBABILITY DISTRIBUTION**
+&gt; - A sample statistic should never to be quoted without some estimate of its variation
+&gt; - **standard error (SE)** of the sample statistic
+
+
+$$
+\mathrm{SE} = \frac{\hat\sigma}{\sqrt{N}}
+$$
+
+
+### How good is our estimate? `\(\rightarrow\)` less error (variation) and how closer to the true parameter
+
+
+---
+
+
+# Estimation &amp; Hypothesis testing
+
+### Two basic branches of statistical inference
+
+&gt; - **Estimation**
+&gt; - **Hypothesis test**
+
+#### Both make use of statistics calculated from sample data
+
+#### The choise of which to use depends on the question
+
+&gt; - What is the value of something? `\(\rightarrow\)` estimation
+&gt; 
+&gt;  Versus.
+&gt;
+&gt; - Are two things the same? `\(\rightarrow\)` hypothesis testing
+
+
+The basic principle of estimation &amp; hypothesis are the same for **ALL** types of parameters and statistics 
+but the details may change. 
+
+- test statistics 
+- standard error
+- probability distribution
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+&lt;!-- ```{r tossing-coin} --&gt;
+&lt;!-- # svg("slides/assets/imgs/tossing-coin-prop.svg", width = 1209, height = 600) --&gt;
+&lt;!-- plot(x, xlab = "Number of tosses", ylab = "Proportion of Head", --&gt;
+&lt;!--      pch=16, cex = 1.5, col = alpha("black", 0.4), --&gt;
+&lt;!--      main = "Proprotion of heads as number of tosses increases") --&gt;
+&lt;!-- abline(h = 0.5, col = "red", lwd = 3) --&gt;
+&lt;!-- # dev.off() --&gt;
+
+&lt;!-- ``` --&gt;
+
+
+
+&lt;!-- ```{r distribution-ex, fig.width=15, fig.height=7, out.width="50%"} --&gt;
+&lt;!-- par(mfrow = c(1, 3)) --&gt;
+&lt;!-- dx &lt;- seq(1, 5, by = 1) --&gt;
+&lt;!-- barplot(dbinom(dx, 10, 0.2), border = "gray",  --&gt;
+&lt;!--         main = "Binomial distribution") --&gt;
+&lt;!-- dx &lt;- seq(0, 1, length = 100) --&gt;
+&lt;!-- plot(x = dx, y = dunif(dx), type = "l",  --&gt;
+&lt;!--      xlab = "X", ylab = "Density",  --&gt;
+&lt;!--      main = "Uniform distribution", bty = "n") --&gt;
+&lt;!-- polygon(c(0, dx, 1), c(0, dunif(dx), 0), col = "gray", border = "gray") --&gt;
+
+&lt;!-- dx &lt;- seq(-4, 4, length = 500) --&gt;
+&lt;!-- plot(x = dx, y = dnorm(dx, mean = 0, sd = 1), type = "l",  --&gt;
+&lt;!--      main = "Normal distribution", bty = "n") --&gt;
+&lt;!-- polygon(c(-4, dx, 4), c(0, dnorm(dx), 0), col = "gray", border = "gray") --&gt;
+
+
+&lt;!-- ```   --&gt;
+
+
+
+&lt;!-- ```{r, fig.width=12, fig.height=6, out.width="50%"} --&gt;
+&lt;!-- set.seed(12345) --&gt;
+&lt;!-- x &lt;- rnorm(1000, -1, 1) --&gt;
+&lt;!-- y &lt;- rnorm(600, 3, 1) --&gt;
+&lt;!-- z &lt;- c(x, y) --&gt;
+&lt;!-- par(mfrow = c(1, 2)) --&gt;
+&lt;!-- hist(x, breaks = 20, main = "Unimodal distribution") --&gt;
+&lt;!-- abline(v = mean(x), col = "red", lwd = 2) --&gt;
+&lt;!-- hist(z, breaks = 20, main = "Bimodal distribution") --&gt;
+&lt;!-- abline(v = mean(x), col = "red", lwd = 2) --&gt;
+&lt;!-- abline(v = mean(y), col = "red", lwd = 2) --&gt;
+
+&lt;!-- ``` --&gt;
+
+
+
+&lt;!-- ```{r mode-masking} --&gt;
+&lt;!-- set.seed(12345) --&gt;
+&lt;!-- x &lt;- rnorm(1500, -1, 1) --&gt;
+&lt;!-- y &lt;- rnorm(600, 3, 1) --&gt;
+&lt;!-- z &lt;- rnorm(900, 6, 1) --&gt;
+&lt;!-- z &lt;- c(x, y, z) --&gt;
+&lt;!-- hist(z, breaks = 5) --&gt;
+&lt;!-- par(mfrow = c(1, 3)) --&gt;
+&lt;!-- hist(z, breaks = 300, main = "Bin = 300: Too Many") --&gt;
+&lt;!-- hist(z, breaks = 60, main = "Bin = 60: Appropriate?") --&gt;
+&lt;!-- hist(z, breaks = 10,  main = "Bin = 10: 2 peaks?") --&gt;
+
+&lt;!-- ``` --&gt;
+
+
+
+&lt;!-- ```{r multi-unimodel} --&gt;
+&lt;!-- set.seed(12345) --&gt;
+&lt;!-- x &lt;- rnorm(1500, -1, 1) --&gt;
+&lt;!-- y &lt;- rnorm(900, 2, 2) --&gt;
+&lt;!-- z &lt;- c(x, y) --&gt;
+&lt;!-- par(mfrow = c(1, 3)) --&gt;
+&lt;!-- hist(z, breaks = 600, main = "Bin = 600: Too many?") --&gt;
+&lt;!-- hist(z, breaks = 120, main = "Bin = 120: Bimodal?") --&gt;
+&lt;!-- hist(z, breaks = 12,  main = "Bin = 12: Proper") --&gt;
+
+
+&lt;!-- ``` --&gt;
+
+
+
+
+&lt;!-- ```{r dist-sym, fig.width=10, fig.height=6, out.width="60%", dev='svg'} --&gt;
+
+&lt;!-- # unimodal  --&gt;
+&lt;!-- set.seed(12345) --&gt;
+&lt;!-- x &lt;- rnorm(2000, -1, 1) --&gt;
+&lt;!-- y &lt;- rnorm(2000, 4, 1) --&gt;
+&lt;!-- z &lt;- c(x, y) --&gt;
+
+&lt;!-- par(mfrow = c(1, 2)) --&gt;
+
+&lt;!-- hist(x, main = "Unimodal distribution",  --&gt;
+&lt;!--      cex.main = 2) --&gt;
+&lt;!-- abline(v = mean(x), lwd = 1.5, col = "red") --&gt;
+&lt;!-- hist(z, main = "Bimodal distribution",  --&gt;
+&lt;!--      cex.main = 2) --&gt;
+&lt;!-- abline(v = mean(z), lwd = 1.5, col = "red") --&gt;
+
+
+
+&lt;!-- ``` --&gt;
+
+
+
+
+&lt;!-- ```{r} --&gt;
+&lt;!-- par(mfrow = c(1, 2)) --&gt;
+&lt;!-- # skewed to the left --&gt;
+&lt;!-- set.seed(12345) --&gt;
+&lt;!-- x &lt;- rnorm(500, -3, 6) --&gt;
+&lt;!-- y &lt;- rnorm(1500, 8, 3) --&gt;
+&lt;!-- z &lt;- c(x, y) --&gt;
+&lt;!-- hist(z, breaks = 30, main = "Skewed to the Left",  --&gt;
+&lt;!--      cex.main = 2, yaxt = "n", ylab = "") --&gt;
+&lt;!-- abline(v = mean(z), lwd = 1.5, lty = 1, col = "red") --&gt;
+&lt;!-- abline(v = median(z), lwd = 1.5, lty = 2, col = "blue") --&gt;
+&lt;!-- legend("topright", legend = c("Mean", "Median"),  --&gt;
+&lt;!--        lty = 1:2, col = c("red", "blue"), bty = "n", lwd = 1.5, --&gt;
+&lt;!--        cex = 1.5) --&gt;
+
+
+&lt;!-- # skewed to the right --&gt;
+&lt;!-- set.seed(12345) --&gt;
+&lt;!-- x &lt;- rchisq(1500, 5) --&gt;
+&lt;!-- hist(x, breaks = 30, main = "Skewed to the Right",  --&gt;
+&lt;!--      cex.main = 2, yaxt = "n", ylab = "") --&gt;
+&lt;!-- abline(v = mean(z), lwd = 1.5, lty = 1, col = "red") --&gt;
+&lt;!-- abline(v = median(z), lwd = 1.5, lty = 2, col = "blue") --&gt;
+&lt;!-- legend("topright", legend = c("Mean", "Median"),  --&gt;
+&lt;!--        lty = 1:2, col = c("red", "blue"), bty = "n", lwd = 1.5, --&gt;
+&lt;!--        cex = 1.5) --&gt;
+
+
+&lt;!-- ``` --&gt;
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

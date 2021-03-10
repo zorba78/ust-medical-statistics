@@ -7,8 +7,8 @@ date: "<br> 2021/03/11 "
 output:
   xaringan::moon_reader:
     css: [default, metropolis, metropolis-fonts, ../assets/css/footer.css, ../assets/css/metropolis-ak.css]
-    # lib_dir: "../docs/libs"
-    lib_dir: "libs"
+    lib_dir: "../docs/libs"
+    # lib_dir: "libs"
     nature:
       highlightStyle: github
       titleSlideClass: [middle, left]
@@ -40,7 +40,6 @@ knitr::opts_chunk$set(eval = TRUE,
 ```
 
 ```{r setup-library}
-library(tidyverse)
 library(MASS)
 library(reshape2)
 library(plyr)
@@ -128,7 +127,6 @@ generalizations about a whole (**the population**), based on a limited mumber of
 
 
 ```{r}
-require(tidyverse)
 require(kableExtra)
 type <- c("Norminal", 
           "Ordinal", 
@@ -170,11 +168,24 @@ kable(tab,
 > - **a variable whose value may changing depending on chance**
 >    - Example 1: price of a game $\rightarrow$ tossing a coin 
 >    - (head: + ￦1000, tail: - ￦1500)
-> - symbolized by an upper case letter: $X$, $Y$, $Z$, ...
+> - symbolized by an upper case letter: $X$, $Y$, $Z$, ... 
+>   - $X$:  generally indicating **population**
+>   - $X_1, X_2, X_3, \ldots$: indicating **sample**
 > - A particular value of a random variable symbolized as a lower case letter: $x$, $y$, $z$, ...
+>   - $x_1, x_2, x_3, \ldots$: indicating **observed values**
 
 
 ### We don't know what value comes from a variable!!
+
+
+???
+
+random variable is simply a number whose value is determined by the outcome of a chance process. 
+The amount that the insurance company will pay out in the next year is an example of a random variable: 
+its value depends on a complex chance process—how many homeowners experience a flood, how damaging each flood is, etc.
+
+
+
 
 
 ---
@@ -196,9 +207,16 @@ kable(tab,
 > - Both exist to some extent in any scientific research
 > - Both are related to **PROBABILITY!!**
 
+
 ???
 
-## Uncertainty refers to epistemic situations involving imperfect or unknown information. It applies to predictions of future events, to physical measurements that are already made, or to the unknown. Uncertainty arises in partially observable and/or stochastic environments, as well as due to ignorance, indolence, or both.[1] It arises in any number of fields, including insurance, philosophy, physics, statistics, economics, finance, psychology, sociology, engineering, metrology, meteorology, ecology, and information science.
+Uncertainty refers to epistemic situations involving imperfect or unknown information. 
+It applies to predictions of future events, to physical measurements that are already made, 
+or to the unknown. Uncertainty arises in partially observable and/or stochastic environments, 
+as well as due to ignorance, indolence, or both. 
+It arises in any number of fields, including insurance, philosophy, physics, statistics, 
+economics, finance, psychology, sociology, engineering, metrology, meteorology, ecology, 
+and information science.
 
 
 ---
@@ -220,14 +238,20 @@ kable(tab,
 > - the probability of outcome: **proportion** of times an outcome occur in infinte number of times $\rightarrow$ empricial probability
 
 
+???
+
+
+If $E$ is an event, then the probability that $E$ occurs is the long-term proportion of times that the event occurs, 
+if we could repeat the random process many, many times.
+
+
 ---
 
-# Probability `r icons::fontawesome("dice", style = "solid")`: An Example with R
+# Probability `r icons::fontawesome("dice", style = "solid")`
 
+### <img src="assets/icons/r-project-brands.svg" width="4%"/> Example: Coin toss
 
 ```{r setting, echo=FALSE}
-require(tidyverse)
-require(ggtheme)
 library(scales)
 ```
 
@@ -246,24 +270,53 @@ for (i in 1:1000) x[i] <- coin_flip(coin, i)
 
 ```
 
-.center[<img src="assets/imgs/tossing-coin-prop.svg" width="65%"/>]
+.center[<img src="assets/imgs/tossing-coin-prop.svg" width="50%"/>]
 
 ---
 
 # Probability Distribution <img src="assets/icons/probability-dist.svg" width="6%"/>
 
 
-> A random variable alway have a specific distribution depending on the structure of the probability
+#### A random variable alway have a specific distribution depending on the structure of the probability
 
 
 #### - Specific structure $\rightarrow$ **probability distribution**
 
-- **확률분포(probability distribution)**: 확률변수 $X$가 $x_{1}, \ldots, x_n$의 값을 갖을 수 있을 때, 특정 $x_{i}$ 값을 확률에 대응한 함수
-   - 확률 질량 함수(probability mass function, 이산형), 확률 밀도 함수(probability density function, 연속형)
-   - $P(X = x_i ) = P(x_i)$로 표현
-   - $P(X = x_i ) > 0$
-   - $\sum_{x=-\infty}^\infty P(x) = 1$(이산형), $\int_{-\infty}^\infty P(x) dx = 1$(연속형)
+> - a mathematical function that gives the probabilities of occurrence of different possible outcomes (a.k.a. random variable) for an experiment
 
+#### Example 
+
+> Let the oucome of a coin toss (experiment) denote $X$
+> - $X = x_1$ (head) $\rightarrow$ 0.5
+> - $X = x_2$ (tail) $\rightarrow$ 0.5
+
+
+.center[<img src="assets/imgs/distribution-example.svg" width="55%"/>]
+
+
+???
+
+## A probability distribution have a role to Assign a probability to the observed outcome 
+
+---
+# Expectation 
+
+### Suppose Chicago Bulls in the NBA Tournament
+
+> - In long term, how many times Chicago Bulls get into the tournament? 
+> - How many times the head occurs when tossing a coin repeatedly many many times in average?
+> - How much money can you expect when playing roulette at a casino for many many times?
+> - $\rightarrow$ a concept of **Average!!**
+
+
+### Imagine the number of trial (process) becomes $\infty$
+
+
+### Expected value
+
+> - the number that this average converges to
+> - Often called as **mean** of a random variable $X$
+> - denoted as $\mu_X$ or $E(X)$
 
 
 ---
@@ -272,7 +325,7 @@ for (i in 1:1000) x[i] <- coin_flip(coin, i)
 ### Estimating parameters 
 
 > - calculating **SAMPLE STATISTICS** (a.k.a. **estimator of the population parameter**)
-> - **SAMPLE STATISTICS** varied from **different samples of data** $\rightarrow$ inevitably involves **ERROR** $\rightarrow$ **HAVE DISTRIBUTION**
+> - **SAMPLE STATISTICS** varied from **different samples of data** $\rightarrow$ inevitably involves **ERROR** $\rightarrow$ **HAVE PROBABILITY DISTRIBUTION**
 > - A sample statistic should never to be quoted without some estimate of its variation
 > - **standard error (SE)** of the sample statistic
 
@@ -317,100 +370,6 @@ but the details may change.
 
 
 
----
-
-class: inverse, center, middle
-
-
-# How to Explore (Describe) Data by Number? `r emo::ji("zoom")` `r icons::fontawesome("sort-numeric-down", style = "solid")`
-
-
----
-
-
-# Measures of Location `r icons::fontawesome("location-arrow", style = "solid")`
-
-## Where is the center? `r icons::fontawesome("align-center", style = "solid")`
-
-
----
-
-# Measures of Location `r icons::fontawesome("location-arrow", style = "solid")`
-
-## What value exactly split data in half? `r icons::fontawesome("star-half-alt", style = "solid")`
-
-
----
-
-# Measures of Location `r icons::fontawesome("location-arrow", style = "solid")`
-
-## What values frequently occur in your data? 
-
-
-
----
-
-# Measures of Spread `r icons::fontawesome("people-arrows", style = "solid")` 
-
-## How far from the smallest to the largest? `r icons::fontawesome("exchange-alt", style = "solid")`
-
----
-
-# Measures of Spread `r icons::fontawesome("people-arrows", style = "solid")`
-
-## How data spread relatively? 
-
----
-
-# Measure of Association `r icons::fontawesome("link", style = "solid")` 
-
-## How is the relationship between  two variables? 
-
-
----
-class: inverse, center, middle
-
-
-# How to Explore (Describe) Data Graphically? `r emo::ji("zoom")` `r icons::fontawesome("photo-video", style = "solid")`
-
-
----
-# Shape of Data `r icons::fontawesome("shapes", style = "solid")`
-
-## Symmetry
-
----
-# Shape of Data `r icons::fontawesome("shapes", style = "solid")`
-
-## Unimodal/Multimodel
-
----
-
-# Shape of Data `r icons::fontawesome("shapes", style = "solid")`
-
-## Skewed 
-
-
-
-
----
-# Histogram
-
-
----
-
-
-# Boxplot
-
----
-
-
-# Scatterplot
-
-
-
-
-
 
 
 
@@ -434,6 +393,129 @@ class: inverse, center, middle
 <!-- # dev.off() -->
 
 <!-- ``` -->
-  
 
+
+
+<!-- ```{r distribution-ex, fig.width=15, fig.height=7, out.width="50%"} -->
+<!-- par(mfrow = c(1, 3)) -->
+<!-- dx <- seq(1, 5, by = 1) -->
+<!-- barplot(dbinom(dx, 10, 0.2), border = "gray",  -->
+<!--         main = "Binomial distribution") -->
+<!-- dx <- seq(0, 1, length = 100) -->
+<!-- plot(x = dx, y = dunif(dx), type = "l",  -->
+<!--      xlab = "X", ylab = "Density",  -->
+<!--      main = "Uniform distribution", bty = "n") -->
+<!-- polygon(c(0, dx, 1), c(0, dunif(dx), 0), col = "gray", border = "gray") -->
+
+<!-- dx <- seq(-4, 4, length = 500) -->
+<!-- plot(x = dx, y = dnorm(dx, mean = 0, sd = 1), type = "l",  -->
+<!--      main = "Normal distribution", bty = "n") -->
+<!-- polygon(c(-4, dx, 4), c(0, dnorm(dx), 0), col = "gray", border = "gray") -->
+
+
+<!-- ```   -->
+
+
+
+<!-- ```{r, fig.width=12, fig.height=6, out.width="50%"} -->
+<!-- set.seed(12345) -->
+<!-- x <- rnorm(1000, -1, 1) -->
+<!-- y <- rnorm(600, 3, 1) -->
+<!-- z <- c(x, y) -->
+<!-- par(mfrow = c(1, 2)) -->
+<!-- hist(x, breaks = 20, main = "Unimodal distribution") -->
+<!-- abline(v = mean(x), col = "red", lwd = 2) -->
+<!-- hist(z, breaks = 20, main = "Bimodal distribution") -->
+<!-- abline(v = mean(x), col = "red", lwd = 2) -->
+<!-- abline(v = mean(y), col = "red", lwd = 2) -->
+
+<!-- ``` -->
+
+
+
+<!-- ```{r mode-masking} -->
+<!-- set.seed(12345) -->
+<!-- x <- rnorm(1500, -1, 1) -->
+<!-- y <- rnorm(600, 3, 1) -->
+<!-- z <- rnorm(900, 6, 1) -->
+<!-- z <- c(x, y, z) -->
+<!-- hist(z, breaks = 5) -->
+<!-- par(mfrow = c(1, 3)) -->
+<!-- hist(z, breaks = 300, main = "Bin = 300: Too Many") -->
+<!-- hist(z, breaks = 60, main = "Bin = 60: Appropriate?") -->
+<!-- hist(z, breaks = 10,  main = "Bin = 10: 2 peaks?") -->
+
+<!-- ``` -->
+
+
+
+<!-- ```{r multi-unimodel} -->
+<!-- set.seed(12345) -->
+<!-- x <- rnorm(1500, -1, 1) -->
+<!-- y <- rnorm(900, 2, 2) -->
+<!-- z <- c(x, y) -->
+<!-- par(mfrow = c(1, 3)) -->
+<!-- hist(z, breaks = 600, main = "Bin = 600: Too many?") -->
+<!-- hist(z, breaks = 120, main = "Bin = 120: Bimodal?") -->
+<!-- hist(z, breaks = 12,  main = "Bin = 12: Proper") -->
+
+
+<!-- ``` -->
+
+
+
+
+<!-- ```{r dist-sym, fig.width=10, fig.height=6, out.width="60%", dev='svg'} -->
+
+<!-- # unimodal  -->
+<!-- set.seed(12345) -->
+<!-- x <- rnorm(2000, -1, 1) -->
+<!-- y <- rnorm(2000, 4, 1) -->
+<!-- z <- c(x, y) -->
+
+<!-- par(mfrow = c(1, 2)) -->
+
+<!-- hist(x, main = "Unimodal distribution",  -->
+<!--      cex.main = 2) -->
+<!-- abline(v = mean(x), lwd = 1.5, col = "red") -->
+<!-- hist(z, main = "Bimodal distribution",  -->
+<!--      cex.main = 2) -->
+<!-- abline(v = mean(z), lwd = 1.5, col = "red") -->
+
+
+
+<!-- ``` -->
+
+
+
+
+<!-- ```{r} -->
+<!-- par(mfrow = c(1, 2)) -->
+<!-- # skewed to the left -->
+<!-- set.seed(12345) -->
+<!-- x <- rnorm(500, -3, 6) -->
+<!-- y <- rnorm(1500, 8, 3) -->
+<!-- z <- c(x, y) -->
+<!-- hist(z, breaks = 30, main = "Skewed to the Left",  -->
+<!--      cex.main = 2, yaxt = "n", ylab = "") -->
+<!-- abline(v = mean(z), lwd = 1.5, lty = 1, col = "red") -->
+<!-- abline(v = median(z), lwd = 1.5, lty = 2, col = "blue") -->
+<!-- legend("topright", legend = c("Mean", "Median"),  -->
+<!--        lty = 1:2, col = c("red", "blue"), bty = "n", lwd = 1.5, -->
+<!--        cex = 1.5) -->
+
+
+<!-- # skewed to the right -->
+<!-- set.seed(12345) -->
+<!-- x <- rchisq(1500, 5) -->
+<!-- hist(x, breaks = 30, main = "Skewed to the Right",  -->
+<!--      cex.main = 2, yaxt = "n", ylab = "") -->
+<!-- abline(v = mean(z), lwd = 1.5, lty = 1, col = "red") -->
+<!-- abline(v = median(z), lwd = 1.5, lty = 2, col = "blue") -->
+<!-- legend("topright", legend = c("Mean", "Median"),  -->
+<!--        lty = 1:2, col = c("red", "blue"), bty = "n", lwd = 1.5, -->
+<!--        cex = 1.5) -->
+
+
+<!-- ``` -->
 
