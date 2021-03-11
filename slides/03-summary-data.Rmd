@@ -122,6 +122,12 @@ knitr::include_graphics("assets/imgs/mean-viz.gif")
 
 .center[[**Illustration of the physical characteristics of the sample mean**](http://statisticsbypeter.blogspot.com/2014/05/arithmetic-mean.html)]
 
+
+???
+
+This animation depict the process that the mean makes a balance in terms of positioning the center of gravity in the data. 
+
+
 ---
 # Measures of Location `r icons::fontawesome("location-arrow", style = "solid")`
 
@@ -152,6 +158,12 @@ Sample mean for a specific variable
 barx <- mean(cars$speed); barx
 ```
 
+???
+
+
+This can easily be calculated in R by using the function mean(). We first extract the column we are interested in using the notation: DataSet$ColumnName 
+where the signifies grabbing the column.
+
 
 ---
 
@@ -175,6 +187,16 @@ barx <- mean(cars$speed); barx
 >   - Median value: $(4 + 5)/2 = 4.5$
 
 
+???
+
+
+If the data were to be ordered, the median would be the middle most observation (or, in the case that n is even, the mean of the two middle most values).
+
+In our simple case of five observations,  we first sort the data into  and then the middle observation is clearly 4. 
+
+
+
+
 ---
 
 # Measures of Location `r icons::fontawesome("location-arrow", style = "solid")`
@@ -187,6 +209,11 @@ knitr::include_graphics("assets/imgs/MedianVisual.gif")
 ```
 
 .center[[**Illustration of deriving sample median**](http://statisticsbypeter.blogspot.com/2014/05/median.html)]
+
+
+???
+
+This picture depict the process to obtain the median value. 
 
 
 ---
@@ -212,6 +239,16 @@ median(cars$dist)
 
 --
 ## WHY?? $\rightarrow$ describe a plausible explanation for the homework next week!!
+
+
+???
+
+In R the median is easily calculated by the function median().
+
+Median is often known as a rubust estimator of the central tendency. Can you guys guess why? 
+
+I will leave the explanation for this part as your homework.
+
 
 
 ---

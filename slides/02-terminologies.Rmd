@@ -80,6 +80,59 @@ generalizations about a whole (**the population**), based on a limited mumber of
 .center[<img src="assets/imgs/pop-sample.png" width="40%"/>]
 
 
+???
+
+Last time we learned what statistics are in medical research and why statistics are needed in medical research.
+
+Through the lesson, I also emphasized the need for statistics as a tool to extract information and knowledge from data.
+
+I also mentioned that data can be acquired through observation and experimentation, 
+and data are a set of values with quantitative and qualitative variables according to their properties.
+
+
+In addition, statistics can be broadly divided into exploratory data analysis, often refered to descriptive statistics, 
+and statistical inference, in which a population is inferred from limited information from the given sample. 
+
+Exploratory data analysis (EDA for short) is primarily aimed at identifying the descriptive characteristics of the data. 
+
+Summarize data with several summary statistics used in statistics, such as what the distribution of the data looks like, how the mean is, 
+or how spread out the data is around the mean, or identify patterns in the data through several graphs, etc.
+
+
+This generalization starts with the assumption that the sample we get follows a certain probability distribution. 
+
+We'll learn about probability and probability distribution next week, but this time we'll go over the concept of terminology.
+
+In statistics, population refers to the entire set of subjects of interest. 
+
+For example, if the purpose of our study is to investigate the prevalence of dementia among the elderly in Korea, 
+the population of 65 years or older residing in Korea is the total population of our study.
+
+
+The sample is a subset of the population, and if we actually surveyed 500 elderly people in the study we designed, these 500 are the sample.
+
+The act of collecting or extracting sample is called sampling. How do we collect samples in order for the sample we want to study to represent the population?
+
+Suppose this circle represents the whole population of people older than 65 years. 
+
+
+Let's say that this circle represents the population 65 years or older in South Korea. 
+If we surveyed only the people in the circle below the center as subjects, would the sample we get represent the population?
+
+Probably not. A sample that can be a relatively accurate representation of the population should be throughout the circle.
+
+That is, only samples obtained randomly and evenly, regardless of the top and bottom of the circle, will be fully representative of the population. 
+
+This sampling method is called random sampling. 
+
+Ideally, random sampling is the simplest and most effective sampling method, 
+but in reality it is very difficult to obtain random samples. It is because of time and money.
+
+In fact, the highlight of statistics is sampling. We won't be covering anything related to sampling. 
+
+However, if I mention the word sampling in this lecture, understand that it is random sampling.
+
+
 
 ---
 # Parameters `r icons::fontawesome("bible", style = "solid")`
@@ -104,6 +157,44 @@ generalizations about a whole (**the population**), based on a limited mumber of
 > - usually infered from the **calculated statistics** $\rightarrow$ from the particular sample of **DATA**
 
 
+???
+
+The special numbers that determine the characteristics of a population are called parameters. 
+
+The parameter is like a god believed to exist somewhere from the point of view of the frequentist.
+
+That's why paramters regard to flawlessness. In statistics, no error means that this particular number exists alone. 
+
+That is, a paramter is a fixed constant. 
+
+Recall that the breakthrough in statistics took place in Western Europe. 
+
+Western Europe has always admired the Greek civilization. 
+
+Because of this cultural background, I think the parameters are expressed in the Greek alphabet.
+
+In fact, this assumption about parameters is a bit unreasonable. 
+
+Because parameters always change unless the population is fixed. 
+
+Unlike frequentists, statisticians who hold the view that parameters can change, 
+that is, parameters can also have probabilistic variation, are called Bayesian.
+
+In other words, from the point of view of frequentists, the parameter is fixed and cannot be changed. 
+
+Parameters are numbers that determine the characteristics of a population. 
+
+They exist somewhere, but like God we never know where the true values are. 
+
+However, the properties of these parameters can be inferred from the samples we obtained. 
+
+If the sample properly reflects the population.
+
+We compute statistics from the sample to estimate the parameters. 
+
+The possible information needed to calculate these statistics is in the sample data we have collected.
+
+
 ---
 # What is in the data? 
 
@@ -120,6 +211,36 @@ generalizations about a whole (**the population**), based on a limited mumber of
 > - **Example 1**: A researcher examines people to obtain the prevalence of lung cancer 
 >    - Gender, smoking and alcohol comsumption, height, weight, income, ...
 > - **Example 2**: 100 trees from Gyeryong Mt. $\rightarrow$ species, height, circumference at chest height
+
+
+
+???
+
+So how is the data organized? Mathematically, data is a matrix. 
+
+The matrix is made up of rows and columns. Each row we call an individual. Individual does not have to be a person. 
+
+It can be a person, or it can be a guinea pig, furniture, word, shop, whatever interests you in any research or study.
+
+The number of these indivduals determines the size of the sample.
+
+
+The features that make up columns in the data are called variables. 
+
+A variable is something measured by an individual. 
+
+That is, it means an element that represents the characteristics of an individual.
+
+For example, suppose a researcher conducts a research on the prevalence of lung cancer. 
+
+Here, individual is an individual person, and the sex, alcohol and smoking, height, and weight measured from this person are variables. 
+
+As another example, in a survey that randomly sampled 100 trees in Gyeryongsan, 
+the tree is an individual, and the species, height, and circumference at chest height of the tree will be variables that express the characteristics of the tree.
+
+Everyone, have you come to Daejeon and visit Gyeryongsan? 
+If you haven't been there, the cherry blossoms blooming in spring are really pretty, so be sure to visit them.
+
 
 ---
 
@@ -138,7 +259,7 @@ example <- c("sex, marital status, blood type, race, eye colour, religion, ...",
              "distance, length, height, weight, BMI, blood pressure, ...")
 operation <- c("counting", 
                "counting, ranking", 
-               "counting, ranking, \\(+\\), \\(-\\)", 
+               "counting, ranking, \\(+\\), \\(-\\), \\(\\times\\), \\(\\div\\)", 
                "counting, ranking, \\(+\\), \\(-\\), \\(\\times\\), \\(\\div\\)")
 tab <- data.frame(type, example, operation)
 names(tab) <- c("Type", "Example", "Operation")
@@ -157,6 +278,46 @@ kable(tab,
             3, 4, 
             label_row_css = "background-color: #666; color: #fff;")
 ```
+
+
+???
+
+
+Variables can be classified into qualitative variables and quantitative variables according to their properties. 
+
+Qualitative variables, also called categorical variables, can be divided into two categories.
+
+Nominal variables are non-ordered. 
+
+In other words, it collectively refers to categorical variables that cannot be assigned an order 
+such as gender, marital status, blood type, race, and religion. 
+
+The only operation we can do on these variables is simply counting. 
+
+The ordinal variable literally refers to a variable that has the property of an order. 
+
+Grade, level of education, preference, and severity are representative. 
+
+We can assign ranking to ordinal variable in natural. 
+
+Quantitative variables are also called continuous variables. 
+
+Quantitative variables, like qualitative variables, are also divided into two categories. 
+
+Interval variables are numerical variables that measure relative concepts such as temperature and IQ. 
+
+They have an order, and these variables ale able to apply four arithmetic operations, 
+but usually the difference between the two values is meaningful.
+
+The Ratio variable has all the characteristics of the interval variable, 
+and is a variable obtained from absolute measurement as shown in the table.
+
+Variables of the highest concept can be converted to any of the lower level of variables (interval, ordinal, nominal). 
+
+This means that the amount of information in the ratio variable is richer than other variables. 
+
+It is impossible to convert the nominal variableinto the upper level of variables such as ordinal or interval. 
+
 
 
 ---
@@ -181,9 +342,38 @@ kable(tab,
 ???
 
 random variable is simply a number whose value is determined by the outcome of a chance process. 
+
 The amount that the insurance company will pay out in the next year is an example of a random variable: 
+
 its value depends on a complex chance process—how many homeowners experience a flood, how damaging each flood is, etc.
 
+Random variables are actually all variables that exist in the data. 
+
+RV refers to a variable whose value can change according to a probability mechanism. Let me give you the simplest example.
+
+Consider a game that you flip a coin and take 1000 won if the head comes out and lose 1500 won if the tail comes out. 
+
+You don't know if toss a coin to win or lose money. It depends purely on luck. 
+
+If the coin is fair enough, the odds of getting a head or tail are 1/2. 
+
+In other words, you can allocate +1000 won to 1/2 the probability that the heads will come out, 
+and -1500 won to the probability that the tail will come out 1/2. 
+
+Here, +1000, -1500 are random variables that can come out of this game structure.
+
+
+Random variables can be symbolized as uppercase alphabets. 
+
+In general, unnumbered uppercase letters denote the population, and numbered uppercase letters denote the sample, as shown below.
+
+Particular values of a random variable are shown in lowercase, and a series of numbered lowercase letters indicate observed values.
+
+The concept of RV is actually very natural. When we start an investigation or research, 
+it's impossible to know exactly what the values of the variables we measure from our subjects are.
+
+The most reasonable option would be to introduce a probability structure 
+that quantifies this uncertainty into the measurement of the variable.
 
 
 
@@ -210,13 +400,42 @@ its value depends on a complex chance process—how many homeowners experience a
 
 ???
 
+Many people confused the concept of uncertainty and error. 
+
+
 Uncertainty refers to epistemic situations involving imperfect or unknown information. 
+
 It applies to predictions of future events, to physical measurements that are already made, 
 or to the unknown. Uncertainty arises in partially observable and/or stochastic environments, 
 as well as due to ignorance, indolence, or both. 
+
 It arises in any number of fields, including insurance, philosophy, physics, statistics, 
 economics, finance, psychology, sociology, engineering, metrology, meteorology, ecology, 
 and information science.
+
+Briefly, uncertainty represents the lack of knowledge. 
+
+Previously, I refer a random sampling and its difficulty. 
+
+Consider you obtain a sample dataset and probably you believed in that my sample is definitly reflecting the whole population you concerned. 
+
+Who knows? Your sample may be obtained without crucial information. 
+
+
+In the other hand, error represents experimental and natural variability. 
+
+
+For example the yield of a product from a chemical reaction may vary quite considerably from one occasion to another 
+due to slight differences of conditions such as temperature, pressure, concentration and agitation rate. 
+
+Other errors will be introduced because of the impossibility of obtaining an entirely representative sample of the product for analysis. 
+
+Finally, no method of chemical analysis of the sampled material will be exactly reproducible. 
+
+Therefore, the error is not a synonym of uncertainty. However, there are several common things: 
+
+Both are present to some extent in any scientific research and related to the probability. 
+
 
 
 ---
@@ -229,7 +448,7 @@ and information science.
 > - tossing a coin $\rightarrow$  what chance of showing head? 
 > - rolling a dice 
 >   - what is the chance of getting 3? 
->   - what is the chance of getting odd numbers in the nex roll? 
+>   - what is the chance of getting odd numbers in the next roll? 
 
 
 ### **Probability** 
@@ -239,6 +458,8 @@ and information science.
 
 
 ???
+
+Probability is 
 
 
 If $E$ is an event, then the probability that $E$ occurs is the long-term proportion of times that the event occurs, 
@@ -272,6 +493,33 @@ for (i in 1:1000) x[i] <- coin_flip(coin, i)
 
 .center[<img src="assets/imgs/tossing-coin-prop.svg" width="50%"/>]
 
+
+???
+
+Probability is a clucial tool to understand statistics.
+
+Some of you may have the following question at this point: I only register a statistics class, 
+but why I have to spend so much time in learning probability?
+
+The relationship between probability and statistics can be summarized by saying that 
+probability reasons from the population to the sample (deductive reasoning), 
+whereas inferential statistics reasons from the sample to the population (inductive reasoning).
+
+
+Consider tossing a fair coin. What is the chance of showing head?
+
+Consider rolling a die, which is a cube wit six faces labelled as 1-6. 
+Suppose that die is also fair: the chance of getting one number is the same as the chance of getting any other number.
+
+What is the chance of getting 3 when rolling a die?
+What is the chance of getting a 1 or 2 in the next roll?
+What is the chance of not rolling a 4?
+Probability is often framed in terms of a random process giving rise to an outcome.
+
+“Tossing a coin” is a random process with all possible outcomes beging head or tail.
+“Rolling a die” is a random process with all possible outcomes being 1, 2, 3, 4, 5 or 6.
+The probability of an outcome is the proportion of times the outcome would occur if we observed the random process an infinite number of times.
+
 ---
 
 # Probability Distribution <img src="assets/icons/probability-dist.svg" width="6%"/>
@@ -294,9 +542,12 @@ for (i in 1:1000) x[i] <- coin_flip(coin, i)
 .center[<img src="assets/imgs/distribution-example.svg" width="55%"/>]
 
 
+## A probability distribution have a role to Assign a probability to the observed outcome 
+
+
 ???
 
-## A probability distribution have a role to Assign a probability to the observed outcome 
+
 
 ---
 # Expectation 
@@ -319,6 +570,20 @@ for (i in 1:1000) x[i] <- coin_flip(coin, i)
 > - denoted as $\mu_X$ or $E(X)$
 
 
+???
+
+When it comes to random variables, we are often interested in what it might turn out to be on average. 
+That is, suppose we could repeat the random process many, many times—say n times, where n is some large number. 
+(Suppose that we could observe the insurance company for many, many years, 
+with each year being the same in terms of how many people are insured, 
+how much their houses are worth, 
+what the climate is like, and so on.) 
+
+Each time the process is repeated, we get a value for the random variable. We end up with n values. 
+Now add up these values and divide by n. 
+We have computed their average—the mean, as it is properly called. Now imagine that ncould be larger and larger, without bound.
+
+
 ---
 # Sample Statistics $\sum$
 
@@ -336,6 +601,22 @@ $$
 
 
 ### How good is our estimate? $\rightarrow$ less error (variation) and how closer to the true parameter
+
+
+??? 
+
+The first step in estimating a parameter is to calculate statistics from the sample for the parameter of interest. 
+When many researchers look at sample data, they tend to think that it is the only sample in the world. 
+
+In fact, in statistics, the sample we obtained is assumed to be one chosen by chance from a large set of samples. 
+
+For example, it is unlikely that the party preferences surveyed by research firm A would be exactly the same for firm B. 
+
+That's why it makes sense to think that the statistics we computed from the samples is also a part of numurous possible results.
+
+That is, the sample statistics depend on different sample data.
+
+Therefore, sample statistics also have a probability structure and therefore it has a probability distribution consequently. 
 
 
 ---
@@ -367,10 +648,36 @@ but the details may change.
 - probability distribution
 
 
+???
+
+There are two basic branches of statistical inference: estimation and hypothesis testing.
+
+Both make use of statistics calculated from sample data, and each has a specific role to play in statistical inference. The choice of which to use depends on the question being asked.
+
+What is the value of something? - This would entail estimation.
+Versus
+
+Are two things the same? – This would entail hypothesis testing.
+The basic principles of estimation & hypothesis testing are the same for ALL types of parameters and statistics. 
+
+However, the details may change. For example: How to calculate the test statistic & estimate the standard error, 
+and what probability distribution to use, are both important considerations in any inferential procedure and have situation-specific nswers (which we will deal with later).
+
+BUT
+
+If you have a basic understanding of the concepts you will easily cope with most situations.
 
 
 
+---
 
+# Scheme of Statistical Inference
+
+<br/><br/>
+
+.center[<img src="assets/imgs/stat-infer-scheme.png" width="90%">]
+
+.center[##### Schematic relationship between population, sample, statistic, and sampling distribution]
 
 
 
