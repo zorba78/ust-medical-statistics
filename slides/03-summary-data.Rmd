@@ -88,8 +88,8 @@ $$
 > Question: is $\bar{X}$ a random variable?
 
 
---
 #### **Answer**: **Yes** $\rightarrow$ Then what characteristic have?
+
 
 
 ???
@@ -109,6 +109,8 @@ and probability distribution (a.k.a. sampling distribution).
 
 In physics, the expectation holds the same meaning as the center of gravity. 
 The distribution can be represented by a series of weights at each outcome, and the mean represents the balancing point.
+
+
 
 ---
 # Measures of Location `r icons::fontawesome("location-arrow", style = "solid")`
