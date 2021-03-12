@@ -863,3 +863,34 @@ knitr::include_graphics("assets/imgs/scatterplot-example.svg")
 ]
 
 
+
+
+
+<!-- ```{r} -->
+<!-- par(mfrow = c(1, 2)) -->
+<!-- # skewed to the left -->
+<!-- set.seed(12345) -->
+<!-- x <- rnorm(500, -3, 6) -->
+<!-- y <- rnorm(1500, 8, 3) -->
+<!-- z <- c(x, y) -->
+<!-- hist(z, breaks = 30, main = "Skewed to the Left", -->
+<!--      cex.main = 2, yaxt = "n", ylab = "") -->
+<!-- abline(v = mean(z), lwd = 1.5, lty = 1, col = "red") -->
+<!-- abline(v = median(z), lwd = 1.5, lty = 2, col = "blue") -->
+<!-- legend("topright", legend = c("Mean", "Median"), -->
+<!--        lty = 1:2, col = c("red", "blue"), bty = "n", lwd = 1.5, -->
+<!--        cex = 1.5) -->
+
+<!-- # skewed to the right -->
+<!-- set.seed(12345) -->
+<!-- x <- rchisq(1500, 5) -->
+<!-- hist(x, breaks = 30, main = "Skewed to the Right", -->
+<!--      cex.main = 2, yaxt = "n", ylab = "") -->
+<!-- abline(v = mean(x), lwd = 1.5, lty = 1, col = "red") -->
+<!-- abline(v = median(x), lwd = 1.5, lty = 2, col = "blue") -->
+<!-- legend("topright", legend = c("Mean", "Median"), -->
+<!--        lty = 1:2, col = c("red", "blue"), bty = "n", lwd = 1.5, -->
+<!--        cex = 1.5) -->
+
+<!-- ``` -->
+
