@@ -7,8 +7,8 @@ date: "<br> 2021/03/04 "
 output:
   xaringan::moon_reader:
     css: [default, metropolis, metropolis-fonts, ../assets/css/footer.css, ../assets/css/metropolis-ak.css]
-    lib_dir: "../docs/libs"
-    # lib_dir: "libs"
+    # lib_dir: "../docs/libs"
+    lib_dir: "libs"
     nature:
       highlightStyle: github
       titleSlideClass: [middle, left]
@@ -67,7 +67,7 @@ library(kableExtra)
     + github: **@zorba78**
     + email: **secondmoon@kiom.re.kr**
 
-- **Team**: Clinical Research Coordinating Team    
+- **Team**: Digital Health Research Division
 
 
 ### Current Works in KIOM
@@ -94,21 +94,44 @@ library(kableExtra)
 
 ???
 
-_Hello everyone. I'm Dr. Boncho Ku and I'm gonna give you several lectures related to statistics._
+Hello everyone. I'm Dr. Boncho Ku and I'm gonna give you several lectures related to statistics in this semester._
 
-_ I assume that you guys are somewhat confused because Dr. Lee does not come up to the class._ 
+This is my introduction. As noted on the slide, I've involved in several research projects as a 
+statistician or data scientist at KIOM. I'm currently a member of Digital Health Research Division. 
 
-_ Instead, someone not shown in the syllabus talks about statistics._ 
+My main role in projects is data analysis and predictive model development. Also, I designed several 
+clinical studies including many RCTs and observational studies. 
+
+As mentioned on the syllabus, this course will be lectured by two professors: me and Dr. Mimi Ko. 
+I'm going to provide you an undergraduate-level knowledge of the basic concepts and theories of 
+statistics. In Dr. Ko's class, you'll learn more practical basic statistical analysis methods.
+
+
+
 
 ---
 class: inverse, center, middle
 
-# Objective & Motivation
+# Preface
+
+
+???
+
+In this first lesson, I would like to briefly talk about why you should learn statistics. 
+I understand that the academic background of the students here is not related to statistics. 
+However, In the age of big data, as data science becomes established as a discipline, 
+a basic grasp of statistical literacy is more important than ever. 
+
+This class is focused on improving student's statistical thinking. Learning statistics definitely 
+provides us the power to reasonably doubt numbers and distinguish between true and false or 
+chance and certainty. 
+
+Then Let's move to step your feet toward the world of statistics. 
 
 
 ---
 
-#  Overview 
+#  Criticism
 
 ## `r icons::fontawesome("info-circle", style = "solid")` Famous quotes about statistics
 
@@ -147,6 +170,25 @@ class: inverse, center, middle
 $\rightarrow$ **Mostly hard to refute** `r emo::ji("tear")`
 
 
+???
+
+Those two persons on the slide are very famous. Benjamin Disraeli served as a Prime Minister of 
+the United Kingdom, and Mark Twain, which was a pen name of Samuel Langhorne Clemens, 
+was a famous American writer.
+
+These two guys seem to have a pretty negative view of statistics.
+
+In previous, numerous quotes about statistics are negatively expressed. 
+
+Why did people express the way about statistics?
+
+
+This is because statistics simply give numbers, but people attach certain meanings to these numbers. 
+In other words, these quotes mean that you should pay special attention to interpretation and 
+communication, because numbers do not advocate for themselves, and their meanings are completely 
+different depending on your point of view.
+
+
 ---
 class: inverse, center, middle
 
@@ -170,6 +212,103 @@ class: inverse, center, middle
 --
 .center[<img src="assets/imgs/data-instincts.jpg" width="35%"/>]
 
+
+---
+class: inverse, center, middle
+
+# How Statistics Works `r emo::ji("up")`
+
+
+---
+
+
+# Forensic Statistics
+
+## Harold Shipman (a.k.a. Dr. Death)
+
+.pull-left[
+<img src="https://www.highwelleducation.com/wp-content/uploads/2020/10/NINTCHDBPICT000001294259.jpg" align="center" width="75%" />
+]
+
+.pull-right[
+#### **Biography**
+
+- 14 January 1946 ~ 13 January 2004
+- Born in Nottingham, England
+- General Practitioner
+- **Serial Killer**
+- Victims: more than **215**
+- span of crime: 1975 ~ 1998
+
+]
+
+
+--
+_Shipman Inquiry_ provides details (data) regarding each victim's age, gender, and year of death
+
+
+--
+### **What can the statistics tell you about the Shipman's crime?**
+
+_D. Spiegelhalter. The Art of Statistics (2019)_
+
+
+---
+# **Question**
+
+### What people did Shipman murder?
+
+####  
+
+
+```{r shipman-01, fig.width=8, fig.height=8, out.width="50%", dev='svg'}
+# cap <- "A scatter-plot showing the age and the year of death of Harold Shipman’s 215 confirmed victims. Bar-charts have been added on the axes to reveal the pattern of ages and the pattern of years in which he committed murders. (epitomized from https://dspiegel29.github.io/ArtofStatistics)"
+# library(ggplot2)
+library(ggpubr)
+library(ggExtra)
+
+# read data to dataframe
+df <- read.csv("https://raw.githubusercontent.com/dspiegel29/ArtofStatistics/master/00-1-age-and-year-of-deathofharold-shipmans-victims/00-1-shipman-confirmed-victims-x.csv", header = TRUE)
+
+# scatter-plot
+s <- ggplot(df, aes(x=fractionalDeathYear, y=Age, colour=reorder(gender2,gender))) # initialise plot for the scatter-chart
+s <- s + geom_point(size=1) # assign scatter chart-type with size 1 points
+s <- s +  labs(x ="Year", y="Age of victim") # Adds axis labels  
+s <- s + scale_x_continuous(breaks=seq(1975, 1995, 5), limits = c(1974,1998)) #x-axis labels every 5 years and between 74 and 98 
+s <- s + scale_y_continuous(breaks=seq(40, 90, 10), limits = c(39,95)) # y-axis every 10 years and between 39 and 95
+#s <- s  + scale_size_continuous(name = "Size", guide = FALSE)  # turns off size legend
+s <- s + scale_colour_brewer(palette = "Set1") # sets the colour palette 
+s <- s + theme(legend.position=c(0.125,1.12 ), legend.background = element_rect(colour = "black"), legend.title = element_blank()) # positions. borders, and un-titles the legend
+
+# with marginal histogram
+ggMarginal(s, type="histogram")
+```
+
+##### _A scatter-plot showing the age and the year of death of Harold Shipman’s 215 confirmed victims. Bar-charts have been added on the axes to reveal the pattern of ages and the pattern of years in which he committed murders._ (epitomized from https://dspiegel29.github.io/ArtofStatistics)
+
+
+---
+# **Question**
+
+### What time did Shipman commit murder?
+
+```{r shipman-02, fig.width=8, fig.height=6, out.width="60%", dev='svg'}
+shipmantimes<-read.csv("https://raw.githubusercontent.com/dspiegel29/ArtofStatistics/master/00-2-shipman-times/00-2-shipman-times-x.csv", header=TRUE) 
+
+p <- ggplot(shipmantimes, aes(x=Hour, y)) + ylim(0,15) # constructs initial plot object, p
+p <- p + geom_line(aes(y = Comparison, col = "Comparison GPs"), size=1.5) # adds a y-series
+p <- p + geom_line(aes(y = Shipman, col = "Shipman"), size=1.5) # adds a y-series
+p <- p +  labs(title="Deaths by Hour of Day", subtitle="From Shipman dataset", y="% of Deaths", x="Hour of Day") # Adds title, subtitle
+p <- p + scale_colour_brewer(palette = "Set1") # sets the colour palette 
+p <- p + theme(legend.position="none")#, legend.box = "horizontal") # removes the legend
+
+p <- p + geom_text(aes(x = 11, y = 12, label = "Shipman", color = "Shipman"))
+p <- p + geom_text(aes(x = 4, y = 7, label = "Comparison GP's", color = "Comparison GPs"))
+p
+
+```
+
+##### _The time at which Harold Shipman’s patients died, compared to the times at which patients of other local general practitioners died. The pattern does not require sophisticated statistical analysis._ (epitomized from https://dspiegel29.github.io/ArtofStatistics)
 
 
 
@@ -426,16 +565,16 @@ but the details may change.
 
 ---
 
-# Scheme of Statistical Inference
+<!-- # Scheme of Statistical Inference -->
 
-<br/><br/>
+<!-- <br/><br/> -->
 
-.center[<img src="assets/imgs/stat-infer-scheme.png" width="90%">]
+<!-- .center[<img src="assets/imgs/stat-infer-scheme.png" width="90%">] -->
 
-.center[##### Schematic relationship between population, sample, statistic, and sampling distribution]
+<!-- .center[##### Schematic relationship between population, sample, statistic, and sampling distribution] -->
 
----
-class: inverse, center, middle
+<!-- --- -->
+<!-- class: inverse, center, middle -->
 
 
 # We Deal All things VERY SHALLOWLY `r emo::ji("wink")`
@@ -453,17 +592,17 @@ class: inverse, center, middle
 # `r emo::ji("calendar")` Lecture Schedule
 
 ```{r}
-input <- ("Week 1 (2021.03.04): Introduction
-Week 2 (2021.03.11): Terminologies and descriptive statistics 
-Week 3 (2021.03.18): Probability, expectation, and Important probability distributions
-Week 4 (2021.03.25): Random variables, sampling distribution and central limit theorem
-Week 5 (2021.04.01): Estimation and hypothesis testing
-Week 6 (2021.04.08): Analysis of continuous data (part 1)
-Week 7 (2021.04.15): Analysis of continuous data (part 2)
-Week 8 (2021.04.22): Analysis of categorical data
-Week 9 (2021.04.29): More applications (sample size calculation, regression analysis)")
+input <- ("Week 1 (2021.03.04): Introduction to statistics
+Week 2 (2021.09.02): Summary of data
+Week 3 (2021.09.09): Concept of probability
+Week 4 (2021.09.16): Random variables and probability distribution
+Week 5 (2021.09.23): Important probability distribution
+Week 6 (2021.09.30): Sampling distribution and statistical inference
+Week 7 (2021.10.07): Estimation and hypothesis testing (1)
+Week 8 (2021.10.14): Estimation and hypothesis testing (2)
+Week 9 (2021.10.21): Correlation and Regression")
 course_desc <- read.table(textConnection(input), sep = ":", header = FALSE)
-course_desc$V3 <- c(rep("Dr. Boncho Ku", each = 5), rep("Dr. Mimi Ko", each = 4))
+course_desc$V3 <- c(rep("Dr. Boncho Ku", each = 9))
 names(course_desc) <- c("Week", "Description", "Lecturer")
 kbl(course_desc, 
     booktabs = TRUE, 
@@ -480,7 +619,7 @@ kbl(course_desc,
 
 # **Yourselves!!**
 
-## To Enhance Your Statistical Mind
+## To Enhance Your Statistical Thinking
 
 
 - [Introduction to Statistical Methodology](https://bookdown.org/dereksonderegger/570/)
