@@ -7,8 +7,8 @@ date: "<br> 2021/03/04 "
 output:
   xaringan::moon_reader:
     css: [default, metropolis, metropolis-fonts, ../assets/css/footer.css, ../assets/css/metropolis-ak.css]
-    lib_dir: "../docs/libs"
-    # lib_dir: "libs"
+    # lib_dir: "../docs/libs"
+    lib_dir: "libs"
     nature:
       highlightStyle: github
       titleSlideClass: [middle, left]
@@ -591,6 +591,8 @@ class: inverse, center, middle
 ---
 # `r emo::ji("calendar")` Lecture Schedule
 
+### By Dr. Ku
+
 ```{r}
 input <- ("Week 1 (2021.03.04): Introduction to statistics
 Week 2 (2021.09.02): Summary of data
@@ -612,7 +614,7 @@ kbl(course_desc,
 
 ```
 
-### By Dr. Ku and Dr. Ko. 
+
 
 
 ---
