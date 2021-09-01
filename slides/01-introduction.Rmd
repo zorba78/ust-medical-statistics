@@ -3,7 +3,7 @@ title: "Medical Statistics"
 subtitle: "Introduction"
 author: "<strong>Boncho Ku, Ph.D. in Statistics</strong>"
 institute: "<br/> Korea Institute of Oriental Medicine"
-date: "<br> 2021/03/04 "
+date: "<br> 2021/09/02"
 output:
   xaringan::moon_reader:
     css: [default, metropolis, metropolis-fonts, ../assets/css/footer.css, ../assets/css/metropolis-ak.css]
