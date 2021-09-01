@@ -563,7 +563,7 @@ but the details may change.
 - standard error
 - probability distribution
 
----
+<!-- --- -->
 
 <!-- # Scheme of Statistical Inference -->
 
@@ -573,8 +573,8 @@ but the details may change.
 
 <!-- .center[##### Schematic relationship between population, sample, statistic, and sampling distribution] -->
 
-<!-- --- -->
-<!-- class: inverse, center, middle -->
+---
+class: inverse, center, middle
 
 
 # We Deal All things VERY SHALLOWLY `r emo::ji("wink")`
