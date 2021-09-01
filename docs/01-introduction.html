@@ -21,7 +21,7 @@ class: middle, left, title-slide
 ## Introduction
 ### <strong>Boncho Ku, Ph.D. in Statistics</strong>
 ### <br/> Korea Institute of Oriental Medicine
-### <br> 2021/03/04
+### <br> 2021/09/02
 
 ---
 
@@ -40,7 +40,7 @@ class: middle, left, title-slide
     + github: **@zorba78**
     + email: **secondmoon@kiom.re.kr**
 
-- **Team**: Clinical Research Coordinating Team    
+- **Team**: Digital Health Research Division
 
 
 ### Current Works in KIOM
@@ -67,21 +67,44 @@ class: middle, left, title-slide
 
 ???
 
-_Hello everyone. I'm Dr. Boncho Ku and I'm gonna give you several lectures related to statistics._
+Hello everyone. I'm Dr. Boncho Ku and I'm gonna give you several lectures related to statistics in this semester._
 
-_ I assume that you guys are somewhat confused because Dr. Lee does not come up to the class._ 
+This is my introduction. As noted on the slide, I've involved in several research projects as a 
+statistician or data scientist at KIOM. I'm currently a member of Digital Health Research Division. 
 
-_ Instead, someone not shown in the syllabus talks about statistics._ 
+My main role in projects is data analysis and predictive model development. Also, I designed several 
+clinical studies including many RCTs and observational studies. 
+
+As mentioned on the syllabus, this course will be lectured by two professors: me and Dr. Mimi Ko. 
+I'm going to provide you an undergraduate-level knowledge of the basic concepts and theories of 
+statistics. In Dr. Ko's class, you'll learn more practical basic statistical analysis methods.
+
+
+
 
 ---
 class: inverse, center, middle
 
-# Objective &amp; Motivation
+# Preface
+
+
+???
+
+In this first lesson, I would like to briefly talk about why you should learn statistics. 
+I understand that the academic background of the students here is not related to statistics. 
+However, In the age of big data, as data science becomes established as a discipline, 
+a basic grasp of statistical literacy is more important than ever. 
+
+This class is focused on improving student's statistical thinking. Learning statistics definitely 
+provides us the power to reasonably doubt numbers and distinguish between true and false or 
+chance and certainty. 
+
+Then Let's move to step your feet toward the world of statistics. 
 
 
 ---
 
-#  Overview 
+#  Criticism
 
 ## &lt;svg viewBox="0 0 512 512" style="height:1em;fill:currentColor;position:relative;display:inline-block;top:.1em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 110c23.196 0 42 18.804 42 42s-18.804 42-42 42-42-18.804-42-42 18.804-42 42-42zm56 254c0 6.627-5.373 12-12 12h-88c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h12v-64h-12c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h64c6.627 0 12 5.373 12 12v100h12c6.627 0 12 5.373 12 12v24z"&gt;&lt;/path&gt;&lt;/svg&gt; Famous quotes about statistics
 
@@ -120,6 +143,25 @@ class: inverse, center, middle
 `\(\rightarrow\)` **Mostly hard to refute** 😢
 
 
+???
+
+Those two persons on the slide are very famous. Benjamin Disraeli served as a Prime Minister of 
+the United Kingdom, and Mark Twain, which was a pen name of Samuel Langhorne Clemens, 
+was a famous American writer.
+
+These two guys seem to have a pretty negative view of statistics.
+
+In previous, numerous quotes about statistics are negatively expressed. 
+
+Why did people express the way about statistics?
+
+
+This is because statistics simply give numbers, but people attach certain meanings to these numbers. 
+In other words, these quotes mean that you should pay special attention to interpretation and 
+communication, because numbers do not advocate for themselves, and their meanings are completely 
+different depending on your point of view.
+
+
 ---
 class: inverse, center, middle
 
@@ -143,6 +185,68 @@ class: inverse, center, middle
 --
 .center[&lt;img src="assets/imgs/data-instincts.jpg" width="35%"/&gt;]
 
+
+---
+class: inverse, center, middle
+
+# How Statistics Works 🆙
+
+
+---
+
+
+# Forensic Statistics
+
+## Harold Shipman (a.k.a. Dr. Death)
+
+.pull-left[
+&lt;img src="https://www.highwelleducation.com/wp-content/uploads/2020/10/NINTCHDBPICT000001294259.jpg" align="center" width="75%" /&gt;
+]
+
+.pull-right[
+#### **Biography**
+
+- 14 January 1946 ~ 13 January 2004
+- Born in Nottingham, England
+- General Practitioner
+- **Serial Killer**
+- Victims: more than **215**
+- span of crime: 1975 ~ 1998
+
+]
+
+
+--
+_Shipman Inquiry_ provides details (data) regarding each victim's age, gender, and year of death
+
+
+--
+### **What can the statistics tell you about the Shipman's crime?**
+
+_D. Spiegelhalter. The Art of Statistics (2019)_
+
+
+---
+# **Question**
+
+### What people did Shipman murder?
+
+####  
+
+
+&lt;img src="Figures/shipman-01-1.svg" width="50%" style="display: block; margin: auto;" /&gt;
+
+##### _A scatter-plot showing the age and the year of death of Harold Shipman’s 215 confirmed victims. Bar-charts have been added on the axes to reveal the pattern of ages and the pattern of years in which he committed murders._ (epitomized from https://dspiegel29.github.io/ArtofStatistics)
+
+
+---
+# **Question**
+
+### What time did Shipman commit murder?
+
+&lt;img src="Figures/shipman-02-1.svg" width="60%" style="display: block; margin: auto;" /&gt;
+
+##### _The time at which Harold Shipman’s patients died, compared to the times at which patients of other local general practitioners died. The pattern does not require sophisticated statistical analysis._ (epitomized from https://dspiegel29.github.io/ArtofStatistics)
 
 
 
@@ -397,15 +501,15 @@ but the details may change.
 - standard error
 - probability distribution
 
----
+&lt;!-- --- --&gt;
 
-# Scheme of Statistical Inference
+&lt;!-- # Scheme of Statistical Inference --&gt;
 
-&lt;br/&gt;&lt;br/&gt;
+&lt;!-- &lt;br/&gt;&lt;br/&gt; --&gt;
 
-.center[&lt;img src="assets/imgs/stat-infer-scheme.png" width="90%"&gt;]
+&lt;!-- .center[&lt;img src="assets/imgs/stat-infer-scheme.png" width="90%"&gt;] --&gt;
 
-.center[##### Schematic relationship between population, sample, statistic, and sampling distribution]
+&lt;!-- .center[##### Schematic relationship between population, sample, statistic, and sampling distribution] --&gt;
 
 ---
 class: inverse, center, middle
@@ -425,6 +529,8 @@ class: inverse, center, middle
 ---
 # 📆 Lecture Schedule
 
+### By Dr. Ku
+
 &lt;table class=" lightable-paper table table-hover" style='font-family: "Arial Narrow", arial, helvetica, sans-serif; margin-left: auto; margin-right: auto; margin-left: auto; margin-right: auto;'&gt;
 &lt;caption&gt;Course Schedule (Week 1 ~ Week 9)&lt;/caption&gt;
  &lt;thead&gt;
@@ -437,60 +543,60 @@ class: inverse, center, middle
 &lt;tbody&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; Week 1 (2021.03.04) &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; Introduction &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Introduction to statistics &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; Dr. Boncho Ku &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; Week 2 (2021.03.11) &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; Terminologies and descriptive statistics &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Week 2 (2021.09.02) &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Summary of data &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; Dr. Boncho Ku &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; Week 3 (2021.03.18) &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; Probability, expectation, and Important probability distributions &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Week 3 (2021.09.09) &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Concept of probability &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; Dr. Boncho Ku &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; Week 4 (2021.03.25) &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; Random variables, sampling distribution and central limit theorem &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Week 4 (2021.09.16) &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Random variables and probability distribution &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; Dr. Boncho Ku &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; Week 5 (2021.04.01) &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; Estimation and hypothesis testing &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Week 5 (2021.09.23) &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Important probability distribution &lt;/td&gt;
    &lt;td style="text-align:left;"&gt; Dr. Boncho Ku &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; Week 6 (2021.04.08) &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; Analysis of continuous data (part 1) &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; Dr. Mimi Ko &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Week 6 (2021.09.30) &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Sampling distribution and statistical inference &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Dr. Boncho Ku &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; Week 7 (2021.04.15) &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; Analysis of continuous data (part 2) &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; Dr. Mimi Ko &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Week 7 (2021.10.07) &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Estimation and hypothesis testing (1) &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Dr. Boncho Ku &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; Week 8 (2021.04.22) &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; Analysis of categorical data &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; Dr. Mimi Ko &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Week 8 (2021.10.14) &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Estimation and hypothesis testing (2) &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Dr. Boncho Ku &lt;/td&gt;
   &lt;/tr&gt;
   &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; Week 9 (2021.04.29) &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; More applications (sample size calculation, regression analysis) &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; Dr. Mimi Ko &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Week 9 (2021.10.21) &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Correlation and Regression &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Dr. Boncho Ku &lt;/td&gt;
   &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
 
-### By Dr. Ku and Dr. Ko. 
+
 
 
 ---
 
 # **Yourselves!!**
 
-## To Enhance Your Statistical Mind
+## To Enhance Your Statistical Thinking
 
 
 - [Introduction to Statistical Methodology](https://bookdown.org/dereksonderegger/570/)
