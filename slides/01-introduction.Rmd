@@ -183,12 +183,6 @@ In previous, numerous quotes about statistics are negatively expressed.
 Why did people express the way about statistics?
 
 
-This is because statistics simply give numbers, but people attach certain meanings to these numbers. 
-In other words, these quotes mean that you should pay special attention to interpretation and 
-communication, because numbers do not advocate for themselves, and their meanings are completely 
-different depending on your point of view.
-
-
 ---
 class: inverse, center, middle
 
@@ -213,13 +207,31 @@ class: inverse, center, middle
 .center[<img src="assets/imgs/data-instincts.jpg" width="35%"/>]
 
 
+???
+
+This is because statistics simply give numbers, but people attach certain meanings to these numbers. 
+In other words, these quotes mean that you should pay special attention to interpretation and 
+communication, because numbers do not advocate for themselves, and their meanings are completely 
+different depending on your point of view.
+
+
+Perhaps the reaction of most people who know a little about statistics and hear the word statistics 
+is similar to the cat on the slide.
+
+However, given the correct data, if you have the literacy to interpret statistics accurately and 
+correctly, the various statistics provided by statistics have a strong power to understand t
+he phenomenon and make the right decisions.
+
+
 ---
 class: inverse, center, middle
 
 # How Statistics Works `r emo::ji("up")`
 
 
+
 ---
+
 
 
 # Forensic Statistics
@@ -229,6 +241,9 @@ class: inverse, center, middle
 .pull-left[
 <img src="https://www.highwelleducation.com/wp-content/uploads/2020/10/NINTCHDBPICT000001294259.jpg" align="center" width="75%" />
 ]
+
+
+--
 
 .pull-right[
 #### **Biography**
@@ -251,6 +266,40 @@ _Shipman Inquiry_ provides details (data) regarding each victim's age, gender, a
 ### **What can the statistics tell you about the Shipman's crime?**
 
 _D. Spiegelhalter. The Art of Statistics (2019)_
+
+
+
+
+
+
+???
+
+
+The following slide shows that a general understanding of a specific event is possible only with 
+simple graphs without sophisticated statistical analysis.
+
+
+This example comes from the book "Art of Statistics", written by David Spiegelhalter, who is a 
+world-renowned statistician. 
+
+Who is the person in the picture? He looks like a genorous grandfather and looks very well educated.
+
+However, He is one of notorious serial killers in England, even though his occupation was a general practitioner.
+
+From 1975 to 1998, he injected overdose of diamorphine into at least 215 of his older patients, causing their deaths.
+
+How Harold Shipman was caught is well explained in Wikipedia, and David's book, so let's skip this part.
+
+Around the beginning of 2000, when he was first convicted of murder, a public investigation began 
+to determine if there were any other victims and if he could have been caught earlier. 
+This is called Shipman's inquiry. David Spiegelhalter was participated in the investigation 
+to gather the necessary evidence as a statistician.
+
+So what can statistics tell us about Shipman's crimes?
+
+Our first question is as follows
+
+
 
 
 ---
@@ -287,6 +336,26 @@ ggMarginal(s, type="histogram")
 ##### _A scatter-plot showing the age and the year of death of Harold Shipman’s 215 confirmed victims. Bar-charts have been added on the axes to reveal the pattern of ages and the pattern of years in which he committed murders._ (epitomized from https://dspiegel29.github.io/ArtofStatistics)
 
 
+???
+
+The first question is "what people did Shipman kill?
+
+The following scatterplot indicates the relationship between the age and the year of death of Shipman's 
+215 confirmed victims. The histograms are added on both axes to show the number of victims according to 
+5-year interval ages and years. 
+
+A few patterns can be seen in the picture above. First, as there are more black dots than blue dots, 
+Shipman's victims were mainly women.
+
+Looking at the histogram on the vertical axis, most of the victims were in their 70s to 80s, and 
+it can be seen that the victims are getting younger over time.
+
+ooking at the histogram on the horizontal axis, there is a blank period in which no murders were 
+committed in the early 1990s. The reason for this is that Shipman had previously co-medicated, 
+and he felt he was under suspicion. After that he set up his own hospital, and his crimes became bolder.
+
+
+
 ---
 # **Question**
 
@@ -311,6 +380,15 @@ p
 ##### _The time at which Harold Shipman’s patients died, compared to the times at which patients of other local general practitioners died. The pattern does not require sophisticated statistical analysis._ (epitomized from https://dspiegel29.github.io/ArtofStatistics)
 
 
+???
+
+This is a line graph comparing the time of death of Shipman's patients during the day with 
+the time of death of a sample of other local general practitioners.
+
+The data alone doesn't explain why so many victims died at that time, but it is clear that many of 
+the Shipman's patients tend to die in the early afternoon.
+
+This example shows that data plays powerful role to ubderstand the given phenomena and make better decision.
 
 ---
 class: inverse, center, middle
@@ -394,6 +472,11 @@ class: inverse, center, middle
 
 
 .center[<img src="assets/imgs/blood-data-example.png" width="70%"/>]
+
+
+???
+
+Data is the quantification of daily experiences.
 
 ---
 
