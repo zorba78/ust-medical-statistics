@@ -21,7 +21,7 @@ class: middle, left, title-slide
 ## Summary of Data
 ### <strong>Boncho Ku, Ph.D. in Statistics</strong>
 ### <br/> Korea Institute of Oriental Medicine
-### <br> 2021/03/11
+### <br> 2021/09/10
 
 ---
 
@@ -62,8 +62,8 @@ $$
 &gt; Question: is `\(\bar{X}\)` a random variable?
 
 
---
 #### **Answer**: **Yes** `\(\rightarrow\)` Then what characteristic have?
+
 
 
 ???
@@ -84,6 +84,8 @@ and probability distribution (a.k.a. sampling distribution).
 In physics, the expectation holds the same meaning as the center of gravity. 
 The distribution can be represented by a series of weights at each outcome, and the mean represents the balancing point.
 
+
+
 ---
 # Measures of Location &lt;svg viewBox="0 0 512 512" style="height:1em;fill:currentColor;position:relative;display:inline-block;top:.1em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M444.52 3.52L28.74 195.42c-47.97 22.39-31.98 92.75 19.19 92.75h175.91v175.91c0 51.17 70.36 67.17 92.75 19.19l191.9-415.78c15.99-38.39-25.59-79.97-63.97-63.97z"&gt;&lt;/path&gt;&lt;/svg&gt;
 
@@ -93,6 +95,12 @@ The distribution can be represented by a series of weights at each outcome, and 
 &lt;img src="assets/imgs/mean-viz.gif" width="70%" style="display: block; margin: auto;" /&gt;
 
 .center[[**Illustration of the physical characteristics of the sample mean**](http://statisticsbypeter.blogspot.com/2014/05/arithmetic-mean.html)]
+
+
+???
+
+This animation depict the process that the mean makes a balance in terms of positioning the center of gravity in the data. 
+
 
 ---
 # Measures of Location &lt;svg viewBox="0 0 512 512" style="height:1em;fill:currentColor;position:relative;display:inline-block;top:.1em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M444.52 3.52L28.74 195.42c-47.97 22.39-31.98 92.75 19.19 92.75h175.91v175.91c0 51.17 70.36 67.17 92.75 19.19l191.9-415.78c15.99-38.39-25.59-79.97-63.97-63.97z"&gt;&lt;/path&gt;&lt;/svg&gt;
@@ -150,6 +158,12 @@ barx &lt;- mean(cars$speed); barx
 ## [1] 15.4
 ```
 
+???
+
+
+This can easily be calculated in R by using the function mean(). We first extract the column we are interested in using the notation: DataSet$ColumnName 
+where the signifies grabbing the column.
+
 
 ---
 
@@ -173,6 +187,16 @@ barx &lt;- mean(cars$speed); barx
 &gt;   - Median value: `\((4 + 5)/2 = 4.5\)`
 
 
+???
+
+
+If the data were to be ordered, the median would be the middle most observation (or, in the case that n is even, the mean of the two middle most values).
+
+In our simple case of five observations,  we first sort the data into  and then the middle observation is clearly 4. 
+
+
+
+
 ---
 
 # Measures of Location &lt;svg viewBox="0 0 512 512" style="height:1em;fill:currentColor;position:relative;display:inline-block;top:.1em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M444.52 3.52L28.74 195.42c-47.97 22.39-31.98 92.75 19.19 92.75h175.91v175.91c0 51.17 70.36 67.17 92.75 19.19l191.9-415.78c15.99-38.39-25.59-79.97-63.97-63.97z"&gt;&lt;/path&gt;&lt;/svg&gt;
@@ -183,6 +207,11 @@ barx &lt;- mean(cars$speed); barx
 &lt;img src="assets/imgs/MedianVisual.gif" width="70%" style="display: block; margin: auto;" /&gt;
 
 .center[[**Illustration of deriving sample median**](http://statisticsbypeter.blogspot.com/2014/05/median.html)]
+
+
+???
+
+This picture depict the process to obtain the median value. 
 
 
 ---
@@ -214,6 +243,16 @@ median(cars$dist)
 
 --
 ## WHY?? `\(\rightarrow\)` describe a plausible explanation for the homework next week!!
+
+
+???
+
+In R the median is easily calculated by the function median().
+
+Median is often known as a rubust estimator of the central tendency. Can you guys guess why? 
+
+I will leave the explanation for this part as your homework.
+
 
 
 ---
@@ -846,6 +885,37 @@ points(iris$Sepal.Length,
 
 ]
 
+
+
+
+
+&lt;!-- ```{r} --&gt;
+&lt;!-- par(mfrow = c(1, 2)) --&gt;
+&lt;!-- # skewed to the left --&gt;
+&lt;!-- set.seed(12345) --&gt;
+&lt;!-- x &lt;- rnorm(500, -3, 6) --&gt;
+&lt;!-- y &lt;- rnorm(1500, 8, 3) --&gt;
+&lt;!-- z &lt;- c(x, y) --&gt;
+&lt;!-- hist(z, breaks = 30, main = "Skewed to the Left", --&gt;
+&lt;!--      cex.main = 2, yaxt = "n", ylab = "") --&gt;
+&lt;!-- abline(v = mean(z), lwd = 1.5, lty = 1, col = "red") --&gt;
+&lt;!-- abline(v = median(z), lwd = 1.5, lty = 2, col = "blue") --&gt;
+&lt;!-- legend("topright", legend = c("Mean", "Median"), --&gt;
+&lt;!--        lty = 1:2, col = c("red", "blue"), bty = "n", lwd = 1.5, --&gt;
+&lt;!--        cex = 1.5) --&gt;
+
+&lt;!-- # skewed to the right --&gt;
+&lt;!-- set.seed(12345) --&gt;
+&lt;!-- x &lt;- rchisq(1500, 5) --&gt;
+&lt;!-- hist(x, breaks = 30, main = "Skewed to the Right", --&gt;
+&lt;!--      cex.main = 2, yaxt = "n", ylab = "") --&gt;
+&lt;!-- abline(v = mean(x), lwd = 1.5, lty = 1, col = "red") --&gt;
+&lt;!-- abline(v = median(x), lwd = 1.5, lty = 2, col = "blue") --&gt;
+&lt;!-- legend("topright", legend = c("Mean", "Median"), --&gt;
+&lt;!--        lty = 1:2, col = c("red", "blue"), bty = "n", lwd = 1.5, --&gt;
+&lt;!--        cex = 1.5) --&gt;
+
+&lt;!-- ``` --&gt;
 
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>

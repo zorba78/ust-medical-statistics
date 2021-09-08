@@ -3,12 +3,12 @@ title: "Medical Statistics"
 subtitle: "Terminologies, Descriptive Statistics"
 author: "<strong>Boncho Ku, Ph.D. in Statistics</strong>"
 institute: "<br/> Korea Institute of Oriental Medicine"
-date: "<br> 2021/03/11 "
+date: "<br> 2021/09/10 "
 output:
   xaringan::moon_reader:
     css: [default, metropolis, metropolis-fonts, ../assets/css/footer.css, ../assets/css/metropolis-ak.css]
-    lib_dir: "../docs/libs"
-    # lib_dir: "libs"
+    # lib_dir: "../docs/libs"
+    lib_dir: "libs"
     nature:
       highlightStyle: github
       titleSlideClass: [middle, left]
@@ -63,6 +63,7 @@ class: inverse, center, middle
 
 ---
 
+
 # Two types of statistical analysis
 
 > - **Exploratory data analysis**: analyzing data to summarize their main characteristics $\rightarrow$ classical term: **descriptive statistics**
@@ -76,8 +77,6 @@ class: inverse, center, middle
 > - **Statistical inference**:  a set of procedures used in making appropriate conclusions and 
 generalizations about a whole (**the population**), based on a limited mumber of observation (**the sample**)
 
-
-.center[<img src="assets/imgs/pop-sample.png" width="40%"/>]
 
 
 ???
@@ -98,39 +97,101 @@ Exploratory data analysis (EDA for short) is primarily aimed at identifying the 
 Summarize data with several summary statistics used in statistics, such as what the distribution of the data looks like, how the mean is, 
 or how spread out the data is around the mean, or identify patterns in the data through several graphs, etc.
 
-
 This generalization starts with the assumption that the sample we get follows a certain probability distribution. 
 
-We'll learn about probability and probability distribution next week, but this time we'll go over the concept of terminology.
-
-In statistics, population refers to the entire set of subjects of interest. 
-
-For example, if the purpose of our study is to investigate the prevalence of dementia among the elderly in Korea, 
-the population of 65 years or older residing in Korea is the total population of our study.
+We'll learn about the concept of the probability next week, but this time we'll go over the concept of terminology.
 
 
-The sample is a subset of the population, and if we actually surveyed 500 elderly people in the study we designed, these 500 are the sample.
+---
 
-The act of collecting or extracting sample is called sampling. How do we collect samples in order for the sample we want to study to represent the population?
+# Population and Sample
 
-Suppose this circle represents the whole population of people older than 65 years. 
+## Two important terminologies in statistical inference
+
+> - **Population**: the totality of individual observations for the inference
+
+> - **Sample**: a subset of the population or the part of population that we actually examine to gather information $\rightarrow$ expressed as **DATA** 
+
+### EXAMPLE: The prevalence of dementia among the elderly in South Korea
+
+> - **Data**: Prevalence of dementia for 500 samples
+
+> - **Sample**: 500 of ramdomly selected persons more than 65 years in Gwangju
+
+> - **Study population**: All the elderly more than 65 years in Gwanju
+
+> - **Target population**: All the elderly more than 65 years in South Korea
+
+???
 
 
-Let's say that this circle represents the population 65 years or older in South Korea. 
-If we surveyed only the people in the circle below the center as subjects, would the sample we get represent the population?
 
-Probably not. A sample that can be a relatively accurate representation of the population should be throughout the circle.
+Population can be divided into target population and study population in terms of epidemiology.
 
-That is, only samples obtained randomly and evenly, regardless of the top and bottom of the circle, will be fully representative of the population. 
+The term "target population" is mostly accepted as a synonym of "population". 
 
-This sampling method is called random sampling. 
+The term "Target population" is sometimes used to emphasize that the samples we obtain cannot be representative of the entire population.
+
+Study population is the subset of the population (or the target population) with the condition 
+or characteristics of interest defined by the eligibility criteria. 
+
+
+For example, if the purpose of our study is to investigate the prevalence of dementia among the elderly in South Korea, 
+the whole population of 65 years or older residing in South Korea is our target population of our study.
+
+To sample representing the whole population of the elderly in South Korea, it is ideal if we could 
+obtain samples that reflects the exact population structure of South Korea. However, 
+budget is always not enough and this makes you survey to only the eldely living in Gwangju. Then, 
+your realistic population for the study shrinks to the elderly who live in Gwangju. That is the study population. 
+
+
+The sample is a subset of the population, and if we actually surveyed 500 elderly people in the study we designed, 
+these 500 persons becomes yuout sample for the study. The act of collecting or extracting sample is called sampling. 
+After sampling, you measure something like age, education level, several questionnaires and the prevalence of the dementia 
+from these samples. These things become your dataset. In most case, sampling and collecting data are done simultaneously. 
+
+
+---
+
+# Population and Sample
+
+## Schematic diagram for population and samples
+<br>
+
+.center[<img src="assets/imgs/pop-sample-02.png" width="80%"/>]
+
+
+???
+
+This figure might provide you better understanding.
+
+Let the largest rectangle represent the total population of the eldely in South Korea. 
+
+The circle on the largest rectangle represents the population more than 65 years in Gwangju.
+
+It looks like a sample set from the population and it is definitely true but we cannot obtain 
+all these samples due to the limit of budget and time. 
+
+We are able to obtain the real sample set from this study population. 
+This is a sample you can actually examine.
+
+
+In most lectures for STAT 101, the observation are perfectly randomly sampled from the population 
+directly. Hoever, it is a very rare case in the real world. So the entire process from the data 
+to the final population should be look through carefully. 
+
+When we go over from the data to the sample, our main interest is whether the data we obtained exactly 
+reflect our study purpose. That is, we need to consider the issue for the measurement. 
+When collecting data, we expect that obtained data has a low variablity as much as possible, and is able to be reproducible. 
+That means we hope to obtain reliable data. 
+
+Besides, we also hope to obtain the vaild dataset: that is, we want the data to reflect 
+what we really want to measure without any bias.
+
 
 Ideally, random sampling is the simplest and most effective sampling method, 
 but in reality it is very difficult to obtain random samples. It is because of time and money.
 
-In fact, the highlight of statistics is sampling. We won't be covering anything related to sampling. 
-
-However, if I mention the word sampling in this lecture, understand that it is random sampling.
 
 
 
@@ -542,7 +603,7 @@ The probability of an outcome is the proportion of times the outcome would occur
 .center[<img src="assets/imgs/distribution-example.svg" width="55%"/>]
 
 
-## A probability distribution have a role to Assign a probability to the observed outcome 
+## A probability distribution have a role to assign a probability to the observed outcome 
 
 
 ???
@@ -603,7 +664,7 @@ $$
 ### How good is our estimate? $\rightarrow$ less error (variation) and how closer to the true parameter
 
 
-??? 
+???
 
 The first step in estimating a parameter is to calculate statistics from the sample for the parameter of interest. 
 When many researchers look at sample data, they tend to think that it is the only sample in the world. 
