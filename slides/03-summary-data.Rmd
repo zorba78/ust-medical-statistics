@@ -7,8 +7,8 @@ date: "<br> 2021/09/09 "
 output:
   xaringan::moon_reader:
     css: [default, metropolis, metropolis-fonts, ../assets/css/footer.css, ../assets/css/metropolis-ak.css]
-    # lib_dir: "../docs/libs"
-    lib_dir: "libs"
+    lib_dir: "../docs/libs"
+    # lib_dir: "libs"
     nature:
       highlightStyle: github
       titleSlideClass: [middle, left]
@@ -63,6 +63,81 @@ class: inverse, center, middle
 # How to Explore (Describe) Data by Number? `r emo::ji("zoom")` `r icons::fontawesome("sort-numeric-down", style = "solid")`
 
 ---
+
+# Features of Data 
+
+## How Data Looks Like ...
+
+> Identified by Graphs and Several Numbers (a.k.a. **STATISTICS**)
+
+## **REMEMBER**
+
+### **Center**: General tendency of data
+
+### **Unusual features**: Very far from the rest of data
+
+### **Spread**: The variability of data
+
+### **Shape**: Identified by Visualization (e.g. Histogram)
+
+
+> Acronym: **CUSS**
+
+
+???
+
+**Center**
+
+One of the most basic features of a data set is its center. Loosely speaking, 
+the center of a dataset is associated with a number that represents a middle or 
+general tendency of the data. Of course, there are usually several values that 
+would serve as a center. 
+
+
+**Unusual features**
+
+Extreme observations fall far from the rest of the data. 
+Such observations are troublesome to many statistical procedures; 
+they cause exaggerated estimates and instability. 
+
+It is important to identify extreme observations and examine the source of the data more closely. 
+There are many possible reasons underlying an extreme observation: 
+
+• Maybe the value is a typographical error. Especially with large data sets becoming more prevalent, 
+many of which being recorded by hand, mistakes are a common problem. After closer scrutiny, 
+these can often be fixed. 
+
+• Maybe the observation was not meant for the study, 
+because it does not belong to the population of interest. 
+For example, in medical research some subjects may have relevant complications 
+in their genealogical history that would rule out their participation in the experiment. 
+
+Or when a manufacturing company investigates the properties of one of its devices, 
+perhaps a particular product is malfunctioning and is not representative of the majority of the items. 
+
+• Maybe it indicates a deeper trend or phenomenon. Many of the most influential scientific 
+discoveries were made when the investigator noticed an unexpected result, a value that was not 
+predicted by the classical theory. 
+Albert Einstein, Louis Pasteur, and others built their careers on exactly this circumstance.
+
+
+**Spread**
+
+The spread of a data set is associated with its variability; 
+datasets with a large spread tend to cover a large interval of values, 
+while data sets with small spread tend to cluster tightly around a central value.
+
+
+**Shape**
+
+When we speak of the shape of a data set, we are usually referring to the shape 
+exhibited by an associated graphical display, such as a histogram. 
+
+The shape can tell us a lot about any underlying structure to the data, and can help us decide 
+which statistical procedure we should use to analyze them.
+
+---
+
 # Measures of Location `r icons::fontawesome("location-arrow", style = "solid")`
 
 ## Where is the center? <img src="assets/icons/goal.svg" width="5%"/>
@@ -98,7 +173,7 @@ The most basic question to ask of any dataset is ‘What is the typical value?�
 
 There are several ways to answer that question and they should be familiar to most students.
 
-**Sample mean** is the first, and probably the most important, example of statistic. 
+**Sample mean** is the first, and probably the most important measure of central tendency of data. 
 
 The importance of the sample mean $\bar{X}$ comes from its use in drawing conclusions about 
 the population mean $\mu = E(X)$. Some of the most frequently used inferential procedures are based on 
@@ -108,7 +183,8 @@ Since $\bar{X}$ is a random variable, we often are interested in its expectation
 and probability distribution (a.k.a. sampling distribution).
 
 In physics, the expectation holds the same meaning as the center of gravity. 
-The distribution can be represented by a series of weights at each outcome, and the mean represents the balancing point.
+The distribution can be represented by a series of weights at each outcome, 
+and the mean represents the balancing point.
 
 
 
@@ -163,7 +239,8 @@ barx <- mean(cars$speed); barx
 ???
 
 
-This can easily be calculated in R by using the function mean(). We first extract the column we are interested in using the notation: DataSet$ColumnName 
+This can easily be calculated in R by using the function mean(). We first extract the column 
+we are interested in using the notation: DataSet$ColumnName 
 where the signifies grabbing the column.
 
 
@@ -192,10 +269,13 @@ where the signifies grabbing the column.
 ???
 
 
-If the data were to be ordered, the median would be the middle most observation (or, in the case that n is even, the mean of the two middle most values).
+The sample median is another popular measure of center and is denoted $\tilde{x}$. 
 
-In our simple case of five observations,  we first sort the data into  and then the middle observation is clearly 4. 
+To calculate its value, first sort the data into an increasing sequence of numbers. 
 
+If the data set has an odd number of observations then $\tilde{x}$ is the value of the middle 
+observation, which lies in position (n + 1)/2; 
+otherwise, there are two middle observations and $\tilde{x}$ is the average of those middle values.
 
 
 
@@ -240,7 +320,7 @@ median(cars$dist)
 
 
 --
-## WHY?? $\rightarrow$ describe a plausible explanation for the homework next week!!
+#### WHY?? $\rightarrow$ homework1: describe a plausible explanation and examples for the robustness of median
 
 
 ???
@@ -251,6 +331,72 @@ Median is often known as a rubust estimator of the central tendency. Can you guy
 
 I will leave the explanation for this part as your homework.
 
+
+---
+
+# In-Depth `r icons::fontawesome("arrow-circle-down", style = "solid")`
+
+### Order Statistics
+
+> Given a dataset $x_1, x_2, \ldots, x_n$, sort the values to obtain an increasing sequence
+
+
+$$x_{(1)} \leq x_{(2)} \leq x_{(3)} \leq \dots \leq x_{(n)}$$
+
+- $k^{\mathrm{th}}$ entry in the list $= x_{(k)} \rightarrow$ $k^{\mathrm{th}}$ **order statistics**
+- Approximately, $100(k/n)$ % of the obs. fall below $x_{(k)}$
+
+
+### Sample Quantile
+
+> Cut points dividing the given dataset arranged in acending order into equal interval (size)
+
+- $q$ quantile has $q-1$ cut points
+- 2-quantile: median
+- 4-quantile: quartile $\rightarrow$ 25% ( $Q_{1}$ ), 50% (median), 75% ( $Q_{3}$ )
+
+--
+
+> **Homework 2: Research the Q-Q plot (definition, usage, how to make it, and how to interprete). 
+
+???
+
+The order statistics give an indication of the shape of the data distribution, 
+in the sense that a person can look at the order statistics and have an idea about 
+where the data are concentrated, and where they are sparse.
+
+The sample quantiles are related to the order statistics. 
+Unfortunately, there is not a universally accepted definition of them.
+
+Indeed, R is equipped to calculate quantiles using nine distinct definitions! 
+We will describe the default method (type = 7), but the interested reader can see the details 
+for the other methods with `help(quantile)`
+
+Most commercial statistical softwares such as SAS and SPSS, use the following formula
+
+$$Q(p) = (1-\gamma)x_{(k)} + \gamma x_{(k+1)}$$
+where $(k - 0.5)/n \leq p < (k - 0.5 + 1)/n$ and $\gamma = np + m - \lfloor np + m \rfloor$
+
+$n$ : sample size
+
+$\lfloor \cdot \rfloor$: the greatest integer less than or equal to $\cdot$
+
+```
+my_quantile <- function(x, probs) {
+  idx <- NULL
+  o <- order(x); n <- length(x)
+  xord <- x[o]
+  k <- 1:n
+  gamma <- n * probs + 0.5 - floor(n * probs + 0.5)
+  pk <- (k - 0.5)/n
+  for (pj in probs) {
+    idx <- c(idx, which.max(pk[pk <= pj]))
+  }
+  res <- (1 - gamma) * xord[idx] + gamma * xord[idx + 1]
+  names(res) <- sprintf("%.1f %%", round(probs * 100))
+  return(res)
+}
+```
 
 
 ---
@@ -710,13 +856,13 @@ barplot(count, legend = TRUE, beside = TRUE,
 
 ???
 
-
+```
 barplot(count, legend = TRUE, beside = TRUE, 
         xlab = "Tension", 
         ylab = "Number of breaks", 
         ylim = c(0, 450), 
         cex.lab = 1.5) # 분리 형태
-        
+```        
         
 
 ---
@@ -863,6 +1009,122 @@ knitr::include_graphics("assets/imgs/scatterplot-example.svg")
 ]
 
 
+---
+
+# Measure of Relationship
+
+### When you obtain more than two variables 
+
+> - Two different variables are independent
+> - Two different variables have a relationship
+
+A scatterplot works well, but how can you **QUANTIFY** the (linear) relationship? 
+
+.pull-left[
+
+```{r, out.width="90%", fig.align='center'}
+knitr::include_graphics("assets/imgs/corr-ex-01.svg")
+
+```
+
+]
+
+.pull-right[
+For each pair of two variables $(x_i, y_i)$, 
+
+- deviation from $\bar{x}$ (`speed`): $x_i - \bar{x}$ 
+- deviation from $\bar{y}$ (`dist`): $y_i - \bar{y}$ 
+
+> - Quadrant 1 & 3: $(x_i - \bar{x})(y_i - \bar{y}) > 0$
+> - Quadrant 2 & 4: $(x_i - \bar{x})(y_i - \bar{y}) < 0$
+
+]
+
+---
+# Measure of Relationship 
+
+### Continued
+
+$$\begin{align}
+\sum (x_i - \bar{x})(y_i - \bar{y}) > 0 &\rightarrow \mathrm{positive~relationship} \\
+\sum (x_i - \bar{x})(y_i - \bar{y}) = 0 &\rightarrow \mathrm{no~relationship} \\
+\sum (x_i - \bar{x})(y_i - \bar{y}) < 0 &\rightarrow \mathrm{negative~relationship}
+\end{align}$$
+
+### Variability due to Two Variables: Covariance
+
+
+$$Cov(X, Y) = \sigma_{XY} = \frac{1}{n}\sum_{i=1}^{n}(X_i - \mu_X)(Y_i - \mu_{Y})$$
+
+
+### For sample covariance, 
+
+
+$$\hat{\sigma}_{XY} = \frac{1}{n - 1}\sum_{i=1}^{n}(x_i - \bar{x})(y_i - \bar{y})$$
+Then, we finished to prepare to get **Pearson product-moment correlation coefficient**
+
+
+---
+# Measure of Relationship 
+
+### Pearson Correlation Coefficient
+
+$$\rho_{XY} = \frac{Cov(X, Y)}{\sqrt{Var(X)Var(Y)}}=\frac{\sum_{i=1}^{n}(X_i - \mu_X)(Y_i - \mu_Y)}{\sqrt{\sum_{i=1}^n (X_i - \mu_X)^2}\sqrt{\sum_{i=1}^{n}(Y_i - \mu_Y)^2}}$$
+### Sample Pearson Correlation Coefficient 
+
+Given the pair of data $(x_1, y_1), \ldots, (x_n, y_n)$, 
+
+$$\hat{\rho}_{XY} = \frac{\sum_{i=1}^{n}(x_i - \bar{x})(y_i - \bar{y})}{\sqrt{\sum_{i=1}^n (x_i - \bar{x})^2}\sqrt{\sum_{i=1}^{n}(y_i - \bar{y})^2}}$$
+
+In simple, Pearson correlation coefficient is a covariance of two variables **scaled** by the 
+standard deviations. 
+
+--
+
+> **Homework 3: Simplify the formula of correlation coefficients**
+
+---
+# Measure of Relationship 
+
+### Properties of Correlation Coefficients
+
+- Quantify the magnitude of the **linear relationship** between two variables
+- $-1\leq \rho \leq 1$
+- Near zero indicates little or **no linear relationship** between the two variables
+- Close to –1 indicates a strong negative linear relationship
+- Near +1 indicates a strong positive linear relationship
+- **DO NOT USE IT WITHOUT OR BEFORE DRAWING SCATTERPLOT**
+
+
+### See Next Slide
+
+
+???
+
+A correlation coefficient close to 0 does not mean that 
+there is no relationship between the two variables, 
+it means that a linear relationship is not established. 
+
+---
+# Measure of Relationship 
+
+### Properties of Correlation Coefficients
+
+
+```{r, out.width="75%", fig.align='center', fig.cap="Several scatterplots and their correlation coefficients (https://goo.gl/tFi2zY)"}
+knitr::include_graphics("assets/imgs/corr-scatterplot.svg")
+
+```
+
+
+???
+
+A correlation coefficient does not tell the slope made by two variables.
+
+
+
+
+
 
 
 
@@ -893,4 +1155,43 @@ knitr::include_graphics("assets/imgs/scatterplot-example.svg")
 <!--        cex = 1.5) -->
 
 <!-- ``` -->
+
+
+<!-- ```{r} -->
+
+<!-- svg(here::here("slides/assets/imgs/corr-ex-01.svg")) -->
+<!-- plot(dist ~ speed, data = cars, -->
+<!--      type = "n", -->
+<!--      bty = "n", -->
+<!--      main = "Car dataset") -->
+
+<!-- points(cars$speed, cars$dist, -->
+<!--        pch = 16, -->
+<!--        col = "darkgreen", -->
+<!--        cex = 1.5) -->
+
+<!-- abline(h = mean(cars$dist), -->
+<!--        lty = 1, lwd = 3, col = "darkgray") -->
+
+<!-- abline(v = mean(cars$speed), -->
+<!--        lty = 1, lwd = 3, col = "darkgray") -->
+
+<!-- text(mean(cars$speed), 120, -->
+<!--      # text 수식 표현 참고 -->
+<!--      bquote(paste(bar(x) == .(sprintf("%.1f", mean(cars$speed))))), -->
+<!--      adj = 0, -->
+<!--      pos = 4) -->
+<!-- text(25, mean(cars$dist), -->
+<!--      # text 수식 표현 참고 -->
+<!--      bquote(paste(bar(y) == .(sprintf("%.1f", mean(cars$dist))))), -->
+<!--      pos = 3) -->
+<!-- text(20, 100, "1", cex = 3, col = "blue") -->
+<!-- text(10, 100, "2", cex = 3, col = "blue") -->
+<!-- text(10, 20, "3", cex = 3, col = "blue") -->
+<!-- text(20, 20, "4", cex = 3, col = "blue") -->
+<!-- dev.off() -->
+
+
+<!-- ``` -->
+
 
