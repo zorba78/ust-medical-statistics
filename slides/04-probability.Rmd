@@ -1,0 +1,519 @@
+---
+title: "Medical Statistics"
+subtitle: "Probability and Probability Distribution"
+author: "<strong>Boncho Ku, Ph.D. in Statistics</strong>"
+institute: "<br/> Korea Institute of Oriental Medicine"
+date: "<br> 2021/09/09 "
+output:
+  xaringan::moon_reader:
+    css: [default, metropolis, metropolis-fonts, ../assets/css/footer.css, ../assets/css/metropolis-ak.css]
+    lib_dir: "../docs/libs"
+    # lib_dir: "libs"
+    nature:
+      highlightStyle: github
+      titleSlideClass: [middle, left]
+      highlightLines: true
+      countIncrementalSlides: false
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup-knitr, include=FALSE}
+options(htmltools.dir.version = FALSE)
+# knitr::opts_knit$set(root.dir='..')
+knitr::opts_chunk$set(eval = TRUE, 
+                      echo = FALSE, 
+                      cache = FALSE,
+                      include = TRUE,
+                      collapse = FALSE,
+                      message=FALSE,
+                      warning=FALSE, 
+                      dependson = NULL,
+                      engine = "R", # Chunks will always have R code, unless noted
+                      error = TRUE,
+                      fig.path="Figures/",  # Set the figure options
+                      fig.align = "center", 
+                      #fig.width = 7,
+                      #fig.height = 7, 
+                      fig.keep='all', fig.retina=3)
+
+```
+
+```{r setup-library}
+library(MASS)
+library(reshape2)
+library(plyr)
+library(tidyverse)
+library(lubridate)
+library(readxl)
+library(tidyselect)
+library(tidystats)
+library(glue)
+library(here)
+library(gt)
+library(gtsummary)
+library(kableExtra)
+library(icons)
+
+```
+
+
+class: inverse, center, middle
+
+# Probability `r icon_style(fontawesome("dice", style = "solid"), fill = "white")`
+
+---
+
+
+# Random vs. Deterministic
+
+### Deterministic Experiment 
+
+> The outcome can be predicted with certainty beforehand
+
+#### **Example**
+
+> - Chemical/physical experiment (e.g. $\mathrm{2H + O = H_2O}$, $S = 0.5gt^2$)
+> - Adding two numbers (e.g. 8 + 3 = 11)
+
+
+### Random Experiment 
+
+> The outcome is determined by chance and cannot be predicted with certainty beforehand
+
+
+#### **Example**
+
+> - Tossing/rolling a coin/dice $\rightarrow$ $\{H, T\}$ or $\{1,2,3,4,5,6\}$
+> - throwing a dart on a board
+> - A LOTTO/Hitting the jackpot
+
+
+**Random phenomena**: outcomes of the random experiment
+
+
+???
+
+Experiments can be categorized into two types: deterministic experiment and random experiment. 
+
+A **deterministic experiment** is one whose outcome may be predicted with certainty beforehand. 
+
+Experiments in the field of chemistry and physics are typical examples of the deterministic experiments. 
+
+For example, when 2 hydrogens are combined with an oxygen, it must result water H2O. 
+
+Or when adding two numbers such as 8 and 3, it becomes 11 not 10 or 12. 
+
+Meanwhile, the random experiment is one whose outcome is determined by chance. 
+
+That is, we assume that 
+
+
+
+
+
+---
+
+
+# Sample Space 
+
+> #### **All possible outcomes of a random experiment** $\rightarrow$ $S$
+
+#### Example 
+
+> - Tossing a coin: $S = {H, T}$
+> - Rolling a dice:  $S$={`r fontawesome("dice-one", style = "solid")`, `r fontawesome("dice-two", style = "solid")`, 
+`r fontawesome("dice-three", style = "solid")`, `r fontawesome("dice-four", style = "solid")`, 
+`r fontawesome("dice-five", style = "solid")`, `r fontawesome("dice-six", style = "solid")`} = {
+1, 2, 3, 4, 5, 6}
+
+
+### $S$ can be _finite_ or _infinite_
+
+> - #### **Finite sample space**: $S = \{e_1, e_2, \ldots, e_N\}$ 
+
+
+> - #### **Infinite sample space** <br><br>
+> 
+>   - Natural numbers: $\{1, 2, \ldots\}$ $\rightarrow$ **countably infinite sample space** $\rightarrow$ 
+**_discrete sample space_**
+>   - Many numbers within an interval (e.g. $0\leq x \leq 1$) $\rightarrow$ 
+**non-countably infinite sample space** $\rightarrow$ **_non-discrete sample space_**
+
+
+**In terms of statistics, sampling is a observation of an outcome from the random experiment and its result is called as a sample**
+
+
+???
+
+
+---
+
+# `r fontawesome::fa("r-project", fill = "white")` Practice: Sample Space
+
+#### Making a function to create a sample space for simple tools of random experiments (coin and dices)
+
+.pull-left[
+```{r, echo=TRUE}
+sample_space <- function(
+  outcome, times, prob = FALSE
+) {
+  n <- length(outcome)
+  temp <- list()
+  for (i in 1:times) {
+    temp[[i]] <- outcome
+  }
+  out <- expand.grid(
+    temp, 
+    KEEP.OUT.ATTRS = FALSE
+  )
+  names(out) <- paste(
+    "X", 1:times, sep = ""
+  )
+  if (prob) 
+    out$probs <- rep(1, n^times)/(n^times)
+  return(out)
+}
+
+```
+]
+
+
+.pull-right[
+#### rolling a dice once
+
+```{r, echo=TRUE, comment=NA}
+sample_space(1:6, times = 1) |> unlist()
+
+```
+
+
+#### Toss a coin 3 times (all sample space)
+
+```{r, echo=TRUE, eval=FALSE}
+sample_space(c("H", "T"), 3)
+```
+
+$\rightarrow$ **CHECK RESULTS**
+
+
+Please check Kerns, G. Jay. Introduction to probability and statistics using r. Lulu. com, 2010.
+
+]
+
+
+---
+
+# Events
+
+### **A collection of outcomes $\rightarrow$ a subset of the sample space**
+
+> If outcomes of the random experiment belong to the event $A$ $\rightarrow$ the event $A$ has **_occurred_**. 
+
+#### A single event of $A$ $\rightarrow$ a **_simple_** or **_elementary event_** (See pp. 4)
+
+#### Special Events (Basic Set Operation)
+
+> - $S$: Sample space itself $\rightarrow$ _sure_ or _certain event_ (any element of $S$ must occur) 
+> - $\varnothing$: **Empty set**, _impossible, empty, or null event_
+> - A event occurs **either $A$ or $B$ or both** $\rightarrow$ $A\cup B$ (**_union_** of $A$ and $B$)
+> - **both $A$ and $B$** $\rightarrow$ $A\cap B$ (**_intersection_** of $A$ and $B$)
+> - The event "**not $A$**" $\rightarrow$ $A^c$ or $A'$ (**_complement_** of $A$)
+> - The event " $A$ **but not $B$**" $\rightarrow$ $A - B$ or $A \cap B^c$ (**_set difference_**)
+> - a bunch of events $A_1, A_2, A_3, \ldots$ are _mutually exclusive_ or _disjoint_ if $A_i\cap A_j = \varnothing$, 
+where $A_i \neq A_j$
+
+
+**To review the set algebra, see Appendix E.1 in `IPSUR.pdf`**
+
+---
+
+# `r fontawesome::fa("r-project", fill = "white")` Practice: Events
+
+.pull-left[
+#### all three coins show identical faces
+
+```{r, echo=TRUE, comment=NA}
+S <- sample_space(c("H", "T"), times = 3)
+subset(S, X1 == X2 & X1 == X3 & X2 == X3)
+
+```
+
+#### show 2 heads when tossing a coin 3 times
+
+```{r, echo=TRUE, comment=NA}
+count <- apply(S, 1, function(x) as.numeric(x == "H"))
+numH <- apply(count, 2, sum)
+S[which(numH == 2), ]
+
+```
+
+]
+
+.pull-right[
+#### more than 2 times of `r fontawesome("dice-three", style = "solid")` rolling 3 dices
+
+```{r, echo=TRUE, results='hide'}
+S <- sample_space(1:6, 3)
+count <- apply(S, 1, function(x) as.numeric(x == 3))
+num3 <- apply(count, 2, sum)
+S[which(num3 >= 2), ]
+
+```
+
+#### sum of all three dices are more than 16
+
+```{r, echo=TRUE, comment=NA}
+subset(S, X1 + X2 + X3 > 16)
+```
+
+]
+
+---
+
+# Concept of Probability
+
+
+#### **A measure of the chance or uncertainty that assigns a number between 0 to 1**
+
+> - Sure or certain that a event will occurs $\rightarrow$ probability is 100% or 1
+> - Sure or certain that a event will not occurs $\rightarrow$ probability is 0 
+> - Probability is 1/4 $\rightarrow$ a 25% chance will occur and a 75% chance will not occur
+> - Odds against occurance are 75% to 25%, 3 to 1, odds = 1/3
+
+
+#### **Theoretical Probability**
+
+> - Define a mathemetical function on the sample space $\rightarrow$ probability measure
+> - $h$ different ways out of a total of $n$ possible ways $\rightarrow$ 
+the probability is $h/n$ (all of outcomes are equally likely)
+
+
+#### **Emperical Probability**
+
+> With $n$ repetition, $h$ times of occurance were observed $\rightarrow$ the probability is $h/n$ 
+(when $n \rightarrow \infty$)
+
+
+???
+
+For example, tossing a coin repeatedly, in exactly the same way each time. 
+
+Keep a record of total trials and the number of heads observed 
+
+$$P(\mathrm{Heads}) \approx \frac{\mathrm{total~\#~of~flips}}{\mathrm{\#~of~observed~head}}$$
+The mathematical background of this approach is the Law of Large Numbers. 
+
+Let $S_n$ count the number of times that $A$ occurred in the $n$ experiments 
+
+$$\frac{S_n}{n} \rightarrow P(A),~ n \rightarrow \infty$$
+
+As the reasoning goes, to learn about the probability of an event A we need only repeat the
+
+random experiment to get a reasonable estimate of the probability’s value, and if we are not
+
+satisfied with our estimate then we may simply repeat the experiment more times all the while
+
+confident that with more and more experiments our estimate will stabilize to the true value.
+
+The frequentist approach is good because it is relatively light on assumptions and does not
+
+worry about symmetry or claims of objectivity like the measure-theoretic approach does. It is
+
+perfect for the spinning coin experiment. One drawback to the method is that one can never
+
+know the exact value of a probability, only a long-run approximation. It also does not work
+
+well with experiments that can not be repeated indefinitely, say, the probability that it will rain
+
+today, the chances that you get will get an A in your Statistics class, or the probability that the
+
+world is destroyed by nuclear war.
+
+---
+
+# Axioms of Probability
+
+> Suppose $S$ is a sample space and each event $A$ of the $S$, $P(A) = p$ called the probability of $A$ 
+and satisfies the following axioms: 
+
+
+- **Axiom 1**: For any event $A \subset S$, $P(A) \geq 0$
+
+- **Axiom 2**: For the sure or certain event $S$, $P(S) = 1$
+
+- **Axiom 3**: If the events $A_1, A_2, A_3, \ldots$ are disjoint (mutually exclusive) events, 
+
+
+$$P(A_1 \cup A_2 \cup \ldots) = P\left(\bigcup_{i=1}^{\infty} A_i \right) = P(A_1) + P(A_2) + \cdots = \sum_{i=1}^{\infty}P(A_i)$$
+
+
+???
+
+The intuition behind the axioms: first, the probability of an event should never be negative.
+
+And since the sample space contains all possible outcomes, its probability should be one, 
+
+or 100%. The final axiom may look intimidating, but it simply means that for a sequence of
+
+disjoint events (in other words, sets that do not overlap), their total probability (measure) should
+
+equal the sum of its parts. For example, the chance of rolling a 1 or a 2 on a die is the chance of
+
+rolling a 1 plus the chance of rolling a 2.
+
+
+---
+
+# Properties of Probability
+
+#### **Some important theroems related to probability**
+
+- **Theorem 1**: If $A \subset B$ then $P(A) \leq P(B)$
+
+- **Theorem 2**: For avery event $A$, $0 \leq P(A) \leq 1$
+
+- **Theorem 3**: For $\varnothing$, $P(\varnothing) = 0$
+
+- **Theorem 4**: $P(A^c) = 1 - P(A)$
+
+- **Theorem 5**: **_The general addition rule_**
+
+$$\begin{aligned}
+P(A\cup B) &= P(A) + P(B) - P(A\cap B)~~~\mathrm{more~generally,}\\
+P\left(\bigcup_{i=1}^{n}A_i\right) &= \sum_{i=1}^{n}P(A_i) - \sum_{i=1}^{n-1}\sum_{j=i+1}^{n}P(A_i\cap A_j) +\cdots + (-1)^{n-1}P\left(\bigcap_{i=1}^{n}A_i\right)\end{aligned}$$
+
+- **Theorem 6**: Let $B_1, B_2, \ldots, B_n$ be disjoint and partitioned in $A$
+
+$$P(A) = P(A\cap B_1) + P(A\cap B_2) + \cdots + P(A\cap B_n)$$
+
+$\rightarrow$ **The Theorem of Total Probability**
+
+???
+
+Theorem 1 _Proof_. If $A\subset B$, it suffices  $B = A \cap (B\cup A^c)$ and $A\cap (B\cap A^c)=\varnothing$, 
+therefore, $P(B) = P(A \cap (B\cup A^c)) = P(A) + P(B\cup A^c)\geq P(A)$
+
+Theorem 3 _Proof_. $\varnothing$ = $S^c$
+
+
+---
+
+# Assignment of Probabilities
+
+#### If $S$ consists of outcomes $a_1, a_2, \ldots, a_n$ that are **equally likely** in the sense ( $a_{i}\cap a_{j} = \varnothing$ ) that each $a_i$ has equal chance of occurance, by Axiom 2 and 3 
+
+$$P(S) = P(\{a_1, a_2, \ldots, a_n\})=P(a_1\cup a_2 \cup \ldots\cup a_n) = \sum_{i=1}^{n}P(a_i) = 1$$
+
+> #### Since $P(a_i)$ is identical for all $i$, $P(a_i) = 1/N$
+
+
+#### For an event $A \subset S$ with $k$ elements: e.g. $A=\{a_{i1}, a_{i2}, \ldots, a_{ik}\}$
+
+$$\begin{aligned}
+P(A) &= P(a_{i1}) + P(a_{i2}) + \cdots + P(a_{ik}) \\
+     &= \frac{1}{N} + \frac{1}{N} + \cdots + \frac{1}{N} \\
+     &= \frac{k}{N} = \frac{\#(A)}{\#(S)}
+\end{aligned}$$
+
+### $\rightarrow$ Equally Likely Model (ELM) 
+
+> - _equivalent to the theoretical definition of the probability_
+> - convenient and popular way to analyze the random experiments
+
+
+---
+
+# Counting Method
+
+#### Calculate the probability of occurance of the event $A$ $\rightarrow$ just merely **COUNTING** the number of possible outcomes of $A$ and $S$
+
+### Multiplication Rule 
+
+#### Suppose the experiment consisting of two successive steps
+
+- $n_1$: The number of distinct ways for the first step
+- $n_2$: The number of distinct ways for the second step
+
+> - **All possible way made by two steps** $\rightarrow$ $n_1 n_2$ ways
+
+#### More generally 
+
+> An experiment composed of $k$ successive steps with $n_1, n_2, \ldots, n_k$ ways, respectively, 
+then all possible number of outcomes from an experiment is $n_1 n_2 \cdots n_k$
+
+
+#### **EXAMPLE** 
+
+> - Pizza topping: {pepperoni, sausage, anchovies, olives, green peppers}
+> - Total number of available topping: $2\cdot 2\cdot 2\cdot 2\cdot 2 = 2^5 = 32$
+
+
+---
+
+# Counting Method
+
+### Permutations 
+
+> Counting the number of different **arrangements**
+
+$$_nP_r = n(n-1)\cdots(n-r+1)$$
+
+> **_the number of permutations of $n$ objects taken $r$ at a time_**
+
+#### A bag with $n$ distinguishable balls and draw $r$ balls at random. How many possible sequences might be observed? 
+
+- **with replacement**: $n^r$
+- **without replacement**: $n(n-1)(n-2)\cdots(n-r + 1)$
+
+#### **EXAMPLE**
+
+Required to seat 5 men and 4 women in a row so that the women occupy the even places
+
+> - The men: $_5P_5 = 5! = 120$
+> - the women: $_4P_4 = 4! = 24$
+> - $\therefore$ number of arrangements = $120 \times 24 = 2880$
+
+
+???
+
+The number of permutations of $n$ elements is $n!$
+
+
+---
+
+# Counting Method
+
+### Combinations
+
+> - A counting method for selected objects **without regard to order and replacement**
+> - _combinations of $n$ things taken $r$ at a time_ $\rightarrow$ $_nC_r$
+
+$$_nC_r = {n \choose r} = \frac{n!}{r!(n-r)!}$$
+It can be written 
+
+
+$$_nC_r = {n \choose r} = \frac{n(n-1)\cdots(n-r+1)}{r!} = \frac{_nP_r}{r!}$$
+
+> - Permutations $\rightarrow$ interesting in order of arrangements (e.g. $\{abc\} \neq \{cba\}$)
+> - In combinations, $\{abc\} = \{cba\}$
+
+#### **EXAMPLE**
+
+> From 7 consonant and 5 vowels, how many words can be formed consisting of 4 different consonants 
+and 3 vowels? 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
