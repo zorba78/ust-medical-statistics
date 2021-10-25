@@ -1,0 +1,17 @@
+/* Two-column layout */
+.left-column-c {
+  width: 50%;
+  height: 92%;
+  float: left;
+}
+.left-column-c h2, .left-column-c h3 {
+  color: #1381B099;
+}
+.left-column-c h2:last-of-type, .left-column-c h3:last-child {
+  color: #1381B0;
+}
+.right-column-c {
+  width: 40%;
+  float: right;
+  padding-top: 1em;
+}
