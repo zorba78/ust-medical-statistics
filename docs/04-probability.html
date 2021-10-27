@@ -8,8 +8,15 @@
     <link href="libs/remark-css/default.css" rel="stylesheet" />
     <link href="libs/remark-css/metropolis.css" rel="stylesheet" />
     <link href="libs/remark-css/metropolis-fonts.css" rel="stylesheet" />
-    <link rel="stylesheet" href="../assets/css/footer.css" type="text/css" />
-    <link rel="stylesheet" href="../assets/css/metropolis-ak.css" type="text/css" />
+    <link href="libs/tile-view/tile-view.css" rel="stylesheet" />
+    <script src="libs/tile-view/tile-view.js"></script>
+    <script src="libs/xaringanExtra-progressBar/progress-bar.js"></script>
+    <script src="libs/fabric/fabric.min.js"></script>
+    <link href="libs/xaringanExtra-scribble/scribble.css" rel="stylesheet" />
+    <script src="libs/xaringanExtra-scribble/scribble.js"></script>
+    <script>document.addEventListener('DOMContentLoaded', function() { window.xeScribble = new Scribble({"pen_color":["#FF0000"],"pen_size":3,"eraser_size":30,"palette":[]}) })</script>
+    <script src="libs/kePrint/kePrint.js"></script>
+    <link href="libs/lightable/lightable.css" rel="stylesheet" />
   </head>
   <body>
     <textarea id="source">
@@ -28,8 +35,31 @@ class: middle, left, title-slide
 
 
 
+<style>.xe__progress-bar__container {
+  bottom:0;
+  opacity: 1;
+  position:absolute;
+  right:0;
+  left: 0;
+}
+.xe__progress-bar {
+  height: 0.25em;
+  background-color: #23373B;
+  width: calc(var(--slide-current) / var(--slide-total) * 100%);
+}
+.remark-visible .xe__progress-bar {
+  animation: xe__progress-bar__wipe 200ms forwards;
+  animation-timing-function: cubic-bezier(.86,0,.07,1);
+}
+@keyframes xe__progress-bar__wipe {
+  0% { width: calc(var(--slide-previous) / var(--slide-total) * 100%); }
+  100% { width: calc(var(--slide-current) / var(--slide-total) * 100%); }
+}</style>
 
-class: inverse, center, middle
+
+
+&lt;!-- class: inverse, center, middle --&gt;
+
 
 # Probability &lt;svg viewBox="0 0 640 512" style="height:1em;position:relative;display:inline-block;top:.1em;fill:white;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M592 192H473.26c12.69 29.59 7.12 65.2-17 89.32L320 417.58V464c0 26.51 21.49 48 48 48h224c26.51 0 48-21.49 48-48V240c0-26.51-21.49-48-48-48zM480 376c-13.25 0-24-10.75-24-24 0-13.26 10.75-24 24-24s24 10.74 24 24c0 13.25-10.75 24-24 24zm-46.37-186.7L258.7 14.37c-19.16-19.16-50.23-19.16-69.39 0L14.37 189.3c-19.16 19.16-19.16 50.23 0 69.39L189.3 433.63c19.16 19.16 50.23 19.16 69.39 0L433.63 258.7c19.16-19.17 19.16-50.24 0-69.4zM96 248c-13.25 0-24-10.75-24-24 0-13.26 10.75-24 24-24s24 10.74 24 24c0 13.25-10.75 24-24 24zm128 128c-13.25 0-24-10.75-24-24 0-13.26 10.75-24 24-24s24 10.74 24 24c0 13.25-10.75 24-24 24zm0-128c-13.25 0-24-10.75-24-24 0-13.26 10.75-24 24-24s24 10.74 24 24c0 13.25-10.75 24-24 24zm0-128c-13.25 0-24-10.75-24-24 0-13.26 10.75-24 24-24s24 10.74 24 24c0 13.25-10.75 24-24 24zm128 128c-13.25 0-24-10.75-24-24 0-13.26 10.75-24 24-24s24 10.74 24 24c0 13.25-10.75 24-24 24z"&gt;&lt;/path&gt;&lt;/svg&gt;
 
@@ -503,8 +533,416 @@ It can be written
 and 3 vowels? 
 
 
+---
+
+# Conditional Probability
+
+#### **Concept** 
+
+- Suppose select two cards from a full deck of 52 standard cards in succession. 
+
+&gt; - Event `\(A\)`: the first card is Ace
+&gt; - Event `\(B\)`: the second card is Ace
+
+- `\(P(A)=4/52\)` ( `\(\therefore\)` Four Aces)
+- (1) If the first card is Ace, then `\(P(B) = 3/51\)` (The sample space is **changed!!**)
+- (2) If the first card is **NOT** Ace, then `\(P(B) = 4/51\)`
+
+`$$(1):~P(B|A) = 3/51, ~~~ (2):~P(B|A^c)=4/51$$`
+
+&gt; _When the sample space is changing, then the probability defined on the sample space is also changing_
 
 
+#### Under the condition that some information (event) was revealed (occurred), then what does the probability of the other event (usually related to the previous information) occur? 
+
+`\(\rightarrow\)` The probability that the main event `\((B)\)` occur given that the previous event `\((A)\)` occur? 
+
+---
+
+# Conditional Probability 
+
+#### **Definition**
+
+&gt; Let `\(A\)` and `\(B\)` two events such dat `\(P(A) &gt; 0\)`. Denote `\(P(B|A)\)` the probability of `\(B\)` given that 
+`\(A\)` has occurred is defined by 
+
+`$$P(B|A) = \frac{P(A\cap B)}{P(A)}, ~~~ P(A) &gt; 0$$`
+
+#### _Example_
+
+UST students in KIOM, I asked them which NETFLIX series is the most favorite: 
+
+- Squid Game vs. Narcos: one of them or both or none
+
+.center[
+&lt;img src="https://flxt.tmsimg.com/assets/p20492218_b_h9_aa.jpg" width="33%"/&gt; vs. 
+&lt;img src="https://www.slashgear.com/wp-content/uploads/2017/07/narcos.jpg" width="33%"/&gt;
+
+]
+
+
+---
+
+# Conditional Probability
+
+.pull-left[
+#### Suppose 14 UST students in KIOM
+
+&gt; - love Squid Game: 7 
+&gt; - love Narcos: 6 
+&gt; - love both: 2 
+&gt; - don't like both: 3
+]
+
+--
+.pull-right[
+####    
+
+&lt;table class=" lightable-paper table" style='font-family: "Arial Narrow", arial, helvetica, sans-serif; margin-left: auto; margin-right: auto; font-size: 14px; margin-left: auto; margin-right: auto;'&gt;
+&lt;caption style="font-size: initial !important;"&gt;Contingency Table&lt;/caption&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; rowname &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Love NC &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Not like NC &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Love S.G &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 5 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Not like S.G &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+]
+&lt;br&gt;
+
+--
+
+.pull-left[
+#### **Venn Diagram**
+&lt;img src="assets/imgs/cond-prob-ven-diagram.png" width=85% /&gt;
+]
+
+
+--
+#### **Probabilities**
+
+- Let `\(A\)` and `\(B\)` be the events that students like Squid Game and Narcos, respectively.
+- `\(P(A) = 7/14\)`, `\(P(B) = 6/14\)`
+- `\(P(A\cap B) = 2/14\)`
+
+--
+
+**NOW LET'S CALCULATE CON'D PROBABILITIES!!**
+
+
+---
+
+# Conditional Probability
+
+&gt; #### Remind the contingency table and venn diagram!!
+
+- The probability that students love S.G among students who love Narcos? 
+
+--
+
+`$$P(A|B) = P(\mathrm{love~S.G~and~NC|loves~NC}) = \frac{P(A\cap B)}{P(B)} = \frac{2/14}{6/14}=\frac{1}{3}$$`
+- The probability that students don't like S.G among students who don't like Narcos? 
+
+--
+
+`$$P(A^c|B^c) = \frac{P(A^c\cap B^c)}{P(B^c)} = \frac{3/14}{7/14} = \frac{3}{7}$$`
+
+- The probability that students don't like NC among students who like S.G? 
+
+--
+
+`$$P(B^c|A) = \frac{P(B^c\cap A)}{P(A)} = \frac{5/14}{7/14} = \frac{5}{7}$$`
+- The probability that students like S.G among students who don't like NC? 
+
+--
+
+`$$P(A|B^c) = \frac{P(A\cap B^c)}{P(B^c)} = \frac{5/14}{8/14} = \frac{5}{8}$$`
+---
+
+# Conditional Probability 
+
+#### **Properties and Rules**
+
+&gt; **Theorem 7.** For any event `\(A\)` with `\(P(A) &gt; 0\)`, 
+&gt; 
+&gt; 1. `\(P(B|A) \geq 0\)`, for all events `\(B \subset S\)`
+&gt; 2. `\(P(S|A) = 1\)` 
+&gt; 3. If `\(B_1, B_2, B_3, \ldots\)` are disjoint events, then 
+
+`$$P\left(\bigcup_{i=1}^{\infty}B_k |A \right) = \sum_{i-1}^{\infty}P(B_k|A)$$`
+
+&gt; **Theorem 8 (multiplication rule).** For any two events `\(A\)` and `\(B\)`, 
+
+`$$P(A\cap B) = P(A)P(B|A)$$`
+
+&gt; More generally, for `\(A_1, A_2, \ldots, A_n\)`, 
+
+`$$P(A_1\cap, \cdots, \cap A_n) = P(A_1)P(A_2|A_1)P(A_3|A_1\cap A_2)\cdots P(A_n|A_1\cap A_2 \cap\cdots\cap A_{n-1})$$`
+
+
+#### **Theorem 8** is very important since it allow us to find probabilites in ramdom experiments with sequential structure
+
+
+---
+
+# Conditional Probability
+
+#### Example 1 
+
+&gt; Back to the question in the slide 15, What is `\(P(\mathrm{both~Aces})\)`? 
+
+`$$P(\mathrm{both~Aces})=P(A\cap B) = P(A)|P(B|A) = \frac{4}{52}\cdot\frac{3}{51}\approx 0.00452$$`
+
+#### Example 2
+
+&gt; Consider an urn with 10 ball insides
+&gt;
+&gt; - 7 balls: red
+&gt; - 3 balls: blue
+&gt; - Select 3 balls successively from the urn and What is the probability of all 3 balls are red?
+
+--
+
+`\(\rightarrow\)` Let define three events: `\(A={1^{\mathrm{st}}~\mathrm{ball~ is~ red}}\)`, 
+`\(B={2^{\mathrm{nd}}~\mathrm{ball~ is~ red}}\)`, `\(A={3^{\mathrm{rd}}~\mathrm{ball~ is~ red}}\)`
+
+--
+
+`$$P(\mathrm{all~3~balls~red})=P(A\cap B\cap C) = P(A)P(B|A)P(C|A\cap B) = \frac{7}{10}\frac{6}{9}\frac{5}{8}$$`
+
+---
+
+# Conditional Probability
+
+
+#### Example 3: Consider two different colors of balls in two bags
+
+.pull-left[&lt;img src="assets/imgs/cond-prob-balls.png" /&gt;]
+
+.pull-right[
+
+&gt; - Min Randomly select one ball from the first and move it to the second bag
+&gt; - Rogers select one ball from the second bag
+]
+
+**What is the probability that Rogers select a red ball?**
+
+--
+
+&gt; - `\(A\)`: **transferred** ball is <svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:red;overflow:visible;position:relative;"><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z"/></svg> (occurred in the first bag)
+&gt; - `\(B\)`: **selected** ball is <svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:red;overflow:visible;position:relative;"><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z"/></svg> (occurred in the second bag)
+
+Let `\(S\)` be the whole sample space made by balls in the first bag
+
+`$$B = S\cap B = (A\cup A^c)\cap B = (A\cap B)\cup(A^c\cap B)$$`
+
+`$$\begin{aligned}
+P(B) &amp;= P(A\cap B) + P(A^c\cap B)~~(\mathrm{WHY??})\\
+     &amp;= P(A)P(B|A) + P(A^c)P(B|A^c) = \frac{5}{8}\cdot\frac{3}{9} + \frac{3}{8}\cdot\frac{2}{9} = \frac{21}{72}
+\end{aligned}$$`
+
+
+---
+
+# Independent Events
+
+
+&gt; **Definition 1** Event `\(A\)` and `\(B\)` are said to be **_independent_** if 
+
+&gt; `$$P(A\cap B) = P(A)P(B)$$`
+
+&gt; Otherwise, the events are said to be **_dependent_**.
+
+
+The connection between the conditional probability 
+
+`$$P(A|B) = \frac{P(A\cap B)}{P(B)}, ~~~ P(B) &gt; 0$$`
+`\(P(A\cap B) = P(A)P(B|A) = P(B)P(A|B)\)`
+
+In the case that `\(A\)` and `\(B\)` are independent, 
+
+`$$P(A|B)=\frac{P(A)P(B)}{P(B)} = P(A)$$`
+#### If `\(P(B|A) = P(B)\)` or `\(P(A|B) = P(A)\)`, `\(A\)` and `\(B\)` are **_independent events_**.
+
+
+#### The conditional probability provides the insight for the **relationship between two events**.
+
+
+---
+
+
+# Independent Events
+
+#### Example 1
+
+&gt; Suppose rolling two dices: <svg aria-hidden="true" role="img" viewBox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:red;overflow:visible;position:relative;"><path d="M384 32H64C28.65 32 0 60.65 0 96v320c0 35.35 28.65 64 64 64h320c35.35 0 64-28.65 64-64V96c0-35.35-28.65-64-64-64zM128 384c-17.67 0-32-14.33-32-32s14.33-32 32-32 32 14.33 32 32-14.33 32-32 32zm0-96c-17.67 0-32-14.33-32-32s14.33-32 32-32 32 14.33 32 32-14.33 32-32 32zm0-96c-17.67 0-32-14.33-32-32s14.33-32 32-32 32 14.33 32 32-14.33 32-32 32zm192 192c-17.67 0-32-14.33-32-32s14.33-32 32-32 32 14.33 32 32-14.33 32-32 32zm0-96c-17.67 0-32-14.33-32-32s14.33-32 32-32 32 14.33 32 32-14.33 32-32 32zm0-96c-17.67 0-32-14.33-32-32s14.33-32 32-32 32 14.33 32 32-14.33 32-32 32z"/></svg> <svg aria-hidden="true" role="img" viewBox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:blue;overflow:visible;position:relative;"><path d="M384 32H64C28.65 32 0 60.65 0 96v320c0 35.35 28.65 64 64 64h320c35.35 0 64-28.65 64-64V96c0-35.35-28.65-64-64-64zM128 384c-17.67 0-32-14.33-32-32s14.33-32 32-32 32 14.33 32 32-14.33 32-32 32zm0-96c-17.67 0-32-14.33-32-32s14.33-32 32-32 32 14.33 32 32-14.33 32-32 32zm0-96c-17.67 0-32-14.33-32-32s14.33-32 32-32 32 14.33 32 32-14.33 32-32 32zm192 192c-17.67 0-32-14.33-32-32s14.33-32 32-32 32 14.33 32 32-14.33 32-32 32zm0-96c-17.67 0-32-14.33-32-32s14.33-32 32-32 32 14.33 32 32-14.33 32-32 32zm0-96c-17.67 0-32-14.33-32-32s14.33-32 32-32 32 14.33 32 32-14.33 32-32 32z"/></svg>
+
+.left-column[
+#### Contingency Table
+
+
+```
+   Blue
+Red 1 2 3 4 5 6
+  1 1 1 1 1 1 1
+  2 1 1 1 1 1 1
+  3 1 1 1 1 1 1
+  4 1 1 1 1 1 1
+  5 1 1 1 1 1 1
+  6 1 1 1 1 1 1
+```
+
+]
+
+
+.right-column[
+&gt; - `\(A\)`: <svg aria-hidden="true" role="img" viewBox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:red;overflow:visible;position:relative;"><path d="M384 32H64C28.65 32 0 60.65 0 96v320c0 35.35 28.65 64 64 64h320c35.35 0 64-28.65 64-64V96c0-35.35-28.65-64-64-64zM128 192c-17.67 0-32-14.33-32-32s14.33-32 32-32 32 14.33 32 32-14.33 32-32 32zm96 96c-17.67 0-32-14.33-32-32s14.33-32 32-32 32 14.33 32 32-14.33 32-32 32zm96 96c-17.67 0-32-14.33-32-32s14.33-32 32-32 32 14.33 32 32-14.33 32-32 32z"/></svg> `\(\rightarrow\)` `\(P(A) = 6/36 = 1/6\)`
+&gt; - `\(B\)`: <svg aria-hidden="true" role="img" viewBox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:blue;overflow:visible;position:relative;"><path d="M384 32H64C28.65 32 0 60.65 0 96v320c0 35.35 28.65 64 64 64h320c35.35 0 64-28.65 64-64V96c0-35.35-28.65-64-64-64zM128 192c-17.67 0-32-14.33-32-32s14.33-32 32-32 32 14.33 32 32-14.33 32-32 32zm96 96c-17.67 0-32-14.33-32-32s14.33-32 32-32 32 14.33 32 32-14.33 32-32 32zm96 96c-17.67 0-32-14.33-32-32s14.33-32 32-32 32 14.33 32 32-14.33 32-32 32z"/></svg> `\(\rightarrow\)` `\(P(B) = 6/36 = 1/6\)`
+&gt; - `\(C\)`: sum of two dices are equal to 4 `\(\rightarrow\)` `\(P(C) = 1/12\)`
+&gt; - `\(D\)`: sum of two dices are equal to 7 `\(\rightarrow\)` `\(P(D) = 1/6\)`
+
+#### **Check**
+
+&gt; - `\(P(A\cap B) = P(\{3,3\}) = 1/36 = P(A)\cdot P(B) \rightarrow A \perp B\)` 
+&gt; - `\(P(A\cap C) = P(\{3,1\}) = 1/36 \neq P(A)\cdot P(C)\)`
+&gt; - `\(P(A\cap D) = P(\{3,4\}) = 1/36 = P(A)\cdot P(D)\rightarrow A \perp D\)`
+]
+
+
+---
+
+# Independent Events 
+
+#### Example 2: Tossing a coin 10 times 
+
+&gt; What is the probability of observing at least one Head? 
+
+
+--
+
+#### Answer: 
+
+Let `\(A_{i}\)` be a event that `\(i^{\mathrm{th}}\)` coin show `\(H\)`, `\(i=1,\ldots,10\)`
+
+`$$\begin{aligned}
+P(\mathrm{at~least~one~H}) &amp;= 1 - P(\mathrm{all~H}) \\
+                           &amp;= 1 - P(A_1^c\cap A_2^c \cap\cdots \cap A_{10}^c) \\
+                           &amp;= 1 - P(A_1^c)P(A_2^c)\cdots P(A_{10}^c) \\
+                           &amp;= 1 - \left(\frac{1}{2}\right)^{10}
+\end{aligned}$$`
+
+---
+
+# Bayes' Theorem
+
+#### **Motive: How is the probability of our interest updated when new information is available?**
+
+&lt;!-- - Inference the probability of interest based on the previous experience or evidences --&gt;
+
+&gt; **Theorem 9. (Bayes Rule)**: Let `\(B_1, B_2, \ldots, B_n\)` be mutually exclusive and exhaustive 
+(whose union is the sample space `\(S\)`). And let `\(A\)` be an event with `\(P(A) &gt; 0\)`, then
+&gt; `$$P(B_k|A) = \frac{P(B_k)P(A|B_k)}{\sum_{i=1}^{n}P(B_i)P(A|B_i)}$$`
+
+
+#### **Proof.**
+
+&gt; - For all `\(P(B_k) &gt; 0\)`, `\(P(A\cap B_k)\)` can be written as 
+&gt; - `\(P(A\cap B_k) = P(B_k)P(A|B_k) = P(A)P(B_k|A)\)` 
+&gt; - Since `\(P(A) &gt; 0\)`, then 
+&gt; `$$P(B_k|A) = \frac{P(B_k)P(A|B_k)}{P(A)}$$`
+&gt; - Since `\(B_k\)` is a partition of `\(S\)`, according to the theorem of total probability, 
+&gt; `$$P(A) = P(A\cap B_1) + P(A\cap B_2) + \cdots + P(A\cap B_n) = \sum_{i=1}^{n}P(B_i)P(A|B_i)$$`
+
+---
+
+# Bayes' Theorem
+
+#### What does Bayes' Rule imply?
+
+&gt; - A method to update belief on the basis of new information 
+&gt; - When we know **prior** probabilities `\((P(B_k))\)`, we want to know the **posterior** probability of
+interest `\((P(B_k|A))\)` after obtaining the new information (data, the event `\(A\)`)
+
+
+#### Decode the formula in **Theorem 9**
+
+&gt; - `\(P(B_k)\)`: **prior probability** of the previous **knowledge** 
+&gt; - `\(P(A)\)`: **prior probability** of the current **evidence** `\(A\)` (also called normalized constant)
+&gt; - `\(P(A|B_k)\)`: **likelihood** of the basis on the previous knowledge
+&gt; - `\(P(B_k|A)\)`: updated **posterior probability** after adding information from `\(A\)`
+
+
+`$$\mathrm{posterior~prob} = \frac{\mathrm{prior~prob \times likelihood}}{P(\mathrm{data})}$$`
+---
+
+# Bayes' Theorem 
+
+#### **Example 1:** COVID-19 Virus
+
+&gt; Suppose that there exist four types of COVID-19 Virus: `\(\alpha\)`, `\(\beta\)`, `\(\gamma\)`, and `\(\delta\)`
+&gt; 
+&gt; - `\(P(\alpha) = 0.4\)`, `\(P(\beta) = 0.1\)`, `\(P(\gamma) = 0.2\)`, `\(P(\delta) = 0.3\)`
+&gt; - 
+&gt; Symptoms varies according to the type of COVID-19. Let define the event who shows symptoms like 
+headache, sore throat, or runny nose due to the infection of COVID-19. Then, 
+&gt; 
+&gt; - `\(P(E|\alpha) = 0.2\)`, `\(P(E|\beta) = 0.2\)`, `\(P(E|\gamma) = 0.3\)`, `\(P(E|\delta) = 0.6\)`
+&gt; - Assume that no one is infected with more than one virus at the same time
+
+
+#### Probability that patients show symptoms of `\(E\)`? 
+
+`$$\begin{aligned}
+P(E) &amp;= P(E\cap (\alpha\cup\beta\cup\gamma\cup\delta)) \\
+     &amp;= P(E\cap\alpha) + P(E\cap\beta) + P(E\cap\gamma) + P(E\cap\delta) \\
+     &amp;= P(\alpha)P(E|\alpha) + P(\beta)P(E|\beta) + P(\gamma)P(E|\gamma) + P(\delta)P(E|\delta) \\
+     &amp;= 0.4\cdot 0.2 + 0.1\cdot 0.2 + 0.2\cdot 0.3 + 0.3\cdot 0.6 = 0.34
+\end{aligned}$$`
+
+---
+# Bayes' Theorem
+
+#### **Example 1:** COVID-19 Virus (_continued_)
+
+&gt; Let `\(S\)` be a set of patients with COVID-19 and `\(\#(S) = 100\)`
+
+
+&lt;img src="Figures/covid-19-bayes-mosaic-1.svg" width="90%" style="display: block; margin: auto;" /&gt;
+
+---
+# Bayes' Theorem
+
+#### **Example 1:** COVID-19 Virus (_continued_)
+
+&gt; **Question**: What is the probability that patients showing symptoms in `\(E\)` is infected by COVID-19 `\(\delta\)` ?
+
+#### **Solution**
+
+`$$P(\delta|E) = \frac{P(\delta\cap E)}{P(E)} = \frac{P(\delta)P(E|\delta)}{P(E)} = \frac{0.3\cdot 0.6}{0.34} = 0.529$$`
+
+Likewise, `\(P(\alpha|E)\)`, `\(P(\beta|E)\)`, `\(P(\gamma|E)\)` can be obtained as 
+
+
+`$$\begin{aligned}
+P(\alpha|E) &amp;=\frac{0.4\cdot 0.2}{0.34}=0.235 \\
+P(\beta|E)  &amp;=\frac{0.1\cdot 0.2}{0.34}=0.059 \\
+P(\gamma|E) &amp;=\frac{0.2\cdot 0.3}{0.34}=0.176
+\end{aligned}$$`
+
+&gt; #### **The prior probabilities of each type of COVID-19 virus are updated based on the given information!!**
 
 
 
