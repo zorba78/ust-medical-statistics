@@ -6,10 +6,10 @@ institute: "<br/> Korea Institute of Oriental Medicine"
 date: "<br> 2021/09/09 "
 output:
   xaringan::moon_reader:
-    # css: [default, metropolis, metropolis-fonts, ../assets/css/footer.css, ../assets/css/metropolis-ak.css]
-    css: [default, metropolis, metropolis-fonts]
-    lib_dir: "../docs/libs"
-    # lib_dir: "libs"
+    css: [default, metropolis, metropolis-fonts, ../assets/css/footer.css, ../assets/css/metropolis-ak.css]
+    # css: [default, metropolis, metropolis-fonts]
+    # lib_dir: "../docs/libs"
+    lib_dir: "libs"
     nature:
       highlightStyle: github
       titleSlideClass: [middle, left]
@@ -675,7 +675,7 @@ $$P(A_1\cap, \cdots, \cap A_n) = P(A_1)P(A_2|A_1)P(A_3|A_1\cap A_2)\cdots P(A_n|
 
 > Back to the question in the slide 15, What is $P(\mathrm{both~Aces})$? 
 
-$$P(\mathrm{both~Aces})=P(A\cap B) = P(A)|P(B|A) = \frac{4}{52}\cdot\frac{3}{51}\approx 0.00452$$
+$$P(\mathrm{both~Aces})=P(A\cap B) = P(A)P(B|A) = \frac{4}{52}\cdot\frac{3}{51}\approx 0.00452$$
 
 #### Example 2
 
@@ -688,7 +688,7 @@ $$P(\mathrm{both~Aces})=P(A\cap B) = P(A)|P(B|A) = \frac{4}{52}\cdot\frac{3}{51}
 --
 
 $\rightarrow$ Let define three events: $A={1^{\mathrm{st}}~\mathrm{ball~ is~ red}}$, 
-$B={2^{\mathrm{nd}}~\mathrm{ball~ is~ red}}$, $A={3^{\mathrm{rd}}~\mathrm{ball~ is~ red}}$
+$B={2^{\mathrm{nd}}~\mathrm{ball~ is~ red}}$, $C={3^{\mathrm{rd}}~\mathrm{ball~ is~ red}}$
 
 --
 
@@ -940,10 +940,28 @@ P(\gamma|E) &=\frac{0.2\cdot 0.3}{0.34}=0.176
 
 > #### **The prior probabilities of each type of COVID-19 virus are updated based on the given information!!**
 
+---
+
+# Bayes' Theorem
+
+#### **Example 2:** Monty Hall Problem
+
+> _Suppose you're on a game show, and you're given the choice of three doors: Behind one door is a car; 
+behind the others, goats. You pick a door, say No. 1, and the host, who knows what's behind the doors, 
+opens another door, say No. 3, which has a goat. He then says to you, "Do you want to pick door No. 2?" 
+Is it to your advantage to switch your choice?_
+>
+> _From Parade magazine’s Ask Marilyn column_
 
 
+.center[
+<img src="https://upload.wikimedia.org/wikipedia/commons/3/3f/Monty_open_door.svg" width="60%"/>
+]
 
 
+---
+
+# Bayes' Theorem
 
 
 
