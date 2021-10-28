@@ -27,7 +27,7 @@ navbar:
       - text: "Probability"
         href: 04-probability.html
         icon: fa-play-circle
-      - text: "Expectation"
+      - text: "Random Variable and Expectation"
         href: 05-expectation.html
         icon: fa-play-circle
       - text: "Probability Distribution"
