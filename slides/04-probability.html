@@ -953,7 +953,7 @@ P(\gamma|E) &amp;=\frac{0.2\cdot 0.3}{0.34}=0.176
 #### **Example 2:** Monty Hall Problem
 
 &gt; _Suppose you're on a game show, and you're given the choice of three doors: Behind one door is a car; 
-behind the others, goats. You pick a door, say No. 1, and the host, who knows what's behind the doors, 
+behind the others, goats. You pick a door, say No. 1, and the host, **who knows what's behind the doors**, 
 opens another door, say No. 3, which has a goat. He then says to you, "Do you want to pick door No. 2?" 
 Is it to your advantage to switch your choice?_
 &gt;
@@ -963,6 +963,70 @@ Is it to your advantage to switch your choice?_
 .center[
 &lt;img src="https://upload.wikimedia.org/wikipedia/commons/3/3f/Monty_open_door.svg" width="60%"/&gt;
 ]
+
+
+---
+
+# Bayes' Theorem
+
+#### You may think like
+
+&gt; 1. My chance to win a brand new car rises from 1/3 to 1/2 because one of doors among #1 or #2 has a new car. 
+&gt; 2. The chance of having a car in door #1 is never changed no matter the host open the door #3. That is, 
+the probability that the door #2 has a brand new car is 2/3. So it is better to change my choice. 
+
+
+#### **Which opinion is correct?**
+
+--
+
+Let's make trees for the number of cases
+
+.center[
+&lt;img src="https://upload.wikimedia.org/wikipedia/commons/d/de/Monty_tree_door1.svg" width="60%"/&gt;
+]
+
+
+---
+
+# Bayes' Theorem
+
+#### Solution Using Conditional Probabilities
+
+`$$\begin{aligned}
+P(\mathrm{win~by~switching}|\mathrm{select~\#1~and~host~opens~\#3})&amp; \\
+= P(\mathrm{car~behind~\#2|host~opens~\#3})&amp;\\
+&amp;= \frac{P(\mathrm{car~behind~\#2~and~host~opens~\#3})}{P(\mathrm{host~opens~\#3})}\\
+                                                                   &amp;= \frac{1/3}{1/3 + 1/6} = \frac{2}{3}
+\end{aligned}$$`
+
+#### Solution Using Bayes' Rule
+
+&gt; - `\(C_1, C_2, C_3\)` be events that a car is behind the door #1, #2, and #3. respectively.
+&gt; - `\(X_1, X_2, X_3\)` be events that a player chooses the door #1, #2, and #3. respectively.
+&gt; - `\(H_1, H_2, H_3\)` be events that a host opens the door #1, #2, and #3. respectively.
+&gt; - **Check**
+&gt;   - What is information? `\(\rightarrow\)` **the host opens door**
+&gt;   - What is the outcome? `\(\rightarrow\)` **the location of a car**
+
+---
+
+# Bayes' Theorem
+
+#### Solution Using Bayes' Rule (_continued_)
+
+&gt; **Fact**
+&gt; - A host can't expect a player's decision and a player can't see where a car is. 
+&gt; `$$P(C_i\cap X_i) = P(C_i)P(X_i),~~ i=1,2,3$$`
+&gt; - Opening the door by a host is determined by the player's choice and the location of a car. For 
+example, suppose that a car is behind the door #1 and a player chooses the door #2, then a host 
+has to open the door #3. That is, 
+&gt; `$$P(H_1|(C_1\cap X_2))=0, P(H_2|(C_1\cap X_2))=0, P(H_3|(C_1\cap X_2))=1$$`
+&gt; - Suppose a player chooses the door #2 and a car is behind the door #2, then the probabilities of 
+the host opens each door is 
+&gt; `$$P(H_1|(C_2\cap X_2))=\frac{1}{2}, P(H_2|(C_2\cap X_2))=0, P(H_3|(C_2\cap X_2))=\frac{1}{2}$$`
+
+
 
 
     </textarea>
