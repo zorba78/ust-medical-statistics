@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Medical Statistics</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Boncho Ku, Ph.D. in Statistics" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link href="libs/remark-css/default.css" rel="stylesheet" />
+    <link href="libs/remark-css/metropolis.css" rel="stylesheet" />
+    <link href="libs/remark-css/metropolis-fonts.css" rel="stylesheet" />
+    <link href="libs/tile-view/tile-view.css" rel="stylesheet" />
+    <script src="libs/tile-view/tile-view.js"></script>
+    <script src="libs/xaringanExtra-progressBar/progress-bar.js"></script>
+    <script src="libs/fabric/fabric.min.js"></script>
+    <link href="libs/xaringanExtra-scribble/scribble.css" rel="stylesheet" />
+    <script src="libs/xaringanExtra-scribble/scribble.js"></script>
+    <script>document.addEventListener('DOMContentLoaded', function() { window.xeScribble = new Scribble({"pen_color":["#FF0000"],"pen_size":3,"eraser_size":30,"palette":[]}) })</script>
+    <link href="libs/panelset/panelset.css" rel="stylesheet" />
+    <script src="libs/panelset/panelset.js"></script>
+    <script src="libs/kePrint/kePrint.js"></script>
+    <link href="libs/lightable/lightable.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../assets/css/footer.css" type="text/css" />
+    <link rel="stylesheet" href="../assets/css/metropolis-ak.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: middle, left, title-slide
+
+# Medical Statistics
+## Random Variable and Expectation
+### <strong>Boncho Ku, Ph.D. in Statistics</strong>
+### <br/> Korea Institute of Oriental Medicine
+### <br> 2021/10/30
+
+---
+
+
+
+
+
+
+<style>.xe__progress-bar__container {
+  bottom:0;
+  opacity: 1;
+  position:absolute;
+  right:0;
+  left: 0;
+}
+.xe__progress-bar {
+  height: 0.25em;
+  background-color: #23373B;
+  width: calc(var(--slide-current) / var(--slide-total) * 100%);
+}
+.remark-visible .xe__progress-bar {
+  animation: xe__progress-bar__wipe 200ms forwards;
+  animation-timing-function: cubic-bezier(.86,0,.07,1);
+}
+@keyframes xe__progress-bar__wipe {
+  0% { width: calc(var(--slide-previous) / var(--slide-total) * 100%); }
+  100% { width: calc(var(--slide-current) / var(--slide-total) * 100%); }
+}</style>
+
+&lt;!-- class: inverse, center, middle --&gt;
+
+
+# Random Variable `\((X)\)`
+
+---
+
+# Random Variable
+
+#### Warm-Up
+
+&gt; - Are the outcomes of rolling dices determined? `\(\rightarrow\)` **NO**
+&gt; - The outcomes derived from an experiment, measurement, or survey cannot predictable `\(\rightarrow\)` **random data**
+
+
+#### Preview 
+
+&gt; Suppose you are playing a very simple game: rolling three dices
+&gt; - Let `\(X\)` be the sum of three dices 
+&gt;    - `\(X = 18 \rightarrow\)` win **￦50,000**
+&gt;    - `\(14 \leq X \leq 17 \rightarrow\)` win **￦10,000**
+&gt;    - `\(9 \leq X \leq 13 \rightarrow\)` draw
+&gt;    - `\(4 \leq X \leq 8 \rightarrow\)` lose **￦12,000**
+&gt;    - `\(X = 3 \rightarrow\)` lose **￦75,000**
+
+**When you start to play this game, what things do you focus on: chance or prize?**
+
+&gt; - We assign **prizes** to each outcome of rolling dices.
+&gt; - Outcomes from rolling dices are **random** `\(\rightarrow\)` whether winning or lose the prize is **random**
+
+
+---
+
+# Random Variable 
+
+#### **Definition**
+
+&gt; When conducting a random experiment `\(E\)` and after learning the outcome `\(\omega\)` in `\(S\)`. Let `\(X\)` 
+be a function to convert `\(\omega\)` to the real number `\(\mathbb{R}\)`, that is, 
+&gt; `$$X(\omega) = x,~~ x\in \mathbb{R}$$`
+&gt; A random variable `\(X\)` is a function
+&gt; `$$\omega \in S \xrightarrow{X(\omega)} x \in \mathbb{R}$$`
+
+- Usually denoted by uppercase letters such that `\(X\)`, `\(Y\)`, `\(Z\)`
+- Denote observed values by lowercase letters: `\(x\)`, `\(y\)`, `\(z\)`
+
+
+#### Example 1
+
+&gt; Survey the gender of each child in a three-child household
+&gt; - `\(\omega \in S = \{BBB, GBB, BGB, BBG, GGB, GBG, BGG, GGG\}\)`
+&gt; - \# of Sons: `\(X(BBB)=3\)`, `\(X(GGG)=0\)`, `\(X(GBB)=2\)`
+
+
+**Is it possible to define different random variables in the same `\(S\)`?**
+
+
+---
+
+# Random Variable 
+
+#### Example 2
+
+&gt; Let `\(E\)` be the experiment of flipping a coin twice. Then `\(S=\{HH, HT, TH, TT\}\)`. Define `\(X\)` is 
+the number of heads. Then we can make a table like below: 
+
+
+.panelset[
+.panel[.panel-name[Table]
+&lt;table class=" lightable-paper table" style='font-family: "Arial Narrow", arial, helvetica, sans-serif; margin-left: auto; margin-right: auto; font-size: 16px; margin-left: auto; margin-right: auto;'&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; `\(\omega \in S\)` &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; HH &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; HT &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; TH &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; TT &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; `\(X(\omega)=x\)` &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 0 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+]
+
+.panel[.panel-name[Scheme]
+.center[
+&lt;img src="assets/imgs/rv-scheme.png" width="60%"/&gt;
+]
+]
+
+]
+
+
+--
+
+#### Random variables for Example 1 and 2 `\(\rightarrow\)` **discrete random variable**
+
+&gt; - Show clear distinction between two adjacent values
+&gt; - Countable/Uncountable (e.g. `\(Y\)`=number of tails before the first head)
+
+
+---
+
+# Random Variable 
+
+#### Example 3 (**Continuous Random Variable**)
+
+&gt; Let `\(E\)` be the experiment of tossing a coin in the air, and define the random variable `\(Z\)` is 
+the time until the coin hits the ground (in second). 
+&gt; - Sample space: `\(S = \{z|0 &lt; z &lt; \infty\}\)`
+&gt; - Uncountable `\(\rightarrow\)` usually real numbers
+&gt; - All events in `\(S\)` can be written as the combination of interval events (e.g. `\(1 \leq Z &lt; 2\)`)
+
+#### **Probability Distribution**
+
+&gt; - Assign probabilities coreesponding to the possible values of the random variable
+&gt; `$$P(X=x) = f(x)$$`
+&gt; - For Example 1, the probability distribution of `\(X\)` (\# of boys) is 
+
+&lt;table class=" lightable-paper table" style='font-family: "Arial Narrow", arial, helvetica, sans-serif; width: auto !important; margin-left: auto; margin-right: auto; font-size: 16px; margin-left: auto; margin-right: auto;'&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; `\(x \in S_x\)` &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; 0 &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; 1 &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; 2 &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; 3 &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Total &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; `\(P(X=x)\)` &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 1/8 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 3/8 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 3/8 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 1/8 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 1 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+---
+
+# Random Variable
+
+#### **Definition of Probability Function (distribution)**
+
+&gt; Let `\(S_X = \{x_1, x_2, \ldots, x_n\}\)` or `\(S_X = \{x_1, x_2, \ldots \}\)` and Let `\(f(x_i)\)` denote 
+the probability of `\(X = x_i\)`, then the probability function (_distribution_) of `\(X\)` can be written as 
+&gt; `$$f_X(x_i) = P(X = x_i), ~~~ x \in S_X$$`
+&gt; - If `\(X\)` is discrete, `\(f_X(x_i)\)` refered as **_probability mass function_ (PMF)**
+&gt; - If `\(X\)` is continuous, `\(f_X(x)\)` refered as **_probability density function_ (PDF)**
+
+
+#### **Properties**
+
+&gt; - `\(f_X(x) \geq 0\)` for `\(x \in S\)` 
+
+.pull-left[
+#### Discrete PMF
+&gt; - `\(\sum_{x\in S}f_X(x) = 1\)`
+&gt; - `\(P(a &lt; X \leq b) = \sum_{a&lt;x\leq b}f_X(x)\)`
+
+]
+.pull-right[
+#### Continuous PDF
+&gt; - `\(\int_{-\infty}^{\infty}f_x(x) = 1\)` 
+&gt; - `\(P(a &lt; X \leq b) = \int_{a}^{b}f_X(x) dx\)`
+&gt; - `\(P(X = a) = 0\)`
+
+]
+
+---
+
+# Expectation
+
+#### Concept 
+
+&gt; 1. **If the structure of the random variable is revealed, which means that the probability function of 
+the random variable is known, what is the theoretical average of the random variable?**
+&gt; 2. Suppose we could observe how the weather is in Christmas every year repeatedly. Suppose that
+the weather could be snowing (1) or not snowing (0). Each time the observation is repeated,
+we get an outcome for the random variable. We end up with `\(n\)` outcomes. The average of the random
+variable is just summing up all outcomes and dividing it by `\(n\)`. Now imagine that `\(n\)` goes to
+larger and larger without bound?
+
+
+
+---
+
+# Expectation
+
+
+#### **Definition** 
+
+&gt; Let the pmf of the random variable `\(X\)` be `\(f_X(x)\)`. The expectation of the discrete random variable `\(X\)` is 
+&gt; `$$\mu_X = E(X) = \sum_{x_i \in S}x_i f_X(x)$$`
+&gt; **Weighted Average of `\(x_i\)`** `\(\rightarrow\)` weights = `\(f_X(x_i)\)`
+
+
+#### Example 4: Expectation of Example 1
+
+`$$\mu_X = \sum_{x=0}^{3}xf_X(x)=0\cdot\frac{1}{8} + 1\cdot\frac{3}{8} + 2\cdot\frac{3}{8} + 3\cdot\frac{1}{8} = 1.5$$`
+
+#### Remarks
+
+&gt; Although we say `\(X\)` is 1.5 on the average, the average of `\(X\)` in real world never actually equals to 1.5. 
+
+
+???
+
+We interpret μ = 1.5 by reasoning that if we were to repeat the random experiment many times,
+independently each time, observe many corresponding outcomes of the random variable X, and
+take the sample mean of the observations, then the calculated value would fall close to 1.5. The
+approximation would get better as we observe more and more values of X (another form of the
+Law of Large Numbers; see Section 4.3). Another way it is commonly stated is that X is 1.5
+“on the average” or “in the long run”.
+
+
+---
+
+# Expectation
+
+#### Recall the formula to calculate a sample mean 
+
+`$$\bar{x} = \frac{1}{N}\sum_{i=1}^{N}x_i$$`
+
+&gt; - The meaning of `\(x_i\)` is different from the definition of the expectation
+&gt; - In the expectation, `\(x_i\)` represents all possible elements from the sample space
+&gt; - In the sample mean, `\(x_i\)` is the realized samples
+
+
+#### Question 
+
+&gt; In the formula for calculating the expectation, the probability roles as a weight. 
+But why is there no probability weight in the formula for calculating the sample mean?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

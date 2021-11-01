@@ -15,6 +15,8 @@
     <link href="libs/xaringanExtra-scribble/scribble.css" rel="stylesheet" />
     <script src="libs/xaringanExtra-scribble/scribble.js"></script>
     <script>document.addEventListener('DOMContentLoaded', function() { window.xeScribble = new Scribble({"pen_color":["#FF0000"],"pen_size":3,"eraser_size":30,"palette":[]}) })</script>
+    <link href="libs/panelset/panelset.css" rel="stylesheet" />
+    <script src="libs/panelset/panelset.js"></script>
     <script src="libs/kePrint/kePrint.js"></script>
     <link href="libs/lightable/lightable.css" rel="stylesheet" />
     <link rel="stylesheet" href="../assets/css/footer.css" type="text/css" />
@@ -1027,8 +1029,109 @@ the host opens each door is
 &gt; `$$P(H_1|(C_2\cap X_2))=\frac{1}{2}, P(H_2|(C_2\cap X_2))=0, P(H_3|(C_2\cap X_2))=\frac{1}{2}$$`
 
 
+---
 
+# Bayes' Theorem
 
+#### Solution Using Bayes' Rule (_continued_)
+
+&gt; - The probability of a car is behind the door #2 when a player chooses the door #1 and the host open 
+the door #3? 
+
+`$$\begin{aligned}
+P(C_2|X_1\cap H_3) &amp;= \frac{P(C_2\cap X_1 \cap H_3)}{P(X_1 \cap H_3)} \\
+                   &amp;= \frac{P(H_3|C_2\cap X_1)P(C_2\cap X_1)}{P(X_1 \cap H_3)} \\
+                   &amp;= \frac{P(C_2)P(X_1)}{P(H_3|X_1)P(X_1)}~~(\because P(H_3|C_2\cap X_1) = 1,~C_2 \perp X_1) \\
+                   &amp;= \frac{P(C_2)}{P(H_3|X_1)} \\
+                   &amp;= \frac{P(C_2)}{P(H_3\cap C_1|X_1) + P(H_3\cap C_2|X_1) + P(H_3\cap C_3|X_1)} \\
+                   &amp;= \frac{P(C_2)}{P(C_1)P(H_3|X_1\cap C_1) + P(C_2)P(H_3|X_1\cap C_2) + P(C_3)P(H_3|X_1\cap C_3)} \\
+                   &amp;= \frac{1/3}{1/3\cdot 1/2 + 1/3\cdot 1 + 1/3\cdot 0} = \frac{2}{3}
+\end{aligned}$$`
+
+---
+
+# Bayes' Theorem
+
+#### <svg aria-hidden="true" role="img" viewBox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:black;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"/></svg> **Monty Hall Problem Simulation**
+
+.panelset[
+.panel[.panel-name[R Code]
+
+```r
+# a function for simulation of Monty Hall Game
+# https://pkg.garrickadenbuie.com/xaringanExtra/#/panelset
+library(tidyverse)
+monty_hall &lt;- function(niter) {
+  player_choose &lt;- sample(doors, size = niter, replace = TRUE)
+  hold_win &lt;- ifelse(player_choose == "car", 1, 0)
+  switch_win &lt;- ifelse(player_choose == "car", 0, 1)
+  p_WinHold &lt;- cumsum(hold_win)/(1:niter)
+  p_WinSwitch &lt;- cumsum(switch_win)/(1:niter)
+  out &lt;- tibble(
+    ntry = 1:niter, 
+    player_choose = player_choose,
+    hold_win = hold_win, 
+    switch_win = switch_win, 
+    p_WinHold = p_WinHold, 
+    p_WinSwitch = p_WinSwitch
+  )
+  out
+}
+```
+]
+
+.panel[.panel-name[Check]
+
+```r
+set.seed(12345)
+doors &lt;- c("car", "goat", "goat")
+niter = 10000
+outcome &lt;- monty_hall(niter)
+
+sum(outcome$hold_win)/niter
+```
+
+```
+[1] 0.3319
+```
+
+```r
+sum(outcome$switch_win)/niter
+```
+
+```
+[1] 0.6681
+```
+
+]
+
+.panel[.panel-name[Plot-code]
+
+```r
+# https://pkg.garrickadenbuie.com/xaringanExtra/#/panelset
+gp &lt;- ggplot(data = outcome) + 
+  aes(x = ntry) + 
+  geom_line(aes(y = p_WinHold), color = "#2B7CC9") + 
+  geom_line(aes(y = p_WinSwitch), color = "#C24931") + 
+  geom_hline(yintercept = 1/3, color ="#2B7CC9", linetype = "dashed") + 
+  geom_hline(yintercept = 2/3, color = "#C24931", linetype = "dashed") + 
+  labs(title = "Estimated Probabilities of Winning for Monty Hall Game", 
+       y = "P(Win)") + 
+  geom_label(data = tibble(label = c("Switch", "Hold"), 
+                           ntry=rep(nrow(outcome), 2), 
+                           probs = c(0.75, 0.25)), 
+             aes(label = label, color = label, y = probs), 
+             show.legend = FALSE) + 
+  scale_color_manual(values = c( "#2B7CC9", "#C24931")) + 
+  ggpubr::theme_pubclean(base_size = 15)
+```
+]
+
+.panel[.panel-name[Plot]
+&lt;img src="Figures/unnamed-chunk-12-1.png" width="648" style="display: block; margin: auto;" /&gt;
+
+]
+]
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>

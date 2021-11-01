@@ -1,0 +1,314 @@
+---
+title: "Medical Statistics"
+subtitle: "Random Variable and Expectation"
+author: "<strong>Boncho Ku, Ph.D. in Statistics</strong>"
+institute: "<br/> Korea Institute of Oriental Medicine"
+date: "<br> 2021/10/30 "
+output:
+  xaringan::moon_reader:
+    css: [default, metropolis, metropolis-fonts, ../assets/css/footer.css, ../assets/css/metropolis-ak.css]
+    # css: [default, metropolis, metropolis-fonts]
+    lib_dir: "../docs/libs"
+    # lib_dir: "libs"
+    nature:
+      highlightStyle: github
+      titleSlideClass: [middle, left]
+      highlightLines: true
+      countIncrementalSlides: false
+editor_options: 
+  chunk_output_type: console
+---
+
+
+
+```{r setup-knitr, include=FALSE}
+options(htmltools.dir.version = FALSE)
+# knitr::opts_knit$set(root.dir='..')
+knitr::opts_chunk$set(eval = TRUE, 
+                      echo = FALSE, 
+                      cache = FALSE,
+                      include = TRUE,
+                      collapse = FALSE,
+                      message=FALSE,
+                      warning=FALSE, 
+                      dependson = NULL,
+                      engine = "R", # Chunks will always have R code, unless noted
+                      error = TRUE,
+                      fig.path="Figures/",  # Set the figure options
+                      fig.align = "center", 
+                      #fig.width = 7,
+                      #fig.height = 7, 
+                      fig.keep='all', fig.retina=3)
+
+```
+
+```{r setup-library}
+library(MASS)
+library(reshape2)
+library(plyr)
+library(tidyverse)
+library(lubridate)
+library(readxl)
+library(tidyselect)
+library(tidystats)
+library(glue)
+library(here)
+library(gt)
+library(gtsummary)
+library(kableExtra)
+library(icons)
+
+xaringanExtra::use_tile_view()
+xaringanExtra::use_progress_bar(color = "#23373B", location = "bottom")
+xaringanExtra::use_scribble()
+xaringanExtra::use_panelset()
+# xaringanExtra::style_panelset_tabs(foreground = "honeydew", background = "seagreen")
+
+```
+
+<!-- class: inverse, center, middle -->
+
+
+# Random Variable $(X)$
+
+---
+
+# Random Variable
+
+#### Warm-Up
+
+> - Are the outcomes of rolling dices determined? $\rightarrow$ **NO**
+> - The outcomes derived from an experiment, measurement, or survey cannot predictable $\rightarrow$ **random data**
+
+
+#### Preview 
+
+> Suppose you are playing a very simple game: rolling three dices
+> - Let $X$ be the sum of three dices 
+>    - $X = 18 \rightarrow$ win **￦50,000**
+>    - $14 \leq X \leq 17 \rightarrow$ win **￦10,000**
+>    - $9 \leq X \leq 13 \rightarrow$ draw
+>    - $4 \leq X \leq 8 \rightarrow$ lose **￦12,000**
+>    - $X = 3 \rightarrow$ lose **￦75,000**
+
+**When you start to play this game, what things do you focus on: chance or prize?**
+
+> - We assign **prizes** to each outcome of rolling dices.
+> - Outcomes from rolling dices are **random** $\rightarrow$ whether winning or lose the prize is **random**
+
+
+---
+
+# Random Variable 
+
+#### **Definition**
+
+> When conducting a random experiment $E$ and after learning the outcome $\omega$ in $S$. Let $X$ 
+be a function to convert $\omega$ to the real number $\mathbb{R}$, that is, 
+> $$X(\omega) = x,~~ x\in \mathbb{R}$$
+> A random variable $X$ is a function
+> $$\omega \in S \xrightarrow{X(\omega)} x \in \mathbb{R}$$
+
+- Usually denoted by uppercase letters such that $X$, $Y$, $Z$
+- Denote observed values by lowercase letters: $x$, $y$, $z$
+
+
+#### Example 1
+
+> Survey the gender of each child in a three-child household
+> - $\omega \in S = \{BBB, GBB, BGB, BBG, GGB, GBG, BGG, GGG\}$
+> - \# of Sons: $X(BBB)=3$, $X(GGG)=0$, $X(GBB)=2$
+
+
+**Is it possible to define different random variables in the same $S$?**
+
+
+---
+
+# Random Variable 
+
+#### Example 2
+
+> Let $E$ be the experiment of flipping a coin twice. Then $S=\{HH, HT, TH, TT\}$. Define $X$ is 
+the number of heads. Then we can make a table like below: 
+
+
+.panelset[
+.panel[.panel-name[Table]
+```{r}
+x <- c("$X(\\omega)=x$", "2", "1", "1", "0")
+nx <- c("$\\omega \\in S$", "HH", "HT", "TH", "TT")
+tab <- matrix(x, nrow = 1) %>% as.data.frame %>% as_tibble
+names(tab) <- nx
+kbl(tab, escape = FALSE) %>%
+  kable_paper %>% 
+  kable_styling(font_size = 16)
+  
+# kbl(t1, booktabs = TRUE, caption = "Contingency Table") %>% kable_paper %>% kable_styling(font_size = 14)
+
+```
+]
+
+.panel[.panel-name[Scheme]
+.center[
+<img src="assets/imgs/rv-scheme.png" width="60%"/>
+]
+]
+
+]
+
+
+--
+
+#### Random variables for Example 1 and 2 $\rightarrow$ **discrete random variable**
+
+> - Show clear distinction between two adjacent values
+> - Countable/Uncountable (e.g. $Y$=number of tails before the first head)
+
+
+---
+
+# Random Variable 
+
+#### Example 3 (**Continuous Random Variable**)
+
+> Let $E$ be the experiment of tossing a coin in the air, and define the random variable $Z$ is 
+the time until the coin hits the ground (in second). 
+> - Sample space: $S = \{z|0 < z < \infty\}$
+> - Uncountable $\rightarrow$ usually real numbers
+> - All events in $S$ can be written as the combination of interval events (e.g. $1 \leq Z < 2$)
+
+#### **Probability Distribution**
+
+> - Assign probabilities coreesponding to the possible values of the random variable
+> $$P(X=x) = f(x)$$
+> - For Example 1, the probability distribution of $X$ (\# of boys) is 
+
+```{r}
+x <- c("$P(X=x)$", "1/8", "3/8", "3/8", "1/8", "1")
+nx <- c("$x \\in S_x$", "0", "1", "2", "3", "Total")
+tab <- matrix(x, nrow = 1) %>% as.data.frame %>% as_tibble
+names(tab) <- nx
+kbl(tab, escape = FALSE) %>%
+  kable_paper(full_width = FALSE) %>% 
+  kable_styling(font_size = 16)
+
+```  
+
+---
+
+# Random Variable
+
+#### **Definition of Probability Function (distribution)**
+
+> Let $S_X = \{x_1, x_2, \ldots, x_n\}$ or $S_X = \{x_1, x_2, \ldots \}$ and Let $f(x_i)$ denote 
+the probability of $X = x_i$, then the probability function (_distribution_) of $X$ can be written as 
+> $$f_X(x_i) = P(X = x_i), ~~~ x \in S_X$$
+> - If $X$ is discrete, $f_X(x_i)$ refered as **_probability mass function_ (PMF)**
+> - If $X$ is continuous, $f_X(x)$ refered as **_probability density function_ (PDF)**
+
+
+#### **Properties**
+
+> - $f_X(x) \geq 0$ for $x \in S$ 
+
+.pull-left[
+#### Discrete PMF
+> - $\sum_{x\in S}f_X(x) = 1$
+> - $P(a < X \leq b) = \sum_{a<x\leq b}f_X(x)$
+
+]
+.pull-right[
+#### Continuous PDF
+> - $\int_{-\infty}^{\infty}f_x(x) = 1$ 
+> - $P(a < X \leq b) = \int_{a}^{b}f_X(x) dx$
+> - $P(X = a) = 0$
+
+]
+
+---
+
+# Expectation
+
+#### Concept 
+
+> 1. **If the structure of the random variable is revealed, which means that the probability function of 
+the random variable is known, what is the theoretical average of the random variable?**
+> 2. Suppose we could observe how the weather is in Christmas every year repeatedly. Suppose that
+the weather could be snowing (1) or not snowing (0). Each time the observation is repeated,
+we get an outcome for the random variable. We end up with $n$ outcomes. The average of the random
+variable is just summing up all outcomes and dividing it by $n$. Now imagine that $n$ goes to
+larger and larger without bound?
+
+
+
+---
+
+# Expectation
+
+
+#### **Definition** 
+
+> Let the pmf of the random variable $X$ be $f_X(x)$. The expectation of the discrete random variable $X$ is 
+> $$\mu_X = E(X) = \sum_{x_i \in S}x_i f_X(x)$$
+> **Weighted Average of $x_i$** $\rightarrow$ weights = $f_X(x_i)$
+
+
+#### Example 4: Expectation of Example 1
+
+$$\mu_X = \sum_{x=0}^{3}xf_X(x)=0\cdot\frac{1}{8} + 1\cdot\frac{3}{8} + 2\cdot\frac{3}{8} + 3\cdot\frac{1}{8} = 1.5$$
+
+#### Remarks
+
+> Although we say $X$ is 1.5 on the average, the average of $X$ in real world never actually equals to 1.5. 
+
+
+???
+
+We interpret μ = 1.5 by reasoning that if we were to repeat the random experiment many times,
+independently each time, observe many corresponding outcomes of the random variable X, and
+take the sample mean of the observations, then the calculated value would fall close to 1.5. The
+approximation would get better as we observe more and more values of X (another form of the
+Law of Large Numbers; see Section 4.3). Another way it is commonly stated is that X is 1.5
+“on the average” or “in the long run”.
+
+
+---
+
+# Expectation
+
+#### Recall the formula to calculate a sample mean 
+
+$$\bar{x} = \frac{1}{N}\sum_{i=1}^{N}x_i$$
+
+> - The meaning of $x_i$ is different from the definition of the expectation
+> - In the expectation, $x_i$ represents all possible elements from the sample space
+> - In the sample mean, $x_i$ is the realized samples
+
+
+#### Question 
+
+> In the formula for calculating the expectation, the probability roles as a weight. 
+But why is there no probability weight in the formula for calculating the sample mean?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

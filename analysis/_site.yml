@@ -21,17 +21,14 @@ navbar:
       - text: "Summary of Data"
         href: 03-summary-data.html
         icon: fa-play-circle
-  - text: Week 3
+  - text: Week 3~6
     icon: fa-calendar
     menu:
       - text: "Probability"
         href: 04-probability.html
         icon: fa-play-circle
       - text: "Random Variable and Expectation"
-        href: 05-expectation.html
-        icon: fa-play-circle
-      - text: "Probability Distribution"
-        href: 05-prob-distribution.html
+        href: 05-random-variables-expectation.html
         icon: fa-play-circle
   - text: About
     href: about.html
