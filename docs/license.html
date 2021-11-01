@@ -307,7 +307,7 @@ $(document).ready(function () {
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
     <span class="fa fa-calendar"></span>
      
-    Week 3
+    Week 3~6
      
     <span class="caret"></span>
   </a>
@@ -320,17 +320,10 @@ $(document).ready(function () {
       </a>
     </li>
     <li>
-      <a href="05-expectation.html">
+      <a href="05-random-variables-expectation.html">
         <span class="fa fa-play-circle"></span>
          
-        Expectation
-      </a>
-    </li>
-    <li>
-      <a href="05-prob-distribution.html">
-        <span class="fa fa-play-circle"></span>
-         
-        Probability Distribution
+        Random Variable and Expectation
       </a>
     </li>
   </ul>
@@ -375,7 +368,7 @@ $(document).ready(function () {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2021-10-27
+<strong>Last updated:</strong> 2021-11-01
 </p>
 <p>
 <strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 2 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
@@ -406,16 +399,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomzorba78ustmedicalstatisticstreeab62771b34251c0523c64386855da58d00998187targetblankab62771a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/zorba78/ust-medical-statistics/tree/ab62771b34251c0523c64386855da58d00998187" target="_blank">ab62771</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomzorba78ustmedicalstatisticstreede9d2e491df3b72d7ef8622d9afafaf9a433b6eatargetblankde9d2e4a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/zorba78/ust-medical-statistics/tree/de9d2e491df3b72d7ef8622d9afafaf9a433b6ea" target="_blank">de9d2e4</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomzorba78ustmedicalstatisticstreeab62771b34251c0523c64386855da58d00998187targetblankab62771a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomzorba78ustmedicalstatisticstreede9d2e491df3b72d7ef8622d9afafaf9a433b6eatargetblankde9d2e4a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/zorba78/ust-medical-statistics/tree/ab62771b34251c0523c64386855da58d00998187" target="_blank">ab62771</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/zorba78/ust-medical-statistics/tree/de9d2e491df3b72d7ef8622d9afafaf9a433b6ea" target="_blank">de9d2e4</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -426,18 +419,20 @@ Ignored files:
     Ignored:    .Rproj.user/
 
 Untracked files:
-    Untracked:  slides/Figures/covid-19-bayes-mosaic-1.svg
-    Untracked:  slides/assets/imgs/cond-prob-balls.png
-    Untracked:  slides/libs/fabric/
-    Untracked:  slides/libs/tile-view/
-    Untracked:  slides/libs/xaringanExtra-progressBar/
-    Untracked:  slides/libs/xaringanExtra-scribble/
+    Untracked:  slides/05-random-variables-expectation.Rmd
+    Untracked:  slides/05-random-variables-expectation.html
+    Untracked:  slides/Figures/unnamed-chunk-11-1.png
+    Untracked:  slides/Figures/unnamed-chunk-12-1.png
+    Untracked:  slides/assets/imgs/rv-scheme.png
+    Untracked:  slides/libs/panelset/
 
 Unstaged changes:
+    Modified:   analysis/_site.yml
     Modified:   slides/04-probability.Rmd
     Modified:   slides/04-probability.html
     Modified:   slides/Figures/barplot-example-1.svg
     Modified:   slides/Figures/boxplot-example-1.svg
+    Modified:   slides/Figures/covid-19-bayes-mosaic-1.svg
     Modified:   slides/Figures/histogram-iris-01-1.svg
     Modified:   slides/Figures/sd-rule-1.svg
     Modified:   slides/Figures/shipman-01-1.svg
@@ -482,6 +477,23 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/zorba78/ust-medical-statistics/19a0ce5199b1a6e37376d4bf974810082db8ea4c/docs/license.html" target="_blank">19a0ce5</a>
+</td>
+<td>
+zorba78
+</td>
+<td>
+2021-10-27
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 html
@@ -649,7 +661,7 @@ zorba78
 2021-03-04
 </td>
 <td>
-wflow_publish(c(“docs/<em>", "output/</em>”, "slides/*"), republish = TRUE)
+wflow_publish(c("docs/<em>", "output/</em>", "slides/*"), republish = TRUE)
 </td>
 </tr>
 <tr>
@@ -700,7 +712,7 @@ zorba78
 2021-03-03
 </td>
 <td>
-wflow_publish(c(“analysis/<em>", "docs/</em>”), republish = TRUE)
+wflow_publish(c("analysis/<em>", "docs/</em>"), republish = TRUE)
 </td>
 </tr>
 <tr>
