@@ -8,8 +8,8 @@ output:
   xaringan::moon_reader:
     css: [default, metropolis, metropolis-fonts, ../assets/css/footer.css, ../assets/css/metropolis-ak.css]
     # css: [default, metropolis, metropolis-fonts]
-    lib_dir: "../docs/libs"
-    # lib_dir: "libs"
+    # lib_dir: "../docs/libs"
+    lib_dir: "libs"
     nature:
       highlightStyle: github
       titleSlideClass: [middle, left]
@@ -228,6 +228,42 @@ the probability of $X = x_i$, then the probability function (_distribution_) of 
 
 ---
 
+# Random Variable
+
+#### **Cumulative Dsitribution Function**
+
+> The cumulative distribution function (CDF) of a random variable $X$ is defined as 
+> $$F_X(x) = P(X\leq x)$$
+
+
+#### **Properties**
+
+> - $F_X$ is non-decreasing
+> - $F_X$ is right-continuous 
+> $$\lim_{e\rightarrow 0^+}F_X(x + e) = F_X(x),~~~~\mathrm{for~all~x\in \mathbb{R}}$$
+> - $\lim_{x\rightarrow -\infty}F_X(x) = 0$ and $\lim_{x\rightarrow \infty}F_X(x) = 1$
+
+
+- Discrete $X$: step function
+- Continuous $X$: monotonic increasing function (continuous)
+
+---
+
+# Random Vairable 
+
+#### **Cumulative Dsitribution Function**
+
+> If $X$ is discrete, the cdf of $X$ is 
+> $$F_X(x) = P(X\leq x) = \sum_{\{k\leq x; f_X(k)>0\}}P_X(k)$$
+> If $X$ is continuous
+> $$F_X(x) = P(X\leq x) = \int_{-\infty}^{x}f_X(t) dt$$
+
+
+We say that $X$ has the distribution $F_X$, write $X\sim F_X$. Similarly, $X \sim f_X$ for the 
+named distributions of pmf of pdf 
+
+---
+
 # Expectation
 
 #### Concept 
@@ -292,17 +328,212 @@ $$\bar{x} = \frac{1}{N}\sum_{i=1}^{N}x_i$$
 But why is there no probability weight in the formula for calculating the sample mean?
 
 
+---
+
+# Expectation
+
+#### **General Definition**
+
+> Let the pmf (or pdf) of the random variable $X$ be $f_X(x)$. The expectation of $g(X)$ is 
+$$\begin{aligned}
+E[g(X)] &= \sum_{x:f_X(x)>0} g(x)f_X(x)~~~\mathrm{for~pmf} \\
+        &= \int_{-\infty}^{\infty} g(x)f_X(x) dx~~~\mathrm{for~pdf}
+\end{aligned}$$
 
 
+#### **Properties**
+
+> For any functions $g$ and $h$, any random variable $X$, and any constant $c$: 
+> - $E(c) = c$
+> - $E[cg(X)] = cE[g(X)]$
+> - $E[g(X) + h(X)] = E[g(X)] + E[h(X)]$
 
 
+---
+
+# Expectation
+
+#### **Relationship betwee n the expectation and sample mean**
+
+<!-- > Question 1: Is a sample mean random variable?  -->
+> - Suppose we have a random sample size of $N$, denoted as $\{X_1, X_2, \ldots, X_N\}$. Then 
+sample mean of the random variable $X$ is 
+> $$\bar{X} = \frac{1}{N}\sum_{i=1}^{N}X_i$$
+> - Since $\{X_1, \ldots, X_N\}$ are randomly selected observations and each $X_i$ has the 
+distribution, $\bar{X}$ is an random variable. 
+
+$$\begin{aligned}
+E(\bar{X}) &= E\left(\frac{1}{N}\sum_{i=1}^{N}X_i\right) \\
+           &= \frac{1}{N}\sum_{i=1}^{N}E(X_i) = \frac{1}{N}N E(X) \\
+           &= E(X) = \mu_X
+\end{aligned}$$
 
 
+---
+
+# Variance 
+
+#### **Variance of Random Variable**
+
+> - The variance of a random variable indicates the shape of the pmf or pdf: whether the probability is 
+dense or spread
+> - Roughly speaking, the expectation is a predicted value from the random variable, while the variance 
+indicates the precision or reliability of the prediction.
 
 
+#### **Definition**
+
+> - Let the pmf (or pdf) of a random variable $X$ be $f_X(x)$. The operator of the variance for a 
+random variable $X$ is denoted as $\mathrm{Var}(X)$ and its result is written as $\sigma^2$
+
+$$\begin{aligned}
+\sigma^2 = \mathrm{Var}(X) &= E[(X - \mu)^2] \\
+                           &= \sum_{x \in S}(x_i - \mu)^2f_X(x_i),~~~\mathrm{discrete} \\
+                           &= \int_{-\infty}^{\infty} (x - \mu)^2f_X(x) dx,~~~\mathrm{continuous}
+\end{aligned}$$
 
 
+---
+# Variance
 
+#### **Properties**
+
+> For any random variable $X$ and any constant $c$
+> - $\mathrm{Var}(X) \geq 0$
+> - $\mathrm{Var}(c) = 0$, $\mathrm{Var}(cX) = c^2\mathrm{Var}(X)$
+> - $\mathrm{Var(X + c)} = \mathrm{Var(X)}$
+> - $\mathrm{Var}(X) = E[X^2] - (E[X])^2 = E[X^2] - \mu_X^{2}$
+
+
+#### The variance of sum (or difference) of two random variables
+
+> Let $X$ and $Y$ be random variables with the probability distribution, then 
+
+$$\begin{aligned}
+\mathrm{Var}(X\pm Y) &= E[(X \pm Y - (\mu_X \pm \mu_Y))^2] \\
+                     &= E[((X - \mu_X) \pm (Y - \mu_Y))^2] \\ 
+                     &= E[(X - \mu_X)^2 + (Y - \mu_Y)^2 \pm 2(X-\mu_X)(Y - \mu_Y)] \\
+                     &= E[(X - \mu_X)^2] + E[(Y - \mu_Y)^2] \pm 2E[(X-\mu_X)(Y - \mu_Y)] \\
+                     &= \mathrm{Var}(X) + \mathrm{Var}(Y) \pm 2\mathrm{Cov}(X, Y)
+\end{aligned}$$
+
+---
+# Variance 
+
+#### `r fontawesome::fa("r-project", fill = "black")` Example
+
+> Suppose $X \sim N(0, 1)$ and $Y \sim N(2, 4)$
+> - Generate 100 random samples corresponding to $X$ and $Y$ 
+> - Let $Z = X + Y$
+> - Calcuate sample means and variances $X$, $Y$ and $Z$
+
+.panelset[
+.panel[.panel-name[R Code]
+```{r, echo=TRUE}
+set.seed(123)
+X <- rnorm(100, 0, 1)
+Y <- rnorm(100, 2, 2)
+Z <- X+Y
+mX <- mean(X); mY <- mean(Y)
+mZ <- mean(Z)
+vX <- var(X); vY <- var(Y)
+vZ <- var(Z)
+
+```
+]
+
+.panel[.panel-name[Results]
+```{r, echo=TRUE, comment=NA}
+mX + mY; mZ
+vX + vY; vZ
+
+```
+]
+
+]
+
+---
+# Variance 
+
+#### **Variance of the Sample Mean**
+
+> Let $X_1, \ldots, X_n$ are random samples from the identical and independent distribution, then 
+> $$\mathrm{Var}(\bar{X}) = \frac{1}{N}\mathrm{Var}(X) = \frac{\sigma^2}{N}$$
+
+#### **Proof**
+
+$$\begin{aligned}
+\mathrm{Var}(\bar{X}) &= \mathrm{Var}\left(\frac{1}{N}\sum_{i=1}^{N}X_i \right) = \frac{1}{N^2}\mathrm{Var(X_1 + \cdots + X_N)} \\ 
+                      &= \frac{1} {N^2}N\mathrm{Var}(X) = \frac{1}{N}\mathrm{Var}(X) = \frac{\sigma^2}{N}
+\end{aligned}$$
+
+---
+# Variance 
+
+#### **Expectation of the Sample Variance** 
+> Let $\bar{X}$, $\sigma^2_X$, and $S^2$ be the sample mean, variance, and sample variance of a random variable $X$. 
+Then the expectation of $S^2$ is 
+> $$E(S^2) = \frac{N-1}{N}\sigma^2_X,~~~S^2 = \frac{1}{N}\sum_{i=1}^{N}(X_i - \bar{X})^2$$
+
+
+.panelset[
+.panel[.panel-name[Proof: Part I]
+
+$$\begin{aligned}
+E(S^2) &= E\left[\frac{1}{N}\sum_{i=1}^{N}(X_i - \bar{X})^2 \right] = E\left[\frac{1}{N}\sum_{i=1}^{N}(X^2_i - 2X_i\bar{X} + \bar{X}^2) \right] \\ 
+       &= E\left[\frac{1}{N}\sum_{i=1}^{N}X_i^2 -2\bar{X}\frac{1}{N}\sum_{i=1}^{N}X_i + \frac{1}{n}\sum_{i=1}^{N}\bar{X}^2  \right] \\ 
+       &= \frac{1}{N}\sum_{i=1}^{N}E(X_i^2) - E(\bar{X}^2)
+\end{aligned}$$
+
+]
+
+.panel[.panel-name[Part II]
+Since $\sigma^2_X = E(X^2) - \mu_X^2$ and $\mathrm{Var}(\bar{X}) = E[\bar{X}^2] - \mu_X^2$
+
+$$\begin{aligned}
+E(X^2) &= \sigma^2_X + \mu_X^2 \\
+E[\bar{X}^2] &= \frac{\sigma^2_X}{N} + \mu_X^2 
+\end{aligned}$$
+]
+
+.panel[.panel-name[Part III]
+Using Part II, 
+
+$$\begin{aligned}
+E(S^2) &= \frac{1}{N}\sum_{i=1}^{N}E(X_i^2) - E(\bar{X}^2) = \frac{1}{N}\sum_{i=1}^{N}(\sigma_X^2 + \mu_X^2) - E[\bar{X}^2] \\
+       &= \frac{1}{N}N(\sigma^2_X + \mu_X^2) - \left(\frac{\sigma^2_X}{N} + \mu_X^2\right) \\ 
+       & = \frac{N-1}{N}\sigma_X^2
+\end{aligned}$$
+
+]
+
+.panel[.panel-name[Implication]
+
+> - Unlike the sample mean $\bar{X}$, the expectation of the sample variance $S^2$ is less than $\sigma_X^2$ (**biased**)
+> - To obtain the unbiased result, therefore, use $N-1$ 
+
+]
+]
+
+
+---
+# Expectation and Variance 
+
+#### **Implication**
+
+> 1. The p.m.f or p.d.f of $X$ shall exist to derive the expectation (or variance) but we don't know 
+the exact formula of p.m.f or p.d.f. 
+> 2. Since $E(\bar{X}) = E(X)$, the sample mean $\bar{x}$ is approximate to $E(X)$
+> 3. If $N$ is very large, $\bar{x}$ is nearly or equal to $E(X)$ since the variance of $\bar{x}$ becomes small. 
+> 4. Therefore, $\bar{x} \approx E(X)$ when $N$ is very large
+
+
+???
+$$\begin{aligned}
+\sigma^2_X &= \frac{N}{N-1}E(S^2) \\
+           &= \frac{N}{N-1}E\left[\frac{1}{N}\sum_{i=1}^{N}(X_i - \bar{X})^2\right] \\
+           &= E\left[\frac{1}{N-1}\sum_{i=1}^{N}(X_i - \bar{X})^2\right]
+\end{aligned}$$
 
 
 
