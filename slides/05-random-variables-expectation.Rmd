@@ -8,8 +8,8 @@ output:
   xaringan::moon_reader:
     css: [default, metropolis, metropolis-fonts, ../assets/css/footer.css, ../assets/css/metropolis-ak.css]
     # css: [default, metropolis, metropolis-fonts]
-    # lib_dir: "../docs/libs"
-    lib_dir: "libs"
+    lib_dir: "../docs/libs"
+    # lib_dir: "libs"
     nature:
       highlightStyle: github
       titleSlideClass: [middle, left]
@@ -536,8 +536,295 @@ $$\begin{aligned}
 \end{aligned}$$
 
 
+---
+
+# Joint and Marginal Distribution 
+
+#### **Joint and Marginal Distribution for Two Categorical Vairables**
+
+> Consider two discrete random variables $X$ and $Y$ with p.m.f $f_X$ and $f_Y$ supporting on the 
+sample space $S_X$ and $S_Y$, respectively. Let $S_{X,Y}$ denote the set of all possible pairs 
+$(x, y)$. Then the _**joint probability mass function**_ of $X$ and $Y$ is the function $f_{X,Y}$ is
+
+$$f_{X,Y} = P(X = x, Y = y)~~~~\mathrm{for~(x,y) \in S_{X,Y}}$$
+
+> For every joint p.m.f 
+
+$$\begin{aligned}
+f_{X, Y}(x, y) &> 0~~~~\mathrm{for~all~(x,y) \in S_{X,Y}} \\
+\sum_{(x,y)\in S_{X,Y}} f_{X,Y}(x, y) &= \sum_{x\in S_X}\sum_{y \in S_Y} f_{X,Y}(x, y) = 1
+\end{aligned}$$
 
 
+---
+# Joint and Marginal Distribution 
+
+#### **Marginal Distribution**
+
+> The p.m.f's of $f_(X)$ and $f_(Y)$ are called the _marginal p.m.f of $X$ and $Y$_, respectively, 
+in the context of the joint probability distribution
+
+$$\begin{aligned}
+f_X(x) &= P(X = x) \\
+       &= \sum_{y \in S_Y} P(X = x, Y = y) \\
+       &= \sum_{y \in S_Y} f_{X,Y}(x, y)
+\end{aligned}$$
+
+> Similarly, 
+> $$f_Y(y) = \sum_{x\in S_X} f_{X,Y}(x,y)$$
+
+
+#### **Joint Cumulative Distribution Function**
+
+$$F_{X,Y}(x,y)=P(X\leq x, Y \leq y)~~~~\mathrm{for~all~(x,y)}\in \mathbb{R}^2$$
+
+???
+
+Given the joint PMF we may recover the marginal PMFs, but the converse is not true. Even if
+we have both marginal distributions they are not sufficient to determine the joint PMF; more
+information is needed
+
+
+**Cumulative probability mass function**
+
+$$P(a\leq X\leq b, c \leq Y \leq d) = \sum_{a\leq X \leq b}\sum_{c\leq X \leq d} f_{X,Y}(x, y)$$
+---
+# Joint and Marginal Distribution 
+
+#### **Example**
+
+> The 50 students at a university take examinations in two subjects $X$ and $Y$, and results 
+come out with A, B, C, D, E, F grades. 
+
+.panelset[
+.panel[.panel-name[R Code]
+```{r, echo=TRUE}
+library(tidyverse)
+
+grades <- LETTERS[1:6]
+dat <- expand_grid(X = grades, Y = grades)
+dat <- dat %>% 
+  mutate(n = c(1,2,1,0,0,0, 
+               0,2,3,1,0,0, 
+               0,4,7,4,1,0, 
+               0,1,4,5,4,0,
+               0,0,1,3,2,0, 
+               0,0,0,1,2,1))
+```
+
+]
+.panel[.panel-name[Table & Joint p.m.f]
+.pull-left[
+```{r, echo=TRUE, comment=NA}
+library(questionr)
+t1 <- with(dat, wtd.table(X, Y, 
+           weights = n)); t1
+
+```
+]
+.pull-right[
+```{r, echo=TRUE, comment=NA}
+# Joint probability mass function
+t1/sum(t1)
+```
+]
+]
+
+.panel[.panel-name[Heatmap-Code]
+```{r, echo=TRUE}
+library(ggpubr)
+gp1 <- ggplot(data = dat) + 
+  aes(x = X, y = Y, fill = n/60, label = sprintf("%.2f", n/60)) + 
+  geom_tile(color = "white") + 
+  scale_fill_gradient(
+    low = "white", high = "#132B43", limits = c(0, 0.15), 
+    name = "", breaks = c(0, 0.05, 0.10, 0.15)
+  ) +
+  labs(title = "Joint Probabilty Mass Function of X and Y") + 
+  geom_text(color = "black", size = 4) +
+  guides(fill = guide_colorbar(barheight = 25)) + 
+  scale_y_discrete(limits = rev) + 
+  theme_minimal(base_size = 15) + 
+  theme(panel.grid = element_blank(), axis.title = element_blank())
+
+```
+
+]
+
+.panel[.panel-name[Plot]
+```{r pmf-ex, fig.width=8, fig.height=8, out.height=380, out.width=380}
+gp1
+```
+
+]
+
+.panel[.panel-name[Marginal Distribution]
+.pull-left[
+```{r, echo=TRUE, comment=NA}
+# Marginal pmf of X
+dat %>% 
+  count(X, wt = n) %>% 
+  mutate(n = n/sum(n))
+```
+
+]
+.pull-right[
+```{r, echo=TRUE, comment=NA}
+# Marginal pmf of YY
+dat %>% 
+  count(Y, wt = n) %>% 
+  mutate(n = n/sum(n))
+```
+
+]
+]
+
+]
+
+
+---
+# Joint and Marginal Distribution
+
+#### **Joint and Marginal Distribution for Continuous Variables**
+
+> Given two continuous random variable $X$ and $Y$, let $f_{X,Y}(x, y)$ be a function associated 
+with $X = x$ and $Y = y$. Then $f$ is called the _**joint probability density function**_ of 
+$X$ and $Y$ if 
+
+$$\begin{aligned}
+f_{X,Y}(x,y) &\geq 0~~~~\mathrm{for~all}~(x,y)\in S_{X,Y} \\
+\int_{S_X}\int_{S_Y} f_{X,Y}(x,y)dx dy &= 1
+\end{aligned}$$
+
+
+> Joint Cumulative Distribution Function 
+
+$$F_{X,Y}(x, y) = P(X \leq x, Y\leq y) = \int_{-\infty}^{x}\int_{-\infty}^{y} f_{X,Y}(u, v) dv du
+~~~~\mathrm{for~all}~(x,y) \in \mathbb{R}^2$$
+
+> Marginal PDF of $X$ and $Y$
+
+$$\begin{aligned}
+f_X(x) &= \int_{S_Y} f_{X,Y}(x,y) dy,~~~~x \in S_X \\
+f_Y(y) &= \int_{S_X} f_{X,Y}(x,y) dx,~~~~y \in S_Y \\
+\end{aligned}$$
+
+
+
+???
+(**For Joint CDF**) In the continuous case there is not such a simple interpretation for the joint 
+PDF; however,we do have one for the joint CDF, namely
+
+
+---
+# Joint and Marginal Distribution
+
+#### **Example**: Joint PDF
+
+> Let the joint PDF of $(X,Y)$ be given by 
+> $$f_{X,Y}(x,y) = \frac{6}{5}(x + y^2), ~~~~0<x<1,~0<y<1$$
+
+.panelset[
+.panel[.panel-name[Marginal PDF of X]
+$$\begin{aligned}
+f_X(x) &= \int_0^1 \frac{6}{5}(x + y^2) dy \\
+       &= \frac{6}{5}\left(xy + \frac{y^3}{3}\right) \bigg|_{y=0}^{1} \\
+       &= \frac{6}{5}\left(x + \frac{1}{3}\right)
+\end{aligned}$$
+]
+.panel[.panel-name[Marginal PDF of Y]
+$$\begin{aligned}
+f_X(y) &= \int_0^1 \frac{6}{5}(x + y^2) dx \\
+       &= \frac{6}{5}\left(\frac{x^2}{2} + xy^2\right) \bigg|_{x=0}^{1} \\
+       &= \frac{6}{5}\left(\frac{1}{2} + y^2\right)
+\end{aligned}$$
+]
+.panel[.panel-name[Probabilty of joint PDF]
+$$\begin{aligned}
+P(0<x<0.3,~0.1<y<0.3) &= \int_{x=0}^{0.3}\int_{y=0.1}^{0.3}\frac{6}{5}\left(x + y^2\right) dy dx \\
+                      &= \int_{x=0}^{0.3}\frac{6}{5}\left(xy + \frac{y^3}{3}\right)\bigg|_{y=0.1}^{0.3} dx \\
+                      &= \int_{x=0}^{0.3}\frac{6}{5}\left(0.2x + 0.00867\right) dx \\
+                      &= \frac{6}{5}\left(\frac{0.2}{2}x^2 + 0.00867x\right)\bigg |_{x=0}^{0.3} \approx 0.014
+\end{aligned}$$
+]
+
+]
+
+---
+# Joint and Marginal Expectation
+
+> Given a function $g$ with arguments $(x, y)$, The expectation of $g(x, y)$ wit respect to the 
+joint PDF (or PMF) is
+
+$$\begin{aligned}
+E\left[g(X,Y)\right] &= \int_{S_X}\int_{S_Y}g(x,y)f_{X,Y}(x,y) dx dy,~~~~\mathrm{for~the~continuous~case} \\
+E\left[g(X,Y)\right] &= \sum_{x\in S_X}\sum_{y \in S_Y}g(x,y)f_{X,Y}(x,y),~~~~\mathrm{for~the~discrete~case}
+\end{aligned}$$
+
+#### **Example**
+
+> From the previous example for the joint PDF of $X$ and $Y$, 
+
+$$\begin{aligned}
+E[X]  &= \int_{x=0}^{1}\int_{y=0}^{1} x\frac{6}{5}(x + y^2) dy dx = 0.6 \\
+E[XY] &= \int_{x=0}^{1}\int_{y=0}^{1} xy\frac{6}{5}(x + y^2) dy dx = 0.35 \\
+E[X^2] &= \int_{x=0}^{1}\int_{y=0}^{1} x^2\frac{6}{5}(x + y^2) dy dx = 0.43
+\end{aligned}$$
+
+---
+# Joint and Marginal Expectation
+
+#### **Covariance and Correlation**
+
+> Two special cases of joint expectations $\rightarrow$ quantifying the dependence (relationship) between $X$ and $Y$
+
+#### **Definition: Covariance**
+
+> The _**covariance**_ of $X$ and $Y$ is defined as 
+
+$$\begin{aligned}
+\mathrm{Cov}(X,Y) = \sigma_{XY}&= E[X - E(X)]E[Y - E(Y)] \\
+                  &= E[XY] - E[X]E[Y]
+\end{aligned}$$
+
+
+#### **Definition: Correlation**
+
+> The Pearson product moment correlation between $X$ and $Y$ is the covariance between $X$ and
+$Y$ rescaled to fall in the interval [−1, 1]
+
+
+$$\begin{aligned}
+\mathrm{Corr}(X,Y) = \rho_{XY} &= E\left[\left(\frac{X - \mu_X}{\sigma_X}\right)\left(\frac{X-\mu_Y}{\sigma_Y}\right)\right] \\
+                               &= \frac{E[(X-\mu_X)(Y-\mu_Y)]}{\sigma_X\sigma_Y} = \frac{\mathrm{Cov}(X,Y)}{\sigma_X \sigma_Y}
+\end{aligned}$$
+
+---
+# Joint and Marginal Expectation
+
+#### **Homework for Practice**
+
+> Let the joint PMF of $X$ and $Y$ be given as
+
+```{r}
+pdf <- c(0.05, 0.05, 0.1, 0, 
+         0.05, 0.1, 0.25, 0.1, 
+         0, 0.15, 0.1, 0.05)
+tab <- matrix(pdf, byrow = TRUE, nrow = 3)
+rownames(tab) = paste0("X=", 0:2)
+colnames(tab) = paste0("Y=", 0:3)
+
+kbl(tab) %>% kable_paper
+  
+
+```
+
+
+> - Define the marginal PMF of $X$ and $Y$
+> - Obtain $E(X)$, $E(Y)$, $Var(X)$, $Var(Y)$ for the marginal distribution of $X$ and $Y$
+> - Obtain $E(XY)$
+> - Obtain $\mathrm{Cov}(X,Y)$
+> - Obtain $\mathrm{Corr}(X,Y)$
 
 
 
