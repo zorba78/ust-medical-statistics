@@ -8,8 +8,8 @@ output:
   xaringan::moon_reader:
     css: [default, metropolis, metropolis-fonts, ../assets/css/footer.css, ../assets/css/metropolis-ak.css]
     # css: [default, metropolis, metropolis-fonts]
-    lib_dir: "../docs/libs"
-    # lib_dir: "libs"
+    # lib_dir: "../docs/libs"
+    lib_dir: "libs"
     nature:
       highlightStyle: github
       titleSlideClass: [middle, left]
