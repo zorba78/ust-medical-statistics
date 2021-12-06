@@ -8,8 +8,8 @@ output:
   xaringan::moon_reader:
     css: [default, metropolis, metropolis-fonts, ../assets/css/footer.css, ../assets/css/metropolis-ak.css]
     # css: [default, metropolis, metropolis-fonts]
-    # lib_dir: "../docs/libs"
-    lib_dir: "libs"
+    lib_dir: "../docs/libs"
+    # lib_dir: "libs"
     nature:
       highlightStyle: github
       titleSlideClass: [middle, left]
@@ -561,7 +561,7 @@ f_{X, Y}(x, y) &> 0~~~~\mathrm{for~all~(x,y) \in S_{X,Y}} \\
 
 #### **Marginal Distribution**
 
-> The p.m.f's of $f_(X)$ and $f_(Y)$ are called the _marginal p.m.f of $X$ and $Y$_, respectively, 
+> The p.m.f's of $f_{(X)}$ and $f_{(Y)}$ are called the _marginal p.m.f of $X$ and $Y$_, respectively, 
 in the context of the joint probability distribution
 
 $$\begin{aligned}
@@ -753,7 +753,7 @@ P(0<x<0.3,~0.1<y<0.3) &= \int_{x=0}^{0.3}\int_{y=0.1}^{0.3}\frac{6}{5}\left(x + 
 ---
 # Joint and Marginal Expectation
 
-> Given a function $g$ with arguments $(x, y)$, The expectation of $g(x, y)$ wit respect to the 
+> Given a function $g$ with arguments $(x, y)$, The expectation of $g(x, y)$ with respect to the 
 joint PDF (or PMF) is
 
 $$\begin{aligned}

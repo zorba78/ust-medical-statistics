@@ -594,7 +594,7 @@ f_{X, Y}(x, y) &amp;&gt; 0~~~~\mathrm{for~all~(x,y) \in S_{X,Y}} \\
 
 #### **Marginal Distribution**
 
-&gt; The p.m.f's of `\(f_(X)\)` and `\(f_(Y)\)` are called the _marginal p.m.f of `\(X\)` and `\(Y\)`_, respectively, 
+&gt; The p.m.f's of `\(f_{(X)}\)` and `\(f_{(Y)}\)` are called the _marginal p.m.f of `\(X\)` and `\(Y\)`_, respectively, 
 in the context of the joint probability distribution
 
 `$$\begin{aligned}
@@ -722,15 +722,9 @@ dat %&gt;%
 ```
 
 ```
-# A tibble: 6 × 2
-  X         n
-  &lt;chr&gt; &lt;dbl&gt;
-1 A      0.08
-2 B      0.12
-3 C      0.32
-4 D      0.28
-5 E      0.12
-6 F      0.08
+Error: Must subset columns with a valid subscript vector.
+x Subscript `exprs` has the wrong type `quoted`.
+ℹ It must be logical, numeric, or character.
 ```
 
 ]
@@ -744,15 +738,9 @@ dat %&gt;%
 ```
 
 ```
-# A tibble: 6 × 2
-  Y         n
-  &lt;chr&gt; &lt;dbl&gt;
-1 A      0.02
-2 B      0.18
-3 C      0.32
-4 D      0.28
-5 E      0.18
-6 F      0.02
+Error: Must subset columns with a valid subscript vector.
+x Subscript `exprs` has the wrong type `quoted`.
+ℹ It must be logical, numeric, or character.
 ```
 
 ]
@@ -832,7 +820,7 @@ P(0&lt;x&lt;0.3,~0.1&lt;y&lt;0.3) &amp;= \int_{x=0}^{0.3}\int_{y=0.1}^{0.3}\frac
 ---
 # Joint and Marginal Expectation
 
-&gt; Given a function `\(g\)` with arguments `\((x, y)\)`, The expectation of `\(g(x, y)\)` wit respect to the 
+&gt; Given a function `\(g\)` with arguments `\((x, y)\)`, The expectation of `\(g(x, y)\)` with respect to the 
 joint PDF (or PMF) is
 
 `$$\begin{aligned}
