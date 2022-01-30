@@ -1,0 +1,226 @@
+---
+title: "Medical Statistics 2^nd^ Semester Take Home Final Exam"
+subtitle: "**Due Date: Dec 15 2021 (13:00) to Dec 20 2021 (23:59)**"
+output: 
+  officedown::rdocx_document:
+    reference_docx: template-report.docx
+    number_section: false
+    tables:
+      style: Table
+      layout: autofit
+      width: 1.0
+      caption:
+       style: Table Caption
+       pre: 'Table '
+       sep: ': '
+# bibliography: references.bib       
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_knit$set(root.dir = '..')
+library(officedown)
+library(officer)
+require(formatR)
+
+fp <- fp_par(
+  text.align = "center", 
+  padding.bottom = 20, padding.top = 120, 
+  border.bottom = fp_border())
+
+ft <- fp_text(shading.color='#EFEFEF', bold = TRUE)
+
+
+options(max.print = 1000)
+knitr::opts_chunk$set(eval = TRUE,
+                      echo = FALSE,
+                      cache = FALSE,
+                      include = TRUE,
+                      collapse = FALSE,
+                      tidy = TRUE,
+                      tidy.opts = list(blank=FALSE, width.cutoff=120),
+                      message = FALSE,
+                      warning = FALSE,
+                      dependson = NULL,
+                      engine = "R", # Chunks will always have R code, unless noted
+                      error = TRUE,
+                      tab.topcaption = TRUE, 
+                      fig.path="Figures/",  # Set the figure options
+                      fig.align = "center",
+                      fig.keep='all', fig.retina=2)
+```
+
+
+
+<br/>
+<br/>
+
+
+**Name**: ____________________________________________
+
+
+<br/>
+<br/>
+
+
+## **Notice**
+
+- Please DO SOLVE ANSWERS BY YOURSELVES!!
+- You can use materials from other textbooks, lecture notes, and websites but you have to cite 
+materials in every answer. 
+- Write down your answers to each question in this document file (make a space for answers below the question)
+
+## **Questions**
+
+1. Which one of the following statements is False?
+
+   a. In (prospective) cohort study, subjects are enrolled or grouped on the basis of their exposure, 
+   then are followed to document occurrence of disease.
+   b. The probability of a type 1 error is the probability that you reject the null hypothesis.
+   c. In test for heterogeneity of meta-analysis, if Higgins I^2^<=25%, studies are regarded homogeneous 
+   and the fixed effect model of meta-analysis can generally be used.
+   d. To use the two-sample t-test, we need to assume that the data from both samples are 
+   normally distributed and they have the same variances.
+   e. Especially when more than 20% of cells have expected frequencies > 5, we need to use 
+   Fisher's exact test to determine if there are associations between two categorical variables.
+
+
+
+2. Suppose all students who officially enrolled in Medical Statistics are playing a game called 
+"The Prisoners and Warder". Joel, Min, and Roggers played roles as prisoners and they all had been 
+sentenced to death (I'm really sorry to give you guys such a role!! `r emo::ji("smile")` `r emo::ji("horror")`).
+And Noel has a role as a warder. Noel has selected one of the prisoners randomly to be pardoned. Noel 
+has already received the name which one is pardoned from the governor, but she is not allowed to tell to them. 
+Roggers aske to Noel: "If Min is going to be pardoned, give me the name of Joel. If Joel is pardoned, then 
+give me Min's name. If I'm the one to be pardoned, just flip a coin to decide whether to name Min or Joel." 
+Noel reckons for a while and decides to tell Roggers that Joel to be executed. Roggers is so pleased 
+because he believes that his probability of surviving has gone up from 1/3 to 1/2, as it is now 
+between him and Min to be pardoned. Roggers secretly whispered to Min to tell the brand new information. 
+When Min has heard this news, he reasons that the chance of Roggers to be pardoned is not changed at 1/3, 
+but he is pleased since Min's own chance has gone up to 2/3. Which prisoner is correct? Please 
+give a detailed explanation of your reasoning. 
+
+
+
+3. Consider a sample of size 2 drawn without replacement from an urn containing three balls, 
+numbered 1, 2, and 3. Let $X$ be the number on the first ball drawn and $Y$ the larger of 
+the two numbers drawn
+
+   a. Find the joint discrete distribution of $X$ and $Y$
+   b. Find the marginal distribution of $Y$
+   c. Find $P(X = 1|Y =3)$
+   d. Find the $\mathrm{Cov}(X, Y)$
+
+
+4. Solve the following problems: 
+
+   a. Let $X_1$, $X_2$ and $X_3$ be uncorrelated random variables with common variance $\sigma^2$. 
+   Find the correlation coefficient between $X_1 + X_2$ and $X_2 + X_3$
+   b. Let $X_1$ and $X_2$ be uncorrelated random variables. Find the correlation coefficient 
+   between $X_1 + X_2$ and $X_2 - X_1$ in terms of $\mathrm{Var}(X_1)$ and $\mathrm{Var}(X_2)$. 
+   c. Let $X_1$, $X_2$, and $X_3$ be independently distributed random variables with common mean 
+   $\mu$ and common variance $\sigma^2$. Find the correlation coefficient between $X_2 - X_1$ and 
+   $X_3$ and $X_1$. 
+
+
+5. When you start R with Rstudio, there is an example dataset named with `mtcars`. The `mtcars` 
+dataset was extracted from the 1974 _Motor Trend_ US magazine, and comprise fuel consumption and 
+10 aspects of automobile design and performance for 32 automobiles (1973 - 74 models). The detailed 
+description of variables in `mtcars` dataset can be checked by typing `help(mtcars)` in the prompt 
+of R console window. Write R scipts and confirm the results for the following questions.
+
+   a. Extract `mpg` and `disp` variables from `mtcars` dataset and restore it in an object `x` and `y`, respectively. 
+   b. Calculate mean, standard deviation, coefficient of variation, minimum, maximum, median, 
+   25^th^ and 75^th^ quantiles, and interquartile range of `x` and `y`. 
+   c. Make scatterplot of `x` and `y` and interpret in terms of the correlation coefficient between `x` and `y`. 
+   d. Assume that `x` is the population of a mile per gallon of all automobiles of US from 1973 to 1974. 
+   Suppose a sample of size 2 automobiles are drawn from the population with replacement and calculate 
+   sample mean. Then repeat the same procedure 10,000 times (Hint: check the function `sample()`). 
+      - Make histogram of 10,000 sample means
+      - Calculate the mean and standard deviation of 10,000 sample means
+      - Compare the above results to the population in terms of mean and standard deviation: is the 
+      mean of 10,000 sample mean is approximate to the population mean? In what proportion did the 
+      standard deviation of the sample mean decrease compared to the standard deviation of the 
+      population? 
+   
+   
+
+
+
+
+
+6. A total of 144 women of different ethnic backgrounds were included in a cross-sectional study of 
+factors related to blood clotting. We compared mean platelet levels in the four groups using a 
+one-way ANOVA. It was reasonable to assume Normality and constant variance. Fill the following ANOVA table. 
+
+
+
+<!-- ```{r, echo=FALSE, message=FALSE} -->
+<!-- library(tidyverse) -->
+<!-- library(flextable) -->
+<!-- tab1 <- tibble( -->
+<!--   Group = c( -->
+<!--     "Caucasian", -->
+<!--     "Afro-Caribbean", -->
+<!--     "Mediterranean", -->
+<!--     "Other" -->
+<!--   ),  -->
+<!--   `Sample Size\nn(%)` = c( -->
+<!--     "90 (62.5)", -->
+<!--     "21 (14.6)", -->
+<!--     "19 (13.2)", -->
+<!--     "14 (9.7)" -->
+<!--   ),  -->
+<!--   `Mean(×10^9^)\n$\\bar{x}$` = c( -->
+<!--     "268.1", -->
+<!--     "254.3", -->
+<!--     "281.1", -->
+<!--     "273.3" -->
+<!--   ),  -->
+<!--   `Standard Deviation(×10^9^)\n$s$` = c( -->
+<!--     "77.08", -->
+<!--     "67.50", -->
+<!--     "71.09", -->
+<!--     "63.42" -->
+<!--   ) -->
+<!-- ) -->
+
+<!-- flextable(tab1) %>%  -->
+<!--   align(j=2:4, align = "center") -->
+
+<!-- ``` -->
+
+
+
+
+
+
+7. A total of 144 women of different ethnic backgrounds were included in a cross-sectional study of 
+factors related to blood clotting. We compared mean platelet levels in the four groups using a 
+one-way ANOVA. It was reasonable to assume Normality and constant variance.
+
+
+Fill the following ANOVA table. 
+
+
+
+8. Calculate the sample size for the following questions 
+
+   a. Suppose the response rate of the patient population under study after treatment is expected 
+   to be around 55% (i.e., $\theta$ = 0.55). At $alpha=0.05$, the required sample size for achieving 
+   an 80% power ($\beta = 0.2$) correctly detecting a difference between the post-treatment 
+   response rate and the reference value say, 35% (i.e., $\theta_0 = 0.35$) is $N=$? (Hint: Test for Equality, One sample design)
+   
+   b. Suppose a low density lipidproteins (LDLs) is considered of clinically meaningful difference. 
+   Assuming that the standard deviation is 15% (i.e., population variance is 0.15), the required 
+   sample size of each group to achieve an 80% power ($\beta = 0.2$) at $alpha=0.05$ for correctly 
+   detecting such difference of $\mu_2 - \mu_1 = 0.07$ change obtained by normal approximation as $N_1, N_2 =$? 
+   (Hint: Test for Equality, Two sample parallel Design)
+
+
+
+
+
+
+
