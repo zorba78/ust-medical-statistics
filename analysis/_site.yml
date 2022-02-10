@@ -30,8 +30,8 @@ navbar:
       - text: "Random Variable and Expectation"
         href: 05-random-variables-expectation.html
         icon: fa-play-circle
-  - text: About
-    href: about.html
+  - text: 2021 Final Exam Solutions
+    href: 2021-medical-stat-final-exam-solution.pdf
 output:
   workflowr::wflow_html:
     toc: yes

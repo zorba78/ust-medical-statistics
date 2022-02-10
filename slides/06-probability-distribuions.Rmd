@@ -1,0 +1,96 @@
+---
+title: "Medical Statistics"
+subtitle: "Important Probability Distributions"
+author: "<strong>Boncho Ku, Ph.D. in Statistics</strong>"
+institute: "<br/> Korea Institute of Oriental Medicine"
+date: "<br> 2021/10/30 "
+output:
+  xaringan::moon_reader:
+    css: [default, metropolis, metropolis-fonts, ../assets/css/footer.css, ../assets/css/metropolis-ak.css]
+    # css: [default, metropolis, metropolis-fonts]
+    # lib_dir: "../docs/libs"
+    lib_dir: "libs"
+    nature:
+      highlightStyle: github
+      titleSlideClass: [middle, left]
+      highlightLines: true
+      countIncrementalSlides: false
+editor_options: 
+  chunk_output_type: console
+---
+
+
+
+```{r setup-knitr, include=FALSE}
+options(htmltools.dir.version = FALSE)
+# knitr::opts_knit$set(root.dir='..')
+knitr::opts_chunk$set(eval = TRUE, 
+                      echo = FALSE, 
+                      cache = FALSE,
+                      include = TRUE,
+                      collapse = FALSE,
+                      message=FALSE,
+                      warning=FALSE, 
+                      dependson = NULL,
+                      engine = "R", # Chunks will always have R code, unless noted
+                      error = TRUE,
+                      fig.path="Figures/",  # Set the figure options
+                      fig.align = "center", 
+                      #fig.width = 7,
+                      #fig.height = 7, 
+                      fig.keep='all', fig.retina=3)
+
+```
+
+```{r setup-library}
+library(MASS)
+library(reshape2)
+library(plyr)
+library(tidyverse)
+library(lubridate)
+library(readxl)
+library(tidyselect)
+library(tidystats)
+library(glue)
+library(here)
+library(gt)
+library(gtsummary)
+library(kableExtra)
+library(icons)
+
+xaringanExtra::use_tile_view()
+xaringanExtra::use_progress_bar(color = "#23373B", location = "bottom")
+xaringanExtra::use_scribble()
+xaringanExtra::use_panelset()
+# xaringanExtra::style_panelset_tabs(foreground = "honeydew", background = "seagreen")
+
+```
+
+<!-- class: inverse, center, middle -->
+
+
+# Important Probability Distribution
+
+---
+
+# Bernoulli Trial
+
+### Definition
+
+> A random experiment in which there are only two possible outcomes
+
+#### Example 
+
+> - Tossing a coin $\rightarrow$ Head (H) or Tail (T)
+> - Take an exam $\rightarrow$ Success (S) or Failure (F)
+> - True (T) or False (F)
+
+Let $X:\{S,F\} \rightarrow \{0,1\}$, that is
+
+$$X = \begin{cases}
+1~~~~~\mathrm{if~the~outcome~is~S}\\
+0~~~~~\mathrm{if~the~outcome~is~F}\\
+\end{cases}$$
+
+
+
