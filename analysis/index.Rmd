@@ -83,6 +83,21 @@ kbl(course_desc,
 2.	Medical Statistics: A Guide to SPSS, Data Analysis and Critical Appraisal. Berlinda Barton and Jennifer Peat. 2nd Edition. 2014. WILEY Blackwell 
 3.	Statistics: Concepts and Controversies. David S. Moore and Willian Notz. 10th Edition. 2020. W.H. Freeman 
 4.	Introduction to Statistical Methodology. Derek L. Sonderegger and Robert Buscaglia. https://bookdown.org/dereksonderegger/570/ 
+5.  Introduction to Probability and Statistics Using R: G.Jay Kerns
+
+```{r, echo=FALSE}
+library(downloadthis)
+downloadthis::download_file(
+  path = here::here("references/IPSUR.pdf"), 
+  button_label = "Download PDF file", 
+  button_type = "default", 
+  has_icon = TRUE, 
+  icon = "fa-fa-save", 
+  self_contained = FALSE
+)
+
+```
+
 
 
 ## **Note**
