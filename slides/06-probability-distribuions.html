@@ -15,8 +15,6 @@
     <link href="libs/xaringanExtra-scribble/scribble.css" rel="stylesheet" />
     <script src="libs/xaringanExtra-scribble/scribble.js"></script>
     <script>document.addEventListener('DOMContentLoaded', function() { window.xeScribble = new Scribble({"pen_color":["#FF0000"],"pen_size":3,"eraser_size":30,"palette":[]}) })</script>
-    <link href="libs/panelset/panelset.css" rel="stylesheet" />
-    <script src="libs/panelset/panelset.js"></script>
     <link rel="stylesheet" href="../assets/css/footer.css" type="text/css" />
     <link rel="stylesheet" href="../assets/css/metropolis-ak.css" type="text/css" />
   </head>
@@ -24,11 +22,21 @@
     <textarea id="source">
 class: middle, left, title-slide
 
+.title[
 # Medical Statistics
+]
+.subtitle[
 ## Important Probability Distributions
+]
+.author[
 ### <strong>Boncho Ku, Ph.D. in Statistics</strong>
+]
+.institute[
 ### <br/> Korea Institute of Oriental Medicine
-### <br> 2021/10/30
+]
+.date[
+### <br> 2022/10/18
+]
 
 ---
 
@@ -58,6 +66,10 @@ class: middle, left, title-slide
   100% { width: calc(var(--slide-current) / var(--slide-total) * 100%); }
 }</style>
 
+```
+## Error in readLines(con, warn = FALSE): 커넥션을 열 수 없습니다
+```
+
 &lt;!-- class: inverse, center, middle --&gt;
 
 
@@ -77,7 +89,7 @@ class: middle, left, title-slide
 &gt; - Take an exam `\(\rightarrow\)` Success (S) or Failure (F)
 &gt; - True (T) or False (F)
 
-Let
+Let `\(X:\{S,F\} \rightarrow \{0,1\}\)`, that is
 
 `$$X = \begin{cases}
 1~~~~~\mathrm{if~the~outcome~is~S}\\
@@ -133,6 +145,19 @@ if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
     deleted = true;
   });
 })();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
 (function() {
   "use strict"
   // Replace <script> tags in slides area to make them executable

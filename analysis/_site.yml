@@ -6,30 +6,29 @@ navbar:
   - text: Home
     icon: fa-home
     href: index.html
-  - text: Week 1
+  - text: Medical Statistics
     icon: fa-calendar
     menu:
       - text: "Introduction"
         href: 01-introduction.html
         icon: fa-play-circle
-  - text: Week 2
-    icon: fa-calendar
-    menu:
       - text: "Basic Terminologies"
         href: 02-terminologies.html
         icon: fa-play-circle
       - text: "Summary of Data"
         href: 03-summary-data.html
         icon: fa-play-circle
-  - text: Week 3~6
-    icon: fa-calendar
-    menu:
       - text: "Probability"
         href: 04-probability.html
         icon: fa-play-circle
       - text: "Random Variable and Expectation"
         href: 05-random-variables-expectation.html
         icon: fa-play-circle
+      - text: "Probability Distribution"
+        href: 06-probability-distribution.html
+        icon: fa-play-circle
+
+
   - text: 2021 Final Exam Solutions
     href: 2021-medical-stat-final-exam-solution.pdf
 output:

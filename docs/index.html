@@ -13,7 +13,7 @@
 
 <title>UST: Medical Statistics Lecture Note</title>
 
-<script src="site_libs/header-attrs-2.16/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.17/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
@@ -191,8 +191,8 @@ $(document).ready(function () {
   border-radius: 4px;
 }
 
-.tabset-dropdown > .nav-tabs > li.active:before {
-  content: "";
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
   font-family: 'Glyphicons Halflings';
   display: inline-block;
   padding: 10px;
@@ -200,16 +200,9 @@ $(document).ready(function () {
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
-  content: "&#xe258;";
-  border: none;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
-  content: "";
+  content: "\e258";
   font-family: 'Glyphicons Halflings';
-  display: inline-block;
-  padding: 10px;
-  border-right: 1px solid #ddd;
+  border: none;
 }
 
 .tabset-dropdown > .nav-tabs > li.active {
@@ -273,7 +266,7 @@ $(document).ready(function () {
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     <span class="fa fa-calendar"></span>
      
-    Week 1
+    Medical Statistics
      
     <span class="caret"></span>
   </a>
@@ -285,17 +278,6 @@ $(document).ready(function () {
         Introduction
       </a>
     </li>
-  </ul>
-</li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-    <span class="fa fa-calendar"></span>
-     
-    Week 2
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
     <li>
       <a href="02-terminologies.html">
         <span class="fa fa-play-circle"></span>
@@ -310,17 +292,6 @@ $(document).ready(function () {
         Summary of Data
       </a>
     </li>
-  </ul>
-</li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-    <span class="fa fa-calendar"></span>
-     
-    Week 3~6
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
     <li>
       <a href="04-probability.html">
         <span class="fa fa-play-circle"></span>
@@ -333,6 +304,13 @@ $(document).ready(function () {
         <span class="fa fa-play-circle"></span>
          
         Random Variable and Expectation
+      </a>
+    </li>
+    <li>
+      <a href="06-probability-distribution.html">
+        <span class="fa fa-play-circle"></span>
+         
+        Probability Distribution
       </a>
     </li>
   </ul>
@@ -381,7 +359,7 @@ class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2022-09-25
+<strong>Last updated:</strong> 2022-10-19
 </p>
 <p>
 <strong>Checks:</strong> <span
@@ -512,15 +490,15 @@ project makes it easier to run your code on other machines.</p>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomzorba78ustmedicalstatisticstree7ef1407542a57b65c9bfe7eadf29509a5b772fe6targetblank7ef1407a">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomzorba78ustmedicalstatisticstree28a675a91dd8a1ea38c21a5a5add521ef8197fbctargetblank28a675aa">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/zorba78/ust-medical-statistics/tree/7ef1407542a57b65c9bfe7eadf29509a5b772fe6" target="_blank">7ef1407</a>
+<a href="https://github.com/zorba78/ust-medical-statistics/tree/28a675a91dd8a1ea38c21a5a5add521ef8197fbc" target="_blank">28a675a</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomzorba78ustmedicalstatisticstree7ef1407542a57b65c9bfe7eadf29509a5b772fe6targetblank7ef1407a"
+id="strongRepositoryversionstrongahrefhttpsgithubcomzorba78ustmedicalstatisticstree28a675a91dd8a1ea38c21a5a5add521ef8197fbctargetblank28a675aa"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -530,7 +508,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/zorba78/ust-medical-statistics/tree/7ef1407542a57b65c9bfe7eadf29509a5b772fe6" target="_blank">7ef1407</a>.
+<a href="https://github.com/zorba78/ust-medical-statistics/tree/28a675a91dd8a1ea38c21a5a5add521ef8197fbc" target="_blank">28a675a</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -549,7 +527,20 @@ Ignored files:
     Ignored:    .Rproj.user/
 
 Untracked files:
-    Untracked:  references/
+    Untracked:  slides/06-probability-distribution-speaker.html
+    Untracked:  slides/06-probability-distribution.html
+    Untracked:  slides/06-probability-distribution.qmd
+    Untracked:  slides/06-probability-distribution_files/
+    Untracked:  slides/assets/ci/
+    Untracked:  slides/assets/fontawesome-free-6.2.0-web/
+    Untracked:  slides/assets/quarto-style-example/
+
+Unstaged changes:
+    Modified:   analysis/_site.yml
+    Modified:   slides/06-probability-distribuions.Rmd
+    Modified:   slides/06-probability-distribuions.html
+    Modified:   slides/libs/fabric/fabric.min.js
+    Modified:   slides/libs/xaringanExtra-scribble/scribble.js
 
 </code></pre>
 <p>
@@ -594,6 +585,23 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/zorba78/ust-medical-statistics/cfe203877acbeb87e2a99da1315ed1bcda14fcdd/docs/index.html" target="_blank">cfe2038</a>
+</td>
+<td>
+zorba78
+</td>
+<td>
+2022-09-25
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -1508,36 +1516,36 @@ attached base packages:
 
 other attached packages:
  [1] downloadthis_0.3.2 kableExtra_1.3.4   forcats_0.5.2      stringr_1.4.1     
- [5] dplyr_1.0.10       purrr_0.3.4        readr_2.1.2        tidyr_1.2.1       
+ [5] dplyr_1.0.10       purrr_0.3.5        readr_2.1.3        tidyr_1.2.1       
  [9] tibble_3.1.8       ggplot2_3.3.6      tidyverse_1.3.2    workflowr_1.7.0   
 
 loaded via a namespace (and not attached):
- [1] httr_1.4.4          sass_0.4.2          jsonlite_1.8.0     
+ [1] httr_1.4.4          sass_0.4.2          jsonlite_1.8.2     
  [4] viridisLite_0.4.1   here_1.0.1          modelr_0.1.9       
  [7] bslib_0.4.0         assertthat_0.2.1    getPass_0.2-2      
 [10] highr_0.9           googlesheets4_1.0.1 cellranger_1.1.0   
-[13] yaml_2.3.5          pillar_1.8.1        backports_1.4.1    
-[16] glue_1.6.2          digest_0.6.29       promises_1.2.0.1   
+[13] yaml_2.3.6          pillar_1.8.1        backports_1.4.1    
+[16] glue_1.6.2          digest_0.6.30       promises_1.2.0.1   
 [19] rvest_1.0.3         colorspace_2.0-3    htmltools_0.5.3    
 [22] httpuv_1.6.6        pkgconfig_2.0.3     broom_1.0.1        
-[25] haven_2.5.1         scales_1.2.1        webshot_0.5.3      
+[25] haven_2.5.1         scales_1.2.1        webshot_0.5.4      
 [28] processx_3.7.0      svglite_2.1.0       whisker_0.4        
 [31] later_1.3.0         tzdb_0.3.0          git2r_0.30.1       
 [34] googledrive_2.0.0   generics_0.1.3      ellipsis_0.3.2     
 [37] cachem_1.0.6        withr_2.5.0         cli_3.4.1          
-[40] mime_0.12           magrittr_2.0.3      crayon_1.5.1       
-[43] readxl_1.4.1        evaluate_0.16       ps_1.7.1           
+[40] mime_0.12           magrittr_2.0.3      crayon_1.5.2       
+[43] readxl_1.4.1        evaluate_0.17       ps_1.7.1           
 [46] fs_1.5.2            fansi_1.0.3         xml2_1.3.3         
 [49] tools_4.2.1         hms_1.1.2           gargle_1.2.1       
-[52] lifecycle_1.0.2     munsell_0.5.0       reprex_2.0.2       
+[52] lifecycle_1.0.3     munsell_0.5.0       reprex_2.0.2       
 [55] callr_3.7.2         compiler_4.2.1      jquerylib_0.1.4    
 [58] systemfonts_1.0.4   rlang_1.0.6         grid_4.2.1         
-[61] rstudioapi_0.14     base64enc_0.1-3     rmarkdown_2.16     
+[61] rstudioapi_0.14     base64enc_0.1-3     rmarkdown_2.17     
 [64] gtable_0.3.1        DBI_1.1.3           R6_2.5.1           
 [67] lubridate_1.8.0     knitr_1.40          fastmap_1.1.0      
 [70] utf8_1.2.2          bsplus_0.1.3        rprojroot_2.0.3    
-[73] stringi_1.7.8       Rcpp_1.0.9          vctrs_0.4.1        
-[76] dbplyr_2.2.1        tidyselect_1.1.2    xfun_0.33          </code></pre>
+[73] stringi_1.7.8       Rcpp_1.0.9          vctrs_0.4.2        
+[76] dbplyr_2.2.1        tidyselect_1.2.0    xfun_0.33          </code></pre>
 </div>
 </div>
 

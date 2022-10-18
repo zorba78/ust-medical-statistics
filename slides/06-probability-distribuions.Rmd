@@ -3,7 +3,7 @@ title: "Medical Statistics"
 subtitle: "Important Probability Distributions"
 author: "<strong>Boncho Ku, Ph.D. in Statistics</strong>"
 institute: "<br/> Korea Institute of Oriental Medicine"
-date: "<br> 2021/10/30 "
+date: "<br> 2022/10/18"
 output:
   xaringan::moon_reader:
     css: [default, metropolis, metropolis-fonts, ../assets/css/footer.css, ../assets/css/metropolis-ak.css]
