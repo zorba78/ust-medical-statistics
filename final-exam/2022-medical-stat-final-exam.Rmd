@@ -119,21 +119,6 @@ sum(p*x)
 
 sample(x, size = 50, prob = p, replace = TRUE)
 
-playGame <- function(x, p, ntry = 10000, name = "Game A", 
-                     seed = NULL, verbose = TRUE, plot = TRUE) {
-  if (!is.null(seed)) set.seed(seed)
-  if (sum(p) != 1) stop("전체 확률값의 합은 반드시 1이어야 합니다.")
-  win <- sample(x, size = ntry, replace = TRUE, prob = p)
-  if (verbose) {
-    cat(name, "를 ", ntry, " 번 반복 했을 때 기대되는 수익은 ", mean(win), " 원임.\n", sep = "")
-  }
-    
-  if (plot) {
-    hist(win)
-    # abline(v = mean(win), col = "red", lty = 2)
-  }
-    
-  invisible(mean(win))
 
 
 ```
