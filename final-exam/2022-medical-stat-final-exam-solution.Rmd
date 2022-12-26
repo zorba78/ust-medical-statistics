@@ -36,7 +36,7 @@ knitr::opts_chunk$set(eval = TRUE,
                       include = TRUE,
                       collapse = FALSE,
                       tidy = TRUE,
-                      tidy.opts = list(blank=FALSE, width.cutoff=120),
+                      tidy.opts = list(blank=TRUE, width.cutoff=60),
                       message = FALSE,
                       warning = FALSE,
                       dependson = NULL,
@@ -68,23 +68,23 @@ knitr::opts_chunk$set(eval = TRUE,
 
     a)  The probability of a type II error is the probability that you
         reject the null hypothesis when it is true. then are followed to
-        document occurrence of disease.
+        document occurrence of disease. (**FALSE**)
 
     b)  Subjects are enrolled or grouped on the basis of their exposure,
         then are followed to document occurrence of disease in
-        prospective cohort study.
+        prospective cohort study. (**TRUE**)
 
     c)  Especially when more than 20% of cells have expected frequencies
         \< 5, we need to use Fisher's exact test to determine if there
-        are associations between two categorical variables.
+        are associations between two categorical variables. (**TRUE**)
 
     d)  To use the two-sample t-test, we need to assume that the data
         from both samples are normally distributed and they have the
-        same variances.
+        same variances. (**TRUE**)
 
     e)  In test for heterogeneity of meta-analysis, if Higgins $I^2\leq 25 \%$,
         studies are regarded homogeneous and the fixed effect model of
-        meta-analysis can generally be used.bles.
+        meta-analysis can generally be used.bles. (**TRUE**)
 
 \newpage
 
@@ -101,9 +101,25 @@ knitr::opts_chunk$set(eval = TRUE,
 
     b)  If we have already selected the ball and noted that it is
         defecvive, what is the probability that it came from urn 5?
+        
 
-3.  The distribution of grades in a large statistics course is as
-    follows:
+**Answers**
+
+Let $A$ denote the event that a defective ball is selected and $B_i$ denote the event that urn $i$ is selected, $i=1,\ldots,5$. Then $P(B_i) = 1/5$ and $P(A|B_i) = i/10$, $i=1,\ldots,5$. Using the **theorem of total probabilities**, The solution of a) is 
+
+$$
+P(A) = \sum_{i=1}^{5} = P(A|B_{i})P(B_i) = \sum_{i=1}^{5}\frac{i}{10}\cdot \frac{1}{5} = \frac{1}{50}\sum_{i=1}^{5}i = \frac{15}{50} = \frac{3}{10}
+$$
+
+Employing Bayes' formula, the solution of b) is 
+
+$$
+P(B_5|A) = \frac{P(A|B_5)|P(B_5)}{\sum_{i=1}^{5} P(A|B_i)P(B_i)} = \frac{1/2\cdot 1/5}{3/10} = \frac{1}{3}
+$$
+
+
+
+3.  The distribution of grades in a large statistics course is as follows:
 
 ```{r}
 library(tidyverse)
@@ -146,13 +162,108 @@ e)  Make a histogram of 10,000 means.
 f)  Describe your conclusion based on the results of a) to e).
 
 <!-- -->
-\vspace{0.5cm}
+<!-- \vspace{0.5cm} -->
+
+**Answers**
+
+Let $X$ be a random variable representing numerical points for each grade. The solution of a) is $E(X) = 0.1\cdot 4 + 0.4\cdot 3 + 0.3\cdot 2 + 0.1\cdot 1 + 0.1\cdot 0 = 2.3$
+
+Using `sample()` function implemented in R, we can generate synthetic samples with the assignment of the given probabilities and scores for grades. For example, we assume that 30 students are randomly selected from the given probability distribution of grades with replacement. Then we simply write down scripts as follows (solution b) to c)). 
+
+```{r, echo=TRUE}
+set.seed(20221225) # for the reproducibility
+p <- c(0.1, 0.4, 0.3, 0.1, 0.1)
+x <- 4:0
+
+xi <- sample(x, size = 30, replace = TRUE, prob = p)
+mean(xi)
+
+```
+
+For the solution d) to e), 
+
+```{r, echo=TRUE}
+N <- 10000; n <- 30
+p <- c(0.1, 0.4, 0.3, 0.1, 0.1)
+x <- 4:0
+
+m_grade <- integer(N)
+set.seed(20221225)
+for (i in 1:N) {
+  s <- sample(x, size = n, replace = TRUE, prob = p)
+  m_grade[i] <- mean(s)
+}
+
+mean(m_grade)
+hist(m_grade)
+
+```
+
+We generate 10,000 independent samples of grade scores with a size of 30 and calculate sample means for each sample. Therefore we obtain 10,000 sample means and their distribution is approximately normal. Furthermore, the empirical mean of sample means is almost close to the theoretical expectation of grade scores with the given distribution.
+
 
 4.  Describe the relationship between Pearson's correlation coefficients
     and the regression coefficient (slope) of univariate regression
     analysis. You're definitely able to refer to the Internet or other
     textbooks but you have to give descriptions or formulas in your own
     words and cite appropriately.
+    
+
+**Answer**
+
+The simple (univariate) regression model for $n$ observation can be written as 
+
+$$
+y_i = \beta_0 + \beta_{1}x_i + \epsilon_i, ~~~ i = 1, 2, \ldots, n
+$$
+
+where $E(\epsilon_i) = 0$, $\mathrm{Var}(\epsilon_i) = \sigma^2$ for all $i=1,2,\ldots,n$ and $\mathrm{Cov}(\epsilon_i, \epsilon_j) = 0$ for all $i \neq j$. To estimate unknown parameter $\beta_0$ and $\beta_1$ that minimize the sum of squares of the deviations $y_i - \hat{y}_i$ of the $n$ observed $y_i$'s from their predicted values $\hat{y}_i = \hat{\beta}_0 + \hat{\beta}_1x_i$, the **_least squares_**^[Please check it] approach can help find the solution. The solution of $\hat{\beta}_0$ and $\hat{\beta}_1$ is 
+
+$$\begin{aligned}
+\hat{\beta}_1 &= \frac{\sum_{i=1}^{n}(x_i - \bar{x})(y_i - \bar{y})}{\sum_{i=1}^n (x_i - \bar{x})^2} \\
+\hat{\beta}_0 &= \bar{y} - \hat{\beta}_{1}\bar{x}
+\end{aligned}$$
+
+
+Recall that the Pearson's correlation coefficients ($\hat{\rho}_{xy}$) between two variables $x$ and $y$ is
+
+$$
+\hat{\rho}_{xy} = \frac{\sum_{i=1}^{n}(x_i - \bar{x})(y_i - \bar{y})}{\sqrt{\sum_{i=1}^n (x_i - \bar{x})^2}\sqrt{\sum_{i=1}^{n}(y_i - \bar{y})^2}}
+$$
+
+The slope of the regression line $\hat{\beta}_1$ can be rewritten as 
+
+$$
+\hat{\beta}_1 = \frac{\sum_{i=1}^{n}(x_i - \bar{x})(y_i - \bar{y})}{\sqrt{\sum_{i=1}^n (x_i - \bar{x})^2}\sqrt{\sum_{i=1}^{n}(y_i - \bar{y})^2}} \frac{\sqrt{(y_i - \bar{y})^2/(n-1)}}{\sqrt{(x_i - \bar{x})^2/(n-1)}} = \hat{\rho}_{xy}\frac{s_{y}}{s_x}
+$$
+
+where $s_{x}$ and $s_y$ are standard deviation of $x$ and $y$, respectively. 
+
+When we developed the regression model, we need a statistical measurement to examine how the explanatory variable $x$ is well predictable to the response variable. In this context, the coefficient of determination $R^2$ plays an important role to assess the regression model performance. $R^2$ is defined as the proportion of the variance explained by the independent variables, relative to the total variance in the data. This can be quantified as the ratio of explaned sum of squares to total sum of squares. 
+
+$$
+R^2 = \frac{SSR}{SST}, ~~~ SSR = \sum_{i=1}^{n}(\hat{y}_i - y_i)^2, ~~~ SST = \sum_{i=1}^{n} (y_i - \bar{y})^2
+$$
+
+Using the solution of the least squares for regression coefficients, 
+
+
+$$
+\begin{aligned}
+R^2 &= \frac{\sum_{i=1}^{n} (\hat{y}_i - \bar{y})^2}{\sum_{i=1}^{n} (y_i - \bar{y})^2} \\
+    &= \frac{\sum_{i=1}^{n} (\hat{\beta}_0 + \hat{\beta}_1 x_i - \bar{y})^2} {\sum_{i=1}^{n} (y_i - \bar{y})^2} = \frac{\sum_{i=1}^{n} (\bar{y} - \hat{\beta}_1 \bar{x} + \hat{\beta}_1 x_i - \bar{y})^2}{\sum_{i=1}^{n} (y_i - \bar{y})^2} \\
+    &= \frac{\sum_{i=1}^{n} \left( \hat{\beta}_1 (x_i - \bar{x}) \right)^2}{\sum_{i=1}^{n} (y_i - \bar{y})^2} = 
+    \hat{\beta}_1^2 \, \frac{\frac{1}{n-1} \sum_{i=1}^{n} (x_i - \bar{x})^2}{\frac{1}{n-1} \sum_{i=1}^{n} (y_i - \bar{y})^2} \\
+    &= \hat{\beta}_1^2 \, \frac{s_x^2}{s_y^2} = \left( \frac{s_x}{s_y} \, \hat{\beta}_1 \right)^2
+\end{aligned}
+$$
+
+
+Using the relationship between the correlation coefficient and the regression slope estimate, 
+
+$$
+R^2 = \left( \frac{s_x}{s_y} \, \hat{\beta}_1 \right)^2 = \hat{\rho}^2_{xy}
+$$
 
 5.  The attached data file(`P5-passive-avoidance.xlsx`) represents the results of the passive-avoidance
     test to evaluate the protective effects of the MC treatment on
@@ -164,6 +275,121 @@ f)  Describe your conclusion based on the results of a) to e).
     acquisition (retention/acquisition \* 100 (%)). Perform your own
     data analysis **using R** (_**Hint**_: for the analysis, you may need to
     transform the original data).
+
+**Answer**
+
+    
+```{r, echo=TRUE}
+## read dataset
+library(tidyverse)
+library(readxl)
+
+pa_dat <- read_xlsx("final-exam/P5-passive-avoidance.xlsx")
+pa_dat2 <- pa_dat %>% 
+  pivot_longer(cols = -case_num, 
+               names_to = "treatment") %>% drop_na %>% 
+  mutate(
+    treatment = factor(treatment, levels = c("Control", "Scopolamine", "MC-420", "MC-840"))
+  )
+
+## Check data
+head(pa_dat2)
+
+```
+
+Descriptive Statistics 
+
+```{r, echo=TRUE, tidy=TRUE}
+pa_dat2 %>% 
+  group_by(treatment) %>% 
+  summarise(
+    N = n(), Mean = mean(value), 
+    SD = sd(value), 
+    Min = min(value), 
+    Median = median(value), 
+    IQR = IQR(value), 
+    Max = max(value)
+  )
+
+```
+
+Check Normality: Q-Q plot
+
+```{r, echo=TRUE, fig.height=10, fig.width=10, fig.pos="H", out.width="10cm", out.height="10cm"}
+library(broom)
+library(ggpubr) # ggplot for the publication
+ggqqplot(pa_dat2, x = "value", color = "treatment", group = "treatment", 
+         facet.by = "treatment", palette = "lancet", 
+         ggtheme = theme_pubclean(base_size = 12))
+
+```
+
+
+Check Normality: Shapiro-Wilk's Test
+
+```{r, echo=TRUE}
+# Shapiro-Wilk's Normality test for each group
+pa_dat2 %>% 
+  group_by(treatment) %>% 
+  nest %>% 
+  mutate(norm_test = 
+           map(data, ~ shapiro.test(.x$value))) %>% 
+  mutate(
+    norm_test = map(norm_test, tidy)
+  ) %>% 
+  select(norm_test) %>% 
+  unnest(norm_test)
+
+
+```
+
+The data of Scopolamine and MC-840 do not satisfy the normality assumption. Consider the log transformation and check the normality again. 
+
+```{r, echo=TRUE, fig.height=10, fig.width=10, fig.pos="H", out.width="10cm", out.height="10cm"}
+pa_dat2 <- pa_dat2 %>% 
+  mutate(log_value = log(value))
+ggqqplot(pa_dat2, x = "log_value", color = "treatment", group = "treatment", 
+         facet.by = "treatment", palette = "lancet", 
+         ggtheme = theme_pubclean(base_size = 12))
+
+```
+
+
+```{r, echo=TRUE}
+# Shapiro-Wilk's Normality test for each group
+pa_dat2 %>% 
+  group_by(treatment) %>% 
+  nest %>% 
+  mutate(norm_test = 
+           map(data, ~ shapiro.test(.x$log_value))) %>% 
+  mutate(
+    norm_test = map(norm_test, tidy)
+  ) %>% 
+  select(norm_test) %>% 
+  unnest(norm_test)
+
+```
+
+The values after the log transformation suffice the normality. Perform One-way ANOVA test for the log-transformed data.
+
+```{r}
+aov_res1 <- lm(value ~ treatment, data = pa_dat2) %>% anova
+aov_res2 <- lm(log_value ~ treatment, data = pa_dat2) %>% anova
+
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
 
 6.  A total of 160 men of different ethnic backgrounds were included in
     a cross-sectional study of factors related to blood clotting. We
