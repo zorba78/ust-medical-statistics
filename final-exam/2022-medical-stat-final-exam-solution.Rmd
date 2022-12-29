@@ -103,7 +103,7 @@ knitr::opts_chunk$set(eval = TRUE,
         defecvive, what is the probability that it came from urn 5?
         
 
-**Answers**
+**Solutions**
 
 Let $A$ denote the event that a defective ball is selected and $B_i$ denote the event that urn $i$ is selected, $i=1,\ldots,5$. Then $P(B_i) = 1/5$ and $P(A|B_i) = i/10$, $i=1,\ldots,5$. Using the **theorem of total probabilities**, The solution of a) is 
 
@@ -164,7 +164,7 @@ f)  Describe your conclusion based on the results of a) to e).
 <!-- -->
 <!-- \vspace{0.5cm} -->
 
-**Answers**
+**Solutions**
 
 Let $X$ be a random variable representing numerical points for each grade. The solution of a) is $E(X) = 0.1\cdot 4 + 0.4\cdot 3 + 0.3\cdot 2 + 0.1\cdot 1 + 0.1\cdot 0 = 2.3$
 
@@ -209,7 +209,7 @@ We generate 10,000 independent samples of grade scores with a size of 30 and cal
     words and cite appropriately.
     
 
-**Answer**
+**Solutions**
 
 The simple (univariate) regression model for $n$ observation can be written as 
 
@@ -276,8 +276,17 @@ $$
     data analysis **using R** (_**Hint**_: for the analysis, you may need to
     transform the original data).
 
-**Answer**
 
+\begin{quote}
+\colorbox{gray!10}{\begin{minipage}{15cm}
+\textbf{Notice}
+
+The following scripts and results are the most canonical way to perform the one-way ANOVA test. The students' solutions may differ but that is very normal. The scoring for students' answers will be based on what you've learned in the semester. The presented scripts and analysis results have been disclosed for reasonable use by students when performing data analysis (especially performing ANOVA analysis). 
+\end{minipage}}
+\end{quote}
+
+
+**Solutions**
     
 ```{r, echo=TRUE}
 ## read dataset
@@ -285,15 +294,14 @@ library(tidyverse)
 library(readxl)
 
 pa_dat <- read_xlsx("final-exam/P5-passive-avoidance.xlsx")
+
+# simple preprocessing: character -> factor
 pa_dat2 <- pa_dat %>% 
   pivot_longer(cols = -case_num, 
                names_to = "treatment") %>% drop_na %>% 
   mutate(
     treatment = factor(treatment, levels = c("Control", "Scopolamine", "MC-420", "MC-840"))
   )
-
-## Check data
-head(pa_dat2)
 
 ```
 
@@ -318,6 +326,7 @@ Check Normality: Q-Q plot
 ```{r, echo=TRUE, fig.height=10, fig.width=10, fig.pos="H", out.width="10cm", out.height="10cm"}
 library(broom)
 library(ggpubr) # ggplot for the publication
+## generage Q-Q plot
 ggqqplot(pa_dat2, x = "value", color = "treatment", group = "treatment", 
          facet.by = "treatment", palette = "lancet", 
          ggtheme = theme_pubclean(base_size = 12))
@@ -346,8 +355,10 @@ pa_dat2 %>%
 The data of Scopolamine and MC-840 do not satisfy the normality assumption. Consider the log transformation and check the normality again. 
 
 ```{r, echo=TRUE, fig.height=10, fig.width=10, fig.pos="H", out.width="10cm", out.height="10cm"}
+# add log-transformed data
 pa_dat2 <- pa_dat2 %>% 
   mutate(log_value = log(value))
+## generage Q-Q plot
 ggqqplot(pa_dat2, x = "log_value", color = "treatment", group = "treatment", 
          facet.by = "treatment", palette = "lancet", 
          ggtheme = theme_pubclean(base_size = 12))
@@ -372,21 +383,140 @@ pa_dat2 %>%
 
 The values after the log transformation suffice the normality. Perform One-way ANOVA test for the log-transformed data.
 
-```{r}
+```{r, echo=TRUE, results='asis'}
 aov_res1 <- lm(value ~ treatment, data = pa_dat2) %>% anova
 aov_res2 <- lm(log_value ~ treatment, data = pa_dat2) %>% anova
 
+# print table in pdf document
+options(xtable.comment = FALSE)
+tbl1 <- xtable::xtable(aov_res1, 
+                       caption = "ANOVA table for the original data")
+tbl2 <- xtable::xtable(aov_res2, 
+                       caption = "ANOVA table for the log transformed data")
+print(tbl1, caption.placement = "top", table.placement = "H")
+print(tbl2, caption.placement = "top", table.placement = "H")
+
+```
+
+The log transformed data show the statistical significance at $\alpha = 0.05$. Therefore, the further analysis fill proceed based on the log-transformed data. 
+
+Since the analysis aims to investigate the protective effect of MC treatment for scopolamine-induced memory impairment, the baseline level should be the `Scopolamine` group. The comparison for the group differences compared to the baseline level (`Scopolamine`) is performed rather than multiple comparisons for all pairs of groups to prevent the over-adjustment for type I error. For this purpose, we conduct Dunnett's test for the multiple comparison. 
+
+
+```{r, echo=TRUE}
+# Multiple Comparison: Dunnett's Test #
+# Based on log-transformed data
+library(emmeans) # a package for estimating marginal mean
+pa_dat2$treatment2 <- relevel(pa_dat2$treatment, ref = "Scopolamine")
+mod <- lm(log_value ~ treatment2, data = pa_dat2)
+emm <- emmeans(mod, ~ treatment2)
+emm_cont <- contrast(emm, method = "trt.vs.ctrl", adjust = "dunnett")
+emm_cont %>% tidy(conf.int = TRUE) %>% 
+  mutate_at(
+    vars(null.value:std.error, contains("conf.")), exp
+  ) %>% 
+  select(-c(term, null.value, df))
 
 ```
 
 
+- The retention/acquisition of the control group was 2.79 times higher than that of the scopolamine-induced memory impairment group (p = 0.0255) $\rightarrow$ Scopolamine works properly in terms of reduciing memory ability in mice
+- The retention/acquisition of the MC-840 group was 2.96 times higher than that of the scopolamine-induced memory impairment group (p = 0.0237) $\rightarrow$ The high dose of MC treatment protects the memory impairment in mice
 
 
 
+```{r, echo=TRUE, fig.height=7, fig.width=9, fig.pos="H", out.width="11cm", out.height="15cm"}
+## A Tip for making a graphpad bar graph style 
+## tables below the barplot
+Rows <- c("MC (mg/kg)", "Scopolamine (1 mg/kg)")
+group <- levels(pa_dat2$treatment)
+l1 <- rep("―", 2); l2 <- c("―", "+"); l3 <- c("420", "+")
+l4 <- c("840", "+")
+tab <- data.frame(Rows, l1, l2, l3, l4)
 
+names(tab) <- c("rows", group)
+tab %>% 
+  pivot_longer(cols = -rows) %>% 
+  mutate(name = factor(name, levels = group), 
+         rows = factor(rows, levels = Rows)) %>% 
+  ggplot(aes(x = name)) + 
+  geom_text(aes(y = reorder(rows, desc(rows)), label = value), size = 4.5, 
+            family = "sans") + 
+  labs(y = "", x = NULL) + 
+  theme_minimal(base_size = 15, base_family = "sans") + 
+  theme(axis.line = element_blank(), 
+        axis.ticks = element_blank(), 
+        axis.text.x = element_blank(),
+        panel.grid = element_blank(), 
+        strip.text = element_blank(), 
+        axis.text.y = element_text(color = "black",  
+                                   size = 12)) -> p_tab
 
+## make barplot
+library(ggthemes) # a package for ggplot themes
+library(patchwork) # a package for merging multiple ggplot
 
+# generating the dataset for making barplot
+emm_tidy <- emm %>% tidy(conf.int = TRUE)
+cont_tidy <- emm_cont %>% 
+  tidy(conf.int = TRUE) %>% 
+  separate(contrast, c("group", "ref"),
+             sep = " - ") %>%
+    mutate(group = gsub("\\(|\\)", "", group)) %>%
+    select(-term)  
 
+fill_cols <- "#707070"
+group_lev <- c("Control", "Scopolamine", "MC-420", "MC-840")
+
+emm_tidy %>% 
+  left_join(cont_tidy, by = c("treatment2" = "group")) %>% 
+  mutate(treatment2 = factor(treatment2, levels = group_lev)) %>%
+  ggplot() +
+  aes(x = treatment2, y = exp(estimate.x)) +
+  geom_errorbar(aes(ymin = exp(estimate.x) - exp(estimate.x) * std.error.x,
+                    ymax = exp(estimate.x) + exp(estimate.x) * std.error.x),
+                width = 0.2, linewidth = 1) + 
+  geom_bar(stat = "identity", width = 0.6,
+           fill = fill_cols) +
+  scale_y_continuous(expand = expansion(mult = c(0, 0)), 
+                     limits = c(0, 350),
+                     breaks = seq(from = 0, to = 350, by = 50)
+                     ) +
+  geom_text(aes(x = 1, y = Inf, label = "F = 3.852 (df1 = 3, df2 =26); p-value = 0.021"), 
+            vjust = 1, hjust = 0) + 
+  geom_segment(x = 1, xend = 2, y  = 275, yend = 275, 
+               arrow = arrow(#angle=90, 
+               type = "closed", 
+               length = unit(0.1, "cm"), 
+               ends = "both"), 
+               lwd = 0.7, 
+               lty = 1, 
+               colour = "gray") + 
+  geom_text(aes(x = 1.5, y = 275, label = "p = 0.026"), 
+            hjust = 0.5, vjust = -0.5) + 
+  geom_segment(x = 2, xend = 4, y  = 300, yend = 300, 
+               arrow = arrow(#angle=90, 
+               type = "closed", 
+               length = unit(0.1, "cm"), 
+               ends = "both"), 
+               lwd = 0.7, 
+               lty = 1, 
+               colour = "gray") +   
+  geom_text(aes(x = 3, y = 300, label = "p = 0.024"), 
+            hjust = 0.5, vjust = -0.5) + 
+  labs(y = "Retention/Acquisition (%)", x = NULL) + 
+  theme_tufte(base_size = 15, base_family = "sans") + 
+  theme(axis.text.x = element_blank(), 
+        axis.ticks.x = element_blank(), 
+        axis.title.y = element_text(vjust = -30, face = "bold"),
+        axis.line = element_line(colour="black", size = 1), 
+        axis.ticks.y = element_line(colour="black", size = 1), 
+        axis.text.y = element_text(color = "black")) -> p1
+
+# merge pos/neg table and barplot
+p1/p_tab + plot_layout(heights = c(9, 1))
+
+```
 
 
 
@@ -485,6 +615,16 @@ kbl(tab2,
 
 ```
 
+
+**Solutions**
+
+(1) $df_B = \mathrm{\#~of~groups} - 1 = 4 - 1 = 3$
+(2) $df_E = \mathrm{Total~N} - \mathrm{\#~of~groups} = 160 - 4 = 156$
+(3) $MSB = SSB/df_B = 9333.0/3 = 3111.0$
+(4) $MSE = SSW/df_E = 966108.0/156 = 6193.0$
+(5) $F = MSB/MSE - 0.502$
+
+
 7.  Calculate the sample size for the following questions.
 
 <!-- -->
@@ -503,3 +643,24 @@ b)  A placebo-controlled randomized trial proposes to assess the
     50% and a clinically important difference of 16% as compared to
     placebo is acceptable. (Level of significance = 5%, Power = 80%,
     Type of test =two-sided)
+    
+    
+**Solutions**
+
+a) $\alpha = 0.05$, $1-\beta = 0.8$, $\sigma = 1.195$, and $\delta = 0.5$. Then effect size is $\eta = 0.5/1.195 = 0.418$. Then sample size can be obtained with the following formula: 
+
+$$
+n = \frac{2(Z_{1 - \alpha/2} + Z_{1-\beta})^2}{\eta^2} = \frac{2*(1.96 + 0.84)^2}{0.418^2} \approx 90
+$$
+
+
+b) Suppose $\theta_1 = 0.5$ and $\theta_2 = 0.34$. Then 
+
+
+$$
+n = \frac{(z_{1-\alpha/2} + z_{1-\beta})^2[\theta_1(1-\theta_1) + \theta_2(1-\theta_2)]}{(\theta_1 - \theta_2)^2} = 
+\frac{(1.96 + 0.84)^2(0.5(1-0.5) + 0.34(1-0.34))}{(0.16)^2} = 145.29 \approx 146
+$$
+
+
+
