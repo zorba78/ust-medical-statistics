@@ -15,8 +15,8 @@ editor_options:
 essential to quantitative medical research. 
 > This course is lectured by a total of three faculty:
 >
->   - Week 1 to 9: **Dr. Boncho Ku**
->   - Week 10 to 16: **Dr. Mimi Ko**
+>   - Week 1 to 8: **Dr. Boncho Ku**
+>   - Week 9 to 16: **Dr. Mimi Ko**
 
 
 ## **Course Level**
