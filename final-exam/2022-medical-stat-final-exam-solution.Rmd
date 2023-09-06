@@ -653,6 +653,7 @@ $$
 n = \frac{2(Z_{1 - \alpha/2} + Z_{1-\beta})^2}{\eta^2} = \frac{2*(1.96 + 0.84)^2}{0.418^2} \approx 90
 $$
 
+Therefore, $2n = 180$ of samples are required in this clinical trial. 
 
 b) Suppose $\theta_1 = 0.5$ and $\theta_2 = 0.34$. Then 
 
@@ -661,6 +662,9 @@ $$
 n = \frac{(z_{1-\alpha/2} + z_{1-\beta})^2[\theta_1(1-\theta_1) + \theta_2(1-\theta_2)]}{(\theta_1 - \theta_2)^2} = 
 \frac{(1.96 + 0.84)^2(0.5(1-0.5) + 0.34(1-0.34))}{(0.16)^2} = 145.29 \approx 146
 $$
+
+
+Therefore, $2n = 292$ of samples are required in this clinical trial. 
 
 
 

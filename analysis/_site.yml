@@ -29,7 +29,7 @@ navbar:
         icon: fa-play-circle
 
 
-  - text: 2021 Final Exam Solutions
+  - text: Final Exam Solutions
     href: 2021-medical-stat-final-exam-solution.pdf
 output:
   workflowr::wflow_html:
