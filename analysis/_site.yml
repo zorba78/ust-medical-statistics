@@ -30,7 +30,7 @@ navbar:
 
 
   - text: Final Exam Solutions
-    href: 2021-medical-stat-final-exam-solution.pdf
+    href: 2022-medical-stat-final-exam-solution.pdf
 output:
   workflowr::wflow_html:
     toc: yes
