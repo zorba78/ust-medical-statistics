@@ -36,30 +36,30 @@ None. However, we expect that students are familiar with basic statistics.
 require(tidyverse)
 require(kableExtra)
 
-input <- ("Week 1 (2021.03.04): Introduction to statistics
-Week 2 (2021.09.02): Summary of data
-Week 3 (2021.09.09): Concept of probability
-Week 4 (2021.09.16): Random variables and probability distribution
-Week 5 (2021.09.23): Important probability distribution
-Week 6 (2021.09.30): Sampling distribution and statistical inference
-Week 7 (2021.10.07): Estimation and hypothesis testing (1)
-Week 8 (2021.10.14): Estimation and hypothesis testing (2)
-Week 9 (2021.10.21): Correlation and Regression
-Week 10 (2021.10.28): Design of clinical studies
-Week 11 (2021.10.28): Analysis of continuous data (1)
-Week 12 (2021.10.28): Analysis of continuous data (2)
-Week 13 (2021.10.28): Analysis of categorical data (1)
-Week 14 (2021.10.28): Analysis of categorical data (2)
-Week 15 (2021.10.28): Sample size calculation
-Week 16 (2021.10.28): Final exam
+input <- ("Week 1 (2023.9.07): Introduction to statistics
+Week 2 (2023.09.14): Summary of data
+Week 3 (2023.09.21): Concept of probability
+Week 4 (2023.09.28): Random variables and probability distribution
+Week 5 (2023.10.05): Important probability distribution
+Week 6 (2023.10.12): Sampling distribution and statistical inference
+Week 7 (2023.10.19): Estimation and hypothesis testing 
+Week 8 (2023.10.26): Correlation and Regression
+Week 9 (2023.11.02): Design of clinical studies
+Week 10 (2023.11.09): Analysis of continuous data (1)
+Week 11 (2023.11.16): Analysis of continuous data (2)
+Week 12 (2023.11.23): Analysis of categorical data (1)
+Week 13 (2023.11.30): Analysis of categorical data (2)
+Week 14 (2023.12.07): Meta Analysis
+Week 15 (2023.12.14): Sample size calculation
+Week 16 (2023.12.21): Final exam
 "
 )
 course_desc <- read.table(textConnection(input), sep = ":", header = FALSE)
-course_desc$V3 <- c(rep("Dr. Boncho Ku", each = 9), rep("Dr. Mimi Ko", each = 7))
+course_desc$V3 <- c(rep("Dr. Boncho Ku", each = 8), rep("Dr. Mimi Ko", each = 8))
 names(course_desc) <- c("Week", "Description", "Lecturer")
 kbl(course_desc, 
     booktabs = TRUE, 
-    caption = "Course Schedule (Week 1 ~ Week 9)") %>% 
+    caption = "Course Schedule (Week 1 ~ Week 8)") %>% 
   kable_paper %>% 
   kable_styling(bootstrap_options = c("hover"))
 
