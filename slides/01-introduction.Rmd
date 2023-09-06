@@ -239,7 +239,7 @@ class: inverse, center, middle
 ## Harold Shipman (a.k.a. Dr. Death)
 
 .pull-left[
-<img src="https://upload.wikimedia.org/wikipedia/en/6/6d/Harold_Shipman_mug_shot.jpg" align="center" width="75%" />
+<img src="https://upload.wikimedia.org/wikipedia/en/6/6d/Harold_Shipman_mug_shot.jpg" align="center" width="50%" />
 ]
 
 
@@ -263,7 +263,9 @@ _Shipman Inquiry_ provides details (data) regarding each victim's age, gender, a
 
 
 --
-### **What can the statistics tell you about the Shipman's crime?**
+
+
+#### **What can the statistics tell you about the Shipman's crime?**
 
 _D. Spiegelhalter. The Art of Statistics (2019)_
 
