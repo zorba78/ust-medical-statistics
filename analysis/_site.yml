@@ -1,7 +1,7 @@
-name: "ust-statistics"
+name: ust-statistics
 output_dir: ../docs
 navbar:
-  title: "ust-statistics"
+  title: ust-statistics
   left:
   - text: Home
     icon: fa-home
@@ -9,28 +9,30 @@ navbar:
   - text: Medical Statistics
     icon: fa-calendar
     menu:
-      - text: "Introduction"
-        href: 01-introduction.html
-        icon: fa-play-circle
-      - text: "Basic Terminologies"
-        href: 02-terminologies.html
-        icon: fa-play-circle
-      - text: "Summary of Data"
-        href: 03-summary-data.html
-        icon: fa-play-circle
-      - text: "Probability"
-        href: 04-probability.html
-        icon: fa-play-circle
-      - text: "Random Variable and Expectation"
-        href: 05-random-variables-expectation.html
-        icon: fa-play-circle
-      - text: "Probability Distribution"
-        href: 06-probability-distribution.html
-        icon: fa-play-circle
-
-
+    - text: Introduction
+      href: 01-introduction.html
+      icon: fa-play-circle
+    - text: Basic Terminologies
+      href: 02-terminologies.html
+      icon: fa-play-circle
+    - text: Summary of Data
+      href: 03-summary-data.html
+      icon: fa-play-circle
+    - text: Probability
+      href: 04-probability.html
+      icon: fa-play-circle
+    - text: Random Variable and Expectation
+      href: 05-random-variables-expectation.html
+      icon: fa-play-circle
+    - text: Probability Distribution
+      href: 06-probability-distribution.html
+      icon: fa-play-circle
   - text: Final Exam Solutions
     href: 2022-medical-stat-final-exam-solution.pdf
+  right:
+  - icon: fab fa-github
+    text: Source code
+    href: https://github.com/zorba78/ust-medical-statistics
 output:
   workflowr::wflow_html:
     toc: yes
