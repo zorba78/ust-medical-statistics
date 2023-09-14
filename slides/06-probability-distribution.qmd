@@ -97,9 +97,7 @@ E(X) = p, ~~ Var(X) = \sigma^2 = p(1-p)
 $$
 :::
 
-
 ## Binomial Distribution
-
 
 The Binomial distribution has three defining properties:
 
@@ -111,11 +109,40 @@ The Binomial distribution has three defining properties:
 
 ### `r icons::fontawesome("bullseye", style = "solid")` Definition
 
-> If $X$ counts the number of successes in the $n$ independent trials, we say that $X$ has a binomial distribution with the p.m.f 
+> If $X$ counts the number of successes in the $n$ independent trials, we say that $X$ has a binomial distribution with the p.m.f
 
 $$
 P(X = x) = f_X(x) = \binom{n}{k} p^x (1-p)^{n-x}, x=\{0, 1, \ldots, n\}
 $$
+
+> We write 
+
+$$
+X \sim \mathrm{binom}(\mathrm{size} = n,~~\mathrm{prob} = p)
+$$
+
+## Binomial Distribution
+
+### Check
+
+::: panel-tabset
+### PMF Prop
+
+$$
+\sum_{x=1}^{n}\binom{n}{k} p^x (1-p)^{n-x} = [p + (1-p)]^{n} = 1
+$$
+
+### Expectation
+
+$$\begin{aligned}
+\mu & = \sum_{x=1}^{n}\binom{n}{x}p^{x}(1-p)^{n-x} \\
+    & = \sum_{x=1}^{n}x\frac{n!}{x!(n-x)!}p^{x}(1-p)^{n-x} \\
+    & = n\cdot p\sum_{x=1}^{n}\frac{(n-1)!}{(x-1)!(n-x)!}p^{x-1}(1-p)^{n-x} \\
+    & = n\cdot p\sum_{x-1=0}^{n-1}\binom{n-1}{x-1}p^{x-1}(1-p)^{(n-1)-(x-1)} \\
+    & = np
+\end{aligned}$$
+:::
+
 
 
 

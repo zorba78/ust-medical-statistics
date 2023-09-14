@@ -7,8 +7,8 @@ date: "<br> 2021/09/09 "
 output:
   xaringan::moon_reader:
     css: [default, metropolis, metropolis-fonts, ../assets/css/footer.css, ../assets/css/metropolis-ak.css]
-    lib_dir: "../docs/libs"
-    # lib_dir: "libs"
+    # lib_dir: "../docs/libs"
+    lib_dir: "libs"
     nature:
       highlightStyle: github
       titleSlideClass: [middle, left]
@@ -334,72 +334,6 @@ I will leave the explanation for this part as your homework.
 
 ---
 
-# In-Depth `r icons::fontawesome("arrow-circle-down", style = "solid")`
-
-### Order Statistics
-
-> Given a dataset $x_1, x_2, \ldots, x_n$, sort the values to obtain an increasing sequence
-
-
-$$x_{(1)} \leq x_{(2)} \leq x_{(3)} \leq \dots \leq x_{(n)}$$
-
-- $k^{\mathrm{th}}$ entry in the list $= x_{(k)} \rightarrow$ $k^{\mathrm{th}}$ **order statistics**
-- Approximately, $100(k/n)$ % of the obs. fall below $x_{(k)}$
-
-
-### Sample Quantile
-
-> Cut points dividing the given dataset arranged in acending order into equal interval (size)
-
-- $q$ quantile has $q-1$ cut points
-- 2-quantile: median
-- 4-quantile: quartile $\rightarrow$ 25% ( $Q_{1}$ ), 50% (median), 75% ( $Q_{3}$ )
-
---
-
-> **Homework 2: Research the Q-Q plot (definition, usage, how to make it, and how to interprete). 
-
-???
-
-The order statistics give an indication of the shape of the data distribution, 
-in the sense that a person can look at the order statistics and have an idea about 
-where the data are concentrated, and where they are sparse.
-
-The sample quantiles are related to the order statistics. 
-Unfortunately, there is not a universally accepted definition of them.
-
-Indeed, R is equipped to calculate quantiles using nine distinct definitions! 
-We will describe the default method (type = 7), but the interested reader can see the details 
-for the other methods with `help(quantile)`
-
-Most commercial statistical softwares such as SAS and SPSS, use the following formula
-
-$$Q(p) = (1-\gamma)x_{(k)} + \gamma x_{(k+1)}$$
-where $(k - 0.5)/n \leq p < (k - 0.5 + 1)/n$ and $\gamma = np + m - \lfloor np + m \rfloor$
-
-$n$ : sample size
-
-$\lfloor \cdot \rfloor$: the greatest integer less than or equal to $\cdot$
-
-```
-my_quantile <- function(x, probs) {
-  idx <- NULL
-  o <- order(x); n <- length(x)
-  xord <- x[o]
-  k <- 1:n
-  gamma <- n * probs + 0.5 - floor(n * probs + 0.5)
-  pk <- (k - 0.5)/n
-  for (pj in probs) {
-    idx <- c(idx, which.max(pk[pk <= pj]))
-  }
-  res <- (1 - gamma) * xord[idx] + gamma * xord[idx + 1]
-  names(res) <- sprintf("%.1f %%", round(probs * 100))
-  return(res)
-}
-```
-
-
----
 
 # Measures of Location `r icons::fontawesome("location-arrow", style = "solid")`
 
@@ -967,6 +901,72 @@ for (i in levels(iris$Species)) { hist(iris$Sepal.Length[iris$Species == i],
 ```
 
 ]
+
+---
+
+# In-Depth `r icons::fontawesome("arrow-circle-down", style = "solid")`
+
+### Order Statistics
+
+> Given a dataset $x_1, x_2, \ldots, x_n$, sort the values to obtain an increasing sequence
+
+
+$$x_{(1)} \leq x_{(2)} \leq x_{(3)} \leq \dots \leq x_{(n)}$$
+
+- $k^{\mathrm{th}}$ entry in the list $= x_{(k)} \rightarrow$ $k^{\mathrm{th}}$ **order statistics**
+- Approximately, $100(k/n)$ % of the obs. fall below $x_{(k)}$
+
+
+### Sample Quantile
+
+> Cut points dividing the given dataset arranged in acending order into equal interval (size)
+
+- $q$ quantile has $q-1$ cut points
+- 2-quantile: median
+- 4-quantile: quartile $\rightarrow$ 25% ( $Q_{1}$ ), 50% (median), 75% ( $Q_{3}$ )
+
+--
+
+> **Homework 2**: Research the Q-Q plot (definition, usage, how to make it, and how to interprete). 
+
+???
+
+The order statistics give an indication of the shape of the data distribution, 
+in the sense that a person can look at the order statistics and have an idea about 
+where the data are concentrated, and where they are sparse.
+
+The sample quantiles are related to the order statistics. 
+Unfortunately, there is not a universally accepted definition of them.
+
+Indeed, R is equipped to calculate quantiles using nine distinct definitions! 
+We will describe the default method (type = 7), but the interested reader can see the details 
+for the other methods with `help(quantile)`
+
+Most commercial statistical softwares such as SAS and SPSS, use the following formula
+
+$$Q(p) = (1-\gamma)x_{(k)} + \gamma x_{(k+1)}$$
+where $(k - 0.5)/n \leq p < (k - 0.5 + 1)/n$ and $\gamma = np + m - \lfloor np + m \rfloor$
+
+$n$ : sample size
+
+$\lfloor \cdot \rfloor$: the greatest integer less than or equal to $\cdot$
+
+```
+my_quantile <- function(x, probs) {
+  idx <- NULL
+  o <- order(x); n <- length(x)
+  xord <- x[o]
+  k <- 1:n
+  gamma <- n * probs + 0.5 - floor(n * probs + 0.5)
+  pk <- (k - 0.5)/n
+  for (pj in probs) {
+    idx <- c(idx, which.max(pk[pk <= pj]))
+  }
+  res <- (1 - gamma) * xord[idx] + gamma * xord[idx + 1]
+  names(res) <- sprintf("%.1f %%", round(probs * 100))
+  return(res)
+}
+```
 
 
 ---

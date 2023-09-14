@@ -17,11 +17,21 @@
     <textarea id="source">
 class: middle, left, title-slide
 
+.title[
 # Medical Statistics
+]
+.subtitle[
 ## Important Terminologies
+]
+.author[
 ### <strong>Boncho Ku, Ph.D. in Statistics</strong>
+]
+.institute[
 ### <br/> Korea Institute of Oriental Medicine
+]
+.date[
 ### <br> 2021/09/09
+]
 
 ---
 
@@ -55,21 +65,32 @@ generalizations about a whole (**the population**), based on a limited mumber of
 
 ???
 
-Last time we learned what statistics are in medical research and why statistics are needed in medical research.
+In our first class, we learned what statistics is, what it encompasses, and why it is important in today's world with emphasizing the importance of statistical thinking. We also briefly covered some important terms in statistics, such as population, sample, observation, and experiment. 
 
-Through the lesson, I also emphasized the need for statistics as a tool to extract information and knowledge from data.
-
-I also mentioned that data can be acquired through observation and experimentation, 
-and data are a set of values with quantitative and qualitative variables according to their properties.
+In this class, we will focus on essential terms that you need to know for our study of statistics this semester. Additionally, when you actually analyze data, there's an important initial step you should always take, which is examining the descriptive characteristics of the data.
 
 
-In addition, statistics can be broadly divided into exploratory data analysis, often refered to descriptive statistics, 
+&lt;!-- Through the lesson, I also emphasized the need for statistics as a tool to extract information and knowledge from data. --&gt;
+
+&lt;!-- I also mentioned that data can be acquired through observation and experimentation,  --&gt;
+&lt;!-- and data are a set of values with quantitative and qualitative variables according to their properties. --&gt;
+
+
+Statistics can be broadly divided into exploratory data analysis, often refered to descriptive statistics, 
 and statistical inference, in which a population is inferred from limited information from the given sample. 
 
-Exploratory data analysis (EDA for short) is primarily aimed at identifying the descriptive characteristics of the data. 
+Exploratory data analysis (EDA for short) is primarily aimed to identify the descriptive characteristics of the data. 
 
-Summarize data with several summary statistics used in statistics, such as what the distribution of the data looks like, how the mean is, 
-or how spread out the data is around the mean, or identify patterns in the data through several graphs, etc.
+
+How can we identify the characteristics of data? For example, suppose that we've investigated the weight of 60 pigs in certain farm. We're going to measure weights of pigs and record their weights in some sort of sheets. What kind of information could we obtain from the 60 numbers? 
+
+The data themselves are just bunch of numbers or text. From these numbers, we need to extract some meaningful things by calculating some important numbers and drawing graphs. 
+
+In my opinion, among the many aspects of checking data characteristics, the most important things are to determine where the center of the data is, how spread out the observed values are from that center, and how shape observed data are. 
+
+
+Let's suppose that we've checked these important characteristics mentioned above thorugh EDA. Now, we're questioning whether the average weights of 60 pigs are greater than the average weight of general population of pigs. 
+
 
 This generalization starts with the assumption that the sample we get follows a certain probability distribution. 
 
@@ -106,23 +127,15 @@ The term "target population" is mostly accepted as a synonym of "population".
 
 The term "Target population" is sometimes used to emphasize that the samples we obtain cannot be representative of the entire population.
 
-Study population is the subset of the population (or the target population) with the condition 
-or characteristics of interest defined by the eligibility criteria. 
+Study population is the subset of the population (or the target population) with the condition or characteristics of interest defined by the eligibility criteria. 
 
 
-For example, if the purpose of our study is to investigate the prevalence of dementia among the elderly in South Korea, 
-the whole population of 65 years or older residing in South Korea is our target population of our study.
+For example, if the purpose of our study is to investigate the prevalence of dementia among the elderly in South Korea, the whole population of 65 years or older residing in South Korea is our target population of our study.
 
-To sample representing the whole population of the elderly in South Korea, it is ideal if we could 
-obtain samples that reflects the exact population structure of South Korea. However, 
-budget is always not enough and this makes you survey to only the eldely living in Gwangju. Then, 
-your realistic population for the study shrinks to the elderly who live in Gwangju. That is the study population. 
+To sample representing the whole population of the elderly in South Korea, it is ideal if we could obtain samples that reflects the exact population structure of South Korea. However, budget is always not enough and this makes you survey to only the eldely living in Gwangju. Then, your realistic population for the study shrinks to the elderly who live in Gwangju. That is the study population. 
 
 
-The sample is a subset of the population, and if we actually surveyed 500 elderly people in the study we designed, 
-these 500 persons becomes yuout sample for the study. The act of collecting or extracting sample is called sampling. 
-After sampling, you measure something like age, education level, several questionnaires and the prevalence of the dementia 
-from these samples. These things become your dataset. In most case, sampling and collecting data are done simultaneously. 
+The sample is a subset of the population, and if we actually surveyed 500 elderly people in the study we designed, these 500 persons becomes yuout sample for the study. The act of collecting or extracting sample is called sampling. After sampling, you measure something like age, education level, several questionnaires and the prevalence of the dementia from these samples. These things become your dataset. In most case, sampling and collecting data are done simultaneously. 
 
 
 ---
@@ -151,13 +164,9 @@ This is a sample you can actually examine.
 
 
 In most lectures for STAT 101, the observation are perfectly randomly sampled from the population 
-directly. Hoever, it is a very rare case in the real world. So the entire process from the data 
-to the final population should be look through carefully. 
+directly. However, it is a very rare case in the real world. 
 
-When we go over from the data to the sample, our main interest is whether the data we obtained exactly 
-reflect our study purpose. That is, we need to consider the issue for the measurement. 
-When collecting data, we expect that obtained data has a low variablity as much as possible, and is able to be reproducible. 
-That means we hope to obtain reliable data. 
+When we go over from the data to the sample, our main interest is whether the data we obtained exactly reflect our study purpose. That is, we need to consider the issue for the measurement. When collecting data, we expect that obtained data has a low variablity as much as possible, and is able to be reproducible. That means we hope to obtain reliable data. 
 
 Besides, we also hope to obtain the vaild dataset: that is, we want the data to reflect 
 what we really want to measure without any bias.
@@ -198,7 +207,7 @@ The special numbers that determine the characteristics of a population are calle
 
 The parameter is like a god believed to exist somewhere from the point of view of the frequentist.
 
-That's why paramters regard to flawlessness. In statistics, no error means that this particular number exists alone. 
+That's why parameters regard to flawlessness. In statistics, no error means that this particular number exists alone. 
 
 That is, a paramter is a fixed constant. 
 
@@ -909,6 +918,19 @@ if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
     deleted = true;
   });
 })();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
 (function() {
   "use strict"
   // Replace <script> tags in slides area to make them executable

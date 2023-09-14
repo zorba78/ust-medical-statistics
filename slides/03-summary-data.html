@@ -17,11 +17,21 @@
     <textarea id="source">
 class: middle, left, title-slide
 
+.title[
 # Medical Statistics
+]
+.subtitle[
 ## Summary of Data
+]
+.author[
 ### <strong>Boncho Ku, Ph.D. in Statistics</strong>
+]
+.institute[
 ### <br/> Korea Institute of Oriental Medicine
+]
+.date[
 ### <br> 2021/09/09
+]
 
 ---
 
@@ -322,7 +332,7 @@ median(cars$dist)
 
 
 --
-## WHY?? `\(\rightarrow\)` homework1: describe a plausible explanation and examples for the robustness of median
+#### WHY?? `\(\rightarrow\)` homework1: describe a plausible explanation and examples for the robustness of median
 
 
 ???
@@ -336,72 +346,6 @@ I will leave the explanation for this part as your homework.
 
 ---
 
-# In-Depth &lt;svg viewBox="0 0 512 512" style="height:1em;position:relative;display:inline-block;top:.1em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M504 256c0 137-111 248-248 248S8 393 8 256 119 8 256 8s248 111 248 248zm-143.6-28.9L288 302.6V120c0-13.3-10.7-24-24-24h-16c-13.3 0-24 10.7-24 24v182.6l-72.4-75.5c-9.3-9.7-24.8-9.9-34.3-.4l-10.9 11c-9.4 9.4-9.4 24.6 0 33.9L239 404.3c9.4 9.4 24.6 9.4 33.9 0l132.7-132.7c9.4-9.4 9.4-24.6 0-33.9l-10.9-11c-9.5-9.5-25-9.3-34.3.4z"&gt;&lt;/path&gt;&lt;/svg&gt;
-
-### Order Statistics
-
-&gt; Given a dataset `\(x_1, x_2, \ldots, x_n\)`, sort the values to obtain an increasing sequence
-
-
-`$$x_{(1)} \leq x_{(2)} \leq x_{(3)} \leq \dots \leq x_{(n)}$$`
-
-- `\(k^{\mathrm{th}}\)` entry in the list `\(= x_{(k)} \rightarrow\)` `\(k^{\mathrm{th}}\)` **order statistics**
-- Approximately, `\(100(k/n)\)` % of the obs. fall below `\(x_{(k)}\)`
-
-
-### Sample Quantile
-
-&gt; Cut points dividing the given dataset arranged in acending order into equal interval (size)
-
-- `\(q\)` quantile has `\(q-1\)` cut points
-- 2-quantile: median
-- 4-quantile: quartile `\(\rightarrow\)` 25% ( `\(Q_{1}\)` ), 50% (median), 75% ( `\(Q_{3}\)` )
-
---
-
-&gt; **Homework 2: Research the Q-Q plot (definition, usage, how to make it, and how to interprete). 
-
-???
-
-The order statistics give an indication of the shape of the data distribution, 
-in the sense that a person can look at the order statistics and have an idea about 
-where the data are concentrated, and where they are sparse.
-
-The sample quantiles are related to the order statistics. 
-Unfortunately, there is not a universally accepted definition of them.
-
-Indeed, R is equipped to calculate quantiles using nine distinct definitions! 
-We will describe the default method (type = 7), but the interested reader can see the details 
-for the other methods with `help(quantile)`
-
-Most commercial statistical softwares such as SAS and SPSS, use the following formula
-
-`$$Q(p) = (1-\gamma)x_{(k)} + \gamma x_{(k+1)}$$`
-where `\((k - 0.5)/n \leq p &lt; (k - 0.5 + 1)/n\)` and `\(\gamma = np + m - \lfloor np + m \rfloor\)`
-
-`\(n\)` : sample size
-
-`\(\lfloor \cdot \rfloor\)`: the greatest integer less than or equal to `\(\cdot\)`
-
-```
-my_quantile &lt;- function(x, probs) {
-  idx &lt;- NULL
-  o &lt;- order(x); n &lt;- length(x)
-  xord &lt;- x[o]
-  k &lt;- 1:n
-  gamma &lt;- n * probs + 0.5 - floor(n * probs + 0.5)
-  pk &lt;- (k - 0.5)/n
-  for (pj in probs) {
-    idx &lt;- c(idx, which.max(pk[pk &lt;= pj]))
-  }
-  res &lt;- (1 - gamma) * xord[idx] + gamma * xord[idx + 1]
-  names(res) &lt;- sprintf("%.1f %%", round(probs * 100))
-  return(res)
-}
-```
-
-
----
 
 # Measures of Location &lt;svg viewBox="0 0 512 512" style="height:1em;position:relative;display:inline-block;top:.1em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M444.52 3.52L28.74 195.42c-47.97 22.39-31.98 92.75 19.19 92.75h175.91v175.91c0 51.17 70.36 67.17 92.75 19.19l191.9-415.78c15.99-38.39-25.59-79.97-63.97-63.97z"&gt;&lt;/path&gt;&lt;/svg&gt;
 
@@ -992,6 +936,72 @@ for (i in levels(iris$Species)) { hist(iris$Sepal.Length[iris$Species == i],
 
 ]
 
+---
+
+# In-Depth &lt;svg viewBox="0 0 512 512" style="height:1em;position:relative;display:inline-block;top:.1em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M504 256c0 137-111 248-248 248S8 393 8 256 119 8 256 8s248 111 248 248zm-143.6-28.9L288 302.6V120c0-13.3-10.7-24-24-24h-16c-13.3 0-24 10.7-24 24v182.6l-72.4-75.5c-9.3-9.7-24.8-9.9-34.3-.4l-10.9 11c-9.4 9.4-9.4 24.6 0 33.9L239 404.3c9.4 9.4 24.6 9.4 33.9 0l132.7-132.7c9.4-9.4 9.4-24.6 0-33.9l-10.9-11c-9.5-9.5-25-9.3-34.3.4z"&gt;&lt;/path&gt;&lt;/svg&gt;
+
+### Order Statistics
+
+&gt; Given a dataset `\(x_1, x_2, \ldots, x_n\)`, sort the values to obtain an increasing sequence
+
+
+`$$x_{(1)} \leq x_{(2)} \leq x_{(3)} \leq \dots \leq x_{(n)}$$`
+
+- `\(k^{\mathrm{th}}\)` entry in the list `\(= x_{(k)} \rightarrow\)` `\(k^{\mathrm{th}}\)` **order statistics**
+- Approximately, `\(100(k/n)\)` % of the obs. fall below `\(x_{(k)}\)`
+
+
+### Sample Quantile
+
+&gt; Cut points dividing the given dataset arranged in acending order into equal interval (size)
+
+- `\(q\)` quantile has `\(q-1\)` cut points
+- 2-quantile: median
+- 4-quantile: quartile `\(\rightarrow\)` 25% ( `\(Q_{1}\)` ), 50% (median), 75% ( `\(Q_{3}\)` )
+
+--
+
+&gt; **Homework 2**: Research the Q-Q plot (definition, usage, how to make it, and how to interprete). 
+
+???
+
+The order statistics give an indication of the shape of the data distribution, 
+in the sense that a person can look at the order statistics and have an idea about 
+where the data are concentrated, and where they are sparse.
+
+The sample quantiles are related to the order statistics. 
+Unfortunately, there is not a universally accepted definition of them.
+
+Indeed, R is equipped to calculate quantiles using nine distinct definitions! 
+We will describe the default method (type = 7), but the interested reader can see the details 
+for the other methods with `help(quantile)`
+
+Most commercial statistical softwares such as SAS and SPSS, use the following formula
+
+`$$Q(p) = (1-\gamma)x_{(k)} + \gamma x_{(k+1)}$$`
+where `\((k - 0.5)/n \leq p &lt; (k - 0.5 + 1)/n\)` and `\(\gamma = np + m - \lfloor np + m \rfloor\)`
+
+`\(n\)` : sample size
+
+`\(\lfloor \cdot \rfloor\)`: the greatest integer less than or equal to `\(\cdot\)`
+
+```
+my_quantile &lt;- function(x, probs) {
+  idx &lt;- NULL
+  o &lt;- order(x); n &lt;- length(x)
+  xord &lt;- x[o]
+  k &lt;- 1:n
+  gamma &lt;- n * probs + 0.5 - floor(n * probs + 0.5)
+  pk &lt;- (k - 0.5)/n
+  for (pj in probs) {
+    idx &lt;- c(idx, which.max(pk[pk &lt;= pj]))
+  }
+  res &lt;- (1 - gamma) * xord[idx] + gamma * xord[idx + 1]
+  names(res) &lt;- sprintf("%.1f %%", round(probs * 100))
+  return(res)
+}
+```
+
 
 ---
 
@@ -1262,6 +1272,19 @@ if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
     deleted = true;
   });
 })();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
 (function() {
   "use strict"
   // Replace <script> tags in slides area to make them executable
