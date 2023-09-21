@@ -3,7 +3,7 @@ title: "Medical Statistics"
 subtitle: "Summary of Data"
 author: "<strong>Boncho Ku, Ph.D. in Statistics</strong>"
 institute: "<br/> Korea Institute of Oriental Medicine"
-date: "<br> 2023/09/14"
+date: "<br> 2023/09/21"
 output:
   xaringan::moon_reader:
     css: [default, metropolis, metropolis-fonts, ../assets/css/footer.css, ../assets/css/metropolis-ak.css]
@@ -320,7 +320,6 @@ median(cars$dist)
 
 
 --
-#### WHY?? $\rightarrow$ homework1: describe a plausible explanation and examples for the robustness of median
 
 
 ???
@@ -475,21 +474,17 @@ $$\hat\sigma^2 = s^2 = \frac{1}{n-1}\sum_{i=1}^{n} (x_i - \bar{x})^2 $$
 $$\sigma^2 = \frac{1}{n}\sum_{i=1}^{n} (x_i - \mu)^2 $$
 
 
-> - We use an estimates of population mean $\bar x$ for the estimation of the $\sigma^2$ $\rightarrow$ using one **degree of freedom**<sup>*</sup> 
+> - We use an estimates of population mean $\bar x$ for the estimation of the $\sigma^2$ $\rightarrow$ using one **degree of freedom**
 
- 
-.footnote[[*] the number of values in the final calculation of a statistic that are free to vary.]
 
 
 ???
 
+Degrees of freedom are the number of independent variables that can be estimated in a statistical analysis and tell you how many items can be randomly selected before constraints must be put in place.
 
-The number of independent pieces of information that go into the estimate of a parameter are called the degrees of freedom. 
-In general, the degrees of freedom of an estimate of a parameter are equal to the number of independent scores 
-that go into the estimate minus the number of parameters used as intermediate steps in the estimation of the parameter itself 
-(most of the time the sample variance has N − 1 degrees of freedom, 
-since it is computed from N random scores minus the only 1 parameter estimated as intermediate step, which is the sample mean).
+Within a data set, some initial numbers can be chosen at random. However, if the data set must add up to a specific sum or mean, for example, the number in the data set is constrained to evaluate the values of all other values in a data set, then meet the set requirement.
 
+Degrees of freedom tell you how many units within a set can be selected without constraints to still abide by a given rule overseeing the set. For example, consider a set of five items that add to an average value of 20. Degrees of freedom tell you how many of the items (4) can be randomly selected before constraints must be put in place. In this example, once the first four items are picked, you no longer have the liberty to randomly select a data point because you must "force balance" to the given average.
 
 
 ---
@@ -724,7 +719,7 @@ class: inverse, center, middle
 ### Symmetry
 
 > - There exist the point on the x-axis (called as $\mu$) that acts as mirror 
-> - mathmatically, $f(-|x - \mu|) = f(|x - \mu)$
+> - mathmatically, $f(-|x - \mu|) = f(|x - \mu|)$
 
 
 #### **Example of Symmetric Distribution**
@@ -927,7 +922,6 @@ $$x_{(1)} \leq x_{(2)} \leq x_{(3)} \leq \dots \leq x_{(n)}$$
 
 --
 
-> **Homework 2**: Research the Q-Q plot (definition, usage, how to make it, and how to interprete). 
 
 ???
 
@@ -1081,7 +1075,6 @@ standard deviations.
 
 --
 
-> **Homework 3: Simplify the formula of correlation coefficients**
 
 ---
 # Measure of Relationship 
