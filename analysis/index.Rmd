@@ -98,6 +98,19 @@ downloadthis::download_file(
 
 ```
 
+## **Homework 1 (2023-02)**
+
+> **Due Date: 2023.10.04 23:00 (Wednesday)**
+
+
+1. Describe a plausible explanation and examples for the robustness of median. 
+
+2. Research the Q-Q plot (definition, usage, how to make it, and how to interprete). 
+
+3. Simplify the formula of correlation coefficients
+
+4. Please summarize and express the characteristics of the data you are currently researching based on what you have learned in class, each in your own way.
+
 
 
 ## **Note**
