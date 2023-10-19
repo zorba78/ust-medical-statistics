@@ -3,13 +3,13 @@ title: "Medical Statistics"
 subtitle: "Probability and Probability Distribution"
 author: "<strong>Boncho Ku, Ph.D. in Statistics</strong>"
 institute: "<br/> Korea Institute of Oriental Medicine"
-date: "<br> 2021/09/09 "
+date: "<br> 2023/10/16 "
 output:
   xaringan::moon_reader:
     css: [default, metropolis, metropolis-fonts, ../assets/css/footer.css, ../assets/css/metropolis-ak.css]
     # css: [default, metropolis, metropolis-fonts]
-    lib_dir: "../docs/libs"
-    # lib_dir: "libs"
+    # lib_dir: "../docs/libs"
+    lib_dir: "libs"
     nature:
       highlightStyle: github
       titleSlideClass: [middle, left]
@@ -832,6 +832,25 @@ P(\mathrm{at~least~one~H}) &= 1 - P(\mathrm{all~H}) \\
 > $$P(B_k|A) = \frac{P(B_k)P(A|B_k)}{P(A)}$$
 > - Since $B_k$ is a partition of $S$, according to the theorem of total probability, 
 > $$P(A) = P(A\cap B_1) + P(A\cap B_2) + \cdots + P(A\cap B_n) = \sum_{i=1}^{n}P(B_i)P(A|B_i)$$
+
+
+???
+
+**Intro**
+
+
+Simply speaking, Bayes theorem is a formula to obtain the conditional probability given with the condition of data. By using Bayes' theorem, you can calculate how prior probabilities change when data is given. Therefore, when you know the prior information before the data is given, you can make incorporate the newly corrected data into the prior information to update the final result. This can be especially valuable when the amount of data is limited. In situations where data is continuously acquired, you can efficiently utilize Bayes' theorem to update the analysis without the need to reanalyze the entire dataset daily.
+
+To understand Bayes' theorem, you first need to grasp the concept of mathematical partitioning. First, let's consider number of K sets. For K sets B1 to BK to form a partition of a specific set, typically referred to as the sample space S, they must satisfy two conditions. 
+
+First, all B to BK has to be mutually exclusive and exhaustive. 
+Second, the union of all B1 to BK must exactly be identical to the set S. 
+
+When these two conditions are satisfying, we call B1 to BK are the partition of S. 
+
+
+
+
 
 ---
 

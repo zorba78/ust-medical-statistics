@@ -26,11 +26,21 @@
     <textarea id="source">
 class: middle, left, title-slide
 
+.title[
 # Medical Statistics
+]
+.subtitle[
 ## Random Variable and Expectation
+]
+.author[
 ### <strong>Boncho Ku, Ph.D. in Statistics</strong>
+]
+.institute[
 ### <br/> Korea Institute of Oriental Medicine
-### <br> 2021/10/30
+]
+.date[
+### <br> 2023/10/19
+]
 
 ---
 
@@ -89,6 +99,16 @@ class: middle, left, title-slide
 
 &gt; - We assign **prizes** to each outcome of rolling dices.
 &gt; - Outcomes from rolling dices are **random** `\(\rightarrow\)` whether winning or lose the prize is **random**
+
+
+??? 
+
+**Intro**
+
+Let's assume you are a doctor. You receive various data from a patient. The data that a patient provides can be broadly categorized into two types (not in terms of variable type like quantitative or qualitative data): deterministic data, such as date of birth, which you only need to ask once and won't change, and stochastic data, like blood pressure and body temperature, which you need to ask every time the patient comes in. The reason you only need to ask for a patient's date of birth once is that no matter who asks or when they ask, the value won't change. In contrast, stochastic data, such as blood pressure, can yield different values each time. Even if you've measured it 100 times before, you can't predict with 100% accuracy what value will come up next. Moreover, even when measuring the same person's blood pressure at the same time, the result can vary depending on the person's conditions and the equipment. However, saying that you can't predict blood pressure with 100% accuracy doesn't mean you have no information or knowledge about blood pressure data. For example, if a blood pressure monitor shows a value of 1000 or -10, we would assume the blood pressure monitor is malfunctioning.
+
+
+
 
 
 ---
@@ -275,6 +295,25 @@ the probability of `\(X = x_i\)`, then the probability function (_distribution_)
 
 We say that `\(X\)` has the distribution `\(F_X\)`, write `\(X\sim F_X\)`. Similarly, `\(X \sim f_X\)` for the 
 named distributions of pmf of pdf 
+
+
+???
+
+**End of Slide**
+
+When performing data analysis, variables you are interesting can be regarded as random variables. Analyzing data under the framework of random variable, the analysis typically follows these steps: 
+
+Collect data.
+Assume that the collected data represents a sample of a probability variable.
+Use the data to determine the shape of the probability distribution function of that probability variable.
+Predict the next data points or data characteristics from the determined probability variable.
+Among these steps, the most crucial one is the third step, where you reverse-engineer the probability distribution function from the data. There are various methods to determine the shape of the probability distribution function from data, and one of the simplest ways is to use descriptive statistics as follows:
+
+Calculate descriptive statistics values like sample mean and sample variance from the data distribution.
+Find a probability distribution function that has the same descriptive statistics values.
+To use this approach, you need to know how to calculate descriptive statistics values for a probability distribution without sample data. In the following section, we will study the descriptive statistics values of probability distribution functions, such as the mean and variance.
+
+
 
 ---
 
@@ -978,6 +1017,19 @@ if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
     deleted = true;
   });
 })();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
 (function() {
   "use strict"
   // Replace <script> tags in slides area to make them executable
