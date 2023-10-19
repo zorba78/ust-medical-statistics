@@ -97,14 +97,11 @@ xaringanExtra::use_panelset()
 > - Outcomes from rolling dices are **random** $\rightarrow$ whether winning or lose the prize is **random**
 
 
-??? 
+???
 
 **Intro**
 
 Let's assume you are a doctor. You receive various data from a patient. The data that a patient provides can be broadly categorized into two types (not in terms of variable type like quantitative or qualitative data): deterministic data, such as date of birth, which you only need to ask once and won't change, and stochastic data, like blood pressure and body temperature, which you need to ask every time the patient comes in. The reason you only need to ask for a patient's date of birth once is that no matter who asks or when they ask, the value won't change. In contrast, stochastic data, such as blood pressure, can yield different values each time. Even if you've measured it 100 times before, you can't predict with 100% accuracy what value will come up next. Moreover, even when measuring the same person's blood pressure at the same time, the result can vary depending on the person's conditions and the equipment. However, saying that you can't predict blood pressure with 100% accuracy doesn't mean you have no information or knowledge about blood pressure data. For example, if a blood pressure monitor shows a value of 1000 or -10, we would assume the blood pressure monitor is malfunctioning.
-
-
-
 
 
 ---
