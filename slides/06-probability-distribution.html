@@ -29,6 +29,71 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="06-probability-distribution_files/libs/revealjs/dist/theme/quarto.css">
   <link rel="stylesheet" href="assets/quarto-style-example/syntax-highlight.css">
@@ -354,8 +419,8 @@ Boncho Ku, Ph.D.&nbsp;in Statistics <a href="https://orcid.org/0000-0001-5520-97
 
 </section>
 <section>
-<section id="important-probability-distribution" class="title-slide slide level1 center">
-<h1>Important Probability Distribution</h1>
+<section id="important-discrete-distribution" class="title-slide slide level1 center">
+<h1>Important Discrete Distribution</h1>
 
 </section>
 <section id="bernoulli-trial" class="slide level2">
@@ -426,7 +491,7 @@ E(X) = p, ~~ Var(X) = \sigma^2 = p(1-p)
 </div>
 <h3 id="definition-1"><svg viewbox="0 0 496 512" style="height:1em;position:relative;display:inline-block;top:.1em;" xmlns="http://www.w3.org/2000/svg"> <path d="M248 8C111.03 8 0 119.03 0 256s111.03 248 248 248 248-111.03 248-248S384.97 8 248 8zm0 432c-101.69 0-184-82.29-184-184 0-101.69 82.29-184 184-184 101.69 0 184 82.29 184 184 0 101.69-82.29 184-184 184zm0-312c-70.69 0-128 57.31-128 128s57.31 128 128 128 128-57.31 128-128-57.31-128-128-128zm0 192c-35.29 0-64-28.71-64-64s28.71-64 64-64 64 28.71 64 64-28.71 64-64 64z"></path></svg> Definition</h3>
 <blockquote>
-<p>If <span class="math inline">\(X\)</span> counts the number of successes in the <span class="math inline">\(n\)</span> independent trials, we say that <span class="math inline">\(X\)</span> has a binomial distribution with the p.m.f</p>
+<p>If <span class="math inline">\(X\)</span> counts the number of successes in the <span class="math inline">\(n\)</span> independent Bernoulli trials, we say that <span class="math inline">\(X\)</span> has a binomial distribution with the p.m.f</p>
 </blockquote>
 <p><span class="math display">\[
 P(X = x) = f_X(x) = \binom{n}{k} p^x (1-p)^{n-x}, x=\{0, 1, \ldots, n\}
@@ -440,28 +505,340 @@ X \sim \mathrm{binom}(\mathrm{size} = n,~~\mathrm{prob} = p)
 </section>
 <section id="binomial-distribution-1" class="slide level2">
 <h2>Binomial Distribution</h2>
-<h3 id="check">Check</h3>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<p>The total number of successes is identical to the sum of <span class="math inline">\(n\)</span> Bernoulli trials.</p>
+</div>
+</div>
+</div>
 <div class="panel-tabset">
-<ul id="tabset-2" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-2-1">PMF Prop</a></li><li><a href="#tabset-2-2">Expectation</a></li></ul>
+<ul id="tabset-2" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-2-1">PMF Prop</a></li><li><a href="#tabset-2-2">Expectation</a></li><li><a href="#tabset-2-3">Variance (1)</a></li><li><a href="#tabset-2-4">Variance (2)</a></li><li><a href="#tabset-2-5">Easy Proof</a></li></ul>
 <div class="tab-content">
 <div id="tabset-2-1">
 <p><span class="math display">\[
-\sum_{x=1}^{n}\binom{n}{k} p^x (1-p)^{n-x} = [p + (1-p)]^{n} = 1
+\sum_{x=0}^{n}\binom{n}{x} p^x (1-p)^{n-x} = [p + (1-p)]^{n} = 1
 \]</span></p>
 </div>
 <div id="tabset-2-2">
 <p><span class="math display">\[\begin{aligned}
-\mu &amp; = \sum_{x=1}^{n}\binom{n}{x}p^{x}(1-p)^{n-x} \\
+\mu &amp; = \sum_{x=0}^{n}\binom{n}{x}p^{x}(1-p)^{n-x} \\
     &amp; = \sum_{x=1}^{n}x\frac{n!}{x!(n-x)!}p^{x}(1-p)^{n-x} \\
     &amp; = n\cdot p\sum_{x=1}^{n}\frac{(n-1)!}{(x-1)!(n-x)!}p^{x-1}(1-p)^{n-x} \\
     &amp; = n\cdot p\sum_{x-1=0}^{n-1}\binom{n-1}{x-1}p^{x-1}(1-p)^{(n-1)-(x-1)} \\
     &amp; = np
 \end{aligned}\]</span></p>
 </div>
+<div id="tabset-2-3">
+<p><span class="math display">\[\begin{aligned}
+\sigma^2 &amp;= E[X^2] - [E(X)]^2 \\
+         &amp;= \sum_{x=0}^{n}x^2\binom{n}{x}p^{x}(1-p)^{n-x} - (np)^2 \\
+         &amp;= \sum_{x=1}^{n}x^2\binom{n}{x}p^{x}(1-p)^{n-x} - (np)^2 \\
+         &amp;= \sum_{x=1}^{n}x\cdot x \frac{n(n-1)!}{x(x-1)!(n-x)!}p^{x}(1-p)^{n-x} -(np)^2 \\
+         &amp;= np\sum_{x-1=0}^{n-1}x\binom{n-1}{x-1}p^{x-1}(1-p)^{(n-1)-(x-1)} - (np)^2
+\end{aligned}\]</span></p>
+</div>
+<div id="tabset-2-4">
+<p>Continued from (1)</p>
+<p>Let <span class="math inline">\(y=x-1\)</span> and <span class="math inline">\(m=n-1\)</span>, then</p>
+<p><span class="math display">\[\begin{aligned}
+\sigma^2 &amp;= np\sum_{y=0}^{n-1}(y+1)\binom{m}{y}p^{x-1}(1-p)^{m-y} -(np)^2\\
+         &amp;= np\{(n-1)p + 1\} - (np)^2 = (np)^2 + np(1-p) - (np)^2 \\
+         &amp;= np(1-p)
+\end{aligned}\]</span></p>
+</div>
+<div id="tabset-2-5">
+<p>Let <span class="math inline">\(X_{i} \sim Bernoulli(p)\)</span> then <span class="math inline">\(Y=\sum_{i=1}^{n}X_i \sim \mathrm{binom}(n, p)\)</span>. Therefore,</p>
+<p><span class="math display">\[\begin{aligned}
+\mu_{Y} &amp;= E(Y) = E\left(\sum_{i=1}^{n}X_{i}\right) = \sum_{i=1}^{n}E(X_i) = \sum_{i=1}^{n}p = np \\
+\sigma_{Y}^{2} &amp;= Var(Y)=Var\left(\sum_{i=1}^{n}X_{i}\right) = \sum_{i=1}^{n}Var(X_i) \\
+               &amp;= \sum_{i=1}^{n}p(1-p) = np(1-p)~\because~X_{i} \perp X_{j}
+\end{aligned}\]</span></p>
 </div>
 </div>
-
-<img src="assets/ci/UIBS/JPG/UST-UI-SUBSIG-KRV.jpg" class="slide-logo r-stretch"><div class="footer footer-default">
+</div>
+</section>
+<section id="binomial-distribution-2" class="slide level2">
+<h2>Binomial Distribution</h2>
+<h3 id="example">Example</h3>
+<div class="callout callout-tip no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>Roll 12 dice simultaneously, and let <span class="math inline">\(X\)</span> denote the number of <svg viewbox="0 0 448 512" style="height:1em;position:relative;display:inline-block;top:.1em;" xmlns="http://www.w3.org/2000/svg"> <path d="M384 32H64C28.65 32 0 60.65 0 96v320c0 35.35 28.65 64 64 64h320c35.35 0 64-28.65 64-64V96c0-35.35-28.65-64-64-64zM128 384c-17.67 0-32-14.33-32-32s14.33-32 32-32 32 14.33 32 32-14.33 32-32 32zm0-96c-17.67 0-32-14.33-32-32s14.33-32 32-32 32 14.33 32 32-14.33 32-32 32zm0-96c-17.67 0-32-14.33-32-32s14.33-32 32-32 32 14.33 32 32-14.33 32-32 32zm192 192c-17.67 0-32-14.33-32-32s14.33-32 32-32 32 14.33 32 32-14.33 32-32 32zm0-96c-17.67 0-32-14.33-32-32s14.33-32 32-32 32 14.33 32 32-14.33 32-32 32zm0-96c-17.67 0-32-14.33-32-32s14.33-32 32-32 32 14.33 32 32-14.33 32-32 32z"></path></svg>s appear. We wish to find the probability of getting seven, eight, or nine <svg viewbox="0 0 448 512" style="height:1em;position:relative;display:inline-block;top:.1em;" xmlns="http://www.w3.org/2000/svg"> <path d="M384 32H64C28.65 32 0 60.65 0 96v320c0 35.35 28.65 64 64 64h320c35.35 0 64-28.65 64-64V96c0-35.35-28.65-64-64-64zM128 384c-17.67 0-32-14.33-32-32s14.33-32 32-32 32 14.33 32 32-14.33 32-32 32zm0-96c-17.67 0-32-14.33-32-32s14.33-32 32-32 32 14.33 32 32-14.33 32-32 32zm0-96c-17.67 0-32-14.33-32-32s14.33-32 32-32 32 14.33 32 32-14.33 32-32 32zm192 192c-17.67 0-32-14.33-32-32s14.33-32 32-32 32 14.33 32 32-14.33 32-32 32zm0-96c-17.67 0-32-14.33-32-32s14.33-32 32-32 32 14.33 32 32-14.33 32-32 32zm0-96c-17.67 0-32-14.33-32-32s14.33-32 32-32 32 14.33 32 32-14.33 32-32 32z"></path></svg>s.</p>
+<p>Let <span class="math inline">\(S\)</span> be an event that we get a <svg viewbox="0 0 448 512" style="height:1em;position:relative;display:inline-block;top:.1em;" xmlns="http://www.w3.org/2000/svg"> <path d="M384 32H64C28.65 32 0 60.65 0 96v320c0 35.35 28.65 64 64 64h320c35.35 0 64-28.65 64-64V96c0-35.35-28.65-64-64-64zM128 384c-17.67 0-32-14.33-32-32s14.33-32 32-32 32 14.33 32 32-14.33 32-32 32zm0-96c-17.67 0-32-14.33-32-32s14.33-32 32-32 32 14.33 32 32-14.33 32-32 32zm0-96c-17.67 0-32-14.33-32-32s14.33-32 32-32 32 14.33 32 32-14.33 32-32 32zm192 192c-17.67 0-32-14.33-32-32s14.33-32 32-32 32 14.33 32 32-14.33 32-32 32zm0-96c-17.67 0-32-14.33-32-32s14.33-32 32-32 32 14.33 32 32-14.33 32-32 32zm0-96c-17.67 0-32-14.33-32-32s14.33-32 32-32 32 14.33 32 32-14.33 32-32 32z"></path></svg> on one roll. Then <span class="math inline">\(P(S)=1/6\)</span> and the rolls constitute Bernoulli trials; <span class="math inline">\(X \sim \mathrm{binom}(\mathrm{size}=12, \mathrm{prob} = 1/6)\)</span> and we are asking to find <span class="math inline">\(P(7\leq X\leq 9)\)</span>. That is,</p>
+<p><span class="math display">\[
+P(7\leq X\leq 9) = \sum_{x=7}^{9}\binom{12}{x}\left(\frac{1}{6}\right)^x\left(\frac{5}{6}\right)^{12-x}
+\]</span> <strong>Alternative</strong></p>
+<p><span class="math display">\[
+P(7\leq X\leq 9) = P(X \leq 9) - P(X \leq 6) = F_X(9) - F_X(6)
+\]</span></p>
+<p>where <span class="math inline">\(F_X(x)\)</span> is the CDF of <span class="math inline">\(X\)</span>.</p>
+</div>
+</div>
+</div>
+<div class="panel-tabset">
+<ul id="tabset-3" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-3-1"><svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg> solution: 1</a></li><li><a href="#tabset-3-2"><svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg> solution: 2</a></li></ul>
+<div class="tab-content">
+<div id="tabset-3-1">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="sc">&gt;</span> <span class="fu">dbinom</span>(<span class="dv">7</span>, <span class="dv">12</span>, <span class="dv">1</span><span class="sc">/</span><span class="dv">6</span>) <span class="sc">+</span> <span class="fu">dbinom</span>(<span class="dv">8</span>, <span class="dv">12</span>, <span class="dv">1</span><span class="sc">/</span><span class="dv">6</span>) <span class="sc">+</span> <span class="fu">dbinom</span>(<span class="dv">9</span>, <span class="dv">12</span>, <span class="dv">1</span><span class="sc">/</span><span class="dv">6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.001291758</code></pre>
+</div>
+</div>
+</div>
+<div id="tabset-3-2">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="sc">&gt;</span> <span class="fu">pbinom</span>(<span class="dv">9</span>, <span class="dv">12</span>, <span class="dv">1</span><span class="sc">/</span><span class="dv">6</span>) <span class="sc">-</span> <span class="fu">pbinom</span>(<span class="dv">6</span>, <span class="dv">12</span>, <span class="dv">1</span><span class="sc">/</span><span class="dv">6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.001291758</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="binomial-distribution-3" class="slide level2">
+<h2>Binomial Distribution</h2>
+<h3 id="example-cdf">Example (CDF)</h3>
+<div class="callout callout-tip no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p>Toss a coin 3 times and let <span class="math inline">\(X\)</span> be the number of Heads observed. Then</p>
+<p><span class="math display">\[
+X \sim \mathrm{binom}(\mathrm{size} = 3, \mathrm{prob} = 1/2)
+\]</span></p>
+<p>The PMF:</p>
+<table>
+<thead>
+<tr class="header">
+<th><span class="math inline">\(x=\#~\mathrm{of~Heads}\)</span></th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(f(x)=P(X=x)\)</span></td>
+<td>1/8</td>
+<td>3/8</td>
+<td>3/8</td>
+<td>1/8</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="panel-tabset">
+<ul id="tabset-4" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-4-1">CDF</a></li><li><a href="#tabset-4-2"><svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg> CDF Plot: Code</a></li><li><a href="#tabset-4-3"><svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg> CDF Plot: Plot</a></li></ul>
+<div class="tab-content">
+<div id="tabset-4-1">
+<p><span class="math display">\[F_{X}(x) = P(X \leq x) = \begin{cases}
+0, ~~~~~~~~~~~~~~~~~~~~~~x &lt; 0\\
+\frac{1}{8},~~~~~~~~~~~~~~~~~~~~~ 0\leq x &lt; 1\\
+\frac{1}{8} + \frac{3}{8} = \frac{4}{8},~~~~~ 1\leq x &lt; 2\\
+\frac{4}{8} + \frac{3}{8} = \frac{7}{8},~~~~~ 2\leq x &lt; 3\\
+1  ~~~~~~~~~~~~~~~~~~~~~~~~x \geq 3\\
+\end{cases}\]</span></p>
+</div>
+<div id="tabset-4-2">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>n <span class="ot">&lt;-</span> <span class="dv">3</span>; p <span class="ot">&lt;-</span> <span class="fl">0.5</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a>x <span class="ot">&lt;-</span> <span class="sc">-</span><span class="dv">1</span><span class="sc">:</span>(n<span class="sc">+</span><span class="dv">1</span>)</span>
+<span id="cb5-3"><a href="#cb5-3"></a>y <span class="ot">&lt;-</span> <span class="fu">pbinom</span>(x, <span class="at">size =</span> n, <span class="at">p =</span> p)</span>
+<span id="cb5-4"><a href="#cb5-4"></a></span>
+<span id="cb5-5"><a href="#cb5-5"></a><span class="fu">plot</span>(x, y, <span class="at">type =</span> <span class="st">"n"</span>, </span>
+<span id="cb5-6"><a href="#cb5-6"></a>     <span class="at">xlab =</span> <span class="st">"number of successes"</span>, </span>
+<span id="cb5-7"><a href="#cb5-7"></a>     <span class="at">ylab =</span> <span class="st">"cumulative probability"</span>)</span>
+<span id="cb5-8"><a href="#cb5-8"></a><span class="fu">abline</span>(<span class="at">h=</span><span class="dv">1</span>, <span class="at">lty=</span><span class="dv">2</span>, <span class="at">col =</span> <span class="st">"darkgray"</span>)</span>
+<span id="cb5-9"><a href="#cb5-9"></a><span class="fu">abline</span>(<span class="at">h=</span><span class="dv">0</span>, <span class="at">lty=</span><span class="dv">2</span>, <span class="at">col =</span> <span class="st">"darkgray"</span>)</span>
+<span id="cb5-10"><a href="#cb5-10"></a><span class="fu">points</span>(x[<span class="dv">2</span><span class="sc">:</span><span class="dv">5</span>], y[<span class="dv">2</span><span class="sc">:</span><span class="dv">5</span>], <span class="at">pch=</span><span class="dv">16</span>, <span class="at">cex =</span> <span class="dv">2</span>)</span>
+<span id="cb5-11"><a href="#cb5-11"></a><span class="fu">points</span>(x[<span class="dv">2</span><span class="sc">:</span><span class="dv">5</span>], y[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>], <span class="at">pch=</span><span class="dv">21</span>, <span class="at">cex =</span> <span class="dv">2</span>)</span>
+<span id="cb5-12"><a href="#cb5-12"></a><span class="fu">segments</span>(</span>
+<span id="cb5-13"><a href="#cb5-13"></a>  <span class="at">x0 =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>), </span>
+<span id="cb5-14"><a href="#cb5-14"></a>  <span class="at">x1 =</span> <span class="fu">c</span>( <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">5</span>), </span>
+<span id="cb5-15"><a href="#cb5-15"></a>  <span class="at">y0 =</span> <span class="fu">c</span>(y[<span class="dv">1</span>], y[<span class="dv">2</span>], y[<span class="dv">3</span>], y[<span class="dv">4</span>], y[<span class="dv">5</span>]), </span>
+<span id="cb5-16"><a href="#cb5-16"></a>  <span class="at">y1 =</span> <span class="fu">c</span>(y[<span class="dv">1</span>], y[<span class="dv">2</span>], y[<span class="dv">3</span>], y[<span class="dv">4</span>], y[<span class="dv">5</span>])</span>
+<span id="cb5-17"><a href="#cb5-17"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div id="tabset-4-3">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="06-probability-distribution_files/figure-revealjs/unnamed-chunk-4-1.png" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="hypergeometric-distribution" class="slide level2">
+<h2>Hypergeometric Distribution</h2>
+<div class="callout callout-tip no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p><strong>Example</strong></p>
+<p>Suppose that an urn contains 7 white balls and 5 black balls. Let our random experiment be to randomly select 4 balls, <strong>without replacement</strong>, from the urn. Then the probability of observing 3 white balls(and thus 1 black ball) is</p>
+<p><span class="math display">\[
+P(3W, 1B) = \frac{\binom{7}{3}\binom{5}{1}}{\binom{12}{4}}
+\]</span></p>
+<ul>
+<li>Sample 4 times (<span class="math inline">\(=K\)</span>) without replacement <span class="math inline">\(\rightarrow\)</span> a sample from POPULATION</li>
+<li>From where?? <span class="math inline">\(\rightarrow\)</span> an urn with 7 white balls (<span class="math inline">\(=M\)</span>) and 5 black balls (<span class="math inline">\(=N\)</span>)</li>
+</ul>
+</div>
+</div>
+</div>
+<h3 id="definition-2"><svg viewbox="0 0 496 512" style="height:1em;position:relative;display:inline-block;top:.1em;" xmlns="http://www.w3.org/2000/svg"> <path d="M248 8C111.03 8 0 119.03 0 256s111.03 248 248 248 248-111.03 248-248S384.97 8 248 8zm0 432c-101.69 0-184-82.29-184-184 0-101.69 82.29-184 184-184 101.69 0 184 82.29 184 184 0 101.69-82.29 184-184 184zm0-312c-70.69 0-128 57.31-128 128s57.31 128 128 128 128-57.31 128-128-57.31-128-128-128zm0 192c-35.29 0-64-28.71-64-64s28.71-64 64-64 64 28.71 64 64-28.71 64-64 64z"></path></svg> Definition</h3>
+<blockquote>
+<p>Let <span class="math inline">\(X\)</span> be the number of success in <span class="math inline">\(K\)</span> samples obtained from a total of <span class="math inline">\(N\)</span> successes and <span class="math inline">\(M\)</span> failures, the PMF of <span class="math inline">\(X\)</span> is</p>
+</blockquote>
+<p><span class="math display">\[
+P(X=x) = f_{X}(x) = \frac{\binom{M}{x}\binom{N}{K-x}}{\binom{M+N}{K}}
+\]</span> where <span class="math inline">\(0\leq x \leq M\)</span>, <span class="math inline">\(0\leq K-x \leq N\)</span></p>
+</section>
+<section id="hypergeometric-distribution-1" class="slide level2">
+<h2>Hypergeometric Distribution</h2>
+<div class="callout callout-note no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p><strong>Expectation</strong></p>
+<p><span class="math display">\[ \mu_X=E(X)=K\frac{M}{M+N} \]</span></p>
+<p><strong>Variance</strong></p>
+<p><span class="math display">\[ \sigma_{X}^2=Var(X)=K\frac{MN}{(M+N)^2}\frac{M+N-K}{M+N-1} \]</span></p>
+</div>
+</div>
+</div>
+<div class="callout callout-note callout-titled callout-style-simple">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Example</strong></p>
+</div>
+<div class="callout-content">
+<p>Suppose that a city with <span class="math inline">\(N\)</span> women and <span class="math inline">\(M\)</span> men.</p>
+<ul>
+<li><span class="math inline">\(X\)</span>: the number of women infected with the disease</li>
+<li><span class="math inline">\(Y\)</span>: the number ofmen infected with the disease</li>
+</ul>
+<p>Our goal is to estimate the probability that a person infected with the disease is women. Let <span class="math inline">\(p_X\)</span> and <span class="math inline">\(p_Y\)</span> denote probabilities of infection. Assume that</p>
+<p><span class="math display">\[
+p = p_X = p_Y
+\]</span></p>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th style="text-align: center;">Women</th>
+<th style="text-align: center;">Men</th>
+<th style="text-align: center;">Total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Infection: Yes</strong></td>
+<td style="text-align: center;"><span class="math inline">\(X\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(Y\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(X+Y\)</span></td>
+</tr>
+<tr class="even">
+<td><strong>Infection: No</strong></td>
+<td style="text-align: center;"><span class="math inline">\(N-X\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(M-Y\)</span></td>
+<td style="text-align: center;"><span class="math inline">\((N+M)-(X+Y)\)</span></td>
+</tr>
+<tr class="odd">
+<td><strong>Total</strong></td>
+<td style="text-align: center;"><span class="math inline">\(N\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(M\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(N+M\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+<section id="hypergeometric-distribution-2" class="slide level2">
+<h2>Hypergeometric Distribution</h2>
+<div class="callout callout-note callout-titled callout-style-simple">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Example (<em>continued</em>)</strong></p>
+</div>
+<div class="callout-content">
+<p>Then <span class="math inline">\(X\sim \mathrm{binom}(\mathrm{size}=N, \mathrm{prob}=p)\)</span>, <span class="math inline">\(Y\sim \mathrm{binom}(\mathrm{size}=M, \mathrm{prob}=p)\)</span>. Thus,</p>
+<p><span class="math display">\[
+(X+Y) \sim \mathrm{binom}(\mathrm{size}=N+M, \mathrm{prob} = p)~~\because X\perp Y
+\]</span> Our purpose is to find</p>
+<p><span class="math display">\[
+P(X=x|X+Y) = \frac{P(X+Y|X=x)P(X=x)}{P(X+Y)}~~\because \mathrm{Bayes~Theorem}
+\]</span> Let <span class="math inline">\(X+Y=K\)</span></p>
+<p><span class="math display">\[\begin{aligned}
+P(X=x|X+Y) &amp;= \frac{P(Y=K-X|X=x)P(X=x)}{P(X+Y=K)} \\
+           &amp;= \frac{P(Y=K-X)P(X=x)}{P(X+Y=K)}~~\because X\perp Y \\
+           &amp;= \frac{\binom{M}{K-X}p^{K-X}(1-p)^{M-K+X} \binom{N}{X}p^X(1-p)^{N-X}}{\binom{N+M}{K} p^K(1-p)^{N+M-K}} \\
+           &amp;= \frac{\binom{M}{K-X}\binom{N}{X}}{\binom{N+M}{K}} \sim \mathrm{Hyper}(M, N, K)
+\end{aligned}\]</span></p>
+</div>
+</div>
+</div>
+</section>
+<section id="hypergeometric-distribution-3" class="slide level2">
+<h2>Hypergeometric Distribution</h2>
+<h3 id="relationship-to-binomial-distribution">Relationship to Binomial Distribution</h3>
+<ol type="1">
+<li><p>The conditional distribution of <span class="math inline">\(X\)</span> given <span class="math inline">\(X+Y=K\)</span> is identical to hypergeometric distribution.</p></li>
+<li><p>When <span class="math inline">\(N \rightarrow \infty\)</span>, the hypergeometric distribution converges to the binomial distribution.</p></li>
+</ol>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li><p>Binomial distribution <span class="math inline">\(\rightarrow\)</span> <strong>with replacement</strong></p></li>
+<li><p>Hypergeometric distribution <span class="math inline">\(\rightarrow\)</span> <strong>without replacement</strong></p></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="assets/imgs/ust-lecture-bin-hyper-rel.png" width="1024"></p>
+</figure>
+</div>
+<!-- ## Poisson Distribution -->
+<!-- # Important Continuous Distributions -->
+<!-- ## Uniform Distribution -->
+<!-- ## Normal Distribution -->
+<!-- ## t Distribution -->
+<!-- ## $\chi^2$ Distribution -->
+<!-- ## F Distribution -->
+<p><img src="assets/ci/UIBS/JPG/UST-UI-SUBSIG-KRV.jpg" class="slide-logo"></p>
+<div class="footer footer-default">
 
 </div>
 </section></section>

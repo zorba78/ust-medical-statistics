@@ -26,9 +26,11 @@ format:
       <link rel="stylesheet" href="/assets/fontawesome-free-6.2.0-web/css/font-awesome.min.css">
       <script defer src="/assets/fontawesome-free-6.2.0-web/js/all.min.js"></script>    
 editor: visual
+editor_options: 
+  chunk_output_type: console
 ---
 
-# Important Probability Distribution
+# Important Discrete Distribution
 
 ```{r setup-library}
 library(MASS)
@@ -109,13 +111,13 @@ The Binomial distribution has three defining properties:
 
 ### `r icons::fontawesome("bullseye", style = "solid")` Definition
 
-> If $X$ counts the number of successes in the $n$ independent trials, we say that $X$ has a binomial distribution with the p.m.f
+> If $X$ counts the number of successes in the $n$ independent Bernoulli trials, we say that $X$ has a binomial distribution with the p.m.f
 
 $$
 P(X = x) = f_X(x) = \binom{n}{k} p^x (1-p)^{n-x}, x=\{0, 1, \ldots, n\}
 $$
 
-> We write 
+> We write
 
 $$
 X \sim \mathrm{binom}(\mathrm{size} = n,~~\mathrm{prob} = p)
@@ -123,26 +125,278 @@ $$
 
 ## Binomial Distribution
 
-### Check
+::: callout-important
+The total number of successes is identical to the sum of $n$ Bernoulli trials.
+:::
 
 ::: panel-tabset
 ### PMF Prop
 
 $$
-\sum_{x=1}^{n}\binom{n}{k} p^x (1-p)^{n-x} = [p + (1-p)]^{n} = 1
+\sum_{x=0}^{n}\binom{n}{x} p^x (1-p)^{n-x} = [p + (1-p)]^{n} = 1
 $$
 
 ### Expectation
 
 $$\begin{aligned}
-\mu & = \sum_{x=1}^{n}\binom{n}{x}p^{x}(1-p)^{n-x} \\
+\mu & = \sum_{x=0}^{n}\binom{n}{x}p^{x}(1-p)^{n-x} \\
     & = \sum_{x=1}^{n}x\frac{n!}{x!(n-x)!}p^{x}(1-p)^{n-x} \\
     & = n\cdot p\sum_{x=1}^{n}\frac{(n-1)!}{(x-1)!(n-x)!}p^{x-1}(1-p)^{n-x} \\
     & = n\cdot p\sum_{x-1=0}^{n-1}\binom{n-1}{x-1}p^{x-1}(1-p)^{(n-1)-(x-1)} \\
     & = np
 \end{aligned}$$
+
+### Variance (1)
+
+$$\begin{aligned}
+\sigma^2 &= E[X^2] - [E(X)]^2 \\
+         &= \sum_{x=0}^{n}x^2\binom{n}{x}p^{x}(1-p)^{n-x} - (np)^2 \\
+         &= \sum_{x=1}^{n}x^2\binom{n}{x}p^{x}(1-p)^{n-x} - (np)^2 \\
+         &= \sum_{x=1}^{n}x\cdot x \frac{n(n-1)!}{x(x-1)!(n-x)!}p^{x}(1-p)^{n-x} -(np)^2 \\
+         &= np\sum_{x-1=0}^{n-1}x\binom{n-1}{x-1}p^{x-1}(1-p)^{(n-1)-(x-1)} - (np)^2
+\end{aligned}$$
+
+### Variance (2)
+
+Continued from (1)
+
+Let $y=x-1$ and $m=n-1$, then
+
+$$\begin{aligned}
+\sigma^2 &= np\sum_{y=0}^{n-1}(y+1)\binom{m}{y}p^{x-1}(1-p)^{m-y} -(np)^2\\
+         &= np\{(n-1)p + 1\} - (np)^2 = (np)^2 + np(1-p) - (np)^2 \\
+         &= np(1-p)
+\end{aligned}$$
+
+### Easy Proof
+
+Let $X_{i} \sim Bernoulli(p)$ then $Y=\sum_{i=1}^{n}X_i \sim \mathrm{binom}(n, p)$. Therefore,
+
+$$\begin{aligned}
+\mu_{Y} &= E(Y) = E\left(\sum_{i=1}^{n}X_{i}\right) = \sum_{i=1}^{n}E(X_i) = \sum_{i=1}^{n}p = np \\
+\sigma_{Y}^{2} &= Var(Y)=Var\left(\sum_{i=1}^{n}X_{i}\right) = \sum_{i=1}^{n}Var(X_i) \\
+               &= \sum_{i=1}^{n}p(1-p) = np(1-p)~\because~X_{i} \perp X_{j}
+\end{aligned}$$
 :::
 
+## Binomial Distribution
 
+### Example
 
+::: {.callout-tip appearance="minimal"}
+Roll 12 dice simultaneously, and let $X$ denote the number of `r icons::fontawesome("dice-six", style = "solid")`s appear. We wish to find the probability of getting seven, eight, or nine `r icons::fontawesome("dice-six", style = "solid")`s.
 
+Let $S$ be an event that we get a `r icons::fontawesome("dice-six", style = "solid")` on one roll. Then $P(S)=1/6$ and the rolls constitute Bernoulli trials; $X \sim \mathrm{binom}(\mathrm{size}=12, \mathrm{prob} = 1/6)$ and we are asking to find $P(7\leq X\leq 9)$. That is,
+
+$$
+P(7\leq X\leq 9) = \sum_{x=7}^{9}\binom{12}{x}\left(\frac{1}{6}\right)^x\left(\frac{5}{6}\right)^{12-x}
+$$ **Alternative**
+
+$$
+P(7\leq X\leq 9) = P(X \leq 9) - P(X \leq 6) = F_X(9) - F_X(6)
+$$
+
+where $F_X(x)$ is the CDF of $X$.
+:::
+
+::: panel-tabset
+### `r fontawesome::fa("r-project")` solution: 1
+
+```{r, echo=TRUE, prompt=TRUE}
+dbinom(7, 12, 1/6) + dbinom(8, 12, 1/6) + dbinom(9, 12, 1/6)
+```
+
+### `r fontawesome::fa("r-project")` solution: 2
+
+```{r, echo=TRUE, prompt=TRUE}
+pbinom(9, 12, 1/6) - pbinom(6, 12, 1/6)
+
+```
+:::
+
+## Binomial Distribution
+
+### Example (CDF)
+
+::: {.callout-tip appearance="minimal"}
+Toss a coin 3 times and let $X$ be the number of Heads observed. Then
+
+$$
+X \sim \mathrm{binom}(\mathrm{size} = 3, \mathrm{prob} = 1/2)
+$$
+
+The PMF:
+
+| $x=\#~\mathrm{of~Heads}$ | 0   | 1   | 2   | 3   |
+|--------------------------|-----|-----|-----|-----|
+| $f(x)=P(X=x)$            | 1/8 | 3/8 | 3/8 | 1/8 |
+:::
+
+::: panel-tabset
+### CDF
+
+$$F_{X}(x) = P(X \leq x) = \begin{cases}
+0, ~~~~~~~~~~~~~~~~~~~~~~x < 0\\
+\frac{1}{8},~~~~~~~~~~~~~~~~~~~~~ 0\leq x < 1\\
+\frac{1}{8} + \frac{3}{8} = \frac{4}{8},~~~~~ 1\leq x < 2\\
+\frac{4}{8} + \frac{3}{8} = \frac{7}{8},~~~~~ 2\leq x < 3\\
+1  ~~~~~~~~~~~~~~~~~~~~~~~~x \geq 3\\
+\end{cases}$$
+
+### `r fontawesome::fa("r-project")` CDF Plot: Code
+
+```{r, eval=FALSE, echo=TRUE}
+n <- 3; p <- 0.5
+x <- -1:(n+1)
+y <- pbinom(x, size = n, p = p)
+
+plot(x, y, type = "n", 
+     xlab = "number of successes", 
+     ylab = "cumulative probability")
+abline(h=1, lty=2, col = "darkgray")
+abline(h=0, lty=2, col = "darkgray")
+points(x[2:5], y[2:5], pch=16, cex = 2)
+points(x[2:5], y[1:4], pch=21, cex = 2)
+segments(
+  x0 = c(-2, 0, 1, 2, 3), 
+  x1 = c( 0, 1, 2, 3, 5), 
+  y0 = c(y[1], y[2], y[3], y[4], y[5]), 
+  y1 = c(y[1], y[2], y[3], y[4], y[5])
+)
+
+```
+
+### `r fontawesome::fa("r-project")` CDF Plot: Plot
+
+```{r, fig.height=6, fig.width=8, fig.align='center'}
+n <- 3; p <- 0.5
+x <- -1:(n+1)
+y <- pbinom(x, size = n, p = p)
+
+plot(x, y, type = "n", 
+     xlab = "number of successes", 
+     ylab = "cumulative probability")
+abline(h=1, lty=2, col = "darkgray")
+abline(h=0, lty=2, col = "darkgray")
+points(x[2:5], y[2:5], pch=16, cex = 2)
+points(x[2:5], y[1:4], pch=21, cex = 2)
+segments(
+  x0 = c(-2, 0, 1, 2, 3), 
+  x1 = c( 0, 1, 2, 3, 5), 
+  y0 = c(y[1], y[2], y[3], y[4], y[5]), 
+  y1 = c(y[1], y[2], y[3], y[4], y[5])
+)
+
+```
+:::
+
+## Hypergeometric Distribution
+
+::: {.callout-tip appearance="minimal"}
+**Example**
+
+Suppose that an urn contains 7 white balls and 5 black balls. Let our random experiment be to randomly select 4 balls, **without replacement**, from the urn. Then the probability of observing 3 white balls(and thus 1 black ball) is
+
+$$
+P(3W, 1B) = \frac{\binom{7}{3}\binom{5}{1}}{\binom{12}{4}}
+$$
+
+-   Sample 4 times ($=K$) without replacement $\rightarrow$ a sample from POPULATION
+-   From where?? $\rightarrow$ an urn with 7 white balls ($=M$) and 5 black balls ($=N$)
+:::
+
+### `r icons::fontawesome("bullseye", style = "solid")` Definition
+
+> Let $X$ be the number of success in $K$ samples obtained from a total of $N$ successes and $M$ failures, the PMF of $X$ is
+
+$$
+P(X=x) = f_{X}(x) = \frac{\binom{M}{x}\binom{N}{K-x}}{\binom{M+N}{K}}
+$$ where $0\leq x \leq M$, $0\leq K-x \leq N$
+
+## Hypergeometric Distribution
+
+::: {.callout-note appearance="simple" icon="false"}
+**Expectation**
+
+$$ \mu_X=E(X)=K\frac{M}{M+N} $$
+
+**Variance**
+
+$$ \sigma_{X}^2=Var(X)=K\frac{MN}{(M+N)^2}\frac{M+N-K}{M+N-1} $$
+:::
+
+::: {.callout-note appearance="simple" icon="true"}
+### Example
+
+Suppose that a city with $N$ women and $M$ men.
+
+-   $X$: the number of women infected with the disease
+-   $Y$: the number ofmen infected with the disease
+
+Our goal is to estimate the probability that a person infected with the disease is women. Let $p_X$ and $p_Y$ denote probabilities of infection. Assume that
+
+$$
+p = p_X = p_Y
+$$
+
+|                    | Women |  Men  |     Total     |
+|--------------------|:-----:|:-----:|:-------------:|
+| **Infection: Yes** |  $X$  |  $Y$  |     $X+Y$     |
+| **Infection: No**  | $N-X$ | $M-Y$ | $(N+M)-(X+Y)$ |
+| **Total**          |  $N$  |  $M$  |     $N+M$     |
+:::
+
+## Hypergeometric Distribution
+
+::: {.callout-note appearance="simple" icon="true"}
+### Example (*continued*)
+
+Then $X\sim \mathrm{binom}(\mathrm{size}=N, \mathrm{prob}=p)$, $Y\sim \mathrm{binom}(\mathrm{size}=M, \mathrm{prob}=p)$. Thus,
+
+$$
+(X+Y) \sim \mathrm{binom}(\mathrm{size}=N+M, \mathrm{prob} = p)~~\because X\perp Y
+$$ Our purpose is to find
+
+$$
+P(X=x|X+Y) = \frac{P(X+Y|X=x)P(X=x)}{P(X+Y)}~~\because \mathrm{Bayes~Theorem}
+$$ Let $X+Y=K$
+
+$$\begin{aligned}
+P(X=x|X+Y) &= \frac{P(Y=K-X|X=x)P(X=x)}{P(X+Y=K)} \\
+           &= \frac{P(Y=K-X)P(X=x)}{P(X+Y=K)}~~\because X\perp Y \\
+           &= \frac{\binom{M}{K-X}p^{K-X}(1-p)^{M-K+X} \binom{N}{X}p^X(1-p)^{N-X}}{\binom{N+M}{K} p^K(1-p)^{N+M-K}} \\
+           &= \frac{\binom{M}{K-X}\binom{N}{X}}{\binom{N+M}{K}} \sim \mathrm{Hyper}(M, N, K)
+\end{aligned}$$
+:::
+
+## Hypergeometric Distribution
+
+### Relationship to Binomial Distribution
+
+1.  The conditional distribution of $X$ given $X+Y=K$ is identical to hypergeometric distribution.
+
+2.  When $N \rightarrow \infty$, the hypergeometric distribution converges to the binomial distribution.
+
+::: callout-note
+### Important
+
+-   Binomial distribution $\rightarrow$ **with replacement**
+
+-   Hypergeometric distribution $\rightarrow$ **without replacement**
+:::
+
+![](assets/imgs/ust-lecture-bin-hyper-rel.png){fig-align="center" width="1024"}
+
+<!-- ## Poisson Distribution -->
+
+<!-- # Important Continuous Distributions -->
+
+<!-- ## Uniform Distribution -->
+
+<!-- ## Normal Distribution -->
+
+<!-- ## t Distribution -->
+
+<!-- ## $\chi^2$ Distribution -->
+
+<!-- ## F Distribution -->
