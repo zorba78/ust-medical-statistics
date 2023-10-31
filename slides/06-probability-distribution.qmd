@@ -268,7 +268,7 @@ segments(
 
 ### `r fontawesome::fa("r-project")` CDF Plot: Plot
 
-```{r, fig.height=6, fig.width=8, fig.align='center'}
+```{r, fig.height=5, fig.width=8, fig.align='center'}
 n <- 3; p <- 0.5
 x <- -1:(n+1)
 y <- pbinom(x, size = n, p = p)
@@ -310,8 +310,8 @@ $$
 > Let $X$ be the number of success in $K$ samples obtained from a total of $N$ successes and $M$ failures, the PMF of $X$ is
 
 $$
-P(X=x) = f_{X}(x) = \frac{\binom{M}{x}\binom{N}{K-x}}{\binom{M+N}{K}}
-$$ where $0\leq x \leq M$, $0\leq K-x \leq N$
+P(X=x) = f_{X}(x) = \frac{\binom{M}{x}\binom{N}{K-x}}{\binom{M+N}{K}}, ~~~0\leq x \leq M,~0\leq K-x \leq N
+$$
 
 ## Hypergeometric Distribution
 
@@ -333,11 +333,7 @@ Suppose that a city with $N$ women and $M$ men.
 -   $X$: the number of women infected with the disease
 -   $Y$: the number ofmen infected with the disease
 
-Our goal is to estimate the probability that a person infected with the disease is women. Let $p_X$ and $p_Y$ denote probabilities of infection. Assume that
-
-$$
-p = p_X = p_Y
-$$
+Our goal is to estimate the probability that a person infected with the disease is women. Let $p_X$ and $p_Y$ denote probabilities of infection. Assume that $p = p_X = p_Y$
 
 |                    | Women |  Men  |     Total     |
 |--------------------|:-----:|:-----:|:-------------:|
@@ -387,16 +383,514 @@ P(X=x|X+Y) &= \frac{P(Y=K-X|X=x)P(X=x)}{P(X+Y=K)} \\
 
 ![](assets/imgs/ust-lecture-bin-hyper-rel.png){fig-align="center" width="1024"}
 
-<!-- ## Poisson Distribution -->
+## Poisson Distribution
 
-<!-- # Important Continuous Distributions -->
+::: callout-note
+### Motivation
 
-<!-- ## Uniform Distribution -->
+How do we measure the probability of a given number of events occurring in a fixed interval of time or space?
 
-<!-- ## Normal Distribution -->
+### Examples
 
-<!-- ## t Distribution -->
+-   Call center: number of calls per hour within a day
+-   Traffic accident: number of traffic accidents during 7:00 AM to 10:00 AM per day
+-   Number of customers arriving in a bank between 9:00 AM and 11:00 AM
+
+### Assumption
+
+-   The events occurs independently (**independence**)
+-   The events occurs with a known constant mean rate (**consistency**)
+-   The probability of two events occurring in a very short time and very small space is 0 (**non-clustering**)
+:::
+
+::: notes
+The Poisson distribution is a discrete probability distribution that expresses the probability of a given number of events occurring in a fixed interval of time or space if these events occur with a known constant mean rate and independently of the time since the last event.
+
+**Independence**: The results occurring in a particular unit of time or space are independent of the results that occur in other non-overlapping units of time or space. For example, the number of customers who visited Bank A from 9:00 to 10:00 and the number of customers who visited Bank B during the same time are independent of each other. Furthermore, the number of customers who visited Bank A until 10:00 and the number of customers who visited Bank C from 10:00 to 11:00 are also independent of each other.
+
+**Consistency**: If an event occurs with mean rate of 2 within a minute, it implies 6 events will occur during 3 minutes.
+
+**Non-clustering**:
+:::
+
+## Poisson Distribution
+
+### `r icons::fontawesome("bullseye", style = "solid")` Definition
+
+> Let $\lambda$ ($\lambda > 0$) be the average number of events in the time interval $[0,1]$. Let the discrete random variable $X$ count the number of events occuring in the interval.
+
+$$
+f_X(x) = P(X=x) = \frac{\lambda^x\exp(-\lambda)}{x!}, ~~~x = 0,1,2,\ldots
+$$
+
+We write $X \sim \mathrm{pois}(\mathrm{lambda} = \lambda)$
+
+> If $X$ counts the number of events in the interval $[0, t]$ and $\lambda$ is the average number of occurance in unit time,
+
+$$
+f_X(x) = P(X=x) = \frac{(\lambda t)^x\exp(-\lambda t)}{x!}, ~~~x = 0,1,2,\ldots
+$$
+
+## Poisson Distribution
+
+::: panel-tabset
+### Expectation
+
+$$
+E(X) = \sum_{x=0}^{\infty}x  \frac{\lambda^x\exp(-\lambda)}{x!} = \sum_{x=0}^{\infty} \lambda \frac{\lambda^{(x-1)}\exp(-\lambda)}{(x-1)!} = \lambda
+$$
+
+### Variance
+
+$$
+Var(X) = \sum_{x=0}^{\infty}x^2 \frac{\lambda^x\exp(-\lambda)}{x!} = 
+\sum_{x=0}^{\infty} \lambda^2 \frac{\lambda^{(x-2)}\exp(-\lambda)}{(x-2)!} = \lambda^2
+$$
+:::
+
+### Shapes of Poisson Distribution according to $\lambda$
+
+```{r fig.height=8, fig.width=12, fig.align='center'}
+k <- seq(1, 20, by = 1)
+lambdas <- c(1, 2, 4, 8, 10)
+y <- 
+  mapply(
+    dpois, 
+    list(k, k, k, k, k), 
+    lambdas
+  )
+
+plot(k, y[,1], type="n", bty = "n", 
+     xlim = c(0, 20), 
+     ylim = c(0, 0.4), 
+     main = "Poisson Distribution", 
+     xlab = "x", 
+     ylab = "P(X = x)", 
+     cex.main = 2, cex.lab = 1.5
+     )
+for (i in 1:5) {
+  points(k, y[,i], col = i, cex = 2.2, pch=16)
+  lines(k, y[,i], col = i, lwd = 1)
+}
+text(1.2, y[1,1], expression(paste(lambda == 1)), pos = 4, cex = 1.5)
+text(2.2, y[2,2], expression(paste(lambda == 2)), pos = 4, cex = 1.5, col = "red")
+text(4.2, y[4,3], expression(paste(lambda == 4)), pos = 4, cex = 1.5, col = "green")
+text(8.1, y[8,4], expression(paste(lambda == 8)), pos = 3, cex = 1.5, col = "blue")
+text(10.5, y[10,5], expression(paste(lambda == 10)), pos = 3, cex = 1.5, col = "cyan")
+
+```
+
+## Poisson Distribution
+
+::: {.callout-tip appearance="minimal"}
+**Example 1**
+
+On the average, 5 cars arrive at a particular car wash every hour. Let $X$ count the number of cars that arrive from 10 AM to 11 AM. What is the probability that no car arrives during this period?
+
+**Example 2**
+
+Suppose the car wash above is in operation from 8 AM to 6 PM, and we let $Y$ be the number of customers that appear in this period. What is the probability that there are between 48 and 50 customers, inclusive?
+:::
+
+::: panel-tabset
+### Sol: Ex 1
+
+Since $X \sim \mathrm{pois}(\lambda = 5)$, the probability that no car arrives is
+
+$$
+P(X = 0) = \frac{5^0\exp(-5)}{0!} = \exp(-5) \approx 0.0067
+$$
+
+`r fontawesome::fa("r-project")` scripts for the solution
+
+```{r, echo=TRUE, prompt=TRUE}
+dpois(0, lambda = 5)
+```
+
+### Sol: Ex 2
+
+The average car arrivals during 8 AM to 6 PM is $\lambda'=5\times10=50$, $Y\sim \mathrm{pois}(\lambda = \lambda'=50)$. The probability between 48 to 50 customers:
+
+$$
+P(48 \leq Y \leq 50) =  \sum_{y=0}^{50}\frac{50^{y}\exp(-50)}{y!} - \sum_{y=0}^{47}\frac{50^{y}\exp(-50)}{y!} \approx 0.168
+$$
+
+`r fontawesome::fa("r-project")` scripts for the solution
+
+```{r, echo=TRUE, prompt=TRUE}
+ppois(50, lambda = 50) - ppois(47, lambda = 50)
+```
+:::
+
+## Poisson Distribution
+
+### Relationship to Binomial Distribution
+
+> Suppose $X$ and $Y$ are Poisson random variables: $X\sim \mathrm{pois}(\lambda_1)$, $Y\sim \mathrm{pois}(\lambda_2)$ and $X$ and $Y$ are independent, then $(X+Y)\sim \mathrm{pois}(\lambda_{1} + \lambda_{2})$. The conditional distribution of $X$ given with $(X+Y) = N$ is identical to the binomial distribution with size of $N$ and probability of $p=\lambda_1/(\lambda_1 + \lambda_2)$.
+
+
+::: callout-note
+### Proof
+
+By using Bayes Theorem, 
+
+$$
+P(X|X+Y = N) = \frac{P(X+Y=N|X=x)P(X=x)}{P(X+Y = N)}
+$$
+
+Since $X \perp Y$, $Y=X-N$, 
+
+$$
+P(X|X+Y = N) = \frac{P(Y=N-X)P(X=x)}{P(X+Y = N)}=\frac{\frac{\exp(-\lambda_2)\lambda_2^{N-x}}{(N-x)!}\frac{\exp{(-\lambda_1)}\lambda_1^{x}}{x!}}{\frac{\exp[-(\lambda_1+\lambda_2)](\lambda_1+\lambda_2)^N}{N!}}
+$$
+
+:::
+
+
+## Poisson Distribution
+
+::: callout-note
+### Proof (_continued_)
+
+$$\begin{aligned}
+P(X|X+Y = N) &= \frac{N!}{x!(N-x)!}\frac{\exp{[-(\lambda_1+\lambda_2)]}\lambda_1^x\lambda_2^{N-x}}{\exp{[-(\lambda_1+\lambda_2)]}(\lambda_1+\lambda_2)^N} \\
+             &= \binom{N}{x}\frac{\lambda_1^x\lambda_2^{N-x}}{(\lambda_1 + \lambda_2)^N} = \binom{N}{x}\frac{\lambda_1^x\lambda_2^{N-x}}{(\lambda_1 + \lambda_2)^x(\lambda_1 + \lambda_2)^{N-x}} \\
+             &= \binom{N}{x}\left(\frac{\lambda_1}{\lambda_1+\lambda_2}\right)^x\left(1-\frac{\lambda_1}{\lambda_1+\lambda_2}\right)^{N-x} \\
+             &= \mathrm{binom}\left(\mathrm{size}=N, \mathrm{prob}=\frac{\lambda_1}{\lambda_1+\lambda_2}\right)
+\end{aligned}$$
+
+:::
+
+
+::: callout-note
+### Important
+
+-   The conditional distribution of $X$ given $X+Y$ is identical to the binomial distribution, where $X\sim \mathrm{pois}(\lambda_1)$ and $Y\sim \mathrm{pois}(\lambda_2)$
+
+-   (**Check**) The binomial distribution is converge to the poisson distribution when $N\rightarrow \infty$
+
+:::
+
+
+
+# Important Continuous Distributions
+
+## Uniform Distribution
+
+### `r icons::fontawesome("bullseye", style = "solid")` Definition
+
+> When a random variable $X$ with **identical probability over every interval** on $[a,b]$, it is called a **uniform distribution**
+
+We write $X \sim U(a, b)$ or $X\sim \mathrm{unif}(\mathrm{min} = a, \mathrm{max}=b)$
+
+::: panel-tabset
+
+### PDF
+
+$$f_X(x) = \begin{cases}
+\frac{1}{b-a},~~ a\leq x \leq b \\
+0, ~~~~~~~ \mathrm{otherwise}
+\end{cases}$$
+
+
+### Shape
+
+
+```{r, fig.align='center'}
+library(scales)
+x <- seq(1,2, length=100)
+y <- dunif(x, min = 1, max = 2)
+
+plot(x, y, type="n", bty = "n", 
+     xlim = c(0.5, 2.5), 
+     ylim = c(0, 1.2),
+     main = "Uniform Distribution: U(1, 2)", 
+     xlab = "x", 
+     ylab = "f(x)", 
+     cex.main = 2, cex.lab = 1.5
+     )
+polygon(c(1,x,2), c(0,y, 0), col = alpha("blue", 0.2), border = alpha("blue", 0.2))
+lines(x, y, lty=1, lwd=2, col = "blue")
+abline(h = 1, lty = 2, col = "blue")
+abline(v = 1, lty = 2, col = "blue")
+abline(v = 2, lty = 2, col = "blue")
+text(1.5, 0.5, "Area = 1", cex = 2)
+
+
+```
+
+
+
+### CDF
+
+$$F_X(x) = \begin{cases}
+0, ~~~~~~~ x < a\\
+\frac{x-a}{b-a}, ~~ a\leq x \leq b\\
+1, ~~~~~~~ x > b
+\end{cases}$$
+
+
+### Expectation
+
+$$\begin{aligned}
+\mu_X = E(X) &= \int_{-\infty}^{\infty} x f_X(x) dx \\
+             &= \int_{a}^{b} x \frac{1}{b-a} dx \\
+             &= \frac{1}{b-a}\frac{x^2}{2} \bigg|_{x=a}^{b} \\
+             &= \frac{b+a}{2}
+\end{aligned}$$
+
+
+### Variance
+
+$$\begin{aligned}
+\sigma^2_X &= Var(X) = E\left[(X - E(X))^2\right] = E(X^2) - \left[E(X)\right]^2 \\
+           &= \int_{a}^{b} x^2 \frac{1}{b-a} dx - \left(\frac{b+a}{2}\right)^2 \\
+           &= \frac{1}{b-a}\frac{x^3}{3}\bigg|_{x=a}^{b} - \left(\frac{b+a}{2}\right)^2 = \frac{b^3-a^3}{3(b-a)} - \left(\frac{b+a}{2}\right)^2\\
+           &= \frac{(b-a)^2}{12}
+\end{aligned}$$
+
+
+:::
+
+## Uniform Distribution
+
+::: {.callout-tip appearance="minimal"}
+**Example**
+
+Suppose that buses arrive at a bus stop every 10 minutes and that the waiting time of a person who arrives at the stop is uniformly distributed. We want to find the probability that a person waits less than 5 minutes.
+
+:::
+
+
+::: callout-note
+### Solution
+
+Let the waiting time for bus be a random variable $X$, then $X$ follows the uniform distribution with interval $[0, 10]$, Therefore, 
+
+$$
+f_X(x) = P(X = x) =\frac{1}{10}, ~~ 0\leq x \leq 10
+$$
+
+The probability that a person waits less tan 5 minutes can be obtained 
+
+$$
+P(X\leq 5) = \int_{0}^{5}\frac{1}{10} dx = \frac{1}{10}x\bigg|_{x=0}^{5} = 0.5
+$$
+
+:::
+
+
+
+
+## Normal Distribution
+
+- The most **IMPORTANT** probability distribution in statistics
+
+- a.k.a Gaussian Distribution
+
+- Widely used to represent real-valued random variables whose distributions are unknown
+
+- Particularly, the normal distribution is a backbone of the central limit theorem (CLT)
+
+:::panel-tabset
+
+### PDF
+
+$$
+f_X(x; \mu, \sigma^2)=\frac{1}{\sigma\sqrt{2\pi}}\exp\left\{-\frac{(x-\mu)^2}{2\sigma^2}\right\},~~ -\infty < x < \infty
+$$
+
+$$
+\int_{-\infty}^{\infty} \frac{1}{\sigma\sqrt{2\pi}}\exp\left\{-\frac{(x-\mu)^2}{2\sigma^2}\right\} = 1
+$$
+
+### Expectation and Variance
+
+$$\begin{aligned}
+\mu_X &=E(X) = \mu \\
+\sigma^2_X &= Var(X) = \sigma^2
+\end{aligned}$$
+
+:::
+
+
+## Normal Distribution 
+
+### Shapes 
+
+- Bell shaped curve and symmetric around the $\mu$
+- mean = median = mode
+- Depends on $\mu$ and $\sigma$
+
+:::panel-tabset
+
+### Basic shape
+
+```{r, fig.height=6, fig.width=10, fig.align='center'}
+x <- seq(-5, 5, 0.01)
+y <- dnorm(x)
+
+plot(x, y,
+     type = "n",
+     bty = "n",
+     yaxt = "n",
+     xaxt = "n",
+     ann = FALSE,
+     xlim = c(-5, 5))
+lines(c(0, 0), c(0.02, max(y)), lty = 2, col = "darkgray")
+lines(x, y, lty = 1, lwd = 2.2,
+      col = "black")
+arrows(0, y[601], 1, y[601], lty = 2, col = "darkgray", length=0.1, angle=30, code =3)
+text(0, 0.01, expression(mu), pos=1, cex = 1.5)
+text(0.5, y[601], expression(sigma), pos=1, cex = 1.5)
+
+```
+
+### $\mu_1=\mu_2$, $\sigma_1 < \sigma_2$
+
+
+```{r, fig.height=6, fig.width=10, fig.align='center'}
+par(mar = c(3, 0, 3, 0))
+x <- seq(-5, 5, 0.01)
+y <- mapply(dnorm,
+            list(x, x, x),
+            c(0, 0),
+            c(1, sqrt(3)))
+
+
+plot(x, y[,1],
+     type = "n",
+     bty = "n",
+     yaxt = "n",
+     ann = FALSE,
+     xlim = c(-5, 5))
+lines(c(0, 0), c(0, max(y[,1])), lty = 2, col = "lightgray")
+lines(x, y[,1], lty = 1, lwd = 2,
+      col = "black")
+lines(c(0.3, 2), rep(max(y[,1]), 2), lty = 1, col = "gray")
+text(2.1, max(y[,1]),
+     expression(paste(mu == 0, "," ~~ sigma == 1)), # 수식 표현
+     cex = 1.5, 
+     adj = 0)
+
+lines(x, y[,2], lty = 2, lwd = 2, col = "blue")
+lines(c(0.3, 2), rep(max(y[, 2]), 2), lty = 1, col = "gray")
+text(2.1, max(y[,2]),
+     expression(paste(mu == 0, "," ~~ sigma == 3)), # 수식 표현
+     cex = 1.5, 
+     adj = 0)
+
+
+```
+
+
+### $\mu_1<\mu_2$, $\sigma_1 = \sigma_2$
+
+```{r, fig.height=6, fig.width=10, fig.align='center'}
+par(mar = c(3, 0, 3, 0))
+x <- seq(-7, 7, 0.01)
+y <- mapply(dnorm,
+            list(x, x, x),
+            c(-1, 2),
+            c(1, 1))
+
+plot(x, y[,1],
+     type = "n",
+     bty = "n",
+     yaxt = "n",
+     ann = FALSE,
+     xlim = c(-7, 7))
+lines(c(-1, -1), c(0, max(y[,1])), lty = 2, col = "lightgray")
+lines(c(2, 2), c(0, max(y[,2])), lty = 2, col = "lightgray")
+lines(x, y[,1], lty = 1, lwd = 2,
+      col = "black")
+# lines(c(0.3, 2), rep(max(y[,1]), 2), lty = 1, col = "gray")
+text(-0.8, max(y[,1]),
+     expression(paste(mu == -1, "," ~~ sigma == 1)), # 수식 표현
+     cex = 1.5, 
+     pos = 4)
+
+lines(x, y[,2], lty = 1, lwd = 2, col = "blue")
+text(2.1, max(y[,2]),
+     expression(paste(mu == 2, "," ~~ sigma == 1)), # 수식 표현
+     cex = 1.5, 
+     pos = 4)
+
+
+
+
+```
+
+### $\mu_1<\mu_2$, $\sigma_1 < \sigma_2$
+
+```{r, fig.height=6, fig.width=10, fig.align='center'}
+par(mar = c(3, 0, 3, 0))
+x <- seq(-7, 7, 0.01)
+y <- mapply(dnorm,
+            list(x, x),
+            c(-1, 2),
+            c(1, sqrt(3)))
+
+
+plot(x, y[,1],
+     type = "n",
+     bty = "n",
+     yaxt = "n",
+     ann = FALSE,
+     xlim = c(-7, 7))
+lines(c(-1, -1), c(0, max(y[,1])), lty = 2, col = "lightgray")
+lines(c(2, 2), c(0, max(y[,2])), lty = 2, col = "lightgray")
+lines(x, y[,1], lty = 1, lwd = 2,
+      col = "black")
+# lines(c(0.3, 2), rep(max(y[,1]), 2), lty = 1, col = "gray")
+text(-0.8, max(y[,1]),
+     expression(paste(mu == -1, "," ~~ sigma == 1)), # 수식 표현
+     cex = 1.5, 
+     pos = 4)
+
+lines(x, y[,2], lty = 1, lwd = 2, col = "blue")
+text(2.3, max(y[,2]),
+     expression(paste(mu == 2, "," ~~ sigma == sqrt(3))), # 수식 표현
+     cex = 1.5, 
+     pos = 4)
+
+
+```
+
+
+:::
+
+
+
+
+
+
+
 
 <!-- ## $\chi^2$ Distribution -->
+
+<!-- Specific case of the gamma distribution  -->
+
+
+<!-- ### PDF -->
+
+<!-- $$ -->
+<!-- f_X(x; \nu) = \begin{cases} -->
+<!-- \frac{x^{\nu/2-1}\exp(-x/2)}{2^{\nu/2}\Gamma\left(\frac{\nu}{2}\right)},~~x>0 \\ -->
+<!-- 0, ~~~~~~~~~~~~~~~~~~~~~~~ \mathrm{otherwise} -->
+<!-- \end{cases}$$ -->
+
+
+<!-- where $\Gamma(k/2)$ denotes the gamma function which is defined as  -->
+
+<!-- $$ -->
+<!-- \Gamma(z) = \int_{0}^{\infty} t^{z-1}\exp(-t) dt,~~ z>0 -->
+<!-- $$ -->
+
+
+
+
+
+<!-- ## t Distribution -->
 
 <!-- ## F Distribution -->
