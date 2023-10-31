@@ -707,8 +707,8 @@ P(3W, 1B) = \frac{\binom{7}{3}\binom{5}{1}}{\binom{12}{4}}
 <p>Let <span class="math inline">\(X\)</span> be the number of success in <span class="math inline">\(K\)</span> samples obtained from a total of <span class="math inline">\(N\)</span> successes and <span class="math inline">\(M\)</span> failures, the PMF of <span class="math inline">\(X\)</span> is</p>
 </blockquote>
 <p><span class="math display">\[
-P(X=x) = f_{X}(x) = \frac{\binom{M}{x}\binom{N}{K-x}}{\binom{M+N}{K}}
-\]</span> where <span class="math inline">\(0\leq x \leq M\)</span>, <span class="math inline">\(0\leq K-x \leq N\)</span></p>
+P(X=x) = f_{X}(x) = \frac{\binom{M}{x}\binom{N}{K-x}}{\binom{M+N}{K}}, ~~~0\leq x \leq M,~0\leq K-x \leq N
+\]</span></p>
 </section>
 <section id="hypergeometric-distribution-1" class="slide level2">
 <h2>Hypergeometric Distribution</h2>
@@ -736,10 +736,7 @@ P(X=x) = f_{X}(x) = \frac{\binom{M}{x}\binom{N}{K-x}}{\binom{M+N}{K}}
 <li><span class="math inline">\(X\)</span>: the number of women infected with the disease</li>
 <li><span class="math inline">\(Y\)</span>: the number ofmen infected with the disease</li>
 </ul>
-<p>Our goal is to estimate the probability that a person infected with the disease is women. Let <span class="math inline">\(p_X\)</span> and <span class="math inline">\(p_Y\)</span> denote probabilities of infection. Assume that</p>
-<p><span class="math display">\[
-p = p_X = p_Y
-\]</span></p>
+<p>Our goal is to estimate the probability that a person infected with the disease is women. Let <span class="math inline">\(p_X\)</span> and <span class="math inline">\(p_Y\)</span> denote probabilities of infection. Assume that <span class="math inline">\(p = p_X = p_Y\)</span></p>
 <table>
 <thead>
 <tr class="header">
@@ -825,17 +822,385 @@ P(X=x|X+Y) &amp;= \frac{P(Y=K-X|X=x)P(X=x)}{P(X+Y=K)} \\
 </div>
 </div>
 </div>
+
+<img data-src="assets/imgs/ust-lecture-bin-hyper-rel.png" width="1024" class="r-stretch quarto-figure-center"></section>
+<section id="poisson-distribution" class="slide level2">
+<h2>Poisson Distribution</h2>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Motivation</strong></p>
+</div>
+<div class="callout-content">
+<p>How do we measure the probability of a given number of events occurring in a fixed interval of time or space?</p>
+<h3 id="examples">Examples</h3>
+<ul>
+<li>Call center: number of calls per hour within a day</li>
+<li>Traffic accident: number of traffic accidents during 7:00 AM to 10:00 AM per day</li>
+<li>Number of customers arriving in a bank between 9:00 AM and 11:00 AM</li>
+</ul>
+<h3 id="assumption">Assumption</h3>
+<ul>
+<li>The events occurs independently (<strong>independence</strong>)</li>
+<li>The events occurs with a known constant mean rate (<strong>consistency</strong>)</li>
+<li>The probability of two events occurring in a very short time and very small space is 0 (<strong>non-clustering</strong>)</li>
+</ul>
+</div>
+</div>
+</div>
+<aside class="notes">
+<p>The Poisson distribution is a discrete probability distribution that expresses the probability of a given number of events occurring in a fixed interval of time or space if these events occur with a known constant mean rate and independently of the time since the last event.</p>
+<p><strong>Independence</strong>: The results occurring in a particular unit of time or space are independent of the results that occur in other non-overlapping units of time or space. For example, the number of customers who visited Bank A from 9:00 to 10:00 and the number of customers who visited Bank B during the same time are independent of each other. Furthermore, the number of customers who visited Bank A until 10:00 and the number of customers who visited Bank C from 10:00 to 11:00 are also independent of each other.</p>
+<p><strong>Consistency</strong>: If an event occurs with mean rate of 2 within a minute, it implies 6 events will occur during 3 minutes.</p>
+<p><strong>Non-clustering</strong>:</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="poisson-distribution-1" class="slide level2">
+<h2>Poisson Distribution</h2>
+<h3 id="definition-3"><svg viewbox="0 0 496 512" style="height:1em;position:relative;display:inline-block;top:.1em;" xmlns="http://www.w3.org/2000/svg"> <path d="M248 8C111.03 8 0 119.03 0 256s111.03 248 248 248 248-111.03 248-248S384.97 8 248 8zm0 432c-101.69 0-184-82.29-184-184 0-101.69 82.29-184 184-184 101.69 0 184 82.29 184 184 0 101.69-82.29 184-184 184zm0-312c-70.69 0-128 57.31-128 128s57.31 128 128 128 128-57.31 128-128-57.31-128-128-128zm0 192c-35.29 0-64-28.71-64-64s28.71-64 64-64 64 28.71 64 64-28.71 64-64 64z"></path></svg> Definition</h3>
+<blockquote>
+<p>Let <span class="math inline">\(\lambda\)</span> (<span class="math inline">\(\lambda &gt; 0\)</span>) be the average number of events in the time interval <span class="math inline">\([0,1]\)</span>. Let the discrete random variable <span class="math inline">\(X\)</span> count the number of events occuring in the interval.</p>
+</blockquote>
+<p><span class="math display">\[
+f_X(x) = P(X=x) = \frac{\lambda^x\exp(-\lambda)}{x!}, ~~~x = 0,1,2,\ldots
+\]</span></p>
+<p>We write <span class="math inline">\(X \sim \mathrm{pois}(\mathrm{lambda} = \lambda)\)</span></p>
+<blockquote>
+<p>If <span class="math inline">\(X\)</span> counts the number of events in the interval <span class="math inline">\([0, t]\)</span> and <span class="math inline">\(\lambda\)</span> is the average number of occurance in unit time,</p>
+</blockquote>
+<p><span class="math display">\[
+f_X(x) = P(X=x) = \frac{(\lambda t)^x\exp(-\lambda t)}{x!}, ~~~x = 0,1,2,\ldots
+\]</span></p>
+</section>
+<section id="poisson-distribution-2" class="slide level2">
+<h2>Poisson Distribution</h2>
+<div class="panel-tabset">
+<ul id="tabset-5" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-5-1">Expectation</a></li><li><a href="#tabset-5-2">Variance</a></li></ul>
+<div class="tab-content">
+<div id="tabset-5-1">
+<p><span class="math display">\[
+E(X) = \sum_{x=0}^{\infty}x  \frac{\lambda^x\exp(-\lambda)}{x!} = \sum_{x=0}^{\infty} \lambda \frac{\lambda^{(x-1)}\exp(-\lambda)}{(x-1)!} = \lambda
+\]</span></p>
+</div>
+<div id="tabset-5-2">
+<p><span class="math display">\[
+Var(X) = \sum_{x=0}^{\infty}x^2 \frac{\lambda^x\exp(-\lambda)}{x!} =
+\sum_{x=0}^{\infty} \lambda^2 \frac{\lambda^{(x-2)}\exp(-\lambda)}{(x-2)!} = \lambda^2
+\]</span></p>
+</div>
+</div>
+</div>
+<h3 id="shapes-of-poisson-distribution-according-to-lambda">Shapes of Poisson Distribution according to <span class="math inline">\(\lambda\)</span></h3>
+
+<img data-src="06-probability-distribution_files/figure-revealjs/unnamed-chunk-5-1.png" width="1152" class="r-stretch quarto-figure-center"></section>
+<section id="poisson-distribution-3" class="slide level2">
+<h2>Poisson Distribution</h2>
+<div class="callout callout-tip no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p><strong>Example 1</strong></p>
+<p>On the average, 5 cars arrive at a particular car wash every hour. Let <span class="math inline">\(X\)</span> count the number of cars that arrive from 10 AM to 11 AM. What is the probability that no car arrives during this period?</p>
+<p><strong>Example 2</strong></p>
+<p>Suppose the car wash above is in operation from 8 AM to 6 PM, and we let <span class="math inline">\(Y\)</span> be the number of customers that appear in this period. What is the probability that there are between 48 and 50 customers, inclusive?</p>
+</div>
+</div>
+</div>
+<div class="panel-tabset">
+<ul id="tabset-6" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-6-1">Sol: Ex 1</a></li><li><a href="#tabset-6-2">Sol: Ex 2</a></li></ul>
+<div class="tab-content">
+<div id="tabset-6-1">
+<p>Since <span class="math inline">\(X \sim \mathrm{pois}(\lambda = 5)\)</span>, the probability that no car arrives is</p>
+<p><span class="math display">\[
+P(X = 0) = \frac{5^0\exp(-5)}{0!} = \exp(-5) \approx 0.0067
+\]</span></p>
+<p><svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg> scripts for the solution</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="sc">&gt;</span> <span class="fu">dpois</span>(<span class="dv">0</span>, <span class="at">lambda =</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.006737947</code></pre>
+</div>
+</div>
+</div>
+<div id="tabset-6-2">
+<p>The average car arrivals during 8 AM to 6 PM is <span class="math inline">\(\lambda'=5\times10=50\)</span>, <span class="math inline">\(Y\sim \mathrm{pois}(\lambda = \lambda'=50)\)</span>. The probability between 48 to 50 customers:</p>
+<p><span class="math display">\[
+P(48 \leq Y \leq 50) =  \sum_{y=0}^{50}\frac{50^{y}\exp(-50)}{y!} - \sum_{y=0}^{47}\frac{50^{y}\exp(-50)}{y!} \approx 0.168
+\]</span></p>
+<p><svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg> scripts for the solution</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="sc">&gt;</span> <span class="fu">ppois</span>(<span class="dv">50</span>, <span class="at">lambda =</span> <span class="dv">50</span>) <span class="sc">-</span> <span class="fu">ppois</span>(<span class="dv">47</span>, <span class="at">lambda =</span> <span class="dv">50</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.1678485</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="poisson-distribution-4" class="slide level2">
+<h2>Poisson Distribution</h2>
+<h3 id="relationship-to-binomial-distribution-1">Relationship to Binomial Distribution</h3>
+<blockquote>
+<p>Suppose <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are Poisson random variables: <span class="math inline">\(X\sim \mathrm{pois}(\lambda_1)\)</span>, <span class="math inline">\(Y\sim \mathrm{pois}(\lambda_2)\)</span> and <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are independent, then <span class="math inline">\((X+Y)\sim \mathrm{pois}(\lambda_{1} + \lambda_{2})\)</span>. The conditional distribution of <span class="math inline">\(X\)</span> given with <span class="math inline">\((X+Y) = N\)</span> is identical to the binomial distribution with size of <span class="math inline">\(N\)</span> and probability of <span class="math inline">\(p=\lambda_1/(\lambda_1 + \lambda_2)\)</span>.</p>
+</blockquote>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Proof</strong></p>
+</div>
+<div class="callout-content">
+<p>By using Bayes Theorem,</p>
+<p><span class="math display">\[
+P(X|X+Y = N) = \frac{P(X+Y=N|X=x)P(X=x)}{P(X+Y = N)}
+\]</span></p>
+<p>Since <span class="math inline">\(X \perp Y\)</span>, <span class="math inline">\(Y=X-N\)</span>,</p>
+<p><span class="math display">\[
+P(X|X+Y = N) = \frac{P(Y=N-X)P(X=x)}{P(X+Y = N)}=\frac{\frac{\exp(-\lambda_2)\lambda_2^{N-x}}{(N-x)!}\frac{\exp{(-\lambda_1)}\lambda_1^{x}}{x!}}{\frac{\exp[-(\lambda_1+\lambda_2)](\lambda_1+\lambda_2)^N}{N!}}
+\]</span></p>
+</div>
+</div>
+</div>
+</section>
+<section id="poisson-distribution-5" class="slide level2">
+<h2>Poisson Distribution</h2>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Proof (<em>continued</em>)</strong></p>
+</div>
+<div class="callout-content">
+<p><span class="math display">\[\begin{aligned}
+P(X|X+Y = N) &amp;= \frac{N!}{x!(N-x)!}\frac{\exp{[-(\lambda_1+\lambda_2)]}\lambda_1^x\lambda_2^{N-x}}{\exp{[-(\lambda_1+\lambda_2)]}(\lambda_1+\lambda_2)^N} \\
+             &amp;= \binom{N}{x}\frac{\lambda_1^x\lambda_2^{N-x}}{(\lambda_1 + \lambda_2)^N} = \binom{N}{x}\frac{\lambda_1^x\lambda_2^{N-x}}{(\lambda_1 + \lambda_2)^x(\lambda_1 + \lambda_2)^{N-x}} \\
+             &amp;= \binom{N}{x}\left(\frac{\lambda_1}{\lambda_1+\lambda_2}\right)^x\left(1-\frac{\lambda_1}{\lambda_1+\lambda_2}\right)^{N-x} \\
+             &amp;= \mathrm{binom}\left(\mathrm{size}=N, \mathrm{prob}=\frac{\lambda_1}{\lambda_1+\lambda_2}\right)
+\end{aligned}\]</span></p>
+</div>
+</div>
+</div>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li><p>The conditional distribution of <span class="math inline">\(X\)</span> given <span class="math inline">\(X+Y\)</span> is identical to the binomial distribution, where <span class="math inline">\(X\sim \mathrm{pois}(\lambda_1)\)</span> and <span class="math inline">\(Y\sim \mathrm{pois}(\lambda_2)\)</span></p></li>
+<li><p>(<strong>Check</strong>) The binomial distribution is converge to the poisson distribution when <span class="math inline">\(N\rightarrow \infty\)</span></p></li>
+</ul>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="important-continuous-distributions" class="title-slide slide level1 center">
+<h1>Important Continuous Distributions</h1>
+
+</section>
+<section id="uniform-distribution" class="slide level2">
+<h2>Uniform Distribution</h2>
+<h3 id="definition-4"><svg viewbox="0 0 496 512" style="height:1em;position:relative;display:inline-block;top:.1em;" xmlns="http://www.w3.org/2000/svg"> <path d="M248 8C111.03 8 0 119.03 0 256s111.03 248 248 248 248-111.03 248-248S384.97 8 248 8zm0 432c-101.69 0-184-82.29-184-184 0-101.69 82.29-184 184-184 101.69 0 184 82.29 184 184 0 101.69-82.29 184-184 184zm0-312c-70.69 0-128 57.31-128 128s57.31 128 128 128 128-57.31 128-128-57.31-128-128-128zm0 192c-35.29 0-64-28.71-64-64s28.71-64 64-64 64 28.71 64 64-28.71 64-64 64z"></path></svg> Definition</h3>
+<blockquote>
+<p>When a random variable <span class="math inline">\(X\)</span> with <strong>identical probability over every interval</strong> on <span class="math inline">\([a,b]\)</span>, it is called a <strong>uniform distribution</strong></p>
+</blockquote>
+<p>We write <span class="math inline">\(X \sim U(a, b)\)</span> or <span class="math inline">\(X\sim \mathrm{unif}(\mathrm{min} = a, \mathrm{max}=b)\)</span></p>
+<div class="panel-tabset">
+<ul id="tabset-7" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-7-1">PDF</a></li><li><a href="#tabset-7-2">Shape</a></li><li><a href="#tabset-7-3">CDF</a></li><li><a href="#tabset-7-4">Expectation</a></li><li><a href="#tabset-7-5">Variance</a></li></ul>
+<div class="tab-content">
+<div id="tabset-7-1">
+<p><span class="math display">\[f_X(x) = \begin{cases}
+\frac{1}{b-a},~~ a\leq x \leq b \\
+0, ~~~~~~~ \mathrm{otherwise}
+\end{cases}\]</span></p>
+</div>
+<div id="tabset-7-2">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="assets/imgs/ust-lecture-bin-hyper-rel.png" width="1024"></p>
+<p><img data-src="06-probability-distribution_files/figure-revealjs/unnamed-chunk-8-1.png" width="960"></p>
 </figure>
 </div>
-<!-- ## Poisson Distribution -->
-<!-- # Important Continuous Distributions -->
-<!-- ## Uniform Distribution -->
-<!-- ## Normal Distribution -->
-<!-- ## t Distribution -->
+</div>
+</div>
+</div>
+<div id="tabset-7-3">
+<p><span class="math display">\[F_X(x) = \begin{cases}
+0, ~~~~~~~ x &lt; a\\
+\frac{x-a}{b-a}, ~~ a\leq x \leq b\\
+1, ~~~~~~~ x &gt; b
+\end{cases}\]</span></p>
+</div>
+<div id="tabset-7-4">
+<p><span class="math display">\[\begin{aligned}
+\mu_X = E(X) &amp;= \int_{-\infty}^{\infty} x f_X(x) dx \\
+             &amp;= \int_{a}^{b} x \frac{1}{b-a} dx \\
+             &amp;= \frac{1}{b-a}\frac{x^2}{2} \bigg|_{x=a}^{b} \\
+             &amp;= \frac{b+a}{2}
+\end{aligned}\]</span></p>
+</div>
+<div id="tabset-7-5">
+<p><span class="math display">\[\begin{aligned}
+\sigma^2_X &amp;= Var(X) = E\left[(X - E(X))^2\right] = E(X^2) - \left[E(X)\right]^2 \\
+           &amp;= \int_{a}^{b} x^2 \frac{1}{b-a} dx - \left(\frac{b+a}{2}\right)^2 \\
+           &amp;= \frac{1}{b-a}\frac{x^3}{3}\bigg|_{x=a}^{b} - \left(\frac{b+a}{2}\right)^2 = \frac{b^3-a^3}{3(b-a)} - \left(\frac{b+a}{2}\right)^2\\
+           &amp;= \frac{(b-a)^2}{12}
+\end{aligned}\]</span></p>
+</div>
+</div>
+</div>
+</section>
+<section id="uniform-distribution-1" class="slide level2">
+<h2>Uniform Distribution</h2>
+<div class="callout callout-tip no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p><strong>Example</strong></p>
+<p>Suppose that buses arrive at a bus stop every 10 minutes and that the waiting time of a person who arrives at the stop is uniformly distributed. We want to find the probability that a person waits less than 5 minutes.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Solution</strong></p>
+</div>
+<div class="callout-content">
+<p>Let the waiting time for bus be a random variable <span class="math inline">\(X\)</span>, then <span class="math inline">\(X\)</span> follows the uniform distribution with interval <span class="math inline">\([0, 10]\)</span>, Therefore,</p>
+<p><span class="math display">\[
+f_X(x) = P(X = x) =\frac{1}{10}, ~~ 0\leq x \leq 10
+\]</span></p>
+<p>The probability that a person waits less tan 5 minutes can be obtained</p>
+<p><span class="math display">\[
+P(X\leq 5) = \int_{0}^{5}\frac{1}{10} dx = \frac{1}{10}x\bigg|_{x=0}^{5} = 0.5
+\]</span></p>
+</div>
+</div>
+</div>
+</section>
+<section id="normal-distribution" class="slide level2">
+<h2>Normal Distribution</h2>
+<ul>
+<li><p>The most <strong>IMPORTANT</strong> probability distribution in statistics</p></li>
+<li><p>a.k.a Gaussian Distribution</p></li>
+<li><p>Widely used to represent real-valued random variables whose distributions are unknown</p></li>
+<li><p>Particularly, the normal distribution is a backbone of the central limit theorem (CLT)</p></li>
+</ul>
+<div class="panel-tabset">
+<ul id="tabset-8" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-8-1">PDF</a></li><li><a href="#tabset-8-2">Expectation and Variance</a></li></ul>
+<div class="tab-content">
+<div id="tabset-8-1">
+<p><span class="math display">\[
+f_X(x; \mu, \sigma^2)=\frac{1}{\sigma\sqrt{2\pi}}\exp\left\{-\frac{(x-\mu)^2}{2\sigma^2}\right\},~~ -\infty &lt; x &lt; \infty
+\]</span></p>
+<p><span class="math display">\[
+\int_{-\infty}^{\infty} \frac{1}{\sigma\sqrt{2\pi}}\exp\left\{-\frac{(x-\mu)^2}{2\sigma^2}\right\} = 1
+\]</span></p>
+</div>
+<div id="tabset-8-2">
+<p><span class="math display">\[\begin{aligned}
+\mu_X &amp;=E(X) = \mu \\
+\sigma^2_X &amp;= Var(X) = \sigma^2
+\end{aligned}\]</span></p>
+</div>
+</div>
+</div>
+</section>
+<section id="normal-distribution-1" class="slide level2">
+<h2>Normal Distribution</h2>
+<h3 id="shapes">Shapes</h3>
+<ul>
+<li>Bell shaped curve and symmetric around the <span class="math inline">\(\mu\)</span></li>
+<li>mean = median = mode</li>
+<li>Depends on <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma\)</span></li>
+</ul>
+<div class="panel-tabset">
+<ul id="tabset-9" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-9-1">Basic shape</a></li><li><a href="#tabset-9-2"><span class="math inline">\(\mu_1=\mu_2\)</span>, <span class="math inline">\(\sigma_1 &lt; \sigma_2\)</span></a></li><li><a href="#tabset-9-3"><span class="math inline">\(\mu_1&lt;\mu_2\)</span>, <span class="math inline">\(\sigma_1 = \sigma_2\)</span></a></li><li><a href="#tabset-9-4"><span class="math inline">\(\mu_1&lt;\mu_2\)</span>, <span class="math inline">\(\sigma_1 &lt; \sigma_2\)</span></a></li></ul>
+<div class="tab-content">
+<div id="tabset-9-1">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="06-probability-distribution_files/figure-revealjs/unnamed-chunk-9-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-9-2">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="06-probability-distribution_files/figure-revealjs/unnamed-chunk-10-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-9-3">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="06-probability-distribution_files/figure-revealjs/unnamed-chunk-11-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-9-4">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="06-probability-distribution_files/figure-revealjs/unnamed-chunk-12-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 <!-- ## $\chi^2$ Distribution -->
+<!-- Specific case of the gamma distribution  -->
+<!-- ### PDF -->
+<!-- $$ -->
+<!-- f_X(x; \nu) = \begin{cases} -->
+<!-- \frac{x^{\nu/2-1}\exp(-x/2)}{2^{\nu/2}\Gamma\left(\frac{\nu}{2}\right)},~~x>0 \\ -->
+<!-- 0, ~~~~~~~~~~~~~~~~~~~~~~~ \mathrm{otherwise} -->
+<!-- \end{cases}$$ -->
+<!-- where $\Gamma(k/2)$ denotes the gamma function which is defined as  -->
+<!-- $$ -->
+<!-- \Gamma(z) = \int_{0}^{\infty} t^{z-1}\exp(-t) dt,~~ z>0 -->
+<!-- $$ -->
+<!-- ## t Distribution -->
 <!-- ## F Distribution -->
 <p><img src="assets/ci/UIBS/JPG/UST-UI-SUBSIG-KRV.jpg" class="slide-logo"></p>
 <div class="footer footer-default">

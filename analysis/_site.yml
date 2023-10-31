@@ -25,7 +25,7 @@ navbar:
       href: 05-random-variables-expectation.html
       icon: fa-play-circle
     - text: Probability Distribution
-      href: 06-probability-distribution.html
+      href: 06-probability-distribution-speaker.html
       icon: fa-play-circle
   - text: Final Exam Solutions
     href: 2022-medical-stat-final-exam-solution.pdf
