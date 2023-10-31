@@ -726,7 +726,7 @@ $$\begin{aligned}
 
 ### Basic shape
 
-```{r, fig.height=6, fig.width=10, fig.align='center'}
+```{r, fig.height=5, fig.width=10, fig.align='center'}
 x <- seq(-5, 5, 0.01)
 y <- dnorm(x)
 
@@ -741,7 +741,7 @@ lines(c(0, 0), c(0.02, max(y)), lty = 2, col = "darkgray")
 lines(x, y, lty = 1, lwd = 2.2,
       col = "black")
 arrows(0, y[601], 1, y[601], lty = 2, col = "darkgray", length=0.1, angle=30, code =3)
-text(0, 0.01, expression(mu), pos=1, cex = 1.5)
+text(0, 0.05, expression(mu), pos=1, cex = 1.5)
 text(0.5, y[601], expression(sigma), pos=1, cex = 1.5)
 
 ```
@@ -749,7 +749,7 @@ text(0.5, y[601], expression(sigma), pos=1, cex = 1.5)
 ### $\mu_1=\mu_2$, $\sigma_1 < \sigma_2$
 
 
-```{r, fig.height=6, fig.width=10, fig.align='center'}
+```{r, fig.height=5, fig.width=10, fig.align='center'}
 par(mar = c(3, 0, 3, 0))
 x <- seq(-5, 5, 0.01)
 y <- mapply(dnorm,
@@ -786,7 +786,7 @@ text(2.1, max(y[,2]),
 
 ### $\mu_1<\mu_2$, $\sigma_1 = \sigma_2$
 
-```{r, fig.height=6, fig.width=10, fig.align='center'}
+```{r, fig.height=5, fig.width=10, fig.align='center'}
 par(mar = c(3, 0, 3, 0))
 x <- seq(-7, 7, 0.01)
 y <- mapply(dnorm,
@@ -823,7 +823,7 @@ text(2.1, max(y[,2]),
 
 ### $\mu_1<\mu_2$, $\sigma_1 < \sigma_2$
 
-```{r, fig.height=6, fig.width=10, fig.align='center'}
+```{r, fig.height=5, fig.width=10, fig.align='center'}
 par(mar = c(3, 0, 3, 0))
 x <- seq(-7, 7, 0.01)
 y <- mapply(dnorm,
