@@ -1,0 +1,313 @@
+---
+title: "Medical Statistics 2^nd^ Semester Take Home Final Exam"
+subtitle: "**Due Date: Dec 19 2023 (13:00) to Dec 23 2023 (23:59)**"
+output: 
+  pdf_document: 
+    includes:
+      in_header: header.tex
+  keep_tex: true
+  dev: "cairo.pdf"
+  citation_pacakge: natbib
+# bibliography: references.bib       
+editor_options: 
+  chunk_output_type: console
+  markdown: 
+    wrap: 72
+---
+
+
+```{r setup, include=FALSE}
+# knitr::opts_knit$set(root.dir = '..')
+# library(officedown)
+# library(officer)
+# require(formatR)
+# 
+# fp <- fp_par(
+#   text.align = "center", 
+#   padding.bottom = 20, padding.top = 120, 
+#   border.bottom = fp_border())
+# 
+# ft <- fp_text(shading.color='#EFEFEF', bold = TRUE)
+
+
+options(max.print = 1000)
+knitr::opts_chunk$set(eval = TRUE,
+                      echo = FALSE,
+                      cache = FALSE,
+                      include = TRUE,
+                      collapse = FALSE,
+                      tidy = TRUE,
+                      tidy.opts = list(blank=TRUE, width.cutoff=60),
+                      message = FALSE,
+                      warning = FALSE,
+                      dependson = NULL,
+                      engine = "R", # Chunks will always have R code, unless noted
+                      error = TRUE,
+                      tab.topcaption = TRUE, 
+                      fig.path="Figures/",  # Set the figure options
+                      fig.align = "center",
+                      fig.keep='all', fig.retina=2)
+```
+
+
+```{r}
+library(tidyverse)
+library(knitr)
+library(kableExtra)
+
+
+```
+
+
+
+<br/> <br/>
+
+**Name**: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+
+<br/> <br/>
+
+## **Notice**
+
+-   Please **DO SOLVE ANSWERS BY YOURSELVES!!**
+-   You can use materials from other textbooks, lecture notes, and
+    websites but you have to provide proper **CITATIONS**.
+-   Write down your answers in the **MS Word Document** and save your word filename like [`student number-name.docx`, i.e. `202015015-boncho-ku.docx`]. it is admittable to submit your answers by converting your word file to pdf. 
+-   If you make up your mind to submit your answers, send an E-mail to Dr. Boncho Ku and Dr. Mimi Ko with the attachment of your answer file.
+
+
+## **Questions**
+
+1.  Which one of the following statements is False?
+
+    a)  The probability of a type I error is the probability that you reject the 
+        null hypothesis when it is true. 
+
+    b)  Subjects are enrolled or grouped on the basis of their exposure, 
+        then are followed to document occurrence of disease in prospective cohort 
+        study.
+
+    c)  Especially when more than 20% of cells have expected frequencies \< 5, 
+        we need to use Fisher's exact test to determine if there are associations 
+        between two categorical variables.
+
+    d)  To use the two-sample t-test, we need to assume that the data from both 
+        samples are normally distributed and they have the same variances.
+
+    e)  In test for heterogeneity of meta-analysis, if Higgins $I^2 > 75 \%$, 
+        studies are regarded homogeneous and the fixed effect model of 
+        meta-analysis can generally be used.
+
+\newpage
+
+2. Suppose all students who officially enrolled in Medical Statistics are 
+playing a game called "The Prisoners and Warder". Ari, Umar, and Happy played 
+roles as prisoners and they all had been sentenced to death (I'm really sorry 
+to give you guys such a role!!).
+And Joyce has a role as a warder. Joyce has selected one of the prisoners 
+randomly to be pardoned. Joyce has already received the name which one is 
+pardoned from the governor, but Joyce is not allowed to tell to them. 
+Umar asks to Joyce: "If Ari is going to be pardoned, give me the name of Happy. 
+If Umar is pardoned, then give me Ari's name. If I'm the one to be pardoned, 
+just flip a coin to decide whether to name Ari or Happy." 
+Joyce reckons for a while and decides to tell Umar that Happy to be executed. 
+Umar is so pleased because he believes that his probability of surviving has 
+gone up from 1/3 to 1/2, as it is now between him and Ari to be pardoned. 
+Umar secretly whispered to Ari to tell the brand new information. 
+When Ari has heard this news, he reasons that the chance of Umar to be pardoned 
+is not changed at 1/3, but he is pleased since Ari's own chance has gone up to 2/3. 
+Which prisoner is correct? Please give a detailed explanation of your reasoning. 
+
+\newpage
+
+3. Solve following problems. 
+
+   a. Let $X$ be a random variable having binomial distribution with parameters 
+      $n=25$ and $p=0.2$. Evaluate $P(X,\mu_x - 2\sigma_X)$. 
+      
+   b. If $X$ is a random variable with satisfying $P(X=0) = P(X=1)$, what is 
+      $E(X)$?
+   
+   c. If $X$ is normally distributed mean 2 and variance 1, find $P(|X - 2| < 1)$. 
+   
+   d. Suppose $X$ has a binomial distribution with parameters $n$ and $p$. For 
+      what $p$ is $\mathrm{var}(X)$ maximized if we assumed $n$ is fixed?
+
+\vspace{5cm}      
+
+4. Let $X$ be the maximum usage time (hour) of an A-manufactured cellular phone after 
+   a full charge. Assume that $X$ is normally distributed with mean 75 (hours) and 
+   variance $\sigma^2$. If a purchaser of such cellular phones requires that 
+   at least 90 percent of the cellular phones are avaiable to use exceeding 60 hours, 
+   what is the largest value of $\sigma$ can be and still have the purchaser 
+   satisfied? 
+
+\newpage
+
+
+5. Solve the following problems: 
+
+   a. Let $X_1$, $X_2$ and $X_3$ be uncorrelated random variables with common variance $\sigma^2$. 
+   Find the correlation coefficient between $X_1 + X_2$ and $X_2 + X_3$
+   b. Let $X_1$ and $X_2$ be uncorrelated random variables. Find the correlation coefficient 
+   between $X_1 + X_2$ and $X_2 - X_1$ in terms of $\mathrm{Var}(X_1)$ and $\mathrm{Var}(X_2)$. 
+   c. Let $X_1$, $X_2$, and $X_3$ be independently distributed random variables with common mean 
+   $\mu$ and common variance $\sigma^2$. Find the correlation coefficient between $X_2 - X_1$ and $X_3 - X_1$. 
+
+
+\newpage
+
+
+6. When you start R with Rstudio, there is an example dataset named with `mtcars`. 
+   The `mtcars` dataset was extracted from the 1974 _Motor Trend_ US magazine, 
+   and comprise fuel consumption and 10 aspects of automobile design and 
+   performance for 32 automobiles (1973 - 74 models). The detailed description 
+   of variables in `mtcars` dataset can be checked by typing `help(mtcars)` 
+   in the prompt of R console window. Write R scipts and confirm the results 
+   for the following questions.
+
+   a. Extract `mpg` and `disp` variables from `mtcars` dataset and restore it 
+      in an object `x` and `y`, respectively. 
+   b. Calculate mean, standard deviation, coefficient of variation, minimum, 
+      maximum, median, 25^th^ and 75^th^ quantiles, and interquartile range of 
+      `x` and `y`. 
+   c. Make scatterplot of `x` and `y` and interpret in terms of the correlation 
+      coefficient between `x` and `y`. 
+   d. Assume that `x` is the population of a mile per gallon of all automobiles 
+      of US from 1973 to 1974. Suppose a sample of size 2 automobiles are drawn 
+      from the population with replacement and calculate sample mean. 
+      Then repeat the same procedure 10,000 times (Hint: check the function `sample()`). 
+      - Make histogram of 10,000 sample means.
+      - Calculate the mean and standard deviation of 10,000 sample means. 
+      - Compare the above results to the population in terms of mean and 
+      standard deviation: is the mean of 10,000 sample mean is approximate to 
+      the population mean? In what proportion did the standard deviation of the 
+      sample mean decrease compared to the standard deviation of the 
+      population? 
+
+
+\newpage
+
+7.  A total of 160 men of different ethnic backgrounds were included in
+    a cross-sectional study of factors related to blood clotting. We
+    compared mean platelet levels in the four groups using a one-way
+    ANOVA. It was reasonable to assume Normality and constant variance.
+
+```{r, echo=FALSE, message=FALSE}
+tab1 <- tibble(
+  Group = c(
+    "Caucasian",
+    "Afro-Caribbean",
+    "Mediterranean",
+    "Other"
+  ),
+  `N (\\%)` = c(
+    "100 (62.5)",
+    "18 (11.3)",
+    "23 (14.4)",
+    "19 (11.9)"
+  ),
+  `Mean($\\times 10^9$)` = c(
+    "262.1",
+    "245.3",
+    "254.1",
+    "254.3"
+  ),
+  `Standard deviation ($\\times 10^9$)` = c(
+    "70.08",
+    "69.50",
+    "69.09",
+    "71.42"
+  )
+)
+
+kbl(tab1,
+    booktabs = TRUE,
+    escape = FALSE,
+    align = "lccc") %>%
+  kable_styling(
+    position = "center",
+    latex_options = c("hold_position"),
+    full_width = FALSE
+  )
+  
+
+```
+
+Fill the following ANOVA table
+
+```{r}
+tab2 <- tibble(
+  Source = c(
+    "Between Group", 
+    "Within Group", 
+    "Total"
+  ), 
+  `Sum of square` = c(
+    "15369.0", 
+    "1552824.0", 
+    "1568193.0"
+  ), 
+  df = c(
+    "(1)", 
+    "(2)", 
+    " "
+  ), 
+  `Mean square` = c(
+    "(3)", 
+    " ", 
+    " "
+  ), 
+  "F-ratio" = c(
+    "0.515", 
+    " ", 
+    " "
+  ), 
+  "P-value" = c(
+    "0.325", 
+    " ", " "
+  )
+)
+
+kableExtra::kbl(
+  tab2, 
+  booktabs = TRUE, 
+  escape = FALSE, 
+  align = "lccccc"
+) %>% 
+  kableExtra::kable_styling(
+    position = "center",
+    latex_options = c("hold_position"), 
+    full_width = FALSE
+  ) %>% 
+  kableExtra::footnote(
+    general = "df, degree of freedom", general_title = "Note: ", 
+    footnote_as_chunk = TRUE
+  )
+  
+  
+
+```
+
+
+\newpage
+
+8.  Calculate the sample size for the following questions (*Hint*. Test for 
+equality, two sample parallel design).
+
+<!-- -->
+
+a)  An active-controlled randomized trial proposes to assess the effectiveness of 
+    Drug A in reducing pain. A previous study showed that Drug A can reduce pain 
+    score by 5 points from baseline to week 24 with a standard deviation ($\sigma$) 
+    of 1.5. A clinically important difference of 0.4 as compared to active drug is 
+    considered to be acceptable. (Level of significance = 5%, Power = 80%, Type 
+    of test =two-sided).
+
+b)  A placebo-controlled randomized trial proposes to assess the effectiveness 
+    of Drug A in curing infants suffering from sepsis. A previous study showed 
+    that proportion of subjects cured by Drug A is 60% and a clinically 
+    important difference of 15% as compared to placebo is acceptable. 
+    (Level of significance = 5%, Power = 80%, Type of test =two-sided)
+
+
+
