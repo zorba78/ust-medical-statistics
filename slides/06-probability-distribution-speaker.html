@@ -528,7 +528,7 @@ X \sim \mathrm{binom}(\mathrm{size} = n,~~\mathrm{prob} = p)
 </div>
 <div id="tabset-2-2">
 <p><span class="math display">\[\begin{aligned}
-\mu &amp; = \sum_{x=0}^{n}\binom{n}{x}p^{x}(1-p)^{n-x} \\
+\mu &amp; = \sum_{x=0}^{n}x\binom{n}{x}p^{x}(1-p)^{n-x} \\
     &amp; = \sum_{x=1}^{n}x\frac{n!}{x!(n-x)!}p^{x}(1-p)^{n-x} \\
     &amp; = n\cdot p\sum_{x=1}^{n}\frac{(n-1)!}{(x-1)!(n-x)!}p^{x-1}(1-p)^{n-x} \\
     &amp; = n\cdot p\sum_{x-1=0}^{n-1}\binom{n-1}{x-1}p^{x-1}(1-p)^{(n-1)-(x-1)} \\
@@ -855,7 +855,7 @@ P(X=x|X+Y) &amp;= \frac{P(Y=K-X|X=x)P(X=x)}{P(X+Y=K)} \\
 <p>The Poisson distribution is a discrete probability distribution that expresses the probability of a given number of events occurring in a fixed interval of time or space if these events occur with a known constant mean rate and independently of the time since the last event.</p>
 <p><strong>Independence</strong>: The results occurring in a particular unit of time or space are independent of the results that occur in other non-overlapping units of time or space. For example, the number of customers who visited Bank A from 9:00 to 10:00 and the number of customers who visited Bank B during the same time are independent of each other. Furthermore, the number of customers who visited Bank A until 10:00 and the number of customers who visited Bank C from 10:00 to 11:00 are also independent of each other.</p>
 <p><strong>Consistency</strong>: If an event occurs with mean rate of 2 within a minute, it implies 6 events will occur during 3 minutes.</p>
-<p><strong>Non-clustering</strong>:</p>
+<p><strong>Non-clustering</strong>: The probability of two events occurring in a very short time and very small space is 0. For example, the probability of two customers arriving at the bank at the same time is 0.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -1102,6 +1102,13 @@ P(X\leq 5) = \int_{0}^{5}\frac{1}{10} dx = \frac{1}{10}x\bigg|_{x=0}^{5} = 0.5
 </div>
 </div>
 </div>
+<p><svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg> Check</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="fu">punif</span>(<span class="dv">5</span>, <span class="at">min=</span><span class="dv">0</span>, <span class="at">max=</span><span class="dv">10</span>) <span class="sc">-</span> <span class="fu">punif</span>(<span class="dv">0</span>, <span class="at">min=</span><span class="dv">0</span>, <span class="at">max=</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.5</code></pre>
+</div>
+</div>
 </section>
 <section id="normal-distribution" class="slide level2">
 <h2>Normal Distribution</h2>
@@ -1147,7 +1154,7 @@ f_X(x; \mu, \sigma^2)=\frac{1}{\sigma\sqrt{2\pi}}\exp\left\{-\frac{(x-\mu)^2}{2\
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="06-probability-distribution_files/figure-revealjs/unnamed-chunk-9-1.png" width="960"></p>
+<p><img data-src="06-probability-distribution_files/figure-revealjs/unnamed-chunk-10-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -1158,7 +1165,7 @@ f_X(x; \mu, \sigma^2)=\frac{1}{\sigma\sqrt{2\pi}}\exp\left\{-\frac{(x-\mu)^2}{2\
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="06-probability-distribution_files/figure-revealjs/unnamed-chunk-10-1.png" width="960"></p>
+<p><img data-src="06-probability-distribution_files/figure-revealjs/unnamed-chunk-11-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -1169,7 +1176,7 @@ f_X(x; \mu, \sigma^2)=\frac{1}{\sigma\sqrt{2\pi}}\exp\left\{-\frac{(x-\mu)^2}{2\
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="06-probability-distribution_files/figure-revealjs/unnamed-chunk-11-1.png" width="960"></p>
+<p><img data-src="06-probability-distribution_files/figure-revealjs/unnamed-chunk-12-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -1180,7 +1187,7 @@ f_X(x; \mu, \sigma^2)=\frac{1}{\sigma\sqrt{2\pi}}\exp\left\{-\frac{(x-\mu)^2}{2\
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="06-probability-distribution_files/figure-revealjs/unnamed-chunk-12-1.png" width="960"></p>
+<p><img data-src="06-probability-distribution_files/figure-revealjs/unnamed-chunk-13-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -1188,6 +1195,244 @@ f_X(x; \mu, \sigma^2)=\frac{1}{\sigma\sqrt{2\pi}}\exp\left\{-\frac{(x-\mu)^2}{2\
 </div>
 </div>
 </div>
+</section>
+<section id="normal-distribution-2" class="slide level2">
+<h2>Normal Distribution</h2>
+<h3 id="standard-normal-distribution-pdf">Standard Normal Distribution (PDF)</h3>
+<p>When <span class="math inline">\(\mu = 0\)</span> and <span class="math inline">\(\sigma = 1\)</span>, the normal distribution is called the standard normal distribution</p>
+<p><span class="math display">\[
+\phi(z) = \frac{1}{\sqrt{2\pi}}e^{-\frac{z^2}{2}}, ~~~ -\infty &lt; z &lt; \infty
+\]</span> CDF of the standard normal distribution: <span class="math inline">\(\Phi(z)\)</span></p>
+<p><span class="math display">\[
+\Phi(z) = \int_{-\infty}^{z} \phi(t)dt
+\]</span></p>
+<h3 id="proposition">Proposition</h3>
+<p><span class="math display">\[
+Z = \frac{X - \mu}{\sigma} \sim N(0, 1)
+\]</span></p>
+</section>
+<section id="normal-distribution-3" class="slide level2">
+<h2>Normal Distribution</h2>
+<div class="callout callout-tip no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p><strong>68-95-99 Rule</strong></p>
+<p>Approximately 68% of the data falls within 1 standard deviation of the mean, 95% within 2 standard deviations, and 99.7% within 3 standard deviations.</p>
+</div>
+</div>
+</div>
+<p><svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg> <strong>Check</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="fu">pnorm</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>) <span class="sc">-</span> <span class="fu">pnorm</span>(<span class="sc">-</span><span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.6826895 0.9544997 0.9973002</code></pre>
+</div>
+</div>
+<div class="callout callout-tip no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p><strong>Example</strong></p>
+<p>Let the random experiment consist of a person taking an IQ test, and let <span class="math inline">\(X\)</span> be the score on the test. The scores on such a test are typically standardized to have a mean of 100 and a standard deviation of 15. What is the probability <span class="math inline">\(P(85\leq X \leq 115)\)</span>?</p>
+</div>
+</div>
+</div>
+<div class="panel-tabset">
+<ul id="tabset-10" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-10-1">Manual Solution</a></li><li><a href="#tabset-10-2"><svg aria-hidden="true" role="img" viewbox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"></path></svg> Check</a></li></ul>
+<div class="tab-content">
+<div id="tabset-10-1">
+<p><span class="math display">\[
+\begin{aligned}
+P(85\leq X \leq 115) &amp;= P\left(\frac{85-115}{15} \leq \frac{X-100}{15} \leq \frac{100-115}{15}\right)\\
+&amp;= P\left(-1 \leq Z \leq 1\right) \\
+&amp;= \Phi(1) - \Phi(-1) = 0.6827
+\end{aligned}
+\]</span></p>
+</div>
+<div id="tabset-10-2">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>zl <span class="ot">&lt;-</span> (<span class="dv">85</span> <span class="sc">-</span> <span class="dv">100</span>)<span class="sc">/</span><span class="dv">15</span></span>
+<span id="cb14-2"><a href="#cb14-2"></a>zu <span class="ot">&lt;-</span> (<span class="dv">115</span> <span class="sc">-</span> <span class="dv">100</span>)<span class="sc">/</span><span class="dv">15</span></span>
+<span id="cb14-3"><a href="#cb14-3"></a><span class="fu">pnorm</span>(zu) <span class="sc">-</span> <span class="fu">pnorm</span>(zl)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.6826895</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="other-continuous-distributions" class="title-slide slide level1 center">
+<h1>Other Continuous Distributions</h1>
+
+</section>
+<section id="exponential-distribution" class="slide level2">
+<h2>Exponential Distribution</h2>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Motivation</strong></p>
+</div>
+<div class="callout-content">
+<p>How to model the time between events that occur continuously and independently at a constant average rate (<strong>waiting time</strong>)?</p>
+<h3 id="examples-1">Examples</h3>
+<ul>
+<li>Call center: time between message transmission</li>
+<li>Finance: time between market price change</li>
+<li>Manufacturing: time between machine failure</li>
+</ul>
+<h3 id="what-we-need">What we need?</h3>
+<ul>
+<li>Capture the uncertainty and randomness of the event occurance</li>
+<li>Assumption of memoryless property: the probability of the event occurring in the next time interval is independent of the past</li>
+</ul>
+</div>
+</div>
+</div>
+<aside class="notes">
+<p>The exponential distribution is widely used to model the time between events that occur continuously and independently at a constant average rate. This distribution is closely linked with the Poisson process, where the focus is on modeling the occurrence of rare events over time.</p>
+<p>The exponential distribution was developed in response to the need to model situations where we are interested in the <strong>waiting time</strong> until the next event occurs. For example, consider the problem of predicting how long you will wait for a bus to arrive, assuming the buses arrive randomly. If we know that the buses come on average every 10 minutes, but we have no further information about the schedule, how can we model the waiting time for the next bus?</p>
+<p>This kind of problem also appears in various fields such as telecommunications (time between message transmissions), finance (time between price changes), and reliability engineering (time until a product fails). In each of these cases, we are interested in understanding the distribution of time intervals between consecutive occurrences of events.</p>
+<p>Such a situation demands a probability distribution that: 1. Captures the uncertainty and randomness of the event occurrence. 2. Does not “remember” how much time has already passed, meaning that the probability of an event happening in the future is independent of the past.</p>
+<p>The exponential distribution satisfies both of these requirements and is particularly useful for modeling these scenarios. It provides a mathematically simple yet powerful model for describing the <strong>time between events</strong> in a wide range of processes.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="exponential-distribution-1" class="slide level2">
+<h2>Exponential DIstribution</h2>
+<h3 id="definition-5"><svg viewbox="0 0 496 512" style="height:1em;position:relative;display:inline-block;top:.1em;" xmlns="http://www.w3.org/2000/svg"> <path d="M248 8C111.03 8 0 119.03 0 256s111.03 248 248 248 248-111.03 248-248S384.97 8 248 8zm0 432c-101.69 0-184-82.29-184-184 0-101.69 82.29-184 184-184 101.69 0 184 82.29 184 184 0 101.69-82.29 184-184 184zm0-312c-70.69 0-128 57.31-128 128s57.31 128 128 128 128-57.31 128-128-57.31-128-128-128zm0 192c-35.29 0-64-28.71-64-64s28.71-64 64-64 64 28.71 64 64-28.71 64-64 64z"></path></svg> Definition</h3>
+<blockquote>
+<p>A random variable <span class="math inline">\(X\)</span> has an exponential distribution and write <span class="math inline">\(X \sim \exp(\lambda)\)</span></p>
+</blockquote>
+<div class="panel-tabset">
+<ul id="tabset-11" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-11-1">PDF</a></li><li><a href="#tabset-11-2">CDF</a></li><li><a href="#tabset-11-3">Expectation and Variance</a></li><li><a href="#tabset-11-4">Shape</a></li></ul>
+<div class="tab-content">
+<div id="tabset-11-1">
+<p><span class="math display">\[
+f_X(x) = \lambda \exp(-\lambda x),~~~~x\geq0
+\]</span> where</p>
+<ul>
+<li><span class="math inline">\(x\)</span>: The time until the next event occurs;</li>
+<li><span class="math inline">\(\lambda\)</span>: The rate at which events occur</li>
+</ul>
+</div>
+<div id="tabset-11-2">
+<p><span class="math display">\[
+F_X(x) = 1 - \exp(-\lambda x),~~~~x\geq0
+\]</span></p>
+</div>
+<div id="tabset-11-3">
+<p><span class="math display">\[\begin{aligned}
+\mu_X &amp;=E(X) = \frac{1}{\lambda} \\
+\sigma^2_X &amp;= Var(X) = \frac{1}{\lambda^{2}}
+\end{aligned}\]</span></p>
+</div>
+<div id="tabset-11-4">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="06-probability-distribution_files/figure-revealjs/unnamed-chunk-16-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="exponential-distribution-2" class="slide level2">
+<h2>Exponential Distribution</h2>
+<h3 id="relationship-to-poisson-distribution">Relationship to Poisson Distribution</h3>
+<div class="callout callout-tip no-icon callout-style-simple">
+<div class="callout-body">
+<div class="callout-content">
+<p><strong>Poisson process</strong>: Events occurring randomly in time or space at a constant average rate <span class="math inline">\(\lambda\)</span>.</p>
+<ul>
+<li><p><strong>Poisson distribution</strong>: <strong>how many events</strong> occur in a given interval.</p></li>
+<li><p><strong>Exponential distribution</strong>: <strong>time</strong> between consecutive events in this process.</p></li>
+</ul>
+<p><strong>Example</strong></p>
+<blockquote>
+<p>Suppose that customers arrive at a store according to a Poisson process with rate <span class="math inline">\(\lambda\)</span>.</p>
+</blockquote>
+<ul>
+<li><p><span class="math inline">\(Y\)</span>: a random variable representing the number of customers arriving in a given time interval <span class="math inline">\([0,t)\)</span> <span class="math inline">\(\rightarrow\)</span> <span class="math inline">\(Y \sim \text{Pois}(\lambda t)\)</span></p></li>
+<li><p><span class="math inline">\(X\)</span>: a random variable representing the length of time interval <span class="math inline">\(\rightarrow\)</span> <span class="math inline">\(X \sim \exp(\lambda)\)</span></p></li>
+</ul>
+</div>
+</div>
+</div>
+<aside class="notes">
+<h3 id="포아송-분포">1. <strong>포아송 분포</strong></h3>
+<p>포아송 분포는 일정한 시간 또는 공간 내에서 발생하는 사건의 수를 모델링합니다. 사건이 독립적으로 발생하며, 일정한 평균 속도 <span class="math inline">\(\lambda\)</span>로 발생한다고 가정합니다. 포아송 분포의 확률 질량 함수(PMF)는 다음과 같습니다:</p>
+<p><span class="math inline">\(P(X = k) = \frac{\lambda^k e^{-\lambda}}{k!}, \quad k = 0, 1, 2, \dots\)</span></p>
+<p>여기서 <span class="math inline">\(X\)</span>는 주어진 구간에서 발생하는 사건의 수입니다. - <span class="math inline">\(\lambda\)</span>는 사건이 발생하는 평균 속도(단위 시간당 사건 수)를 나타냅니다.</p>
+<h3 id="지수분포">1.2 <strong>지수분포</strong></h3>
+<p>지수분포는 포아송 과정에서 연속된 사건 사이의 시간을 모델링합니다. 사건들이 일정한 속도 <span class="math inline">\(\lambda\)</span>로 발생한다고 가정할 때, 다음 사건이 발생하기까지의 시간을 설명하는 분포입니다. 지수분포의 확률 밀도 함수(PDF)는 다음과 같습니다:</p>
+<p><span class="math display">\[f(x; \lambda) = \lambda e^{-\lambda x}, \quad x \geq 0\]</span></p>
+<p>여기서: - <span class="math inline">\(X\)</span>는 다음 사건이 발생할 때까지의 시간입니다. - <span class="math inline">\(\lambda\)</span>는 사건이 발생하는 속도(rate)입니다.</p>
+<h3 id="지수분포와-포아송-분포의-관계">2. <strong>지수분포와 포아송 분포의 관계</strong></h3>
+<p>지수분포와 포아송 분포 간의 관계는 <strong>포아송 과정</strong>을 통해 자연스럽게 도출됩니다. 핵심 내용은 다음과 같습니다:</p>
+<ol type="1">
+<li><strong>포아송 과정</strong>:
+<ul>
+<li>포아송 과정은 사건들이 시간 또는 공간 내에서 일정한 평균 속도 <span class="math inline">\(\lambda\)</span>로 무작위로 발생하는 과정을 설명합니다.</li>
+<li>포아송 분포는 주어진 구간에서 발생하는 사건의 수를 설명합니다.</li>
+<li>지수분포는 연속된 사건 사이의 시간을 설명합니다.</li>
+</ul></li>
+<li><strong>연결</strong>:
+<ul>
+<li>주어진 시간 구간에서 발생하는 사건 수가 포아송 분포를 따른다면, 연속된 사건들 사이의 시간(즉, <strong>도착 간격</strong>)은 지수분포를 따릅니다.</li>
+<li>반대로, 사건들 간의 도착 간격이 지수분포를 따른다면, 주어진 구간에서 발생하는 사건 수는 포아송 분포를 따릅니다.</li>
+</ul></li>
+</ol>
+<h3 id="예시-고객-도착">3. <strong>예시: 고객 도착</strong></h3>
+<p>은행에 도착하는 고객을 예로 들어보겠습니다.</p>
+<ul>
+<li><strong>포아송 분포</strong>: 고객들이 은행에 평균적으로 시간당 3명(<span class="math inline">\(\lambda = 3\)</span>)씩 도착한다고 가정합니다. 이때 1시간 동안 도착하는 고객 수는 속도 <span class="math inline">\(\lambda = 3\)</span>인 포아송 분포를 따릅니다.</li>
+</ul>
+<p><span class="math display">\[P(X = k) = \frac{3^k e^{-3}}{k!}, \quad k = 0, 1, 2, \dots\]</span></p>
+<p>여기서 <span class="math inline">\(P(X = k)\)</span>는 정확히 <span class="math inline">\(k\)</span>명의 고객이 1시간 동안 도착할 확률을 나타냅니다.</p>
+<ul>
+<li><strong>지수분포</strong>: 연속된 두 고객의 도착 시간 간격은 속도 <span class="math inline">\(\lambda = 3\)</span>인 지수분포를 따릅니다. 두 고객의 도착 시간 간격 <span class="math inline">\(T\)</span>에 대한 확률 밀도 함수(PDF)는 다음과 같습니다:</li>
+</ul>
+<p><span class="math display">\[f(t) = 3 e^{-3t}, \quad t \geq 0\]</span></p>
+<p>여기서 <span class="math inline">\(f(t)\)</span>는 두 고객 사이의 도착 시간 간격이 <span class="math inline">\(t\)</span>일 확률을 나타냅니다.</p>
+<h3 id="두-분포의-연결">4. <strong>두 분포의 연결</strong>:</h3>
+<ul>
+<li><strong>포아송 과정</strong>에서는 고객이 독립적으로 도착하며, 두 도착 시간 사이의 간격은 <strong>기억 없음</strong>(memoryless) 속성을 갖습니다. 이 속성은 지수분포의 특징입니다.</li>
+<li><strong>지수분포</strong>는 포아송 과정에서 다음 사건(고객 도착)까지의 대기 시간을 설명합니다. 반면, <strong>포아송 분포</strong>는 일정한 시간 내에 발생하는 사건(고객 도착)의 수를 설명합니다.</li>
+</ul>
+<h3 id="수학적-연결">5. <strong>수학적 연결</strong></h3>
+<p>이벤트 사이의 시간이 지수분포를 따른다면, 주어진 시간 구간 <span class="math inline">\(t\)</span>내에 적어도 하나의 사건이 발생할 확률은 지수분포의 누적 분포 함수(CDF)로 표현됩니다:</p>
+<p><span class="math display">\[P(T \leq t) = 1 - e^{-\lambda t}\]</span></p>
+<p>이 식은 대기 시간 <span class="math inline">\(T\)</span>가 $t $이하일 확률을 의미합니다. 반면, 포아송 분포는 주어진 시간 구간 $t $내에 <span class="math inline">\(k\)</span>개의 사건이 발생할 확률을 다음과 같이 나타냅니다:</p>
+<p><span class="math display">\[P(N(t) = k) = \frac{(\lambda t)^k e^{-\lambda t}}{k!}\]</span></p>
+<p>따라서, 사건 간 대기 시간이 지수분포를 따른다면, 시간 구간 <span class="math inline">\(t\)</span>내의 사건 수는 평균 <span class="math inline">\(\lambda t\)</span>를 따르는 포아송 분포를 따릅니다.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 <!-- ## $\chi^2$ Distribution -->
 <!-- Specific case of the gamma distribution  -->
 <!-- ### PDF -->
@@ -1202,8 +1447,8 @@ f_X(x; \mu, \sigma^2)=\frac{1}{\sigma\sqrt{2\pi}}\exp\left\{-\frac{(x-\mu)^2}{2\
 <!-- $$ -->
 <!-- ## t Distribution -->
 <!-- ## F Distribution -->
-<p><img src="assets/ci/UIBS/JPG/UST-UI-SUBSIG-KRV.jpg" class="slide-logo"></p>
-<div class="footer footer-default">
+
+<img src="assets/ci/UIBS/JPG/UST-UI-SUBSIG-KRV.jpg" class="slide-logo r-stretch"><div class="footer footer-default">
 
 </div>
 </section></section>

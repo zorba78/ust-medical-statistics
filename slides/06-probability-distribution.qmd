@@ -139,7 +139,7 @@ $$
 ### Expectation
 
 $$\begin{aligned}
-\mu & = \sum_{x=0}^{n}\binom{n}{x}p^{x}(1-p)^{n-x} \\
+\mu & = \sum_{x=0}^{n}x\binom{n}{x}p^{x}(1-p)^{n-x} \\
     & = \sum_{x=1}^{n}x\frac{n!}{x!(n-x)!}p^{x}(1-p)^{n-x} \\
     & = n\cdot p\sum_{x=1}^{n}\frac{(n-1)!}{(x-1)!(n-x)!}p^{x-1}(1-p)^{n-x} \\
     & = n\cdot p\sum_{x-1=0}^{n-1}\binom{n-1}{x-1}p^{x-1}(1-p)^{(n-1)-(x-1)} \\
@@ -410,7 +410,7 @@ The Poisson distribution is a discrete probability distribution that expresses t
 
 **Consistency**: If an event occurs with mean rate of 2 within a minute, it implies 6 events will occur during 3 minutes.
 
-**Non-clustering**:
+**Non-clustering**: The probability of two events occurring in a very short time and very small space is 0. For example, the probability of two customers arriving at the bank at the same time is 0.
 :::
 
 ## Poisson Distribution
@@ -528,29 +528,26 @@ ppois(50, lambda = 50) - ppois(47, lambda = 50)
 
 > Suppose $X$ and $Y$ are Poisson random variables: $X\sim \mathrm{pois}(\lambda_1)$, $Y\sim \mathrm{pois}(\lambda_2)$ and $X$ and $Y$ are independent, then $(X+Y)\sim \mathrm{pois}(\lambda_{1} + \lambda_{2})$. The conditional distribution of $X$ given with $(X+Y) = N$ is identical to the binomial distribution with size of $N$ and probability of $p=\lambda_1/(\lambda_1 + \lambda_2)$.
 
-
 ::: callout-note
 ### Proof
 
-By using Bayes Theorem, 
+By using Bayes Theorem,
 
 $$
 P(X|X+Y = N) = \frac{P(X+Y=N|X=x)P(X=x)}{P(X+Y = N)}
 $$
 
-Since $X \perp Y$, $Y=X-N$, 
+Since $X \perp Y$, $Y=X-N$,
 
 $$
 P(X|X+Y = N) = \frac{P(Y=N-X)P(X=x)}{P(X+Y = N)}=\frac{\frac{\exp(-\lambda_2)\lambda_2^{N-x}}{(N-x)!}\frac{\exp{(-\lambda_1)}\lambda_1^{x}}{x!}}{\frac{\exp[-(\lambda_1+\lambda_2)](\lambda_1+\lambda_2)^N}{N!}}
 $$
-
 :::
-
 
 ## Poisson Distribution
 
 ::: callout-note
-### Proof (_continued_)
+### Proof (*continued*)
 
 $$\begin{aligned}
 P(X|X+Y = N) &= \frac{N!}{x!(N-x)!}\frac{\exp{[-(\lambda_1+\lambda_2)]}\lambda_1^x\lambda_2^{N-x}}{\exp{[-(\lambda_1+\lambda_2)]}(\lambda_1+\lambda_2)^N} \\
@@ -558,9 +555,7 @@ P(X|X+Y = N) &= \frac{N!}{x!(N-x)!}\frac{\exp{[-(\lambda_1+\lambda_2)]}\lambda_1
              &= \binom{N}{x}\left(\frac{\lambda_1}{\lambda_1+\lambda_2}\right)^x\left(1-\frac{\lambda_1}{\lambda_1+\lambda_2}\right)^{N-x} \\
              &= \mathrm{binom}\left(\mathrm{size}=N, \mathrm{prob}=\frac{\lambda_1}{\lambda_1+\lambda_2}\right)
 \end{aligned}$$
-
 :::
-
 
 ::: callout-note
 ### Important
@@ -568,10 +563,7 @@ P(X|X+Y = N) &= \frac{N!}{x!(N-x)!}\frac{\exp{[-(\lambda_1+\lambda_2)]}\lambda_1
 -   The conditional distribution of $X$ given $X+Y$ is identical to the binomial distribution, where $X\sim \mathrm{pois}(\lambda_1)$ and $Y\sim \mathrm{pois}(\lambda_2)$
 
 -   (**Check**) The binomial distribution is converge to the poisson distribution when $N\rightarrow \infty$
-
 :::
-
-
 
 # Important Continuous Distributions
 
@@ -584,7 +576,6 @@ P(X|X+Y = N) &= \frac{N!}{x!(N-x)!}\frac{\exp{[-(\lambda_1+\lambda_2)]}\lambda_1
 We write $X \sim U(a, b)$ or $X\sim \mathrm{unif}(\mathrm{min} = a, \mathrm{max}=b)$
 
 ::: panel-tabset
-
 ### PDF
 
 $$f_X(x) = \begin{cases}
@@ -592,9 +583,7 @@ $$f_X(x) = \begin{cases}
 0, ~~~~~~~ \mathrm{otherwise}
 \end{cases}$$
 
-
 ### Shape
-
 
 ```{r, fig.align='center'}
 library(scales)
@@ -619,8 +608,6 @@ text(1.5, 0.5, "Area = 1", cex = 2)
 
 ```
 
-
-
 ### CDF
 
 $$F_X(x) = \begin{cases}
@@ -628,7 +615,6 @@ $$F_X(x) = \begin{cases}
 \frac{x-a}{b-a}, ~~ a\leq x \leq b\\
 1, ~~~~~~~ x > b
 \end{cases}$$
-
 
 ### Expectation
 
@@ -639,7 +625,6 @@ $$\begin{aligned}
              &= \frac{b+a}{2}
 \end{aligned}$$
 
-
 ### Variance
 
 $$\begin{aligned}
@@ -648,8 +633,6 @@ $$\begin{aligned}
            &= \frac{1}{b-a}\frac{x^3}{3}\bigg|_{x=a}^{b} - \left(\frac{b+a}{2}\right)^2 = \frac{b^3-a^3}{3(b-a)} - \left(\frac{b+a}{2}\right)^2\\
            &= \frac{(b-a)^2}{12}
 \end{aligned}$$
-
-
 :::
 
 ## Uniform Distribution
@@ -658,42 +641,41 @@ $$\begin{aligned}
 **Example**
 
 Suppose that buses arrive at a bus stop every 10 minutes and that the waiting time of a person who arrives at the stop is uniformly distributed. We want to find the probability that a person waits less than 5 minutes.
-
 :::
-
 
 ::: callout-note
 ### Solution
 
-Let the waiting time for bus be a random variable $X$, then $X$ follows the uniform distribution with interval $[0, 10]$, Therefore, 
+Let the waiting time for bus be a random variable $X$, then $X$ follows the uniform distribution with interval $[0, 10]$, Therefore,
 
 $$
 f_X(x) = P(X = x) =\frac{1}{10}, ~~ 0\leq x \leq 10
 $$
 
-The probability that a person waits less tan 5 minutes can be obtained 
+The probability that a person waits less tan 5 minutes can be obtained
 
 $$
 P(X\leq 5) = \int_{0}^{5}\frac{1}{10} dx = \frac{1}{10}x\bigg|_{x=0}^{5} = 0.5
 $$
-
 :::
 
+`r fontawesome::fa("r-project")` Check
 
-
+```{r, echo=TRUE}
+punif(5, min=0, max=10) - punif(0, min=0, max=10)
+```
 
 ## Normal Distribution
 
-- The most **IMPORTANT** probability distribution in statistics
+-   The most **IMPORTANT** probability distribution in statistics
 
-- a.k.a Gaussian Distribution
+-   a.k.a Gaussian Distribution
 
-- Widely used to represent real-valued random variables whose distributions are unknown
+-   Widely used to represent real-valued random variables whose distributions are unknown
 
-- Particularly, the normal distribution is a backbone of the central limit theorem (CLT)
+-   Particularly, the normal distribution is a backbone of the central limit theorem (CLT)
 
-:::panel-tabset
-
+::: panel-tabset
 ### PDF
 
 $$
@@ -710,20 +692,17 @@ $$\begin{aligned}
 \mu_X &=E(X) = \mu \\
 \sigma^2_X &= Var(X) = \sigma^2
 \end{aligned}$$
-
 :::
 
+## Normal Distribution
 
-## Normal Distribution 
+### Shapes
 
-### Shapes 
+-   Bell shaped curve and symmetric around the $\mu$
+-   mean = median = mode
+-   Depends on $\mu$ and $\sigma$
 
-- Bell shaped curve and symmetric around the $\mu$
-- mean = median = mode
-- Depends on $\mu$ and $\sigma$
-
-:::panel-tabset
-
+::: panel-tabset
 ### Basic shape
 
 ```{r, fig.height=5, fig.width=10, fig.align='center'}
@@ -747,7 +726,6 @@ text(0.5, y[601], expression(sigma), pos=1, cex = 1.5)
 ```
 
 ### $\mu_1=\mu_2$, $\sigma_1 < \sigma_2$
-
 
 ```{r, fig.height=5, fig.width=10, fig.align='center'}
 par(mar = c(3, 0, 3, 0))
@@ -782,7 +760,6 @@ text(2.1, max(y[,2]),
 
 
 ```
-
 
 ### $\mu_1<\mu_2$, $\sigma_1 = \sigma_2$
 
@@ -856,40 +833,269 @@ text(2.3, max(y[,2]),
 
 
 ```
+:::
+
+## Normal Distribution
+
+### Standard Normal Distribution (PDF)
+
+When $\mu = 0$ and $\sigma = 1$, the normal distribution is called the standard normal distribution
+
+$$
+\phi(z) = \frac{1}{\sqrt{2\pi}}e^{-\frac{z^2}{2}}, ~~~ -\infty < z < \infty
+$$ CDF of the standard normal distribution: $\Phi(z)$
+
+$$
+\Phi(z) = \int_{-\infty}^{z} \phi(t)dt
+$$
+
+### Proposition
+
+$$
+Z = \frac{X - \mu}{\sigma} \sim N(0, 1)
+$$
+
+## Normal Distribution
+
+::: {.callout-tip appearance="minimal"}
+**68-95-99 Rule**
+
+Approximately 68% of the data falls within 1 standard deviation of the mean, 95% within 2 standard deviations, and 99.7% within 3 standard deviations.
+:::
+
+`r fontawesome::fa("r-project")` **Check**
+
+```{r, echo=TRUE}
+pnorm(1:3) - pnorm(-c(1:3))
+```
+
+::: {.callout-tip appearance="minimal"}
+**Example**
+
+Let the random experiment consist of a person taking an IQ test, and let $X$ be the score on the test. The scores on such a test are typically standardized to have a mean of 100 and a standard deviation of 15. What is the probability $P(85\leq X \leq 115)$?
+:::
+
+::: panel-tabset
+### Manual Solution
+
+$$
+\begin{aligned}
+P(85\leq X \leq 115) &= P\left(\frac{85-115}{15} \leq \frac{X-100}{15} \leq \frac{100-115}{15}\right)\\
+&= P\left(-1 \leq Z \leq 1\right) \\
+&= \Phi(1) - \Phi(-1) = 0.6827
+\end{aligned}
+$$
+
+### `r fontawesome::fa("r-project")` Check
+
+```{r, echo=TRUE}
+zl <- (85 - 100)/15
+zu <- (115 - 100)/15
+pnorm(zu) - pnorm(zl)
+
+```
+:::
+
+# Other Continuous Distributions
+
+## Exponential Distribution
+
+::: callout-note
+### Motivation
+
+How to model the time between events that occur continuously and independently at a constant average rate (**waiting time**)?
+
+### Examples
+
+-   Call center: time between message transmission
+-   Finance: time between market price change
+-   Manufacturing: time between machine failure
+
+### What we need?
+
+-   Capture the uncertainty and randomness of the event occurance
+-   Assumption of memoryless property: the probability of the event occurring in the next time interval is independent of the past
+:::
+
+::: notes
+The exponential distribution is widely used to model the time between events that occur continuously and independently at a constant average rate. This distribution is closely linked with the Poisson process, where the focus is on modeling the occurrence of rare events over time.
+
+The exponential distribution was developed in response to the need to model situations where we are interested in the **waiting time** until the next event occurs. For example, consider the problem of predicting how long you will wait for a bus to arrive, assuming the buses arrive randomly. If we know that the buses come on average every 10 minutes, but we have no further information about the schedule, how can we model the waiting time for the next bus?
+
+This kind of problem also appears in various fields such as telecommunications (time between message transmissions), finance (time between price changes), and reliability engineering (time until a product fails). In each of these cases, we are interested in understanding the distribution of time intervals between consecutive occurrences of events.
+
+Such a situation demands a probability distribution that: 1. Captures the uncertainty and randomness of the event occurrence. 2. Does not "remember" how much time has already passed, meaning that the probability of an event happening in the future is independent of the past.
+
+The exponential distribution satisfies both of these requirements and is particularly useful for modeling these scenarios. It provides a mathematically simple yet powerful model for describing the **time between events** in a wide range of processes.
+:::
+
+## Exponential DIstribution
+
+### `r icons::fontawesome("bullseye", style = "solid")` Definition
+
+> A random variable $X$ has an exponential distribution and write $X \sim \exp(\lambda)$
+
+::: panel-tabset
+### PDF
+
+$$
+f_X(x) = \lambda \exp(-\lambda x),~~~~x\geq0
+$$ where
+
+-   $x$: The time until the next event occurs;
+-   $\lambda$: The rate at which events occur
+
+### CDF
+
+$$
+F_X(x) = 1 - \exp(-\lambda x),~~~~x\geq0
+$$
+
+### Expectation and Variance
+
+$$\begin{aligned}
+\mu_X &=E(X) = \frac{1}{\lambda} \\
+\sigma^2_X &= Var(X) = \frac{1}{\lambda^{2}}
+\end{aligned}$$
+
+### Shape
+
+```{r, fig.align='center'}
+library(scales)
+lambda <- 1/5
+x <- seq(0, 50, length=300)
+y <- dexp(x, rate = lambda)
+
+plot(x, y, type="n", bty = "n", 
+     # xlim = c(0.5, 2.5), 
+     # ylim = c(0, 1.2),
+     main = expression(paste("Exponential Distribution: ", 
+                             "exp(", ~lambda == 1/5, ")")),
+     xlab = "x", 
+     ylab = "f(x)", 
+     cex.main = 2, cex.lab = 1.5
+     )
+# polygon(c(1,x,2), c(0,y, 0), col = alpha("blue", 0.2), border = alpha("blue", 0.2))
+lines(x, y, lty=1, lwd=2, col = "blue")
+# abline(h = 1, lty = 2, col = "blue")
+abline(v = 1/lambda, lty = 2, col = "gray")
+# abline(v = 2, lty = 2, col = "blue")
+text(1/lambda + 7, 0.1, expression({mu == frac(1, lambda)} == 5), cex = 2)
+
+
+```
+:::
+
+## Exponential Distribution
+
+### Relationship to Poisson Distribution
+
+::: {.callout-tip appearance="minimal"}
+**Poisson process**: Events occurring randomly in time or space at a constant average rate $\lambda$.
+
+-   **Poisson distribution**: **how many events** occur in a given interval.
+
+-   **Exponential distribution**: **time** between consecutive events in this process.
+
+**Example**
+
+> Suppose that customers arrive at a store according to a Poisson process with rate $\lambda$.
+
+-   $Y$: a random variable representing the number of customers arriving in a given time interval $[0,t)$ $\rightarrow$ $Y \sim \text{Pois}(\lambda t)$
+
+-   $X$: a random variable representing the length of time interval $\rightarrow$ $X \sim \exp(\lambda)$
+:::
+
+::: notes
+
+### 1. **포아송 분포**
+
+포아송 분포는 일정한 시간 또는 공간 내에서 발생하는 사건의 수를 모델링합니다. 사건이 독립적으로 발생하며, 일정한 평균 속도 $\lambda$로 발생한다고 가정합니다. 포아송 분포의 확률 질량 함수(PMF)는 다음과 같습니다:
+
+$P(X = k) = \frac{\lambda^k e^{-\lambda}}{k!}, \quad k = 0, 1, 2, \dots$
+
+여기서 $X$는 주어진 구간에서 발생하는 사건의 수입니다. - $\lambda$는 사건이 발생하는 평균 속도(단위 시간당 사건 수)를 나타냅니다.
+
+### 1.2 **지수분포**
+
+지수분포는 포아송 과정에서 연속된 사건 사이의 시간을 모델링합니다. 사건들이 일정한 속도 $\lambda$로 발생한다고 가정할 때, 다음 사건이 발생하기까지의 시간을 설명하는 분포입니다. 지수분포의 확률 밀도 함수(PDF)는 다음과 같습니다:
+
+$$f(x; \lambda) = \lambda e^{-\lambda x}, \quad x \geq 0$$
+
+여기서: - $X$는 다음 사건이 발생할 때까지의 시간입니다. - $\lambda$는 사건이 발생하는 속도(rate)입니다.
+
+
+### 2. **지수분포와 포아송 분포의 관계**
+
+지수분포와 포아송 분포 간의 관계는 **포아송 과정**을 통해 자연스럽게 도출됩니다. 핵심 내용은 다음과 같습니다:
+
+1.  **포아송 과정**:
+    -   포아송 과정은 사건들이 시간 또는 공간 내에서 일정한 평균 속도 $\lambda$로 무작위로 발생하는 과정을 설명합니다.
+    -   포아송 분포는 주어진 구간에서 발생하는 사건의 수를 설명합니다.
+    -   지수분포는 연속된 사건 사이의 시간을 설명합니다.
+2.  **연결**:
+    -   주어진 시간 구간에서 발생하는 사건 수가 포아송 분포를 따른다면, 연속된 사건들 사이의 시간(즉, **도착 간격**)은 지수분포를 따릅니다.
+    -   반대로, 사건들 간의 도착 간격이 지수분포를 따른다면, 주어진 구간에서 발생하는 사건 수는 포아송 분포를 따릅니다.
+
+### 3. **예시: 고객 도착**
+
+은행에 도착하는 고객을 예로 들어보겠습니다.
+
+-   **포아송 분포**: 고객들이 은행에 평균적으로 시간당 3명($\lambda = 3$)씩 도착한다고 가정합니다. 이때 1시간 동안 도착하는 고객 수는 속도 $\lambda = 3$인 포아송 분포를 따릅니다.
+
+$$P(X = k) = \frac{3^k e^{-3}}{k!}, \quad k = 0, 1, 2, \dots$$
+
+여기서 $P(X = k)$는 정확히 $k$명의 고객이 1시간 동안 도착할 확률을 나타냅니다.
+
+-   **지수분포**: 연속된 두 고객의 도착 시간 간격은 속도 $\lambda = 3$인 지수분포를 따릅니다. 두 고객의 도착 시간 간격 $T$에 대한 확률 밀도 함수(PDF)는 다음과 같습니다:
+
+$$f(t) = 3 e^{-3t}, \quad t \geq 0$$
+
+여기서 $f(t)$는 두 고객 사이의 도착 시간 간격이 $t$일 확률을 나타냅니다.
+
+### 4. **두 분포의 연결**:
+
+-   **포아송 과정**에서는 고객이 독립적으로 도착하며, 두 도착 시간 사이의 간격은 **기억 없음**(memoryless) 속성을 갖습니다. 이 속성은 지수분포의 특징입니다.
+-   **지수분포**는 포아송 과정에서 다음 사건(고객 도착)까지의 대기 시간을 설명합니다. 반면, **포아송 분포**는 일정한 시간 내에 발생하는 사건(고객 도착)의 수를 설명합니다.
+
+### 5. **수학적 연결**
+
+이벤트 사이의 시간이 지수분포를 따른다면, 주어진 시간 구간 $t$내에 적어도 하나의 사건이 발생할 확률은 지수분포의 누적 분포 함수(CDF)로 표현됩니다:
+
+$$P(T \leq t) = 1 - e^{-\lambda t}$$
+
+이 식은 대기 시간 $T$가 $t $이하일 확률을 의미합니다. 반면, 포아송 분포는 주어진 시간 구간 $t $내에 $k$개의 사건이 발생할 확률을 다음과 같이 나타냅니다:
+
+$$P(N(t) = k) = \frac{(\lambda t)^k e^{-\lambda t}}{k!}$$
+
+따라서, 사건 간 대기 시간이 지수분포를 따른다면, 시간 구간 $t$내의 사건 수는 평균 $\lambda t$를 따르는 포아송 분포를 따릅니다.
 
 
 :::
-
-
-
-
-
-
-
 
 <!-- ## $\chi^2$ Distribution -->
 
 <!-- Specific case of the gamma distribution  -->
 
-
 <!-- ### PDF -->
 
 <!-- $$ -->
-<!-- f_X(x; \nu) = \begin{cases} -->
-<!-- \frac{x^{\nu/2-1}\exp(-x/2)}{2^{\nu/2}\Gamma\left(\frac{\nu}{2}\right)},~~x>0 \\ -->
-<!-- 0, ~~~~~~~~~~~~~~~~~~~~~~~ \mathrm{otherwise} -->
-<!-- \end{cases}$$ -->
 
+<!-- f_X(x; \nu) = \begin{cases} -->
+
+<!-- \frac{x^{\nu/2-1}\exp(-x/2)}{2^{\nu/2}\Gamma\left(\frac{\nu}{2}\right)},~~x>0 \\ -->
+
+<!-- 0, ~~~~~~~~~~~~~~~~~~~~~~~ \mathrm{otherwise} -->
+
+<!-- \end{cases}$$ -->
 
 <!-- where $\Gamma(k/2)$ denotes the gamma function which is defined as  -->
 
 <!-- $$ -->
+
 <!-- \Gamma(z) = \int_{0}^{\infty} t^{z-1}\exp(-t) dt,~~ z>0 -->
+
 <!-- $$ -->
-
-
-
-
 
 <!-- ## t Distribution -->
 
