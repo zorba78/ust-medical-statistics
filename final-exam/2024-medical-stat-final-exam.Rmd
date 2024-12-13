@@ -1,0 +1,228 @@
+---
+title: "Medical Statistics 2^nd^ Semester Take Home Final Exam"
+subtitle: "**Due Date: Dec 19 2023 (13:00) to Dec 23 2023 (23:59)**"
+output: 
+  pdf_document: 
+    includes:
+      in_header: header.tex
+  keep_tex: true
+  dev: "cairo.pdf"
+  citation_pacakge: natbib
+# bibliography: references.bib       
+editor_options: 
+  chunk_output_type: console
+  markdown: 
+    wrap: 72
+---
+
+
+```{r setup, include=FALSE}
+# knitr::opts_knit$set(root.dir = '..')
+# library(officedown)
+# library(officer)
+# require(formatR)
+# 
+# fp <- fp_par(
+#   text.align = "center", 
+#   padding.bottom = 20, padding.top = 120, 
+#   border.bottom = fp_border())
+# 
+# ft <- fp_text(shading.color='#EFEFEF', bold = TRUE)
+
+
+options(max.print = 1000)
+knitr::opts_chunk$set(eval = TRUE,
+                      echo = FALSE,
+                      cache = FALSE,
+                      include = TRUE,
+                      collapse = FALSE,
+                      tidy = TRUE,
+                      tidy.opts = list(blank=TRUE, width.cutoff=60),
+                      message = FALSE,
+                      warning = FALSE,
+                      dependson = NULL,
+                      engine = "R", # Chunks will always have R code, unless noted
+                      error = TRUE,
+                      tab.topcaption = TRUE, 
+                      fig.path="Figures/",  # Set the figure options
+                      fig.align = "center",
+                      fig.keep='all', fig.retina=2)
+```
+
+
+```{r}
+library(tidyverse)
+library(knitr)
+library(kableExtra)
+
+
+```
+
+
+<br/> <br/>
+
+**Name**: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+
+<br/> <br/>
+
+## **Notice**
+
+-   Please **DO SOLVE ANSWERS BY YOURSELVES!!**
+-   You can use materials from other textbooks, lecture notes, and
+    websites but you have to provide proper **CITATIONS**.
+-   Write down your answers in the **MS Word Document** and save your word filename like [`student number-name.docx`, i.e. `202015015-boncho-ku.docx`]. it is admittable to submit your answers by converting your word file to pdf. 
+-   If you make up your mind to submit your answers, send an E-mail to Dr. Boncho Ku and Dr. Mimi Ko with the attachment of your answer file.
+
+
+## **Questions**
+
+1.  Which one of the following statements is False?
+
+    a)  The probability of a type I error is the probability that you fail to 
+        reject the null hypothesis when it is false.
+
+    b)  In a prospective cohort study, subjects are randomly assigned to groups based on their exposure, and then the occurrence of disease is followed.
+
+    c)  When more than 20% of cells have expected frequencies < 5, the chi-square test should always be used, regardless of sample size.
+
+    d)  To use the two-sample t-test, it is not necessary for the data to be normally distributed or for the variances to be equal.
+
+    e)  In a test for heterogeneity of meta-analysis, if Higgins $I^2 > 75 \%$, 
+        studies are regarded homogeneous and the fixed effect model of 
+        meta-analysis can generally be used.
+
+\newpage
+
+
+2. Solve following problems. 
+
+   a. Let $X$ be a random variable having binomial distribution with parameters 
+      $n=25$ and $p=0.2$. Evaluate $P(X,\mu_x - 2\sigma_X)$. 
+      
+   b. If $X$ is a random variable with satisfying $P(X=0) = P(X=1)$, what is 
+      $E(X)$?
+   
+   c. If $X$ is normally distributed mean 2 and variance 1, find $P(|X - 2| < 1)$. 
+   
+   d. Suppose $X$ has a binomial distribution with parameters $n$ and $p$. For 
+      what $p$ is $\mathrm{var}(X)$ maximized if we assumed $n$ is fixed?
+
+\vspace{5cm}  
+
+
+3. Let $X$ be the maximum usage time (hour) of an A-manufactured cellular phone after 
+   a full charge. Assume that $X$ is normally distributed with mean 70 (hours) and 
+   variance $\sigma^2$. If a purchaser of such cellular phones requires that 
+   at least 90 percent of the cellular phones are available to use exceeding 60 hours, 
+   what is the largest value of $\sigma$ can be and still have the purchaser 
+   satisfied? 
+
+\newpage
+
+
+4. Solve the following problems: 
+
+   a. Let $X_1$, $X_2$ and $X_3$ be uncorrelated random variables with common variance $\sigma^2$. 
+   Find the correlation coefficient between $X_1 + X_2$ and $X_2 + X_3$
+   b. Let $X_1$ and $X_2$ be uncorrelated random variables. Find the correlation coefficient 
+   between $X_1 + X_2$ and $X_2 - X_1$ in terms of $\mathrm{Var}(X_1)$ and $\mathrm{Var}(X_2)$. 
+   c. Let $X_1$, $X_2$, and $X_3$ be independently distributed random variables with common mean 
+   $\mu$ and common variance $\sigma^2$. Find the correlation coefficient between $X_2 - X_1$ and $X_3 - X_1$. 
+
+
+5.  There are five urns, and they are numbered 1 to 5. Each urn contains
+    10 balls. Urn $i$ has $i$ defective balls and $10-i$ non-defective
+    balls, $i=1,2,\ldots,5$. For example, urn 3 has three defective
+    balls and seven non-defective balls. Consider the following random
+    experiment: First an urn is selected at random, and then a ball is
+    selected at random from the selected urn. Suppose that the
+    experimenter does not know which urn was selected. Let's ask two
+    questions.
+
+    a)  What is the probability that a defective ball will be selected?
+
+    b)  If we have already selected the ball and noted that it is
+        defecvive, what is the probability that it came from urn 5?
+
+
+6. When you start R with Rstudio, there is an example dataset named with `mtcars`. 
+   The `mtcars` dataset was extracted from the 1974 _Motor Trend_ US magazine, 
+   and comprise fuel consumption and 10 aspects of automobile design and 
+   performance for 32 automobiles (1973 - 74 models). The detailed description 
+   of variables in `mtcars` dataset can be checked by typing `help(mtcars)` 
+   in the prompt of R console window. Write R scipts and confirm the results 
+   for the following questions.
+
+   a. Extract `mpg` and `disp` variables from `mtcars` dataset and restore it 
+      in an object `x` and `y`, respectively. 
+   b. Calculate mean, standard deviation, coefficient of variation, minimum, 
+      maximum, median, 25^th^ and 75^th^ quantiles, and interquartile range of 
+      `x` and `y`. 
+   c. Make scatterplot of `x` and `y` and interpret in terms of the correlation 
+      coefficient between `x` and `y`. 
+   d. Assume that `x` is the population of a mile per gallon of all automobiles 
+      of US from 1973 to 1974. Suppose a sample of size 2 automobiles are drawn 
+      from the population with replacement and calculate sample mean. 
+      Then repeat the same procedure 10,000 times (Hint: check the function `sample()`). 
+      - Make histogram of 10,000 sample means.
+      - Calculate the mean and standard deviation of 10,000 sample means. 
+      - Compare the above results to the population in terms of mean and 
+      standard deviation: is the mean of 10,000 sample mean is approximate to 
+      the population mean? In what proportion did the standard deviation of the 
+      sample mean decrease compared to the standard deviation of the 
+      population? 
+
+
+7.  The distribution of grades in a large statistics course is as
+    follows:
+
+```{r}
+library(tidyverse)
+library(kableExtra)
+library(flextable)
+
+x <- c(0.1, 0.4, 0.3, 0.1, 0.1)
+matrix(x, ncol = 5) %>% 
+  as.data.frame -> x
+names(x) <- LETTERS[c(1:4, 6)]
+  
+h <- tibble(`Grade:` = c("Probability"))
+tibble(h, x) %>% 
+  kbl(booktabs = TRUE, 
+      escape = FALSE, 
+      align = "lccccc") %>% 
+  kable_styling(
+    position = "center", 
+    latex_options = c("hold_position")
+  )
+  
+```
+
+To calculate student grade point averages, grades are expressed in a
+numerical scale with A=4, B=3, and so on down to F=0.
+
+a)  Find the expected value.
+
+b)  Describe your strategy to **simulate** choosing students at random
+    and recording their grades.
+
+c)  Based on your strategy described in b), perform the simulation with
+    a sample size of size 30 and calculate the mean of their 30 grades
+    **using R**.
+
+d)  Repeat c) 10,000 times and calculate the average of 10,000 means.
+
+e)  Make a histogram of 10,000 means.
+
+f)  Describe your conclusion based on the results of a) to e).
+
+
+
+
+9.  Describe the relationship between Pearson's correlation coefficients
+    and the regression coefficient (slope) of univariate regression
+    analysis. You're definitely able to refer to the Internet or other
+    textbooks but you have to give descriptions or formulas in your own
+    words and cite appropriately.
+
+
