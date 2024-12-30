@@ -1,6 +1,6 @@
 ---
 title: "Medical Statistics 2^nd^ Semester Take Home Final Exam"
-subtitle: "**Due Date: Dec 19 2023 (13:00) to Dec 23 2023 (23:59)**"
+subtitle: "**Due Date: Dec 17 2024 (10:00) to Dec 20 2024 (23:59)**"
 output: 
   pdf_document: 
     includes:
@@ -70,13 +70,14 @@ library(kableExtra)
 -   Please **DO SOLVE ANSWERS BY YOURSELVES!!**
 -   You can use materials from other textbooks, lecture notes, and
     websites but you have to provide proper **CITATIONS**.
+-   Please avoid using LLM based chatbots (i.e. chatGPT, Claude, Gemini, and so on) to make your answers.
 -   Write down your answers in the **MS Word Document** and save your word filename like [`student number-name.docx`, i.e. `202015015-boncho-ku.docx`]. it is admittable to submit your answers by converting your word file to pdf. 
 -   If you make up your mind to submit your answers, send an E-mail to Dr. Boncho Ku and Dr. Mimi Ko with the attachment of your answer file.
 
 
 ## **Questions**
 
-1.  Which one of the following statements is False?
+1.  Which one of the following statements is **TRUE**?
 
     a)  The probability of a type I error is the probability that you fail to 
         reject the null hypothesis when it is false.
@@ -107,7 +108,7 @@ library(kableExtra)
    d. Suppose $X$ has a binomial distribution with parameters $n$ and $p$. For 
       what $p$ is $\mathrm{var}(X)$ maximized if we assumed $n$ is fixed?
 
-\vspace{5cm}  
+<!-- \vspace{5cm}   -->
 
 
 3. Let $X$ be the maximum usage time (hour) of an A-manufactured cellular phone after 
@@ -117,7 +118,7 @@ library(kableExtra)
    what is the largest value of $\sigma$ can be and still have the purchaser 
    satisfied? 
 
-\newpage
+<!-- \newpage -->
 
 
 4. Solve the following problems: 
@@ -217,12 +218,170 @@ e)  Make a histogram of 10,000 means.
 f)  Describe your conclusion based on the results of a) to e).
 
 
+<!-- \newpage -->
 
+8.  A pharmaceutical company has developed two types of sleeping pills, namely A and B. 
+    Seven healthy adults were randomly selected, and the time it took for them 
+    to fall asleep after taking each sleeping pill was measured (assume that time 
+    to fall asleep follows a normal distribution with unknown variance 
+    ($\sigma^2$ is unknown). The data collected for sleeping pill A and sleeping 
+    pill B are as follows:
+    
+    a) Conduct an appropriate hypothesis test to determine if there is a difference in 
+       the effectiveness of sleeping pills A and B. Use a significance level of 0.05. 
+    
+    b) Calculate the 95% confidence interval for the difference in the mean time to fall 
+       asleep between sleeping pills A and B.
+       
+    c) Calcuate the p-value. 
+
+
+```{r}
+slp_tbl <- 
+  tibble(
+    ID = 1:7,
+    A = c(15, 19, 16, 14, 17, 14, 17),
+    B = c(13, 17, 18, 15, 16, 16, 19)
+  )
+  
+
+kbl(slp_tbl, 
+    booktabs = TRUE, 
+    escape = FALSE, 
+    align = "lcc") %>% 
+  kable_styling(
+    position = "center",
+    latex_options = c("hold_position"), 
+    full_width = FALSE
+  )
+
+```
+
+
+
+<!-- \newpage -->
 
 9.  Describe the relationship between Pearson's correlation coefficients
     and the regression coefficient (slope) of univariate regression
     analysis. You're definitely able to refer to the Internet or other
     textbooks but you have to give descriptions or formulas in your own
     words and cite appropriately.
+
+
+
+10.  A total of 180 men of different ethnic backgrounds were included in a 
+     cross-sectional study investigating factors related to blood clotting. 
+     We compared the mean platelet levels across four groups using a one-way 
+     ANOVA. It was reasonable to assume normality and constant variance.
+
+
+```{r, echo=FALSE, message=FALSE}
+tab1 <- tibble(
+  Group = c(
+    "Caucasian",
+    "Afro-Caribbean",
+    "Mediterranean",
+    "Other"
+  ),
+  `N (\\%)` = c(
+    "110 (61.1)",
+    "22 (12.2)",
+    "28 (15.6)",
+    "20 (11.1)"
+  ),
+  `Mean($\\times 10^9$)` = c(
+    "265.0",
+    "248.4",
+    "259.2",
+    "257.8"
+  ),
+  `SD ($\\times 10^9$)` = c(
+    "72.15",
+    "68.30",
+    "70.42",
+    "69.12"
+  )
+)
+
+kbl(tab1,
+    booktabs = TRUE,
+    escape = FALSE,
+    align = "lccc") %>%
+  kable_styling(
+    position = "center",
+    latex_options = c("hold_position"),
+    full_width = FALSE
+  )
+  
+
+```
+
+Fill the following ANOVA table
+
+```{r}
+tab2 <- tibble(
+  Source = c(
+    "Between Group", 
+    "Within Group", 
+    "Total"
+  ), 
+  SS = c(
+    "18540.0", 
+    "1549120.0", 
+    "1567660.0"
+  ), 
+  DF = c(
+    "(1)", 
+    "(2)", 
+    " "
+  ), 
+  MS = c(
+    "(3)", 
+    "(4)", 
+    " "
+  ), 
+  "F-ratio" = c(
+    "(5)", 
+    " ", 
+    " "
+  ), 
+  "P-value" = c(
+    "0.5520", 
+    " ", " "
+  )
+)
+
+kbl(tab2, 
+    booktabs = TRUE, 
+    escape = FALSE, 
+    align = "lccccc") %>% 
+  kable_styling(
+    position = "center",
+    latex_options = c("hold_position"), 
+    full_width = FALSE
+  )
+  
+
+```
+
+\newpage
+
+11.  Calculate the sample size for the following questions (_Hint_: Test for Equality).
+
+
+a)  An active-controlled randomized trial proposes to assess the effectiveness of 
+    Drug A in reducing blood pressure. A previous study showed that Drug A can 
+    reduce blood pressure by 10mmHg from baseline to week 12 with a standard 
+    deviation ($\sigma$) of 2.0 mmHg. A clinically important difference of 1.0 
+    mmHg as compared to active drug is considered to be acceptable 
+    (Level of significance = 5%, Power = 80%, Type of test = two-sided). 
+
+
+b)  A placebo-controlled randomized trial proposes to assess the effectiveness of 
+    Drug A in curing patients with acute respiratory distress syndrome. A previous 
+    study showed that proportion of subjects cured by Drug A is 55% and a 
+    clinically important difference of 10% as compared to placebo is acceptable 
+    (Level of significance = 5%, Power = 80%, Type of test =two-sided)
+
 
 
