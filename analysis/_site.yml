@@ -30,8 +30,8 @@ navbar:
     - text: IEIE-2024 presentation
       icon: fa-play-circle
       href: talks/2024-summer-IEIEC-presentation-speaker.html
-  - text: Final Exam Solutions
-    href: 2022-medical-stat-final-exam-solution.pdf
+  # - text: Final Exam Solutions
+  #   href: 2022-medical-stat-final-exam-solution.pdf
   right:
   - icon: fab fa-github
     text: Source code

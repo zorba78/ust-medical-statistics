@@ -3,7 +3,7 @@ title: "Medical Statistics"
 subtitle: "Introduction"
 author: "<strong>Boncho Ku, Ph.D. in Statistics</strong>"
 institute: "<br/> Korea Institute of Oriental Medicine"
-date: "<br> 2023/09/07"
+date: "<br> 2024/09/04"
 output:
   xaringan::moon_reader:
     css: [default, metropolis, metropolis-fonts, ../assets/css/footer.css, ../assets/css/metropolis-ak.css]
@@ -209,6 +209,8 @@ class: inverse, center, middle
 
 
 ???
+
+Lots of people get nervous as soon as they hear the word ‘statistics.’ Mainly because most folks just don’t like numbers. And to be fair, numbers have fooled people plenty of times. Take all those economic figures you see in the news—they look super official, but the truth is, they’re often twisted, not to show some objective fact, but to push someone’s biased opinion or agenda.
 
 In simple, many statistical numbers that you can see in the newspaper or academic papers are simply the objective result of some sort of calculation from the data. That means these numbers are derived from certain types of quantitative methodologies and numbers themselves have specific meanings depending on their origins. However, many people have desires to interpret those numbers with their own ways and give their subjective meanings by taking advantage of the objectivity of numbers. 
 
@@ -595,6 +597,37 @@ class: inverse, center, middle
 > - usually infered from the **calculated statistics** $\rightarrow$ from the particular sample of **DATA**
 
 
+???
+
+The term 'frequentist" may be unfamiliar to you. Traditionally, there are two major schools of statistics: frequentist and Bayesian. The main difference between the two is the view point of the parameter. As mentioned on the slide, frequentists regard parameters as fixed values, whereas Bayesians consider parameters as random variables that have their own probability distributions. 
+
+Suppose all existant apples on the planet consist of two colors: red and green and 
+there exist huge size of box that could contain all of them. What we're curious about is the proportion of red apples in the box. that is, the true value of the parameter. 
+
+So in this example, let me show you how the two approaches think about the parameter in different ways.
+
+
+For a frequentist, the parameter θ (the proportion of red apples) is a fixed but unknown value.
+
+👉 Whether the box has 40% or 60% red apples is already determined, but we just don’t know the exact number.
+
+So, we take a sample (pick a few apples) and estimate that proportion.
+
+Here, probability comes only from the randomness of sampling.
+For example: “The probability that I pick a red apple is 40%.”
+
+For a Bayesian, the parameter θ itself is considered uncertain.
+
+👉 The proportion of red apples could be 40%, 60%, or many other possibilities, and we represent that uncertainty as a belief distribution.
+
+We start with a prior belief (prior distribution).
+(e.g., “In most orchards, about half the apples are red, so θ=0.5 is quite likely.”)
+
+Then we draw a sample and update our belief using that information.
+This gives us the posterior probability distribution for θ.
+So, we might say: “Now, there’s a high probability that θ is around 0.6.”
+
+
 ---
 
 
@@ -676,18 +709,18 @@ class: inverse, center, middle
 ### By Dr. Ku
 
 ```{r}
-input <- ("Week 1 (2023.9.07): Introduction to statistics
-Week 2 (2023.09.14): Summary of data
-Week 3 (2023.09.21): Concept of probability
-Week 4 (2023.09.28): Random variables and probability distribution
-Week 5 (2023.10.05): Important probability distribution
-Week 6 (2023.10.12): Sampling distribution and statistical inference
-Week 7 (2023.10.19): Estimation and hypothesis testing 
-Week 8 (2023.10.26): Correlation and Regression
-")
+input <- ("Week 1 (2025.9.04): Introduction to statistics
+Week 2 (2025.09.11): Summary of data
+Week 3 (2025.09.18): Concept of probability
+Week 4 (2025.09.25): Random variables and probability distribution
+Week 5 (2025.10.02): Important probability distribution
+Week 6 (2025.10.09): Hangul Day (public holiday)
+Week 7 (2025.10.16): Sampling distribution and statistical inference
+Week 8 (2025.10.23): Estimation and hypothesis testing 
+Week 6 (make-up, not determined): Correlation and Regression")
 
 course_desc <- read.table(textConnection(input), sep = ":", header = FALSE)
-course_desc$V3 <- c(rep("Dr. Boncho Ku", each = 8))
+course_desc$V3 <- c(rep("Dr. Boncho Ku", each = 9))
 names(course_desc) <- c("Week", "Description", "Lecturer")
 kbl(course_desc, 
     booktabs = TRUE, 
