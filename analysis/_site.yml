@@ -1,7 +1,7 @@
 name: ust-statistics
 output_dir: ../docs
 navbar:
-  title: ust-statistics
+  title: UST-Lectures
   left:
   - text: Home
     icon: fa-home
