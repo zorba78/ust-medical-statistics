@@ -1,0 +1,256 @@
+---
+title: "Exponential Distribution"
+author: "Your Name"
+date: "2024-10-23"
+format: html
+---
+
+# Normal Distribution
+
+The normal distribution, also known as the Gaussian distribution, is one of the most widely used probability distributions in statistics. It is known for its bell-shaped curve and plays a key role in various statistical methods, thanks to the central limit theorem, which states that under certain conditions, the sum of a large number of random variables will tend to follow a normal distribution.
+
+## Motivation
+
+The normal distribution was originally motivated by the need to model natural phenomena that exhibit randomness and uncertainty. Many real-world quantities, such as people's heights, test scores, and measurement errors, tend to cluster around a central value with smaller deviations from the average. 
+
+For example, if we were to measure the heights of thousands of people, most heights would fall near the average, with fewer people being extremely short or extremely tall. This kind of distribution pattern is observed in a wide variety of fields, from biology to finance. The **normal distribution** is thus crucial for modeling random variables that are influenced by many small, independent factors.
+
+Furthermore, the central limit theorem shows that when the sum of a large number of independent and identically distributed (i.i.d.) random variables is considered, the distribution of the sum tends toward a normal distribution, regardless of the original distribution of the variables. This makes the normal distribution a cornerstone of inferential statistics.
+
+## 1. Definition of the Normal Distribution
+
+The normal distribution is characterized by two parameters:
+- **Mean** ($\\mu$): The central tendency or average of the distribution.
+- **Standard deviation** ($\\sigma$): The spread or dispersion of the distribution.
+
+The probability density function (PDF) of the normal distribution is given by:
+
+\[
+f(x; \mu, \sigma) = \frac{1}{\sigma \sqrt{2\pi}} e^{-\frac{(x - \mu)^2}{2\sigma^2}} \quad \text{for } -\infty < x < \infty
+\]
+
+Where:
+- $x$: The value of the random variable
+- $\\mu$: The mean of the distribution
+- $\\sigma$: The standard deviation of the distribution
+
+## 2. Properties of the Normal Distribution
+
+- **Mean**: $E(X) = \mu$
+- **Variance**: $Var(X) = \sigma^2$
+- **Symmetry**: The normal distribution is symmetric around its mean $\\mu$.
+- **68-95-99.7 Rule**: Approximately 68% of the data falls within one standard deviation of the mean, 95% within two standard deviations, and 99.7% within three standard deviations.
+
+## 3. Visualization of the Normal Distribution
+
+Below is an R example that visualizes the normal distribution for different values of $\\mu$ and $\\sigma$.
+
+```{r}
+# R Code: Normal Distribution Visualization
+mu <- 0  # Mean
+sigma <- 1  # Standard deviation
+
+x <- seq(-4, 4, by = 0.01)
+pdf <- (1 / (sigma * sqrt(2 * pi))) * exp(-0.5 * ((x - mu) / sigma)^2)
+
+plot(x, pdf, type = "l", col = "blue", lwd = 2,
+     main = "Normal Distribution (μ = 0, σ = 1)",
+     xlab = "x", ylab = "Density")
+
+# Comparison of distributions with different μ and σ values
+mu_values <- c(-2, 0, 2)
+sigma_values <- c(0.5, 1, 2)
+colors <- c("red", "green", "blue")
+
+plot(x, (1 / (sigma_values[1] * sqrt(2 * pi))) * exp(-0.5 * ((x - mu_values[1]) / sigma_values[1])^2),
+     type = "l", col = colors[1], lwd = 2,
+     xlab = "x", ylab = "Density", main = "Comparison of Normal Distributions")
+
+for (i in 1:3) {
+  lines(x, (1 / (sigma_values[i] * sqrt(2 * pi))) * exp(-0.5 * ((x - mu_values[i]) / sigma_values[i])^2),
+        col = colors[i], lwd = 2)
+}
+legend("topright", legend = paste("μ =", mu_values, ", σ =", sigma_values), col = colors, lty = 1)
+```
+
+# Exponential Distribution
+
+The exponential distribution is widely used to model the time between events that occur continuously and independently at a constant average rate. This distribution is closely linked with the Poisson process, where the focus is on modeling the occurrence of rare events over time.
+
+## Motivation
+
+The exponential distribution was developed in response to the need to model situations where we are interested in the **waiting time** until the next event occurs. For example, consider the problem of predicting how long you will wait for a bus to arrive, assuming the buses arrive randomly. If we know that the buses come on average every 10 minutes, but we have no further information about the schedule, how can we model the waiting time for the next bus?
+
+This kind of problem also appears in various fields such as telecommunications (time between message transmissions), finance (time between price changes), and reliability engineering (time until a product fails). In each of these cases, we are interested in understanding the distribution of time intervals between consecutive occurrences of events. 
+
+Such a situation demands a probability distribution that:
+1. Captures the uncertainty and randomness of the event occurrence.
+2. Does not "remember" how much time has already passed, meaning that the probability of an event happening in the future is independent of the past.
+
+The exponential distribution satisfies both of these requirements and is particularly useful for modeling these scenarios. It provides a mathematically simple yet powerful model for describing the **time between events** in a wide range of processes.
+
+## 1. Definition of Exponential Distribution
+
+The exponential distribution is defined by a single parameter $\\lambda$, where $\\lambda$ represents the rate at which events occur. It is closely related to the Poisson distribution, where $\\lambda$ is the mean number of events in a given time interval.
+
+The probability density function (PDF) of the exponential distribution is given by:
+
+\[
+f(x; \lambda) = \lambda e^{-\lambda x} \quad \text{for } x \geq 0
+\]
+
+Where:
+- $x$: The time until the next event occurs
+- $\\lambda$: The rate at which events occur
+
+## 2. Properties of the Exponential Distribution
+
+- **Mean**: $E(X) = \frac{1}{\lambda}$
+- **Variance**: $Var(X) = \frac{1}{\lambda^2}$
+- **Memoryless Property**: The exponential distribution is "memoryless," meaning the probability of an event occurring in the future is independent of how much time has already elapsed.
+
+## 3. Visualization of the Exponential Distribution
+
+Below is an R example that visualizes the probability density function of the exponential distribution.
+
+```{r}
+# R Code: Exponential Distribution Visualization
+lambda <- 1  # Rate of events
+
+x <- seq(0, 5, by = 0.01)
+pdf <- lambda * exp(-lambda * x)
+
+plot(x, pdf, type = "l", col = "blue", lwd = 2,
+     main = "Exponential Distribution (λ = 1)",
+     xlab = "x", ylab = "Density")
+
+# Comparison of distributions with different λ values
+lambda_values <- c(0.5, 1, 1.5)
+colors <- c("red", "green", "blue")
+
+plot(x, lambda * exp(-lambda * x), type = "l", col = "blue", lwd = 2,
+     xlab = "x", ylab = "Density", main = "Comparison of Exponential Distributions")
+
+for (i in 1:length(lambda_values)) {
+  lines(x, lambda_values[i] * exp(-lambda_values[i] * x), col = colors[i], lwd = 2)
+}
+legend("topright", legend = paste("lambda =", lambda_values), col = colors, lty = 1)
+```
+
+
+
+
+# Exponential and Poisson Distributions
+
+In this lecture, we will explore the relationship between the exponential distribution and the Poisson distribution. These two distributions are fundamental in the study of random processes, especially in modeling the occurrence of events over time. The key link between them is the Poisson process, which describes events happening independently over time at a constant average rate.
+
+---
+
+## 1. Definitions
+
+### 1.1 **Poisson Distribution**
+
+The Poisson distribution models the number of events that occur within a fixed interval of time or space. It assumes that events happen independently and at a constant average rate $ \lambda $ (events per unit time or space). The probability mass function (PMF) for the Poisson distribution is:
+
+\[
+P(X = k) = \frac{\lambda^k e^{-\lambda}}{k!}, \quad k = 0, 1, 2, \dots
+\]
+
+Where:
+- $ X $ is the number of events in a given interval.
+- $ \lambda $ is the average rate of events per interval.
+
+### 1.2 **Exponential Distribution**
+
+The exponential distribution models the time between consecutive events in a Poisson process. It describes the probability of waiting for a certain amount of time until the next event occurs, assuming the events happen at a constant rate $ \lambda $. The probability density function (PDF) for the exponential distribution is:
+
+\[
+f(x; \lambda) = \lambda e^{-\lambda x}, \quad x \geq 0
+\]
+
+Where:
+- $ X $ is the time until the next event.
+- $ \lambda $ is the rate at which events occur.
+
+---
+
+## 2. **Relationship Between Exponential and Poisson Distributions**
+
+The relationship between the Poisson and exponential distributions arises naturally in the context of a **Poisson process**. The key insights are:
+
+1. **Poisson Process**: 
+   - A Poisson process describes events occurring randomly in time or space at a constant average rate $ \lambda $.
+   - The Poisson distribution tells us how many events occur in a given interval.
+   - The exponential distribution tells us the time between consecutive events in this process.
+
+2. **Connection**:
+   - If the number of events in a time interval follows a Poisson distribution, then the time between consecutive events (also called **interarrival times**) follows an exponential distribution.
+   - Conversely, if interarrival times between events follow an exponential distribution, the number of events in a fixed interval follows a Poisson distribution.
+
+### 2.1 **Example: Customer Arrivals**
+
+Let’s consider the example of customers arriving at a bank.
+
+- **Poisson Distribution**: Suppose customers arrive at the bank at an average rate of 3 per hour ($ \lambda = 3 $). The number of customers arriving in a one-hour interval follows a Poisson distribution with rate $ \lambda = 3 $.
+  
+\[
+P(X = k) = \frac{3^k e^{-3}}{k!}, \quad k = 0, 1, 2, \dots
+\]
+
+Here, $ P(X = k) $ gives the probability of exactly $ k $ customers arriving in one hour.
+
+- **Exponential Distribution**: The time between consecutive customer arrivals follows an exponential distribution with rate $ \lambda = 3 $. The probability density function (PDF) for the time $ T $ between arrivals is:
+
+\[
+f(t) = 3 e^{-3t}, \quad t \geq 0
+\]
+
+Here, $ f(t) $ gives the probability that the time between two consecutive customer arrivals is $ t $.
+
+### 2.2 **Linking the Two**: 
+- The **Poisson process** assumes that customers arrive independently, meaning that the time between two consecutive arrivals is memoryless. This memoryless property is the hallmark of the exponential distribution.
+- The **exponential distribution** describes the waiting time until the next event (customer arrival) in a Poisson process. Meanwhile, the **Poisson distribution** tells us how many events (customers) occur within a fixed interval.
+
+### 2.3 **Mathematical Connection**
+
+If we model the time between events (e.g., customer arrivals) as exponentially distributed, the cumulative distribution function (CDF) of the exponential distribution gives us the probability of having at least one event occur in a given interval of length $ t $:
+
+\[
+P(T \leq t) = 1 - e^{-\lambda t}
+\]
+
+This tells us the probability that the waiting time $ T $ is less than or equal to $ t $. Conversely, the Poisson distribution gives us the probability of having $ k $ events in the interval $ t $, which can be written as:
+
+\[
+P(N(t) = k) = \frac{(\lambda t)^k e^{-\lambda t}}{k!}
+\]
+
+Thus, if the waiting time between events is exponentially distributed, then the number of events in an interval of length $ t $ follows a Poisson distribution with mean $ \lambda t $.
+
+---
+
+## 3. **Visualization of the Relationship**
+
+We can visualize the relationship between the Poisson and exponential distributions using R code.
+
+```{r}
+# R Code: Visualizing the Poisson and Exponential Distributions
+
+# Set lambda
+lambda <- 3  # events per hour
+
+# Poisson Distribution for the number of arrivals in 1 hour
+x <- 0:10
+poisson_probs <- dpois(x, lambda)
+
+barplot(poisson_probs, names.arg=x, col="blue", main="Poisson Distribution (λ=3)",
+        xlab="Number of Events (k)", ylab="Probability")
+
+# Exponential Distribution for time between events
+t <- seq(0, 2, by=0.01)
+exponential_probs <- dexp(t, rate=lambda)
+
+plot(t, exponential_probs, type="l", col="red", lwd=2,
+     main="Exponential Distribution (λ=3)",
+     xlab="Time between Events (t)", ylab="Density")
+```
