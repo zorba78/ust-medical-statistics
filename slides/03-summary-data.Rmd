@@ -3,7 +3,7 @@ title: "Medical Statistics"
 subtitle: "Summary of Data"
 author: "<strong>Boncho Ku, Ph.D. in Statistics</strong>"
 institute: "<br/> Korea Institute of Oriental Medicine"
-date: "<br> 2023/09/21"
+date: "<br> 2025/09/11"
 output:
   xaringan::moon_reader:
     css: [default, metropolis, metropolis-fonts, ../assets/css/footer.css, ../assets/css/metropolis-ak.css]
@@ -88,54 +88,68 @@ class: inverse, center, middle
 
 **Center**
 
-One of the most basic features of a data set is its center. Loosely speaking, 
-the center of a dataset is associated with a number that represents a middle or 
-general tendency of the data. Of course, there are usually several values that 
-would serve as a center. 
+One of the most fundamental features of a dataset is its center.
 
+In simple terms, the center represents a typical or middle value that summarizes the dataset. It gives us an idea of where the “middle” of the data lies.
+
+There are several common ways to define the center:
+
+Mean: The arithmetic average of all observations. It is useful for numerical data and is often used in statistical calculations. However, it can be sensitive to extreme values or outliers.
+
+Median: The middle value when the data are ordered from smallest to largest. The median is robust to outliers and is often preferred when the data are skewed.
+
+Mode: The value that occurs most frequently. The mode is particularly helpful for categorical data or when identifying the most common observation is important.
+
+Understanding the center helps us summarize the dataset quickly and provides a reference point for other analyses, such as measuring variability or detecting unusual observations.
 
 **Unusual features**
 
-Extreme observations fall far from the rest of the data. 
-Such observations are troublesome to many statistical procedures; 
-they cause exaggerated estimates and instability. 
+Unusual features are observations that fall far from the majority of the data. These extreme values, or outliers, can have a significant effect on statistical analyses:
 
-It is important to identify extreme observations and examine the source of the data more closely. 
-There are many possible reasons underlying an extreme observation: 
+They may skew averages, inflate variability measures, or cause instability in models.
 
-• Maybe the value is a typographical error. Especially with large data sets becoming more prevalent, 
-many of which being recorded by hand, mistakes are a common problem. After closer scrutiny, 
-these can often be fixed. 
+Identifying these observations is important, but it is equally important to understand why they occur.
 
-• Maybe the observation was not meant for the study, 
-because it does not belong to the population of interest. 
-For example, in medical research some subjects may have relevant complications 
-in their genealogical history that would rule out their participation in the experiment. 
+Common reasons for unusual observations include:
 
-Or when a manufacturing company investigates the properties of one of its devices, 
-perhaps a particular product is malfunctioning and is not representative of the majority of the items. 
+Data entry errors: Large datasets often include manually recorded data, which can introduce mistakes. For example, typing “1000” instead of “100” could create an extreme value.
 
-• Maybe it indicates a deeper trend or phenomenon. Many of the most influential scientific 
-discoveries were made when the investigator noticed an unexpected result, a value that was not 
-predicted by the classical theory. 
-Albert Einstein, Louis Pasteur, and others built their careers on exactly this circumstance.
+Non-representative observations: Some data points may not belong to the population of interest. In medical research, a patient with a rare condition might distort the overall results if included incorrectly.
 
+True exceptional cases: Sometimes extreme values indicate a real, interesting phenomenon. Many scientific discoveries have arisen from noticing such unexpected results. Famous examples include Einstein’s theory of relativity, which challenged classical physics, and Pasteur’s discovery of microbial fermentation.
+
+Careful examination of unusual features helps prevent misleading conclusions and can even lead to new insights.
 
 **Spread**
 
-The spread of a data set is associated with its variability; 
-datasets with a large spread tend to cover a large interval of values, 
-while data sets with small spread tend to cluster tightly around a central value.
+The spread of a dataset measures how dispersed the values are around the center. Understanding spread is important because it tells us whether the data are tightly clustered or widely scattered.
+
+Key measures of spread include:
+
+Range: The difference between the maximum and minimum values. Simple but very sensitive to outliers.
+
+Interquartile Range (IQR): The range of the middle 50% of the data. Less affected by extreme values and often visualized in a boxplot.
+
+Variance and Standard Deviation: These measures quantify the average squared deviation from the mean, giving a more precise idea of how the data are distributed. Standard deviation is in the same unit as the data, making it easier to interpret.
+
+Datasets with a large spread cover a wide range of values, while those with a small spread are tightly clustered around the center.
+
+Practical point: Two datasets can have the same mean but very different spreads. Understanding spread is critical for reliability and comparison of data.
 
 
 **Shape**
 
-When we speak of the shape of a data set, we are usually referring to the shape 
-exhibited by an associated graphical display, such as a histogram. 
+Shape refers to the overall pattern of the data, usually observed through graphical displays such as histograms or density plots.
 
-The shape can tell us a lot about any underlying structure to the data, and can help us decide 
-which statistical procedure we should use to analyze them.
+The shape of the data can reveal important information about the underlying structure and guide the choice of statistical methods:
 
+Symmetric distributions: Values are evenly distributed around the center, like in a normal distribution. Many statistical tests assume symmetry.
+
+Skewed distributions: One tail is longer than the other. Right-skewed (positive skew) distributions have long tails to the right; left-skewed (negative skew) distributions have long tails to the left. Skewness affects the interpretation of mean and median.
+
+Unimodal or multimodal distributions: Unimodal data have a single peak, while multimodal data have multiple peaks, which may indicate distinct subgroups or processes in the data.
+
+Understanding the shape helps detect patterns, identify potential outliers, and select appropriate statistical procedures for analysis.
 ---
 
 # Measures of Location `r icons::fontawesome("location-arrow", style = "solid")`

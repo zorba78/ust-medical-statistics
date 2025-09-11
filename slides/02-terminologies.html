@@ -30,7 +30,7 @@ class: middle, left, title-slide
 ### <br/> Korea Institute of Oriental Medicine
 ]
 .date[
-### <br> 2023/09/14
+### <br> 2025/09/11
 ]
 
 ---
@@ -67,7 +67,7 @@ generalizations about a whole (**the population**), based on a limited mumber of
 
 In our first class, we learned what statistics is, what it encompasses, and why it is important in today's world with emphasizing the importance of statistical thinking. We also briefly covered some important terms in statistics, such as population, sample, observation, and experiment. 
 
-In this class, we will focus on essential terms that you need to know for our study of statistics this semester. Additionally, when you actually analyze data, there's an important initial step you should always take, which is examining the descriptive characteristics of the data.
+In this class, we will focus on essential terms that you need to know. Additionally, when you actually analyze data, there's an important initial step you should always have to do, which is examining the descriptive characteristics of the data.
 
 
 &lt;!-- Through the lesson, I also emphasized the need for statistics as a tool to extract information and knowledge from data. --&gt;
@@ -76,10 +76,8 @@ In this class, we will focus on essential terms that you need to know for our st
 &lt;!-- and data are a set of values with quantitative and qualitative variables according to their properties. --&gt;
 
 
-Statistics can be broadly divided into exploratory data analysis, often refered to descriptive statistics, 
-and statistical inference, in which a population is inferred from limited information from the given sample. 
-
-Exploratory data analysis (EDA for short) is primarily aimed to identify the descriptive characteristics of the data. 
+When we talk about statistics, there are generally two main activities.
+The first is called exploratory data analysis. In this step, we describe what we see in the data: we compute simple numbers such as averages, percentages, or correlations, and we create plots and tables. The goal here is to get an overview of the data and to spot patterns, unusual cases, or potential errors. Think of this step as “looking at a picture” of your data.
 
 
 How can we identify the characteristics of data? For example, suppose that we've investigated the weight of 60 pigs in certain farm. We're going to measure weights of pigs and record their weights in some sort of sheets. What kind of information could we obtain from the 60 numbers? 
@@ -89,8 +87,11 @@ The data themselves are just bunch of numbers or text. From these numbers, we ne
 In my opinion, among the many aspects of checking data characteristics, the most important things are to determine where the center of the data is, how spread out the observed values are from that center, and how shape observed data are. 
 
 
+The second activity is statistical inference. Here, we go further. We take a sample—a smaller piece of data we collected—and we use it to draw conclusions about a much larger group, the population. Inference lets us answer questions such as: 
+
 Let's suppose that we've checked these important characteristics mentioned above thorugh EDA. Now, we're questioning whether the average weights of 60 pigs are greater than the average weight of general population of pigs. 
 
+Inference is like making an educated guess about the unseen world using the data we do see.
 
 This generalization starts with the assumption that the sample we get follows a certain probability distribution. 
 
@@ -119,7 +120,8 @@ We'll learn about the concept of the probability next week, but this time we'll 
 
 ???
 
-
+In statistics, we always distinguish between the population and the sample.
+The population is the complete group we care about: all people, all patients, all schools, or all measurements of interest. 
 
 Population can be divided into target population and study population in terms of epidemiology.
 
@@ -130,12 +132,16 @@ The term "Target population" is sometimes used to emphasize that the samples we 
 Study population is the subset of the population (or the target population) with the condition or characteristics of interest defined by the eligibility criteria. 
 
 
-For example, if the purpose of our study is to investigate the prevalence of dementia among the elderly in South Korea, the whole population of 65 years or older residing in South Korea is our target population of our study.
+For example, if the purpose of our study is to investigate the prevalence of dementia among the elderly in South Korea, the whole population of more than 65 year-old elders in South Korea is our target population of our study.
 
 To sample representing the whole population of the elderly in South Korea, it is ideal if we could obtain samples that reflects the exact population structure of South Korea. However, budget is always not enough and this makes you survey to only the eldely living in Gwangju. Then, your realistic population for the study shrinks to the elderly who live in Gwangju. That is the study population. 
 
 
-The sample is a subset of the population, and if we actually surveyed 500 elderly people in the study we designed, these 500 persons becomes yuout sample for the study. The act of collecting or extracting sample is called sampling. After sampling, you measure something like age, education level, several questionnaires and the prevalence of the dementia from these samples. These things become your dataset. In most case, sampling and collecting data are done simultaneously. 
+Unfortunately, it is usually impossible to measure the whole population.
+
+That is why we collect a sample. A sample is a smaller group, carefully chosen from the population, that we actually observe. We hope this sample reflects the larger population well enough so that we can learn about the population without measuring everyone.
+
+The sample is a subset of the population, and if we actually surveyed 500 elders in the study we designed, these 500 adults becomes your sample for the study. The action to collector extract sample is called "sampling". After sampling, you measure something like age, education level, several questionnaires and the prevalence of the dementia from these samples. These things become your dataset. In most case, sampling and collecting data are done simultaneously. 
 
 
 ---
@@ -203,40 +209,48 @@ but in reality it is very difficult to obtain random samples. It is because of t
 
 ???
 
-The special numbers that determine the characteristics of a population are called parameters. 
+A parameter is a numerical summary that describes a population.
+It could be the true average income of a country, the true proportion of people who have diabetes, or the true mean blood pressure of all adults. The key idea is that the parameter is a fixed value, but it is unknown to us because we cannot measure the entire population.
 
-The parameter is like a god believed to exist somewhere from the point of view of the frequentist.
+Instead, we collect data from a sample and compute numbers from that data. These numbers are called sample statistics. For example, we may compute the average income of 1,000 surveyed households. That statistic is our estimate of the true population parameter.
 
-That's why parameters regard to flawlessness. In statistics, no error means that this particular number exists alone. 
+So the parameter is like the “truth hidden in the background,” and statistics are our “best guesses” based on the information we have.
 
-That is, a paramter is a fixed constant. 
+&lt;!-- The special numbers that determine the characteristics of a population are called parameters.  --&gt;
 
-Recall that the breakthrough in statistics took place in Western Europe. 
+&lt;!-- The parameter is like a god believed to exist somewhere from the point of view of the frequentist. --&gt;
 
-Western Europe has always admired the Greek civilization. 
+&lt;!-- That's why parameters regard to flawlessness. In statistics, no error means that this particular number exists alone.  --&gt;
 
-Because of this cultural background, I think the parameters are expressed in the Greek alphabet.
+&lt;!-- That is, a paramter is a fixed constant.  --&gt;
 
-In fact, this assumption about parameters is a bit unreasonable. 
 
-Because parameters always change unless the population is fixed. 
+&lt;!-- Recall that the breakthrough in statistics took place in Western Europe.  --&gt;
 
-Unlike frequentists, statisticians who hold the view that parameters can change, 
-that is, parameters can also have probabilistic variation, are called Bayesian.
+&lt;!-- Western Europe has always admired the Greek civilization.  --&gt;
 
-In other words, from the point of view of frequentists, the parameter is fixed and cannot be changed. 
+&lt;!-- Because of this cultural background, I think the parameters are expressed in the Greek alphabet. --&gt;
 
-Parameters are numbers that determine the characteristics of a population. 
+&lt;!-- In fact, this assumption about parameters is a bit unreasonable.  --&gt;
 
-They exist somewhere, but like God we never know where the true values are. 
+&lt;!-- Because parameters always change unless the population is fixed.  --&gt;
 
-However, the properties of these parameters can be inferred from the samples we obtained. 
+&lt;!-- Unlike frequentists, statisticians who hold the view that parameters can change,  --&gt;
+&lt;!-- that is, parameters can also have probabilistic variation, are called Bayesian. --&gt;
 
-If the sample properly reflects the population.
+&lt;!-- In other words, from the point of view of frequentists, the parameter is fixed and cannot be changed.  --&gt;
 
-We compute statistics from the sample to estimate the parameters. 
+&lt;!-- Parameters are numbers that determine the characteristics of a population.  --&gt;
 
-The possible information needed to calculate these statistics is in the sample data we have collected.
+&lt;!-- They exist somewhere, but like God we never know where the true values are.  --&gt;
+
+&lt;!-- However, the properties of these parameters can be inferred from the samples we obtained.  --&gt;
+
+&lt;!-- If the sample properly reflects the population. --&gt;
+
+&lt;!-- We compute statistics from the sample to estimate the parameters.  --&gt;
+
+&lt;!-- The possible information needed to calculate these statistics is in the sample data we have collected. --&gt;
 
 
 ---
@@ -260,30 +274,34 @@ The possible information needed to calculate these statistics is in the sample d
 
 ???
 
-So how is the data organized? Mathematically, data is a matrix. 
 
-The matrix is made up of rows and columns. Each row we call an individual. Individual does not have to be a person. 
-
-It can be a person, or it can be a guinea pig, furniture, word, shop, whatever interests you in any research or study.
-
-The number of these indivduals determines the size of the sample.
+Most datasets are organized as a table. Mathematically, data is a matrix. 
 
 
-The features that make up columns in the data are called variables. 
+The matrix is made up of rows and columns. Each row represents one unit of observation: this could be a person, a hospital, or a time point. Everything that you are interested in your research or study. The number of these indivduals determines the size of the sample.
 
-A variable is something measured by an individual. 
+For example, in a health dataset, each row could be one patient, and the columns could include variables such as age, sex, height, weight, and blood pressure.
 
-That is, it means an element that represents the characteristics of an individual.
+
+Each column represents a variable, which is a characteristic measured on those units.
+
+A variable is something measured from an individual, which can characterize that individual. 
 
 For example, suppose a researcher conducts a research on the prevalence of lung cancer. 
 
 Here, individual is an individual person, and the sex, alcohol and smoking, height, and weight measured from this person are variables. 
 
-As another example, in a survey that randomly sampled 100 trees in Gyeryongsan, 
-the tree is an individual, and the species, height, and circumference at chest height of the tree will be variables that express the characteristics of the tree.
+As another example, in a survey that randomly sampled 100 trees in Gyeryongsan. 
 
 Everyone, have you come to Daejeon and visit Gyeryongsan? 
 If you haven't been there, the cherry blossoms blooming in spring are really pretty, so be sure to visit them.
+
+
+Each tree living in this mountain is an individual. Species, height, and circumference at chest height of the tree will be variables that express the characteristics of the tree.
+
+
+So when you look at a dataset, you can always ask two questions: “Who or what are the rows?” and “What attributes or measurements do the columns represent?”
+
 
 
 ---
@@ -291,7 +309,7 @@ If you haven't been there, the cherry blossoms blooming in spring are really pre
 # Types of Variables
 
 
-&lt;table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;"&gt;
+&lt;table class="table" style="color: black; width: auto !important; margin-left: auto; margin-right: auto;"&gt;
 &lt;caption&gt;Type of Variables&lt;/caption&gt;
  &lt;thead&gt;
   &lt;tr&gt;
@@ -329,17 +347,18 @@ If you haven't been there, the cherry blossoms blooming in spring are really pre
 
 ???
 
+Variables come in different types, and this classification matters because it determines which statistical methods we can use.
 
 Variables can be classified into qualitative variables and quantitative variables according to their properties. 
 
 Qualitative variables, also called categorical variables, can be divided into two categories.
 
-Nominal variables are non-ordered. 
+**Nominal variables** are categories without order, such as blood type or eye color.
 
-In other words, it collectively refers to categorical variables that cannot be assigned an order 
-such as gender, marital status, blood type, race, and religion. 
+The only operation we can do on these nominal variables is simply counting. 
 
-The only operation we can do on these variables is simply counting. 
+
+**Ordinal variables** are categories with order, such as education level (high school &lt; college &lt; graduate school) or satisfaction ratings (low &lt; medium &lt; high).
 
 The ordinal variable literally refers to a variable that has the property of an order. 
 
@@ -347,19 +366,27 @@ Grade, level of education, preference, and severity are representative.
 
 We can assign ranking to ordinal variable in natural. 
 
+
 Quantitative variables are also called continuous variables. 
 
 Quantitative variables, like qualitative variables, are also divided into two categories. 
 
-Interval variables are numerical variables that measure relative concepts such as temperature and IQ. 
+
+**Interval variables** are numerical variables that measure relative concepts. Therefore, the concept of the absolute zero does not exist. The typical examples of interval variable are temperature and IQ. 
 
 They have an order, and these variables ale able to apply four arithmetic operations, 
 but usually the difference between the two values is meaningful.
 
-The Ratio variable has all the characteristics of the interval variable, 
+
+**The Ratio variable** has all the characteristics of the interval variable, 
 and is a variable obtained from absolute measurement as shown in the table.
 
-Variables of the highest concept can be converted to any of the lower level of variables (interval, ordinal, nominal). 
+
+In short: variables differ in their structure, and we must respect this structure when analyzing data.
+
+
+
+In addition, Variables of the highest concept can be converted to any of the lower level of variables (interval, ordinal, nominal). 
 
 This means that the amount of information in the ratio variable is richer than other variables. 
 
@@ -388,7 +415,8 @@ It is impossible to convert the nominal variableinto the upper level of variable
 
 ???
 
-random variable is simply a number whose value is determined by the outcome of a chance process. 
+**Random variable** is a variable whose value is not known in advance but follows some chance mechanism.
+
 
 The amount that the insurance company will pay out in the next year is an example of a random variable: 
 
@@ -447,41 +475,73 @@ that quantifies this uncertainty into the measurement of the variable.
 
 ???
 
-Many people confused the concept of uncertainty and error. 
+Let’s start by clarifying two closely related but different concepts: **error** and **uncertainty**.
+
+**Uncertainty** refers to our lack of knowledge. For instance, if we estimate the average blood pressure in a population from a sample, we are uncertain about how close our estimate is to the truth.
+
+**Uncertainty** expresses how sure we are about our measurement. It is the range of possible values the true value might take given the limitations of our measurement. This is about what we don’t know yet.
 
 
-Uncertainty refers to epistemic situations involving imperfect or unknown information. 
-
-It applies to predictions of future events, to physical measurements that are already made, 
-or to the unknown. Uncertainty arises in partially observable and/or stochastic environments, 
-as well as due to ignorance, indolence, or both. 
-
-It arises in any number of fields, including insurance, philosophy, physics, statistics, 
-economics, finance, psychology, sociology, engineering, metrology, meteorology, ecology, 
-and information science.
-
-Briefly, uncertainty represents the lack of knowledge. 
-
-Previously, I refer a random sampling and its difficulty. 
-
-Consider you obtain a sample dataset and probably you believed in that my sample is definitly reflecting the whole population you concerned. 
-
-Who knows? Your sample may be obtained without crucial information. 
+**Error** is the difference between the “true value” and what we actually measured. It has already occurred and is a factual difference.
 
 
-In the other hand, error represents experimental and natural variability. 
+Key point: Error is **fact**, uncertainty is **belief** or **confidence**.
 
 
-For example the yield of a product from a chemical reaction may vary quite considerably from one occasion to another 
-due to slight differences of conditions such as temperature, pressure, concentration and agitation rate. 
+Let’s take a simple example: measuring body weight.
 
-Other errors will be introduced because of the impossibility of obtaining an entirely representative sample of the product for analysis. 
+The error is straightforward: measured minus true → 61.2 – 60.0 = +1.2 kg. This is a fact that has already occurred.
 
-Finally, no method of chemical analysis of the sampled material will be exactly reproducible. 
+The uncertainty comes from the scale’s limited precision. Since the scale’s accuracy is ±0.5 kg, the true weight could be anywhere between 60.7 and 61.7 kg.
 
-Therefore, the error is not a synonym of uncertainty. However, there are several common things: 
+Notice the difference: error is a specific known difference; uncertainty is a range of plausible values for the true weight.
 
-Both are present to some extent in any scientific research and related to the probability. 
+
+
+**Variability** is the natural fluctuation in data. Even if we measure the same person’s blood pressure multiple times, the values will vary slightly.
+
+
+&lt;!-- Error refers to mistakes or deviations that occur during measurement or estimation. For example, a scale might read 1 kg higher than the true weight. --&gt;
+
+
+
+
+In statistics, we always deal with these three concepts. Our goal is to quantify uncertainty, reduce error, and explain variability.
+
+
+
+&lt;!-- Uncertainty refers to epistemic situations involving imperfect or unknown information.  --&gt;
+
+&lt;!-- It applies to predictions of future events, to physical measurements that are already made,  --&gt;
+&lt;!-- or to the unknown. Uncertainty arises in partially observable and/or stochastic environments,  --&gt;
+&lt;!-- as well as due to ignorance, indolence, or both.  --&gt;
+
+&lt;!-- It arises in any number of fields, including insurance, philosophy, physics, statistics,  --&gt;
+&lt;!-- economics, finance, psychology, sociology, engineering, metrology, meteorology, ecology,  --&gt;
+&lt;!-- and information science. --&gt;
+
+&lt;!-- Briefly, uncertainty represents the lack of knowledge.  --&gt;
+
+&lt;!-- Previously, I refer a random sampling and its difficulty.  --&gt;
+
+&lt;!-- Consider you obtain a sample dataset and probably you believed in that my sample is definitly reflecting the whole population you concerned.  --&gt;
+
+&lt;!-- Who knows? Your sample may be obtained without crucial information.  --&gt;
+
+
+&lt;!-- In the other hand, error represents experimental and natural variability.  --&gt;
+
+
+&lt;!-- For example the yield of a product from a chemical reaction may vary quite considerably from one occasion to another  --&gt;
+&lt;!-- due to slight differences of conditions such as temperature, pressure, concentration and agitation rate.  --&gt;
+
+&lt;!-- Other errors will be introduced because of the impossibility of obtaining an entirely representative sample of the product for analysis.  --&gt;
+
+&lt;!-- Finally, no method of chemical analysis of the sampled material will be exactly reproducible.  --&gt;
+
+&lt;!-- Therefore, the error is not a synonym of uncertainty. However, there are several common things:  --&gt;
+
+&lt;!-- Both are present to some extent in any scientific research and related to the probability.  --&gt;
 
 
 
@@ -506,11 +566,17 @@ Both are present to some extent in any scientific research and related to the pr
 
 ???
 
-Probability is 
+Probability is the language we use to describe uncertainty.
+
+When we say that the probability of rolling a 6 on a fair die is 1/6, we mean that if we roll the die many times, about one-sixth of the rolls will show a 6. Probability allows us to assign numbers to uncertain events in a consistent way. 
+
+“Tossing a coin” is a random process with all possible outcomes beging head or tail.
+“Rolling a die” is a random process with all possible outcomes being 1, 2, 3, 4, 5 or 6.
+The probability of an outcome is the proportion of times the outcome would occur if we observed the random process an infinite number of times.
 
 
-If `\(E\)` is an event, then the probability that `\(E\)` occurs is the long-term proportion of times that the event occurs, 
-if we could repeat the random process many, many times.
+In statistics, probability is essential because it provides the foundation for making inferences. Without probability, we could not connect the random sample we observe to the larger population we care about.
+
 
 
 ---
@@ -523,7 +589,7 @@ if we could repeat the random process many, many times.
 
 
 
-```r
+``` r
 coin_flip &lt;- function(faces, ntry = 10) {
   record &lt;- sample(faces, size = ntry, replace = TRUE)
   prob1 &lt;- sum(record == faces[1])/ntry
@@ -541,29 +607,11 @@ for (i in 1:1000) x[i] &lt;- coin_flip(coin, i)
 
 ???
 
-Probability is a clucial tool to understand statistics.
+The following is an example of a coin toss using R. This example illustrates the classical definition of probability in statistics very clearly.
 
-Some of you may have the following question at this point: I only register a statistics class, 
-but why I have to spend so much time in learning probability?
+Even if the proportion of heads appears noticeably higher or lower than 0.5 in a small number of trials, as the number of trials increases, this proportion tends to converge to 0.5. This can be observed through the simulation results.
 
-The relationship between probability and statistics can be summarized by saying that 
-probability reasons from the population to the sample (deductive reasoning), 
-whereas inferential statistics reasons from the sample to the population (inductive reasoning).
-
-
-Consider tossing a fair coin. What is the chance of showing head?
-
-Consider rolling a die, which is a cube wit six faces labelled as 1-6. 
-Suppose that die is also fair: the chance of getting one number is the same as the chance of getting any other number.
-
-What is the chance of getting 3 when rolling a die?
-What is the chance of getting a 1 or 2 in the next roll?
-What is the chance of not rolling a 4?
-Probability is often framed in terms of a random process giving rise to an outcome.
-
-“Tossing a coin” is a random process with all possible outcomes beging head or tail.
-“Rolling a die” is a random process with all possible outcomes being 1, 2, 3, 4, 5 or 6.
-The probability of an outcome is the proportion of times the outcome would occur if we observed the random process an infinite number of times.
+The R script for this example is very simple, so it is recommended to review it after class and try running it yourself to see how it works.
 
 ---
 
@@ -592,7 +640,11 @@ The probability of an outcome is the proportion of times the outcome would occur
 
 ???
 
+Every random variable follows a probability distribution, which describes how likely different outcomes are.
 
+For a coin toss, the distribution is simple: 50% heads and 50% tails. For human height, the distribution might look like a bell-shaped curve, where most people are around the average height, and very tall or very short people are less common.
+
+Probability distributions allow us to describe uncertainty mathematically and to calculate the chances of various events. They are the building blocks of statistical inference.
 
 ---
 # Expectation 
@@ -617,12 +669,14 @@ The probability of an outcome is the proportion of times the outcome would occur
 
 ???
 
+The expectation (or expected value) of a random variable is its long-run average.
+
+Imagine flipping a fair coin: the expected number of heads in one flip is 0.5, because if we flip many, many times, the average proportion of heads will get closer and closer to 50%.
+
+Similarly, the expected height of a population is just the population mean. Expectation is a powerful concept because it summarizes what outcome we “expect” on average if we repeat an experiment indefinitely.
+
 When it comes to random variables, we are often interested in what it might turn out to be on average. 
 That is, suppose we could repeat the random process many, many times—say n times, where n is some large number. 
-(Suppose that we could observe the insurance company for many, many years, 
-with each year being the same in terms of how many people are insured, 
-how much their houses are worth, 
-what the climate is like, and so on.) 
 
 Each time the process is repeated, we get a value for the random variable. We end up with n values. 
 Now add up these values and divide by n. 
@@ -650,18 +704,18 @@ $$
 
 ???
 
-The first step in estimating a parameter is to calculate statistics from the sample for the parameter of interest. 
-When many researchers look at sample data, they tend to think that it is the only sample in the world. 
+Because we cannot know population parameters directly, we rely on sample statistics. These are numbers we calculate from our data, such as the sample mean, the sample proportion, or the sample standard deviation.
 
-In fact, in statistics, the sample we obtained is assumed to be one chosen by chance from a large set of samples. 
+One of the common misunderstanding about a sample is that the obtained sample is the only sample in the world.
 
-For example, it is unlikely that the party preferences surveyed by research firm A would be exactly the same for firm B. 
+In fact, in statistics, the obtained sample from a certain research is assumed to be one chosen by chance from a large set of samples. 
 
-That's why it makes sense to think that the statistics we computed from the samples is also a part of numurous possible results.
-
-That is, the sample statistics depend on different sample data.
+However, since samples vary from one to another, sample statistics are themselves random variables. One sample might give us an average weight of 65 kg, another might give 66 kg. This variation is natural and expected.
 
 Therefore, sample statistics also have a probability structure and therefore it has a probability distribution consequently. 
+
+To capture this uncertainty, we use concepts like the standard error, which measures how much a statistic tends to vary across repeated samples. When we report statistics, it is best practice to present both the estimate and its uncertainty. 
+
 
 
 ---
@@ -695,7 +749,15 @@ but the details may change.
 
 ???
 
-There are two basic branches of statistical inference: estimation and hypothesis testing.
+There are two main tasks in statistical inference.
+
+Estimation: We use data to estimate an unknown parameter. For example, “What is the average cholesterol level in this population?”
+
+Estimation gives us numerical guesses, while hypothesis testing answers yes/no questions about differences or effects. Both are tools to connect sample data with population-level questions.
+
+
+Hypothesis testing: We use data to test a claim about a parameter. For example, “Is the average cholesterol level different between men and women?”
+
 
 Both make use of statistics calculated from sample data, and each has a specific role to play in statistical inference. The choice of which to use depends on the question being asked.
 
@@ -703,10 +765,13 @@ What is the value of something? - This would entail estimation.
 Versus
 
 Are two things the same? – This would entail hypothesis testing.
-The basic principles of estimation &amp; hypothesis testing are the same for ALL types of parameters and statistics. 
 
-However, the details may change. For example: How to calculate the test statistic &amp; estimate the standard error, 
-and what probability distribution to use, are both important considerations in any inferential procedure and have situation-specific nswers (which we will deal with later).
+The basic principles of estimation &amp; hypothesis testing are almost identical to ALL types of parameters and statistics. 
+
+However, there are many details. For example: there are many different methods to obtain the test statistic &amp; estimate the standard error.
+
+Depending on the difference in the type or structure of random variables, the probability distribution used to describe the random variable may also differ.
+
 
 BUT
 
@@ -725,8 +790,15 @@ If you have a basic understanding of the concepts you will easily cope with most
 .center[##### Schematic relationship between population, sample, statistic, and sampling distribution]
 
 
+???
 
 
+The process of statistical inference can be summarized in a flow.
+
+First, we have a population with unknown parameters. We take a sample from this population. From the sample, we compute statistics such as means or proportions. These statistics follow their own sampling distributions. By understanding those distributions, we can estimate parameters and test hypotheses.
+
+So the scheme is: Population → Sample → Statistics → Inference.
+This cycle is at the heart of statistics, and once you see this structure, everything else in statistical methods can be viewed as a variation of this same idea.
  
 
 
@@ -875,9 +947,9 @@ If you have a basic understanding of the concepts you will easily cope with most
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
 <script>var slideshow = remark.create({
-"highlightStyle": "github",
-"highlightLines": true,
-"countIncrementalSlides": false
+  "highlightStyle": "github",
+  "highlightLines": true,
+  "countIncrementalSlides": false
 });
 if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
   window.dispatchEvent(new Event('resize'));
