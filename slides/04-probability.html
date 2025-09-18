@@ -170,7 +170,7 @@ That is, we assume that
 
 .pull-left[
 
-```r
+``` r
 sample_space &lt;- function(
   outcome, times, prob = FALSE
 ) {
@@ -198,7 +198,7 @@ sample_space &lt;- function(
 #### rolling a dice once
 
 
-```r
+``` r
 sample_space(1:6, times = 1) |&gt; unlist()
 ```
 
@@ -211,7 +211,7 @@ X11 X12 X13 X14 X15 X16
 #### Toss a coin 3 times (all sample space)
 
 
-```r
+``` r
 sample_space(c("H", "T"), 3)
 ```
 
@@ -255,7 +255,7 @@ where `\(A_i \neq A_j\)`
 #### all three coins show identical faces
 
 
-```r
+``` r
 S &lt;- sample_space(c("H", "T"), times = 3)
 subset(S, X1 == X2 &amp; X1 == X3 &amp; X2 == X3)
 ```
@@ -269,7 +269,7 @@ subset(S, X1 == X2 &amp; X1 == X3 &amp; X2 == X3)
 #### show 2 heads when tossing a coin 3 times
 
 
-```r
+``` r
 count &lt;- apply(S, 1, function(x) as.numeric(x == "H"))
 numH &lt;- apply(count, 2, sum)
 S[which(numH == 2), ]
@@ -288,7 +288,7 @@ S[which(numH == 2), ]
 #### more than 2 times of &lt;svg viewBox="0 0 448 512" style="height:1em;position:relative;display:inline-block;top:.1em;" xmlns="http://www.w3.org/2000/svg"&gt;  &lt;path d="M384 32H64C28.65 32 0 60.65 0 96v320c0 35.35 28.65 64 64 64h320c35.35 0 64-28.65 64-64V96c0-35.35-28.65-64-64-64zM128 192c-17.67 0-32-14.33-32-32s14.33-32 32-32 32 14.33 32 32-14.33 32-32 32zm96 96c-17.67 0-32-14.33-32-32s14.33-32 32-32 32 14.33 32 32-14.33 32-32 32zm96 96c-17.67 0-32-14.33-32-32s14.33-32 32-32 32 14.33 32 32-14.33 32-32 32z"&gt;&lt;/path&gt;&lt;/svg&gt; rolling 3 dices
 
 
-```r
+``` r
 S &lt;- sample_space(1:6, 3)
 count &lt;- apply(S, 1, function(x) as.numeric(x == 3))
 num3 &lt;- apply(count, 2, sum)
@@ -298,7 +298,7 @@ S[which(num3 &gt;= 2), ]
 #### sum of all three dices are more than 16
 
 
-```r
+``` r
 subset(S, X1 + X2 + X3 &gt; 16)
 ```
 
@@ -612,7 +612,7 @@ UST students in KIOM, I asked them which NETFLIX series is the most favorite:
 .pull-right[
 ####    
 
-&lt;table class=" lightable-paper table" style='font-family: "Arial Narrow", arial, helvetica, sans-serif; margin-left: auto; margin-right: auto; font-size: 14px; margin-left: auto; margin-right: auto;'&gt;
+&lt;table class=" lightable-paper table" style='color: black; font-family: "Arial Narrow", arial, helvetica, sans-serif; margin-left: auto; margin-right: auto; font-size: 14px; color: black; margin-left: auto; margin-right: auto;'&gt;
 &lt;caption style="font-size: initial !important;"&gt;Contingency Table&lt;/caption&gt;
  &lt;thead&gt;
   &lt;tr&gt;
@@ -1086,7 +1086,7 @@ P(C_2|X_1\cap H_3) &amp;= \frac{P(C_2\cap X_1 \cap H_3)}{P(X_1 \cap H_3)} \\
 .panelset[
 .panel[.panel-name[R Code]
 
-```r
+``` r
 # a function for simulation of Monty Hall Game
 # https://pkg.garrickadenbuie.com/xaringanExtra/#/panelset
 library(tidyverse)
@@ -1111,7 +1111,7 @@ monty_hall &lt;- function(niter) {
 
 .panel[.panel-name[Check]
 
-```r
+``` r
 set.seed(12345)
 doors &lt;- c("car", "goat", "goat")
 niter = 10000
@@ -1124,7 +1124,7 @@ sum(outcome$hold_win)/niter
 [1] 0.3319
 ```
 
-```r
+``` r
 sum(outcome$switch_win)/niter
 ```
 
@@ -1136,7 +1136,7 @@ sum(outcome$switch_win)/niter
 
 .panel[.panel-name[Plot-code]
 
-```r
+``` r
 # https://pkg.garrickadenbuie.com/xaringanExtra/#/panelset
 gp &lt;- ggplot(data = outcome) + 
   aes(x = ntry) + 
@@ -1165,9 +1165,9 @@ gp &lt;- ggplot(data = outcome) +
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
 <script>var slideshow = remark.create({
-"highlightStyle": "github",
-"highlightLines": true,
-"countIncrementalSlides": false
+  "highlightStyle": "github",
+  "highlightLines": true,
+  "countIncrementalSlides": false
 });
 if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
   window.dispatchEvent(new Event('resize'));
