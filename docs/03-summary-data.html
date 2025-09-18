@@ -1543,41 +1543,6 @@ So quantiles are essentially special cases of order statistics that mark meaning
 
 They’re especially useful in boxplots, percentile-based summaries, and robust statistical methods that don’t rely on assumptions about the shape of the distribution.
 
-
-&lt;!-- The sample quantiles are related to the order statistics.  --&gt;
-&lt;!-- Unfortunately, there is not a universally accepted definition of them. --&gt;
-
-&lt;!-- Indeed, R is equipped to calculate quantiles using nine distinct definitions!  --&gt;
-&lt;!-- We will describe the default method (type = 7), but the interested reader can see the details  --&gt;
-&lt;!-- for the other methods with `help(quantile)` --&gt;
-
-&lt;!-- Most commercial statistical softwares such as SAS and SPSS, use the following formula --&gt;
-
-&lt;!-- `$$Q(p) = (1-\gamma)x_{(k)} + \gamma x_{(k+1)}$$` --&gt;
-&lt;!-- where `\((k - 0.5)/n \leq p &lt; (k - 0.5 + 1)/n\)` and `\(\gamma = np + m - \lfloor np + m \rfloor\)` --&gt;
-
-&lt;!-- `\(n\)` : sample size --&gt;
-
-&lt;!-- `\(\lfloor \cdot \rfloor\)`: the greatest integer less than or equal to `\(\cdot\)` --&gt;
-
-&lt;!-- ``` --&gt;
-&lt;!-- my_quantile &lt;- function(x, probs) { --&gt;
-&lt;!--   idx &lt;- NULL --&gt;
-&lt;!--   o &lt;- order(x); n &lt;- length(x) --&gt;
-&lt;!--   xord &lt;- x[o] --&gt;
-&lt;!--   k &lt;- 1:n --&gt;
-&lt;!--   gamma &lt;- n * probs + 0.5 - floor(n * probs + 0.5) --&gt;
-&lt;!--   pk &lt;- (k - 0.5)/n --&gt;
-&lt;!--   for (pj in probs) { --&gt;
-&lt;!--     idx &lt;- c(idx, which.max(pk[pk &lt;= pj])) --&gt;
-&lt;!--   } --&gt;
-&lt;!--   res &lt;- (1 - gamma) * xord[idx] + gamma * xord[idx + 1] --&gt;
-&lt;!--   names(res) &lt;- sprintf("%.1f %%", round(probs * 100)) --&gt;
-&lt;!--   return(res) --&gt;
-&lt;!-- } --&gt;
-&lt;!-- ``` --&gt;
-
-
 ---
 
 # Scatterplot &lt;img src="assets/icons/scatter-graph.svg" width="6%"/&gt; 
@@ -1615,6 +1580,7 @@ points(iris$Sepal.Length,
 &lt;img src="assets/imgs/scatterplot-example.svg" width="100%" style="display: block; margin: auto;" /&gt;
 
 ]
+
 
 
 ???
@@ -1828,6 +1794,9 @@ Given the pair of data `\((x_1, y_1), \ldots, (x_n, y_n)\)`,
 In simple, Pearson correlation coefficient is a covariance of two variables **scaled** by the 
 standard deviations. 
 
+
+--
+
 ???
 
 Now that we’ve built up the intuition behind covariance and how variables move together, let’s formally define the Pearson correlation coefficient.
@@ -2008,6 +1977,44 @@ A correlation coefficient does not tell the slope made by two variables.
 &lt;!-- dev.off() --&gt;
 
 
+&lt;!-- ``` --&gt;
+
+
+
+
+
+
+&lt;!-- The sample quantiles are related to the order statistics.  --&gt;
+&lt;!-- Unfortunately, there is not a universally accepted definition of them. --&gt;
+
+&lt;!-- Indeed, R is equipped to calculate quantiles using nine distinct definitions!  --&gt;
+&lt;!-- We will describe the default method (type = 7), but the interested reader can see the details  --&gt;
+&lt;!-- for the other methods with `help(quantile)` --&gt;
+
+&lt;!-- Most commercial statistical softwares such as SAS and SPSS, use the following formula --&gt;
+
+&lt;!-- `$$Q(p) = (1-\gamma)x_{(k)} + \gamma x_{(k+1)}$$` --&gt;
+&lt;!-- where `\((k - 0.5)/n \leq p &lt; (k - 0.5 + 1)/n\)` and `\(\gamma = np + m - \lfloor np + m \rfloor\)` --&gt;
+
+&lt;!-- `\(n\)` : sample size --&gt;
+
+&lt;!-- `\(\lfloor \cdot \rfloor\)`: the greatest integer less than or equal to `\(\cdot\)` --&gt;
+
+&lt;!-- ``` --&gt;
+&lt;!-- my_quantile &lt;- function(x, probs) { --&gt;
+&lt;!--   idx &lt;- NULL --&gt;
+&lt;!--   o &lt;- order(x); n &lt;- length(x) --&gt;
+&lt;!--   xord &lt;- x[o] --&gt;
+&lt;!--   k &lt;- 1:n --&gt;
+&lt;!--   gamma &lt;- n * probs + 0.5 - floor(n * probs + 0.5) --&gt;
+&lt;!--   pk &lt;- (k - 0.5)/n --&gt;
+&lt;!--   for (pj in probs) { --&gt;
+&lt;!--     idx &lt;- c(idx, which.max(pk[pk &lt;= pj])) --&gt;
+&lt;!--   } --&gt;
+&lt;!--   res &lt;- (1 - gamma) * xord[idx] + gamma * xord[idx + 1] --&gt;
+&lt;!--   names(res) &lt;- sprintf("%.1f %%", round(probs * 100)) --&gt;
+&lt;!--   return(res) --&gt;
+&lt;!-- } --&gt;
 &lt;!-- ``` --&gt;
 
 

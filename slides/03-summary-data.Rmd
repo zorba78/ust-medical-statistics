@@ -1509,41 +1509,6 @@ So quantiles are essentially special cases of order statistics that mark meaning
 
 They’re especially useful in boxplots, percentile-based summaries, and robust statistical methods that don’t rely on assumptions about the shape of the distribution.
 
-
-<!-- The sample quantiles are related to the order statistics.  -->
-<!-- Unfortunately, there is not a universally accepted definition of them. -->
-
-<!-- Indeed, R is equipped to calculate quantiles using nine distinct definitions!  -->
-<!-- We will describe the default method (type = 7), but the interested reader can see the details  -->
-<!-- for the other methods with `help(quantile)` -->
-
-<!-- Most commercial statistical softwares such as SAS and SPSS, use the following formula -->
-
-<!-- $$Q(p) = (1-\gamma)x_{(k)} + \gamma x_{(k+1)}$$ -->
-<!-- where $(k - 0.5)/n \leq p < (k - 0.5 + 1)/n$ and $\gamma = np + m - \lfloor np + m \rfloor$ -->
-
-<!-- $n$ : sample size -->
-
-<!-- $\lfloor \cdot \rfloor$: the greatest integer less than or equal to $\cdot$ -->
-
-<!-- ``` -->
-<!-- my_quantile <- function(x, probs) { -->
-<!--   idx <- NULL -->
-<!--   o <- order(x); n <- length(x) -->
-<!--   xord <- x[o] -->
-<!--   k <- 1:n -->
-<!--   gamma <- n * probs + 0.5 - floor(n * probs + 0.5) -->
-<!--   pk <- (k - 0.5)/n -->
-<!--   for (pj in probs) { -->
-<!--     idx <- c(idx, which.max(pk[pk <= pj])) -->
-<!--   } -->
-<!--   res <- (1 - gamma) * xord[idx] + gamma * xord[idx + 1] -->
-<!--   names(res) <- sprintf("%.1f %%", round(probs * 100)) -->
-<!--   return(res) -->
-<!-- } -->
-<!-- ``` -->
-
-
 ---
 
 # Scatterplot <img src="assets/icons/scatter-graph.svg" width="6%"/> 
@@ -1582,6 +1547,7 @@ knitr::include_graphics("assets/imgs/scatterplot-example.svg")
 ```
 
 ]
+
 
 
 ???
@@ -1798,6 +1764,9 @@ $$\hat{\rho}_{XY} = \frac{\sum_{i=1}^{n}(x_i - \bar{x})(y_i - \bar{y})}{\sqrt{\s
 In simple, Pearson correlation coefficient is a covariance of two variables **scaled** by the 
 standard deviations. 
 
+
+--
+
 ???
 
 Now that we’ve built up the intuition behind covariance and how variables move together, let’s formally define the Pearson correlation coefficient.
@@ -1978,6 +1947,44 @@ A correlation coefficient does not tell the slope made by two variables.
 <!-- dev.off() -->
 
 
+<!-- ``` -->
+
+
+
+
+
+
+<!-- The sample quantiles are related to the order statistics.  -->
+<!-- Unfortunately, there is not a universally accepted definition of them. -->
+
+<!-- Indeed, R is equipped to calculate quantiles using nine distinct definitions!  -->
+<!-- We will describe the default method (type = 7), but the interested reader can see the details  -->
+<!-- for the other methods with `help(quantile)` -->
+
+<!-- Most commercial statistical softwares such as SAS and SPSS, use the following formula -->
+
+<!-- $$Q(p) = (1-\gamma)x_{(k)} + \gamma x_{(k+1)}$$ -->
+<!-- where $(k - 0.5)/n \leq p < (k - 0.5 + 1)/n$ and $\gamma = np + m - \lfloor np + m \rfloor$ -->
+
+<!-- $n$ : sample size -->
+
+<!-- $\lfloor \cdot \rfloor$: the greatest integer less than or equal to $\cdot$ -->
+
+<!-- ``` -->
+<!-- my_quantile <- function(x, probs) { -->
+<!--   idx <- NULL -->
+<!--   o <- order(x); n <- length(x) -->
+<!--   xord <- x[o] -->
+<!--   k <- 1:n -->
+<!--   gamma <- n * probs + 0.5 - floor(n * probs + 0.5) -->
+<!--   pk <- (k - 0.5)/n -->
+<!--   for (pj in probs) { -->
+<!--     idx <- c(idx, which.max(pk[pk <= pj])) -->
+<!--   } -->
+<!--   res <- (1 - gamma) * xord[idx] + gamma * xord[idx + 1] -->
+<!--   names(res) <- sprintf("%.1f %%", round(probs * 100)) -->
+<!--   return(res) -->
+<!-- } -->
 <!-- ``` -->
 
 
